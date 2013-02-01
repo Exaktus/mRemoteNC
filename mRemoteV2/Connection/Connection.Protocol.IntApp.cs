@@ -1,0 +1,262 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
+using System.Drawing;
+
+//using mRemoteNC.App.Native;
+using System.Threading;
+using System.Windows.Forms;
+using AxMSTSCLib;
+using AxWFICALib;
+using Microsoft.VisualBasic;
+using mRemoteNC;
+using mRemoteNC.App;
+using My;
+
+namespace mRemoteNC
+{
+    public class IntApp : Base
+    {
+        #region Private Properties
+
+        private ProcessStartInfo IntAppProcessStartInfo = new ProcessStartInfo();
+        private string Arguments;
+        private Tools.ExternalTool ExtApp;
+
+        #endregion Private Properties
+
+        #region Public Properties
+
+        private IntPtr _IntAppHandle;
+
+        public IntPtr IntAppHandle
+        {
+            get { return this._IntAppHandle; }
+            set { this._IntAppHandle = value; }
+        }
+
+        private Process _IntAppProcess;
+
+        public Process IntAppProcess
+        {
+            get { return this._IntAppProcess; }
+            set { this._IntAppProcess = value; }
+        }
+
+        private string _IntAppPath;
+
+        public string IntAppPath
+        {
+            get { return _IntAppPath; }
+            set { _IntAppPath = value; }
+        }
+
+        public bool Focused
+        {
+            get
+            {
+                if (Native.GetForegroundWindow() == IntAppHandle)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        #endregion Public Properties
+
+        #region Private Events & Handlers
+
+        private void ProcessExited(object sender, System.EventArgs e)
+        {
+            base.Event_Closed(this);
+        }
+
+        #endregion Private Events & Handlers
+
+        #region Public Methods
+
+        public IntApp()
+        {
+        }
+
+        public override bool SetProps()
+        {
+            ExtApp = Runtime.GetExtAppByName(InterfaceControl.Info.ExtApp);
+            if (InterfaceControl.Info != null)
+            {
+                ExtApp.ConnectionInfo = InterfaceControl.Info;
+            }
+
+            _IntAppPath = (string)(ExtApp.ParseText(ExtApp.FileName));
+            Arguments = (string)(ExtApp.ParseText(ExtApp.Arguments));
+
+            return base.SetProps();
+        }
+
+        public override bool Connect()
+        {
+            try
+            {
+                if (ExtApp.TryIntegrate == false)
+                {
+                    ExtApp.Start(this.InterfaceControl.Info);
+                    this.Close();
+                    return false;
+                }
+
+                IntAppProcessStartInfo.FileName = _IntAppPath;
+                IntAppProcessStartInfo.Arguments = Arguments;
+
+                IntAppProcess = Process.Start(IntAppProcessStartInfo);
+                IntAppProcess.EnableRaisingEvents = true;
+                IntAppProcess.WaitForInputIdle();
+
+                IntAppProcess.Exited += new System.EventHandler(ProcessExited);
+
+                int TryCount = 0;
+                while (
+                    !(IntAppProcess.MainWindowHandle != IntPtr.Zero && this.InterfaceControl.Handle != IntPtr.Zero &&
+                      this.IntAppProcess.MainWindowTitle != "Default IME"))
+                {
+                    if (TryCount >= Settings.Default.MaxPuttyWaitTime * 2)
+                    {
+                        break;
+                    }
+
+                    IntAppProcess.Refresh();
+
+                    Thread.Sleep(500);
+
+                    TryCount++;
+                }
+
+                IntAppHandle = IntAppProcess.MainWindowHandle;
+
+                Runtime.MessageCollector.AddMessage(Messages.MessageClass.InformationMsg, Language.strIntAppStuff,
+                                                    true);
+
+                Runtime.MessageCollector.AddMessage(Messages.MessageClass.InformationMsg,
+                                                    string.Format(Language.strIntAppHandle, IntAppHandle.ToString()),
+                                                    true);
+                Runtime.MessageCollector.AddMessage(Messages.MessageClass.InformationMsg,
+                                                    string.Format(Language.strIntAppTitle,
+                                                                  IntAppProcess.MainWindowTitle), true);
+                Runtime.MessageCollector.AddMessage(Messages.MessageClass.InformationMsg,
+                                                    string.Format(Language.strIntAppParentHandle,
+                                                                  this.InterfaceControl.Parent.Handle.ToString()),
+                                                    true);
+
+                Native.SetParent(this.IntAppHandle, this.InterfaceControl.Parent.Handle);
+                Native.SetWindowLong(this.IntAppHandle, 0, Native.WS_VISIBLE);
+                Native.ShowWindow(this.IntAppHandle, System.Convert.ToInt32(Native.SW_SHOWMAXIMIZED));
+
+                Resize();
+
+                base.Connect();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                                                    Language.strIntAppConnectionFailed + Constants.vbNewLine +
+                                                    ex.Message);
+                return false;
+            }
+        }
+
+        public override void Focus()
+        {
+            try
+            {
+                Native.SetForegroundWindow(IntAppHandle);
+            }
+            catch (Exception ex)
+            {
+                Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                                                    Language.strIntAppFocusFailed + Constants.vbNewLine + ex.Message,
+                                                    true);
+            }
+        }
+
+        public override void Resize()
+        {
+            try
+            {
+                Native.MoveWindow(IntAppHandle, System.Convert.ToInt32(-SystemInformation.FrameBorderSize.Width),
+                                  System.Convert.ToInt32(
+                                      -(SystemInformation.CaptionHeight + SystemInformation.FrameBorderSize.Height)),
+                                  System.Convert.ToInt32(this.InterfaceControl.Width +
+                                                         (SystemInformation.FrameBorderSize.Width * 2)),
+                                  System.Convert.ToInt32(this.InterfaceControl.Height +
+                                                         SystemInformation.CaptionHeight +
+                                                         (SystemInformation.FrameBorderSize.Height * 2)), true);
+            }
+            catch (Exception ex)
+            {
+                Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                                                    Language.strIntAppResizeFailed + Constants.vbNewLine +
+                                                    ex.Message, true);
+            }
+        }
+
+        public override void Close()
+        {
+            try
+            {
+                if (IntAppProcess.HasExited == false)
+                {
+                    IntAppProcess.Kill();
+                }
+            }
+            catch (Exception ex)
+            {
+                Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                                                    Language.strIntAppKillFailed + Constants.vbNewLine + ex.Message,
+                                                    true);
+            }
+
+            try
+            {
+                if (IntAppProcess.HasExited == false)
+                {
+                    IntAppProcess.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                                                    Language.strIntAppDisposeFailed + Constants.vbNewLine +
+                                                    ex.Message, true);
+            }
+
+            base.Close();
+        }
+
+        #endregion Public Methods
+
+        #region Public Shared Methods
+
+        #endregion Public Shared Methods
+
+        #region Enums
+
+        public enum Defaults
+        {
+            Port = 0
+        }
+
+        #endregion Enums
+    }
+}
+
+//using mRemoteNC.Runtime;
+
+namespace mRemoteNC.Connection
+{
+}
