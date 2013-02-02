@@ -61,26 +61,14 @@ namespace My {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на strTVPath.
-        /// </summary>
-        internal static string strTVPath
-        {
-            get {
-                return ResourceManager.GetString("strTVPath", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Ищет локализованную строку, похожую на About.
         /// </summary>
-        internal static string strAbout
-        {
-            get
-            {
+        internal static string strAbout {
+            get {
                 return ResourceManager.GetString("strAbout", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Ищет локализованную строку, похожую на Active.
         /// </summary>
@@ -583,8 +571,7 @@ namespace My {
         /// <summary>
         ///   Ищет локализованную строку, похожую на To use the Gecko Rendering Engine you need to have XULrunner 1.8.1.x and the path to the installation set in your Options.
         ///You can download XULrunner 1.8.1.3 here: ftp://ftp.mozilla.org/pub/xulrunner/releases/1.8.1.3/contrib/win32/
-        ///When you are finished downloading extract the package to a path of your choice. Then in mRemoteNC go to Tools - Options - Advanced and enter the correct path in the XULrunner path field.
-        ///If you are still not able to pass this check or use the Gecko Engine in mRemoteNC please cons [остаток строки не уместился]&quot;;.
+        /// or http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/ (for GheckoFx v16)When you are finished downloading extract the package to a path of your choice. Then in mRemoteNC go to Tools - Options - Advanced and enter the correct path in the XULrunner path fie [остаток строки не уместился]&quot;;.
         /// </summary>
         internal static string strCcGeckoFailed {
             get {
@@ -1848,6 +1835,15 @@ namespace My {
         internal static string strHttpGecko {
             get {
                 return ResourceManager.GetString("strHttpGecko", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на GheckoFX v16.
+        /// </summary>
+        internal static string strHttpGeckoFX {
+            get {
+                return ResourceManager.GetString("strHttpGeckoFX", resourceCulture);
             }
         }
         
@@ -5488,6 +5484,15 @@ namespace My {
         internal static string strTryIntegrate {
             get {
                 return ResourceManager.GetString("strTryIntegrate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на TeamViewer path:.
+        /// </summary>
+        internal static string strTVPath {
+            get {
+                return ResourceManager.GetString("strTVPath", resourceCulture);
             }
         }
         

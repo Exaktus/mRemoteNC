@@ -8,6 +8,7 @@
 	SQL probably broken
 	Items in context menu on connection tab now hides instead of disabling
 	Integrated IPTextBox
+	Added GeckoFX v16 HTTP(S) Rendering engine - http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/
 	Added option to start connection on app startup
 	Added option to start connection on double click
 	Added basic Serial protocol support (buggy)

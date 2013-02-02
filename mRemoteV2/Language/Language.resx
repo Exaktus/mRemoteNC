@@ -292,7 +292,7 @@ If you are still not able to pass this check or use the (RDP) Sessions feature i
   <data name="strCcGeckoFailed" xml:space="preserve">
     <value>To use the Gecko Rendering Engine you need to have XULrunner 1.8.1.x and the path to the installation set in your Options.
 You can download XULrunner 1.8.1.3 here: ftp://ftp.mozilla.org/pub/xulrunner/releases/1.8.1.3/contrib/win32/
-When you are finished downloading extract the package to a path of your choice. Then in mRemoteNC go to Tools - Options - Advanced and enter the correct path in the XULrunner path field.
+ or http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/ (for GheckoFx v16)When you are finished downloading extract the package to a path of your choice. Then in mRemoteNC go to Tools - Options - Advanced and enter the correct path in the XULrunner path field.
 If you are still not able to pass this check or use the Gecko Engine in mRemoteNC please consult the mRemoteNC Forum at http://forum.mRemoteNC.org/</value>
   </data>
   <data name="strCcGeckoOK" xml:space="preserve">
@@ -2069,5 +2069,11 @@ mRemoteNC will now quit and begin with the installation.</value>
   </data>
   <data name="strTeamViewer" xml:space="preserve">
     <value>TeamViewer</value>
+  </data>
+  <data name="strHttpGeckoFX" xml:space="preserve">
+    <value>GheckoFX v16</value>
+  </data>
+  <data name="strTVPath" xml:space="preserve">
+    <value>TeamViewer path:</value>
   </data>
 </root>

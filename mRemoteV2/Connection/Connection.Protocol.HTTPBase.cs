@@ -32,15 +32,20 @@ namespace mRemoteNC
         {
             try
             {
-                if (RenderingEngine == RenderingEngine.Gecko)
+                switch (RenderingEngine)
                 {
-                    this.Control = new MiniGeckoBrowser.MiniGeckoBrowser();
-                    (this.Control as MiniGeckoBrowser.MiniGeckoBrowser).XULrunnerPath =
-                        Settings.Default.XULRunnerPath;
-                }
-                else
-                {
-                    this.Control = new WebBrowser();
+                    case RenderingEngine.Gecko:
+                        this.Control = new MiniGeckoBrowser.MiniGeckoBrowser();
+                        (this.Control as MiniGeckoBrowser.MiniGeckoBrowser).XULrunnerPath =
+                            Settings.Default.XULRunnerPath;
+                        break;
+                    case RenderingEngine.IE:
+                        this.Control = new WebBrowser();
+                        break;
+                    case RenderingEngine.GeckoFX:
+                        Control = new Gecko.GeckoWebBrowser();
+                        Gecko.Xpcom.Initialize(Settings.Default.XULRunnerPath);
+                        break;
                 }
 
                 NewExtended();
@@ -76,25 +81,37 @@ namespace mRemoteNC
             {
                 this.wBrowser = this.Control;
 
-                if (InterfaceControl.Info.RenderingEngine == RenderingEngine.Gecko)
+                switch (InterfaceControl.Info.RenderingEngine)
                 {
-                    MiniGeckoBrowser.MiniGeckoBrowser objMiniGeckoBrowser =
-                        wBrowser as MiniGeckoBrowser.MiniGeckoBrowser;
+                    case RenderingEngine.Gecko:
+                        {
+                            MiniGeckoBrowser.MiniGeckoBrowser objMiniGeckoBrowser =
+                                wBrowser as MiniGeckoBrowser.MiniGeckoBrowser;
 
-                    objMiniGeckoBrowser.TitleChanged +=
-                        (sender, title) => wBrowser_DocumentTitleChanged(sender, null); //FIXME
-                    objMiniGeckoBrowser.LastTabRemoved += wBrowser_LastTabRemoved;
-                }
-                else
-                {
-                    WebBrowser objWebBrowser = wBrowser as WebBrowser;
-                    SHDocVw.WebBrowser objAxWebBrowser = (SHDocVw.WebBrowser)objWebBrowser.ActiveXInstance;
+                            objMiniGeckoBrowser.TitleChanged +=
+                                (sender, title) => wBrowser_DocumentTitleChanged(sender, null); //FIXME
+                            objMiniGeckoBrowser.LastTabRemoved += wBrowser_LastTabRemoved;
+                        }
+                        break;
+                    case RenderingEngine.IE:
+                        {
+                            WebBrowser objWebBrowser = wBrowser as WebBrowser;
+                            SHDocVw.WebBrowser objAxWebBrowser = (SHDocVw.WebBrowser)objWebBrowser.ActiveXInstance;
 
-                    objWebBrowser.AllowWebBrowserDrop = false;
-                    objWebBrowser.ScrollBarsEnabled = true;
+                            objWebBrowser.AllowWebBrowserDrop = false;
+                            objWebBrowser.ScrollBarsEnabled = true;
 
-                    objWebBrowser.DocumentTitleChanged += wBrowser_DocumentTitleChanged;
-                    objAxWebBrowser.NewWindow3 += ObjAxWebBrowserOnNewWindow3; //wBrowser_NewWindow3;
+                            objWebBrowser.DocumentTitleChanged += wBrowser_DocumentTitleChanged;
+                            objAxWebBrowser.NewWindow3 += ObjAxWebBrowserOnNewWindow3; //wBrowser_NewWindow3;
+                        }
+                        break;
+                        case RenderingEngine.GeckoFX:
+                        {
+                            var objWebBrowser = wBrowser as Gecko.GeckoWebBrowser;
+                            objWebBrowser.AllowDrop = false;
+                            objWebBrowser.DocumentTitleChanged += wBrowser_DocumentTitleChanged;
+                        }
+                        break;
                 }
 
                 return true;
@@ -144,15 +161,20 @@ namespace mRemoteNC
                         strHost = httpOrS + "://" + strHost;
                     }
 
-                    if (InterfaceControl.Info.RenderingEngine == RenderingEngine.Gecko)
+                    switch (InterfaceControl.Info.RenderingEngine)
                     {
-                        (wBrowser as MiniGeckoBrowser.MiniGeckoBrowser).Navigate(strHost + ":" +
-                                                                                 this.InterfaceControl.Info.Port);
-                    }
-                    else
-                    {
-                        (wBrowser as WebBrowser).Navigate(strHost + ":" + this.InterfaceControl.Info.Port, null,
-                                                          null, strAuth);
+                        case RenderingEngine.Gecko:
+                            (wBrowser as MiniGeckoBrowser.MiniGeckoBrowser).Navigate(strHost + ":" +
+                                                                                     this.InterfaceControl.Info.Port);
+                            break;
+                          case  RenderingEngine.IE:
+                            (wBrowser as WebBrowser).Navigate(strHost + ":" + this.InterfaceControl.Info.Port, null,
+                                                              null, strAuth);
+                            break;
+                        case RenderingEngine.GeckoFX:
+                            (wBrowser as Gecko.GeckoWebBrowser).Navigate(strHost + ":" +
+                                                                                     this.InterfaceControl.Info.Port);
+                            break;
                     }
                 }
                 else
@@ -162,13 +184,19 @@ namespace mRemoteNC
                         strHost = httpOrS + "://" + strHost;
                     }
 
-                    if (InterfaceControl.Info.RenderingEngine == RenderingEngine.Gecko)
+                    switch (InterfaceControl.Info.RenderingEngine)
                     {
-                        (wBrowser as MiniGeckoBrowser.MiniGeckoBrowser).Navigate(strHost);
-                    }
-                    else
-                    {
-                        (wBrowser as WebBrowser).Navigate(strHost, null, null, strAuth);
+                        case RenderingEngine.Gecko:
+                            (wBrowser as MiniGeckoBrowser.MiniGeckoBrowser).Navigate(strHost);
+                            break;
+                        case RenderingEngine.IE:
+                            (wBrowser as WebBrowser).Navigate(strHost, null, null, strAuth);
+                            break;
+                       case RenderingEngine.GeckoFX:
+                            var geckoWebBrowser = wBrowser as Gecko.GeckoWebBrowser;
+                            if (geckoWebBrowser != null)
+                                geckoWebBrowser.Navigate(strHost);
+                            break;
                     }
                 }
 
@@ -221,28 +249,40 @@ namespace mRemoteNC
                 {
                     string shortTitle = "";
 
-                    if (this.InterfaceControl.Info.RenderingEngine == RenderingEngine.Gecko)
+                    switch (this.InterfaceControl.Info.RenderingEngine)
                     {
-                        if ((wBrowser as MiniGeckoBrowser.MiniGeckoBrowser).Title.Length >= 30)
-                        {
-                            shortTitle = (wBrowser as MiniGeckoBrowser.MiniGeckoBrowser).Title.Substring(0, 29) +
-                                         " ...";
-                        }
-                        else
-                        {
-                            shortTitle = (wBrowser as MiniGeckoBrowser.MiniGeckoBrowser).Title;
-                        }
-                    }
-                    else
-                    {
-                        if ((wBrowser as WebBrowser).DocumentTitle.Length >= 30)
-                        {
-                            shortTitle = (wBrowser as WebBrowser).DocumentTitle.Substring(0, 29) + " ...";
-                        }
-                        else
-                        {
-                            shortTitle = (wBrowser as WebBrowser).DocumentTitle;
-                        }
+                        case RenderingEngine.Gecko:
+                            if ((wBrowser as MiniGeckoBrowser.MiniGeckoBrowser).Title.Length >= 30)
+                            {
+                                shortTitle = (wBrowser as MiniGeckoBrowser.MiniGeckoBrowser).Title.Substring(0, 29) +
+                                             " ...";
+                            }
+                            else
+                            {
+                                shortTitle = (wBrowser as MiniGeckoBrowser.MiniGeckoBrowser).Title;
+                            }
+                            break;
+                        case RenderingEngine.IE:
+                            if ((wBrowser as WebBrowser).DocumentTitle.Length >= 30)
+                            {
+                                shortTitle = (wBrowser as WebBrowser).DocumentTitle.Substring(0, 29) + " ...";
+                            }
+                            else
+                            {
+                                shortTitle = (wBrowser as WebBrowser).DocumentTitle;
+                            }
+                            break;
+                            case RenderingEngine.GeckoFX:
+                            if ((wBrowser as Gecko.GeckoWebBrowser).DocumentTitle.Length >= 30)
+                            {
+                                shortTitle = (wBrowser as Gecko.GeckoWebBrowser).DocumentTitle.Substring(0, 29) +
+                                             " ...";
+                            }
+                            else
+                            {
+                                shortTitle = (wBrowser as Gecko.GeckoWebBrowser).DocumentTitle;
+                            }
+                            break;
                     }
 
                     if (this.tabTitle != "")
@@ -272,7 +312,9 @@ namespace mRemoteNC
             [LocalizedAttributes.LocalizedDescriptionAttribute("strHttpInternetExplorer")]
             IE = 1,
             [LocalizedAttributes.LocalizedDescription("strHttpGecko")]
-            Gecko = 2
+            Gecko = 2,
+            [LocalizedAttributes.LocalizedDescription("strHttpGeckoFX")]
+            GeckoFX=3
         }
 
         private enum NWMF

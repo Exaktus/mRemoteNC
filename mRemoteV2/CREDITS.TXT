@@ -25,6 +25,10 @@ http://www.codeproject.com/KB/recipes/command_line.aspx
 Included Components
 ===================
 
+GeckoFx-Windows-16.0-0.2
+Mozilla Public License
+https://bitbucket.org/geckofx/geckofx-16.0
+
 ADTree 1.0
 Copyright © 2004 Marc Merritt
 Copyright © 2008 Felix Deimel
