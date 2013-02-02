@@ -188,7 +188,7 @@ namespace mRemoteNC.Forms
             {
                 Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
                                                     (string)
-                                                    ("SetAppProperties failed (UI.Window.ExternalApps)" +
+                                                    ("SetAppProperties failed (UI.Window.QT)" +
                                                      Constants.vbNewLine + ex.Message), true);
             }
         }
@@ -216,19 +216,23 @@ namespace mRemoteNC.Forms
             try
             {
                 var cm = new ContextMenu();
-                var ls = new List<string>(){"%Password%"};
+                var ls = new List<string>(){"%Password%", "%Login%", "%AltSpace%"};
                 foreach (var l in ls)
                 {
-                    cm.MenuItems.Add(new MenuItem(l, (o, args) => { txtFilename.Text += ((MenuItem) o).Text; }));
+                    cm.MenuItems.Add(new MenuItem(l, (o, args) => { txtFilename.Text += ((MenuItem)o).Text;
+                                                                      txtDisplayName_LostFocus(null,null);
+                    }));
                 }
                 Point pos = this.PointToClient(Cursor.Position);
                 cm.Show(this, pos, LeftRightAlignment.Right);
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                throw;
+                Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                                                    (string)
+                                                    ("btnBrowse_Click failed (UI.Window.QT)" +
+                                                     Constants.vbNewLine + ex.Message), true);
             }
         }
     }

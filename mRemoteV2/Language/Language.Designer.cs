@@ -61,6 +61,212 @@ namespace My {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на EOLWTSCOM  found, but not registered.
+        /// </summary>
+        internal static string ProblemFixer_FixEolProblem_EOLWTSCOM__found__but_not_registered {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixEolProblem_EOLWTSCOM__found__but_not_registered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на EOLWTSCOM  not found.
+        /// </summary>
+        internal static string ProblemFixer_FixEolProblem_EOLWTSCOM__not_found {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixEolProblem_EOLWTSCOM__not_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на EOLWTSCOM: problem found.
+        /// </summary>
+        internal static string ProblemFixer_FixEolProblem_EOLWTSCOM__problem_found {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixEolProblem_EOLWTSCOM__problem_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Open mRemoteNC website.
+        /// </summary>
+        internal static string ProblemFixer_FixEolProblem_Open_mRemoteNC_website {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixEolProblem_Open_mRemoteNC_website", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Register EOLWTSCOM.
+        /// </summary>
+        internal static string ProblemFixer_FixEolProblem_Register_EOLWTSCOM {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixEolProblem_Register_EOLWTSCOM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Reinstall application..
+        /// </summary>
+        internal static string ProblemFixer_FixEolProblem_Reinstall_application_ {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixEolProblem_Reinstall_application_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Open Options|Open XULrunner 1.8.1 Download page
+        ///ftp://ftp.mozilla.org/pub/xulrunner/releases/1.8.1.3/contrib/win32/|Open XULrunner 16.0.2 Download page
+        ///http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/|Automatic problem fix.
+        /// </summary>
+        internal static string ProblemFixer_FixGeckoProblem_ {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixGeckoProblem_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Gecko: problem found.
+        /// </summary>
+        internal static string ProblemFixer_FixGeckoProblem_Gecko__problem_found {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixGeckoProblem_Gecko__problem_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Open Options|Setup path:
+        ///.
+        /// </summary>
+        internal static string ProblemFixer_FixGeckoProblem_OpenOptions {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixGeckoProblem_OpenOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на |Open XULrunner 1.8.1 Download page
+        ///ftp://ftp.mozilla.org/pub/xulrunner/releases/1.8.1.3/contrib/win32/|Open XULrunner 16.0.2 Download page
+        ///http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/|Download and setup XULrunner 16.0.2.
+        /// </summary>
+        internal static string ProblemFixer_FixGeckoProblem_OpenXULR {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixGeckoProblem_OpenXULR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Xulrunner folder not found.
+        /// </summary>
+        internal static string ProblemFixer_FixGeckoProblem_Xulrunner_folder_not_found {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixGeckoProblem_Xulrunner_folder_not_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Xulrunner found, but not set in options.
+        /// </summary>
+        internal static string ProblemFixer_FixGeckoProblem_Xulrunner_found__but_not_set_in_options {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixGeckoProblem_Xulrunner_found__but_not_set_in_options", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на You should setup Xulrunner path in options or I can do it for you..
+        /// </summary>
+        internal static string ProblemFixer_FixGeckoProblem_You_should_setup_Xulrunner_path {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixGeckoProblem_You_should_setup_Xulrunner_path", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Open Options|Open mRemoteNC Download page|Open PuTTY download page|Download and install PuTTY.
+        /// </summary>
+        internal static string ProblemFixer_FixPuTTYProblem_Open_Options_Open_mRemoteNC_Download_page_Open_PuTTY_download_page_Download_and_install_PuTTY {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixPuTTYProblem_Open_Options_Open_mRemoteNC_Download_page_Open_PuTTY" +
+                        "_download_page_Download_and_install_PuTTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на PuTTY: problem found.
+        /// </summary>
+        internal static string ProblemFixer_FixPuTTYProblem_PuTTY__problem_found {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixPuTTYProblem_PuTTY__problem_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на PuTTY not found. Reinstall mRemoteNC or set PuTTY path in Options..
+        /// </summary>
+        internal static string ProblemFixer_FixPuTTYProblem_PuTTY_not_found__Reinstall_mRemoteNC_or_set_PuTTY_path_in_Options_ {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixPuTTYProblem_PuTTY_not_found__Reinstall_mRemoteNC_or_set_PuTTY_pa" +
+                        "th_in_Options_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Open Options|Setup path:
+        ///.
+        /// </summary>
+        internal static string ProblemFixer_FixTVProblem_ {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixTVProblem_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Open Options|Open TeamViewer Download page.
+        /// </summary>
+        internal static string ProblemFixer_FixTVProblem_Options {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixTVProblem_Options", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на TeamViewer found, but not set in options.
+        /// </summary>
+        internal static string ProblemFixer_FixTVProblem_TeamViewer_found__but_not_set_in_options {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixTVProblem_TeamViewer_found__but_not_set_in_options", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на TeamViewer not found, neither installed nor portable.
+        /// </summary>
+        internal static string ProblemFixer_FixTVProblem_TeamViewer_not_found__neither_installed_nor_portable {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixTVProblem_TeamViewer_not_found__neither_installed_nor_portable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на You shold install TeamViewer or setup TeamViewer path manualy in Options. After installing(or unpacking portable version), set path in mRemoteNC&apos;s Options menu..
+        /// </summary>
+        internal static string ProblemFixer_FixTVProblem_You_shold_install_TeamViewer {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixTVProblem_You_shold_install_TeamViewer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на You should setup TeamViewer path in options or I can do it for you..
+        /// </summary>
+        internal static string ProblemFixer_FixTVProblem_You_should_setup_TeamViewer {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixTVProblem_You_should_setup_TeamViewer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на About.
         /// </summary>
         internal static string strAbout {
@@ -548,6 +754,15 @@ namespace My {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на &lt;-- Click on red sign, to get more details..
+        /// </summary>
+        internal static string strCcClickOnSign {
+            get {
+                return ResourceManager.GetString("strCcClickOnSign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на The (RDP) Sessions feature requires that you have a registered copy of eolwtscom.dll on your system.
         ///mRemoteNC ships with this component but will not register it automatically unless you run the setup package.
         ///To do register it manually do this: Open up the run dialog (Start - Run) and enter the following: regsvr32 &quot;c:\Program Files\mRemoteNC\eolwtscom.dll&quot; (Where c:\Program Files\mRemoteNC\ is the path to your mRemoteNC installation).
@@ -576,6 +791,18 @@ namespace My {
         internal static string strCcGeckoFailed {
             get {
                 return ResourceManager.GetString("strCcGeckoFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на To use the Gecko Rendering Engine you need to have XULrunner 1.8.1 or 16.0.2 and the path to the installation set in your Options.
+        ///You can download XULrunner 1.8.1.3 here: ftp://ftp.mozilla.org/pub/xulrunner/releases/1.8.1.3/contrib/win32/
+        ///and 16.0.2 drom here: http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/ (for GheckoFx v16)
+        ///When you are finished downloading extract the package to a path of your choice. Then in mRemoteNC go to Tools - Options - Advanced and enter the correct  [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string strCcGeckoFix {
+            get {
+                return ResourceManager.GetString("strCcGeckoFix", resourceCulture);
             }
         }
         
@@ -3222,6 +3449,15 @@ namespace My {
         internal static string strPasswordProtect {
             get {
                 return ResourceManager.GetString("strPasswordProtect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на TeamViewer: problem found.
+        /// </summary>
+        internal static string strPfTVProblemFound {
+            get {
+                return ResourceManager.GetString("strPfTVProblemFound", resourceCulture);
             }
         }
         

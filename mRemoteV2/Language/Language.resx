@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -2075,5 +2075,91 @@ mRemoteNC will now quit and begin with the installation.</value>
   </data>
   <data name="strTVPath" xml:space="preserve">
     <value>TeamViewer path:</value>
+  </data>
+  <data name="strCcClickOnSign" xml:space="preserve">
+    <value>&lt;-- Click on red sign, to get more details.</value>
+  </data>
+  <data name="strCcGeckoFix" xml:space="preserve">
+    <value>To use the Gecko Rendering Engine you need to have XULrunner 1.8.1 or 16.0.2 and the path to the installation set in your Options.
+You can download XULrunner 1.8.1.3 here: ftp://ftp.mozilla.org/pub/xulrunner/releases/1.8.1.3/contrib/win32/
+and 16.0.2 drom here: http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/ (for GheckoFx v16)
+When you are finished downloading extract the package to a path of your choice. Then in mRemoteNC go to Tools - Options - Advanced and enter the correct path in the XULrunner path field.
+
+Or I can do it for you.</value>
+  </data>
+  <data name="strPfTVProblemFound">
+    <value xml:space="preserve">TeamViewer: problem found</value>
+  </data>
+  <data name="ProblemFixer_FixTVProblem_TeamViewer_not_found__neither_installed_nor_portable">
+    <value xml:space="preserve">TeamViewer not found, neither installed nor portable</value>
+  </data>
+  <data name="ProblemFixer_FixTVProblem_You_shold_install_TeamViewer">
+    <value xml:space="preserve">You shold install TeamViewer or setup TeamViewer path manualy in Options. After installing(or unpacking portable version), set path in mRemoteNC's Options menu.</value>
+  </data>
+  <data name="ProblemFixer_FixTVProblem_Options">
+    <value xml:space="preserve">Open Options|Open TeamViewer Download page</value>
+  </data>
+  <data name="ProblemFixer_FixTVProblem_TeamViewer_found__but_not_set_in_options">
+    <value xml:space="preserve">TeamViewer found, but not set in options</value>
+  </data>
+  <data name="ProblemFixer_FixTVProblem_You_should_setup_TeamViewer">
+    <value xml:space="preserve">You should setup TeamViewer path in options or I can do it for you.</value>
+  </data>
+  <data name="ProblemFixer_FixTVProblem_">
+    <value xml:space="preserve">Open Options|Setup path:
+</value>
+  </data>
+  <data name="ProblemFixer_FixGeckoProblem_Gecko__problem_found">
+    <value xml:space="preserve">Gecko: problem found</value>
+  </data>
+  <data name="ProblemFixer_FixGeckoProblem_Xulrunner_folder_not_found">
+    <value xml:space="preserve">Xulrunner folder not found</value>
+  </data>
+  <data name="ProblemFixer_FixGeckoProblem_">
+    <value xml:space="preserve">Open Options|Open XULrunner 1.8.1 Download page
+ftp://ftp.mozilla.org/pub/xulrunner/releases/1.8.1.3/contrib/win32/|Open XULrunner 16.0.2 Download page
+http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/|Automatic problem fix</value>
+  </data>
+  <data name="ProblemFixer_FixGeckoProblem_Xulrunner_found__but_not_set_in_options">
+    <value xml:space="preserve">Xulrunner found, but not set in options</value>
+  </data>
+  <data name="ProblemFixer_FixGeckoProblem_You_should_setup_Xulrunner_path">
+    <value xml:space="preserve">You should setup Xulrunner path in options or I can do it for you.</value>
+  </data>
+  <data name="ProblemFixer_FixPuTTYProblem_PuTTY__problem_found">
+    <value xml:space="preserve">PuTTY: problem found</value>
+  </data>
+  <data name="ProblemFixer_FixPuTTYProblem_PuTTY_not_found__Reinstall_mRemoteNC_or_set_PuTTY_path_in_Options_">
+    <value xml:space="preserve">PuTTY not found. Reinstall mRemoteNC or set PuTTY path in Options.</value>
+  </data>
+  <data name="ProblemFixer_FixPuTTYProblem_Open_Options_Open_mRemoteNC_Download_page_Open_PuTTY_download_page_Download_and_install_PuTTY">
+    <value xml:space="preserve">Open Options|Open mRemoteNC Download page|Open PuTTY download page|Download and install PuTTY</value>
+  </data>
+  <data name="ProblemFixer_FixEolProblem_EOLWTSCOM__problem_found">
+    <value xml:space="preserve">EOLWTSCOM: problem found</value>
+  </data>
+  <data name="ProblemFixer_FixEolProblem_EOLWTSCOM__found__but_not_registered">
+    <value xml:space="preserve">EOLWTSCOM  found, but not registered</value>
+  </data>
+  <data name="ProblemFixer_FixEolProblem_Register_EOLWTSCOM">
+    <value xml:space="preserve">Register EOLWTSCOM</value>
+  </data>
+  <data name="ProblemFixer_FixEolProblem_EOLWTSCOM__not_found">
+    <value xml:space="preserve">EOLWTSCOM  not found</value>
+  </data>
+  <data name="ProblemFixer_FixEolProblem_Reinstall_application_">
+    <value xml:space="preserve">Reinstall application.</value>
+  </data>
+  <data name="ProblemFixer_FixEolProblem_Open_mRemoteNC_website">
+    <value xml:space="preserve">Open mRemoteNC website</value>
+  </data>
+  <data name="ProblemFixer_FixGeckoProblem_OpenOptions">
+    <value xml:space="preserve">Open Options|Setup path:
+</value>
+  </data>
+  <data name="ProblemFixer_FixGeckoProblem_OpenXULR">
+    <value xml:space="preserve">|Open XULrunner 1.8.1 Download page
+ftp://ftp.mozilla.org/pub/xulrunner/releases/1.8.1.3/contrib/win32/|Open XULrunner 16.0.2 Download page
+http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/|Download and setup XULrunner 16.0.2</value>
   </data>
 </root>

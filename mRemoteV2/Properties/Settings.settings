@@ -544,16 +544,16 @@
       <Value Profile="(Default)">6, 0</Value>
     </Setting>
     <Setting Name="tsQuickConnectLocation" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Drawing.Point" Scope="User">
-      <Value Profile="(Default)">560, 0</Value>
+      <Value Profile="(Default)">3, 25</Value>
     </Setting>
     <Setting Name="tsQuickTextsLocation" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">1078, 0</Value>
     </Setting>
     <Setting Name="tsExternalToolsLocation" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Drawing.Point" Scope="User">
-      <Value Profile="(Default)">627, 0</Value>
+      <Value Profile="(Default)">1208, 0</Value>
     </Setting>
     <Setting Name="ToolStrip1Location" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Drawing.Point" Scope="User">
-      <Value Profile="(Default)">191, 0</Value>
+      <Value Profile="(Default)">944, 0</Value>
     </Setting>
     <Setting Name="QuickTextToolbarVisible" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

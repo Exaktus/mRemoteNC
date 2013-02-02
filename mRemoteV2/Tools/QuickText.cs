@@ -12,7 +12,7 @@ namespace mRemoteNC.Tools
 
         internal string ToCommand(Connection.Info info)
         {
-            return Text.Replace("%Password%", info.Password);
+            return Text.Replace("%Password%", info.Password).Replace("%Login%", info.Username).Replace("%AltSpace%", "% ");
         }
     }
 }

@@ -167,6 +167,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>References\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\DataSources\" />
@@ -278,6 +279,7 @@
     <Compile Include="Tools\IPTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Tools\ProblemFixer.cs" />
     <Compile Include="Tools\QuickText.cs" />
     <Compile Include="Tools\ReconnectGroup.Designer.cs">
       <DependentUpon>ReconnectGroup.cs</DependentUpon>
@@ -995,6 +997,15 @@
     </COMReference>
     <COMReference Include="MSTSCLib">
       <Guid>{8C11EFA1-92C3-11D1-BC1E-00C04FA31489}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Shell32">
+      <Guid>{50A7E9B0-70EF-11D1-B75A-00A0C90564FE}</Guid>
       <VersionMajor>1</VersionMajor>
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>

@@ -10,6 +10,7 @@ using mRemoteNC.App.Info;
 using mRemoteNC.Security;
 using My;
 using WeifenLuo.WinFormsUI.Docking;
+using mRemoteNC.Tools;
 using Settings = My.Settings;
 
 namespace mRemoteNC
@@ -1527,15 +1528,8 @@ namespace mRemoteNC
 
         private void UpdateTVPaths()
         {
-            var res = new List<string>();
-            var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "TeamViewer");
-            if (Directory.Exists(path))
-            {
-                res.AddRange(Directory.GetDirectories(path).Select(dir => Path.Combine(path, dir, "TeamViewer.exe")));
-            }
-            res.Add(Path.Combine(Environment.CurrentDirectory, "TeamViewerPortable", "TeamViewer.exe"));
             txtTVPath.DropDownStyle = ComboBoxStyle.DropDown;
-            txtTVPath.Items.AddRange(res.Where(File.Exists).ToArray());
+            txtTVPath.Items.AddRange(ProblemFixer.FindTvPaths().ToArray());
         }
 
         private void LoadOptions()
@@ -2030,7 +2024,7 @@ namespace mRemoteNC
             this.Close();
         }
 
-        private void lvPages_SelectedIndexChanged(System.Object sender, System.EventArgs e)
+        public void lvPages_SelectedIndexChanged(System.Object sender, System.EventArgs e)
         {
             ListView listView = (ListView)sender;
             if (listView.SelectedIndices.Count != 0)

@@ -481,6 +481,7 @@ namespace mRemoteNC
 
         public void mMenFileExit_Click(System.Object sender, System.EventArgs e)
         {
+            Settings.Default.Save();
             Runtime.Shutdown.Quit();
         }
 
@@ -1240,6 +1241,11 @@ namespace mRemoteNC
             Settings.Default.QuickTextToolbarVisible = quickTextToolbarToolStripMenuItem.Checked;
             tsQuickTexts.Visible = quickTextToolbarToolStripMenuItem.Checked;
             Settings.Default.Save();
+        }
+
+        private void tsQuickTexts_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

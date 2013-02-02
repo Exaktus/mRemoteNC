@@ -41,21 +41,21 @@ namespace mRemoteNC
 		[System.Diagnostics.DebuggerStepThrough()]private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            WeifenLuo.WinFormsUI.Docking.DockPanelSkin dockPanelSkin1 = new WeifenLuo.WinFormsUI.Docking.DockPanelSkin();
-            WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin autoHideStripSkin1 = new WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin();
-            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient1 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient1 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin dockPaneStripSkin1 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin();
-            WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient dockPaneStripGradient1 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient2 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient2 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient3 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient dockPaneStripToolWindowGradient1 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient4 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient5 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient3 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient6 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient7 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPanelSkin dockPanelSkin2 = new WeifenLuo.WinFormsUI.Docking.DockPanelSkin();
+            WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin autoHideStripSkin2 = new WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient4 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient8 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin dockPaneStripSkin2 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient dockPaneStripGradient2 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient9 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient5 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient10 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient dockPaneStripToolWindowGradient2 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient11 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient12 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient6 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient13 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient14 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.pnlDock = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.mMenSep3 = new System.Windows.Forms.ToolStripSeparator();
@@ -162,53 +162,53 @@ namespace mRemoteNC
             this.pnlDock.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingWindow;
             this.pnlDock.Location = new System.Drawing.Point(0, 0);
             this.pnlDock.Name = "pnlDock";
-            this.pnlDock.Size = new System.Drawing.Size(1258, 592);
-            dockPanelGradient1.EndColor = System.Drawing.SystemColors.ControlLight;
-            dockPanelGradient1.StartColor = System.Drawing.SystemColors.ControlLight;
-            autoHideStripSkin1.DockStripGradient = dockPanelGradient1;
-            tabGradient1.EndColor = System.Drawing.SystemColors.Control;
-            tabGradient1.StartColor = System.Drawing.SystemColors.Control;
-            tabGradient1.TextColor = System.Drawing.SystemColors.ControlDarkDark;
-            autoHideStripSkin1.TabGradient = tabGradient1;
-            autoHideStripSkin1.TextFont = new System.Drawing.Font("Segoe UI", 9F);
-            dockPanelSkin1.AutoHideStripSkin = autoHideStripSkin1;
-            tabGradient2.EndColor = System.Drawing.SystemColors.ControlLightLight;
-            tabGradient2.StartColor = System.Drawing.SystemColors.ControlLightLight;
-            tabGradient2.TextColor = System.Drawing.SystemColors.ControlText;
-            dockPaneStripGradient1.ActiveTabGradient = tabGradient2;
-            dockPanelGradient2.EndColor = System.Drawing.SystemColors.Control;
-            dockPanelGradient2.StartColor = System.Drawing.SystemColors.Control;
-            dockPaneStripGradient1.DockStripGradient = dockPanelGradient2;
-            tabGradient3.EndColor = System.Drawing.SystemColors.ControlLight;
-            tabGradient3.StartColor = System.Drawing.SystemColors.ControlLight;
-            tabGradient3.TextColor = System.Drawing.SystemColors.ControlText;
-            dockPaneStripGradient1.InactiveTabGradient = tabGradient3;
-            dockPaneStripSkin1.DocumentGradient = dockPaneStripGradient1;
-            dockPaneStripSkin1.TextFont = new System.Drawing.Font("Segoe UI", 9F);
-            tabGradient4.EndColor = System.Drawing.SystemColors.ActiveCaption;
-            tabGradient4.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            tabGradient4.StartColor = System.Drawing.SystemColors.GradientActiveCaption;
-            tabGradient4.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dockPaneStripToolWindowGradient1.ActiveCaptionGradient = tabGradient4;
-            tabGradient5.EndColor = System.Drawing.SystemColors.Control;
-            tabGradient5.StartColor = System.Drawing.SystemColors.Control;
-            tabGradient5.TextColor = System.Drawing.SystemColors.ControlText;
-            dockPaneStripToolWindowGradient1.ActiveTabGradient = tabGradient5;
-            dockPanelGradient3.EndColor = System.Drawing.SystemColors.ControlLight;
-            dockPanelGradient3.StartColor = System.Drawing.SystemColors.ControlLight;
-            dockPaneStripToolWindowGradient1.DockStripGradient = dockPanelGradient3;
-            tabGradient6.EndColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            tabGradient6.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            tabGradient6.StartColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            tabGradient6.TextColor = System.Drawing.SystemColors.ControlText;
-            dockPaneStripToolWindowGradient1.InactiveCaptionGradient = tabGradient6;
-            tabGradient7.EndColor = System.Drawing.Color.Transparent;
-            tabGradient7.StartColor = System.Drawing.Color.Transparent;
-            tabGradient7.TextColor = System.Drawing.SystemColors.ControlDarkDark;
-            dockPaneStripToolWindowGradient1.InactiveTabGradient = tabGradient7;
-            dockPaneStripSkin1.ToolWindowGradient = dockPaneStripToolWindowGradient1;
-            dockPanelSkin1.DockPaneStripSkin = dockPaneStripSkin1;
-            this.pnlDock.Skin = dockPanelSkin1;
+            this.pnlDock.Size = new System.Drawing.Size(1258, 666);
+            dockPanelGradient4.EndColor = System.Drawing.SystemColors.ControlLight;
+            dockPanelGradient4.StartColor = System.Drawing.SystemColors.ControlLight;
+            autoHideStripSkin2.DockStripGradient = dockPanelGradient4;
+            tabGradient8.EndColor = System.Drawing.SystemColors.Control;
+            tabGradient8.StartColor = System.Drawing.SystemColors.Control;
+            tabGradient8.TextColor = System.Drawing.SystemColors.ControlDarkDark;
+            autoHideStripSkin2.TabGradient = tabGradient8;
+            autoHideStripSkin2.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            dockPanelSkin2.AutoHideStripSkin = autoHideStripSkin2;
+            tabGradient9.EndColor = System.Drawing.SystemColors.ControlLightLight;
+            tabGradient9.StartColor = System.Drawing.SystemColors.ControlLightLight;
+            tabGradient9.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripGradient2.ActiveTabGradient = tabGradient9;
+            dockPanelGradient5.EndColor = System.Drawing.SystemColors.Control;
+            dockPanelGradient5.StartColor = System.Drawing.SystemColors.Control;
+            dockPaneStripGradient2.DockStripGradient = dockPanelGradient5;
+            tabGradient10.EndColor = System.Drawing.SystemColors.ControlLight;
+            tabGradient10.StartColor = System.Drawing.SystemColors.ControlLight;
+            tabGradient10.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripGradient2.InactiveTabGradient = tabGradient10;
+            dockPaneStripSkin2.DocumentGradient = dockPaneStripGradient2;
+            dockPaneStripSkin2.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            tabGradient11.EndColor = System.Drawing.SystemColors.ActiveCaption;
+            tabGradient11.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            tabGradient11.StartColor = System.Drawing.SystemColors.GradientActiveCaption;
+            tabGradient11.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dockPaneStripToolWindowGradient2.ActiveCaptionGradient = tabGradient11;
+            tabGradient12.EndColor = System.Drawing.SystemColors.Control;
+            tabGradient12.StartColor = System.Drawing.SystemColors.Control;
+            tabGradient12.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripToolWindowGradient2.ActiveTabGradient = tabGradient12;
+            dockPanelGradient6.EndColor = System.Drawing.SystemColors.ControlLight;
+            dockPanelGradient6.StartColor = System.Drawing.SystemColors.ControlLight;
+            dockPaneStripToolWindowGradient2.DockStripGradient = dockPanelGradient6;
+            tabGradient13.EndColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            tabGradient13.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            tabGradient13.StartColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            tabGradient13.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripToolWindowGradient2.InactiveCaptionGradient = tabGradient13;
+            tabGradient14.EndColor = System.Drawing.Color.Transparent;
+            tabGradient14.StartColor = System.Drawing.Color.Transparent;
+            tabGradient14.TextColor = System.Drawing.SystemColors.ControlDarkDark;
+            dockPaneStripToolWindowGradient2.InactiveTabGradient = tabGradient14;
+            dockPaneStripSkin2.ToolWindowGradient = dockPaneStripToolWindowGradient2;
+            dockPanelSkin2.DockPaneStripSkin = dockPaneStripSkin2;
+            this.pnlDock.Skin = dockPanelSkin2;
             this.pnlDock.TabIndex = 13;
             this.pnlDock.ActiveDocumentChanged += new System.EventHandler(this.pnlDock_ActiveDocumentChanged);
             // 
@@ -228,7 +228,7 @@ namespace mRemoteNC
             // 
             this.tsContainer.ContentPanel.Controls.Add(this.pnlDock);
             this.tsContainer.ContentPanel.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.tsContainer.ContentPanel.Size = new System.Drawing.Size(1258, 592);
+            this.tsContainer.ContentPanel.Size = new System.Drawing.Size(1258, 666);
             this.tsContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
             // tsContainer.LeftToolStripPanel
@@ -251,7 +251,7 @@ namespace mRemoteNC
             this.tsContainer.TopToolStripPanel.Controls.Add(this.tsQuickConnect);
             this.tsContainer.TopToolStripPanel.Controls.Add(this.tsExternalTools);
             this.tsContainer.TopToolStripPanel.Controls.Add(this.tsQuickTexts);
-            this.tsContainer.TopToolStripPanel.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.tsContainer.TopToolStripPanel.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.tsContainer.TopToolStripPanel.Click += new System.EventHandler(this.tsContainer_TopToolStripPanel_Click);
             // 
             // msMain
@@ -298,7 +298,7 @@ namespace mRemoteNC
             // 
             // mMenFileNewConnection
             // 
-            this.mMenFileNewConnection.Image = global::My.Resources.Resources.Connection_Add;
+            this.mMenFileNewConnection.Image = ((System.Drawing.Image)(resources.GetObject("mMenFileNewConnection.Image")));
             this.mMenFileNewConnection.Name = "mMenFileNewConnection";
             this.mMenFileNewConnection.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F4)));
             this.mMenFileNewConnection.Size = new System.Drawing.Size(281, 22);
@@ -307,7 +307,7 @@ namespace mRemoteNC
             // 
             // mMenFileNewFolder
             // 
-            this.mMenFileNewFolder.Image = global::My.Resources.Resources.Folder_Add;
+            this.mMenFileNewFolder.Image = ((System.Drawing.Image)(resources.GetObject("mMenFileNewFolder.Image")));
             this.mMenFileNewFolder.Name = "mMenFileNewFolder";
             this.mMenFileNewFolder.ShortcutKeys = System.Windows.Forms.Keys.F7;
             this.mMenFileNewFolder.Size = new System.Drawing.Size(281, 22);
@@ -321,7 +321,7 @@ namespace mRemoteNC
             // 
             // mMenFileNew
             // 
-            this.mMenFileNew.Image = global::My.Resources.Resources.Connections_New;
+            this.mMenFileNew.Image = ((System.Drawing.Image)(resources.GetObject("mMenFileNew.Image")));
             this.mMenFileNew.Name = "mMenFileNew";
             this.mMenFileNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.mMenFileNew.Size = new System.Drawing.Size(281, 22);
@@ -330,7 +330,7 @@ namespace mRemoteNC
             // 
             // mMenFileLoad
             // 
-            this.mMenFileLoad.Image = global::My.Resources.Resources.Connections_Load;
+            this.mMenFileLoad.Image = ((System.Drawing.Image)(resources.GetObject("mMenFileLoad.Image")));
             this.mMenFileLoad.Name = "mMenFileLoad";
             this.mMenFileLoad.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.mMenFileLoad.Size = new System.Drawing.Size(281, 22);
@@ -339,7 +339,7 @@ namespace mRemoteNC
             // 
             // mMenFileSave
             // 
-            this.mMenFileSave.Image = global::My.Resources.Resources.Connections_Save;
+            this.mMenFileSave.Image = ((System.Drawing.Image)(resources.GetObject("mMenFileSave.Image")));
             this.mMenFileSave.Name = "mMenFileSave";
             this.mMenFileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.mMenFileSave.Size = new System.Drawing.Size(281, 22);
@@ -348,7 +348,7 @@ namespace mRemoteNC
             // 
             // mMenFileSaveAs
             // 
-            this.mMenFileSaveAs.Image = global::My.Resources.Resources.Connections_SaveAs;
+            this.mMenFileSaveAs.Image = ((System.Drawing.Image)(resources.GetObject("mMenFileSaveAs.Image")));
             this.mMenFileSaveAs.Name = "mMenFileSaveAs";
             this.mMenFileSaveAs.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
@@ -418,7 +418,7 @@ namespace mRemoteNC
             // 
             // mMenFileDelete
             // 
-            this.mMenFileDelete.Image = global::My.Resources.Resources.Delete;
+            this.mMenFileDelete.Image = ((System.Drawing.Image)(resources.GetObject("mMenFileDelete.Image")));
             this.mMenFileDelete.Name = "mMenFileDelete";
             this.mMenFileDelete.Size = new System.Drawing.Size(281, 22);
             this.mMenFileDelete.Text = "Delete...";
@@ -426,7 +426,7 @@ namespace mRemoteNC
             // 
             // mMenFileRename
             // 
-            this.mMenFileRename.Image = global::My.Resources.Resources.Rename;
+            this.mMenFileRename.Image = ((System.Drawing.Image)(resources.GetObject("mMenFileRename.Image")));
             this.mMenFileRename.Name = "mMenFileRename";
             this.mMenFileRename.Size = new System.Drawing.Size(281, 22);
             this.mMenFileRename.Text = "Rename";
@@ -434,7 +434,7 @@ namespace mRemoteNC
             // 
             // mMenFileDuplicate
             // 
-            this.mMenFileDuplicate.Image = global::My.Resources.Resources.Connection_Duplicate;
+            this.mMenFileDuplicate.Image = ((System.Drawing.Image)(resources.GetObject("mMenFileDuplicate.Image")));
             this.mMenFileDuplicate.Name = "mMenFileDuplicate";
             this.mMenFileDuplicate.Size = new System.Drawing.Size(281, 22);
             this.mMenFileDuplicate.Text = "Duplicate";
@@ -447,7 +447,7 @@ namespace mRemoteNC
             // 
             // mMenFileExit
             // 
-            this.mMenFileExit.Image = global::My.Resources.Resources.Quit;
+            this.mMenFileExit.Image = ((System.Drawing.Image)(resources.GetObject("mMenFileExit.Image")));
             this.mMenFileExit.Name = "mMenFileExit";
             this.mMenFileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
             this.mMenFileExit.Size = new System.Drawing.Size(281, 22);
@@ -483,7 +483,7 @@ namespace mRemoteNC
             // 
             // mMenViewAddConnectionPanel
             // 
-            this.mMenViewAddConnectionPanel.Image = global::My.Resources.Resources.Panel_Add;
+            this.mMenViewAddConnectionPanel.Image = ((System.Drawing.Image)(resources.GetObject("mMenViewAddConnectionPanel.Image")));
             this.mMenViewAddConnectionPanel.Name = "mMenViewAddConnectionPanel";
             this.mMenViewAddConnectionPanel.Size = new System.Drawing.Size(228, 22);
             this.mMenViewAddConnectionPanel.Text = "Add Connection Panel";
@@ -491,7 +491,7 @@ namespace mRemoteNC
             // 
             // mMenViewConnectionPanels
             // 
-            this.mMenViewConnectionPanels.Image = global::My.Resources.Resources.Panels;
+            this.mMenViewConnectionPanels.Image = ((System.Drawing.Image)(resources.GetObject("mMenViewConnectionPanels.Image")));
             this.mMenViewConnectionPanels.Name = "mMenViewConnectionPanels";
             this.mMenViewConnectionPanels.Size = new System.Drawing.Size(228, 22);
             this.mMenViewConnectionPanels.Text = "Connection Panels";
@@ -505,7 +505,7 @@ namespace mRemoteNC
             // 
             this.mMenViewConnections.Checked = true;
             this.mMenViewConnections.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.mMenViewConnections.Image = global::My.Resources.Resources.Root;
+            this.mMenViewConnections.Image = ((System.Drawing.Image)(resources.GetObject("mMenViewConnections.Image")));
             this.mMenViewConnections.Name = "mMenViewConnections";
             this.mMenViewConnections.Size = new System.Drawing.Size(228, 22);
             this.mMenViewConnections.Text = "Connections";
@@ -535,7 +535,7 @@ namespace mRemoteNC
             // 
             this.mMenViewErrorsAndInfos.Checked = true;
             this.mMenViewErrorsAndInfos.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.mMenViewErrorsAndInfos.Image = global::My.Resources.Resources.ErrorsAndInfos;
+            this.mMenViewErrorsAndInfos.Image = ((System.Drawing.Image)(resources.GetObject("mMenViewErrorsAndInfos.Image")));
             this.mMenViewErrorsAndInfos.Name = "mMenViewErrorsAndInfos";
             this.mMenViewErrorsAndInfos.Size = new System.Drawing.Size(228, 22);
             this.mMenViewErrorsAndInfos.Text = "Errors and Infos";
@@ -543,7 +543,7 @@ namespace mRemoteNC
             // 
             // mConStatus
             // 
-            this.mConStatus.Image = global::My.Resources.Resources.HostStatus_Off;
+            this.mConStatus.Image = ((System.Drawing.Image)(resources.GetObject("mConStatus.Image")));
             this.mConStatus.Name = "mConStatus";
             this.mConStatus.Size = new System.Drawing.Size(228, 22);
             this.mConStatus.Text = "Connections status";
@@ -568,7 +568,7 @@ namespace mRemoteNC
             this.mMenViewJumpToConnectionsConfig,
             this.mMenViewJumpToSessionsScreenshots,
             this.mMenViewJumpToErrorsInfos});
-            this.mMenViewJumpTo.Image = global::My.Resources.Resources.JumpTo;
+            this.mMenViewJumpTo.Image = ((System.Drawing.Image)(resources.GetObject("mMenViewJumpTo.Image")));
             this.mMenViewJumpTo.Name = "mMenViewJumpTo";
             this.mMenViewJumpTo.Size = new System.Drawing.Size(228, 22);
             this.mMenViewJumpTo.Text = "Jump To";
@@ -616,7 +616,7 @@ namespace mRemoteNC
             // 
             this.quickTextToolbarToolStripMenuItem.Checked = global::My.Settings.Default.QuickTextToolbarVisible;
             this.quickTextToolbarToolStripMenuItem.CheckOnClick = true;
-            this.quickTextToolbarToolStripMenuItem.Image = global::My.Resources.Resources.Copy;
+            this.quickTextToolbarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("quickTextToolbarToolStripMenuItem.Image")));
             this.quickTextToolbarToolStripMenuItem.Name = "quickTextToolbarToolStripMenuItem";
             this.quickTextToolbarToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.quickTextToolbarToolStripMenuItem.Text = "Quick Text Toolbar";
@@ -624,7 +624,7 @@ namespace mRemoteNC
             // 
             // mMenViewQuickConnectToolbar
             // 
-            this.mMenViewQuickConnectToolbar.Image = global::My.Resources.Resources.Play_Quick;
+            this.mMenViewQuickConnectToolbar.Image = ((System.Drawing.Image)(resources.GetObject("mMenViewQuickConnectToolbar.Image")));
             this.mMenViewQuickConnectToolbar.Name = "mMenViewQuickConnectToolbar";
             this.mMenViewQuickConnectToolbar.Size = new System.Drawing.Size(228, 22);
             this.mMenViewQuickConnectToolbar.Text = "Quick Connect Toolbar";
@@ -645,7 +645,7 @@ namespace mRemoteNC
             // 
             // mMenViewFullscreen
             // 
-            this.mMenViewFullscreen.Image = global::My.Resources.Resources.Fullscreen;
+            this.mMenViewFullscreen.Image = ((System.Drawing.Image)(resources.GetObject("mMenViewFullscreen.Image")));
             this.mMenViewFullscreen.Name = "mMenViewFullscreen";
             this.mMenViewFullscreen.ShortcutKeys = System.Windows.Forms.Keys.F11;
             this.mMenViewFullscreen.Size = new System.Drawing.Size(228, 22);
@@ -669,7 +669,7 @@ namespace mRemoteNC
             // 
             // mMenToolsSSHTransfer
             // 
-            this.mMenToolsSSHTransfer.Image = global::My.Resources.Resources.SSHTransfer;
+            this.mMenToolsSSHTransfer.Image = ((System.Drawing.Image)(resources.GetObject("mMenToolsSSHTransfer.Image")));
             this.mMenToolsSSHTransfer.Name = "mMenToolsSSHTransfer";
             this.mMenToolsSSHTransfer.Size = new System.Drawing.Size(184, 22);
             this.mMenToolsSSHTransfer.Text = "SSH File Transfer";
@@ -677,7 +677,7 @@ namespace mRemoteNC
             // 
             // mMenToolsUVNCSC
             // 
-            this.mMenToolsUVNCSC.Image = global::My.Resources.Resources.UVNC_SC;
+            this.mMenToolsUVNCSC.Image = ((System.Drawing.Image)(resources.GetObject("mMenToolsUVNCSC.Image")));
             this.mMenToolsUVNCSC.Name = "mMenToolsUVNCSC";
             this.mMenToolsUVNCSC.Size = new System.Drawing.Size(184, 22);
             this.mMenToolsUVNCSC.Text = "UltraVNC SingleClick";
@@ -686,7 +686,7 @@ namespace mRemoteNC
             // 
             // mQuickText
             // 
-            this.mQuickText.Image = global::My.Resources.Resources.Copy;
+            this.mQuickText.Image = ((System.Drawing.Image)(resources.GetObject("mQuickText.Image")));
             this.mQuickText.Name = "mQuickText";
             this.mQuickText.Size = new System.Drawing.Size(184, 22);
             this.mQuickText.Text = "Quick Text";
@@ -702,7 +702,7 @@ namespace mRemoteNC
             // 
             // mMenToolsPortScan
             // 
-            this.mMenToolsPortScan.Image = global::My.Resources.Resources.PortScan;
+            this.mMenToolsPortScan.Image = ((System.Drawing.Image)(resources.GetObject("mMenToolsPortScan.Image")));
             this.mMenToolsPortScan.Name = "mMenToolsPortScan";
             this.mMenToolsPortScan.Size = new System.Drawing.Size(184, 22);
             this.mMenToolsPortScan.Text = "Port Scan";
@@ -715,7 +715,7 @@ namespace mRemoteNC
             // 
             // mMenToolsComponentsCheck
             // 
-            this.mMenToolsComponentsCheck.Image = global::My.Resources.Resources.ComponentsCheck;
+            this.mMenToolsComponentsCheck.Image = ((System.Drawing.Image)(resources.GetObject("mMenToolsComponentsCheck.Image")));
             this.mMenToolsComponentsCheck.Name = "mMenToolsComponentsCheck";
             this.mMenToolsComponentsCheck.Size = new System.Drawing.Size(184, 22);
             this.mMenToolsComponentsCheck.Text = "Components Check";
@@ -772,7 +772,7 @@ namespace mRemoteNC
             // 
             // mMenInfoDonate
             // 
-            this.mMenInfoDonate.Image = global::My.Resources.Resources.Donate;
+            this.mMenInfoDonate.Image = ((System.Drawing.Image)(resources.GetObject("mMenInfoDonate.Image")));
             this.mMenInfoDonate.Name = "mMenInfoDonate";
             this.mMenInfoDonate.Size = new System.Drawing.Size(179, 22);
             this.mMenInfoDonate.Text = "Donate";
@@ -789,7 +789,7 @@ namespace mRemoteNC
             // 
             // mMenInfoBugReport
             // 
-            this.mMenInfoBugReport.Image = global::My.Resources.Resources.Bug;
+            this.mMenInfoBugReport.Image = ((System.Drawing.Image)(resources.GetObject("mMenInfoBugReport.Image")));
             this.mMenInfoBugReport.Name = "mMenInfoBugReport";
             this.mMenInfoBugReport.Size = new System.Drawing.Size(179, 22);
             this.mMenInfoBugReport.Text = "Report a Bug";
@@ -802,7 +802,7 @@ namespace mRemoteNC
             // 
             // mMenInfoAnnouncements
             // 
-            this.mMenInfoAnnouncements.Image = global::My.Resources.Resources.News;
+            this.mMenInfoAnnouncements.Image = ((System.Drawing.Image)(resources.GetObject("mMenInfoAnnouncements.Image")));
             this.mMenInfoAnnouncements.Name = "mMenInfoAnnouncements";
             this.mMenInfoAnnouncements.Size = new System.Drawing.Size(179, 22);
             this.mMenInfoAnnouncements.Text = "Announcements";
@@ -811,7 +811,7 @@ namespace mRemoteNC
             // 
             // mMenToolsUpdate
             // 
-            this.mMenToolsUpdate.Image = global::My.Resources.Resources.Update;
+            this.mMenToolsUpdate.Image = ((System.Drawing.Image)(resources.GetObject("mMenToolsUpdate.Image")));
             this.mMenToolsUpdate.Name = "mMenToolsUpdate";
             this.mMenToolsUpdate.Size = new System.Drawing.Size(179, 22);
             this.mMenToolsUpdate.Text = "Check for Updates";
@@ -848,7 +848,7 @@ namespace mRemoteNC
             // 
             // ToolStripButton1
             // 
-            this.ToolStripButton1.Image = global::My.Resources.Resources.Play;
+            this.ToolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripButton1.Image")));
             this.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ToolStripButton1.Name = "ToolStripButton1";
             this.ToolStripButton1.Size = new System.Drawing.Size(72, 22);
@@ -856,7 +856,7 @@ namespace mRemoteNC
             // 
             // ToolStripButton2
             // 
-            this.ToolStripButton2.Image = global::My.Resources.Resources.Screenshot;
+            this.ToolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripButton2.Image")));
             this.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ToolStripButton2.Name = "ToolStripButton2";
             this.ToolStripButton2.Size = new System.Drawing.Size(85, 22);
@@ -864,7 +864,7 @@ namespace mRemoteNC
             // 
             // ToolStripButton3
             // 
-            this.ToolStripButton3.Image = global::My.Resources.Resources.Refresh;
+            this.ToolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripButton3.Image")));
             this.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ToolStripButton3.Name = "ToolStripButton3";
             this.ToolStripButton3.Size = new System.Drawing.Size(66, 22);
@@ -876,7 +876,7 @@ namespace mRemoteNC
             this.ToolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItem1,
             this.ToolStripMenuItem2});
-            this.ToolStripSplitButton1.Image = global::My.Resources.Resources.Keyboard;
+            this.ToolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripSplitButton1.Image")));
             this.ToolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ToolStripSplitButton1.Name = "ToolStripSplitButton1";
             this.ToolStripSplitButton1.Size = new System.Drawing.Size(29, 22);
@@ -905,7 +905,7 @@ namespace mRemoteNC
             this.mMenQuickyCon});
             this.tsQuickConnect.Location = global::My.Settings.Default.tsQuickConnectLocation;
             this.tsQuickConnect.Name = "tsQuickConnect";
-            this.tsQuickConnect.Size = new System.Drawing.Size(331, 25);
+            this.tsQuickConnect.Size = new System.Drawing.Size(362, 25);
             this.tsQuickConnect.TabIndex = 18;
             // 
             // lblQuickConnect
@@ -926,7 +926,7 @@ namespace mRemoteNC
             // btnQuickyPlay
             // 
             this.btnQuickyPlay.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnQuickyPlay.Image = global::My.Resources.Resources.Play_Quick;
+            this.btnQuickyPlay.Image = ((System.Drawing.Image)(resources.GetObject("btnQuickyPlay.Image")));
             this.btnQuickyPlay.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnQuickyPlay.Name = "btnQuickyPlay";
             this.btnQuickyPlay.Size = new System.Drawing.Size(32, 22);
@@ -939,7 +939,7 @@ namespace mRemoteNC
             this.mMenQuickyCon.AutoSize = false;
             this.mMenQuickyCon.AutoToolTip = true;
             this.mMenQuickyCon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.mMenQuickyCon.Image = global::My.Resources.Resources.Root;
+            this.mMenQuickyCon.Image = ((System.Drawing.Image)(resources.GetObject("mMenQuickyCon.Image")));
             this.mMenQuickyCon.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mMenQuickyCon.Name = "mMenQuickyCon";
             this.mMenQuickyCon.Size = new System.Drawing.Size(30, 22);
@@ -965,9 +965,10 @@ namespace mRemoteNC
             this.tsQuickTexts.Dock = System.Windows.Forms.DockStyle.None;
             this.tsQuickTexts.Location = global::My.Settings.Default.tsQuickTextsLocation;
             this.tsQuickTexts.Name = "tsQuickTexts";
-            this.tsQuickTexts.Size = new System.Drawing.Size(111, 25);
+            this.tsQuickTexts.Size = new System.Drawing.Size(43, 25);
             this.tsQuickTexts.TabIndex = 20;
             this.tsQuickTexts.Visible = global::My.Settings.Default.QuickTextToolbarVisible;
+            this.tsQuickTexts.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsQuickTexts_ItemClicked);
             // 
             // cMenExtAppsToolbar
             // 

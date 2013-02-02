@@ -1,14 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
 using System.Windows.Forms;
-using AxMSTSCLib;
-using AxWFICALib;
 using Microsoft.VisualBasic;
-using mRemoteNC;
 using mRemoteNC.App;
 using My;
 using Skybound.Gecko;
@@ -228,8 +220,6 @@ namespace mRemoteNC
         private void wBrowser_NewWindow3(ref object ppDisp, ref bool Cancel, long dwFlags, string bstrUrlContext,
                                          string bstrUrl)
         {
-            //Cancel = dwFlags != NWMF.NWMF_OVERRIDEKEY;
-            //FIXME
             Cancel = (dwFlags & 8L) <= 0L;
         }
 
@@ -337,11 +327,4 @@ namespace mRemoteNC
 
         #endregion Enums
     }
-}
-
-//using mRemoteNC.Runtime;
-//using mRemoteNC.Tools.LocalizedAttributes;
-
-namespace mRemoteNC.Connection
-{
 }
