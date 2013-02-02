@@ -1,16 +1,8 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
 using System.Windows.Forms;
 using System.Xml;
-using AxMSTSCLib;
-using AxWFICALib;
-using Microsoft.VisualBasic;
 
 namespace mRemoteNC
 {
@@ -24,7 +16,7 @@ namespace mRemoteNC
 #if !PORTABLE 
                     LocalFileSettingsProvider 
 #else
- PortableSettingsProvider 
+                    PortableSettingsProvider 
 #endif
                 {
 

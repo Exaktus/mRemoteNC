@@ -151,7 +151,7 @@ namespace mRemoteNC.Config
 
             #region Public Methods
 
-            public void Load_Renamed()
+            public void LoadConnections()
             {
                 if (_UseSQL)
                 {

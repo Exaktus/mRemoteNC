@@ -675,7 +675,7 @@ namespace mRemoteNC
                         }
 
                         Config.SettingsManager.Save SettingsSave = new Config.SettingsManager.Save();
-                        SettingsSave.Save_Renamed();
+                        SettingsSave.SaveSettings();
                     }
                     catch (Exception ex)
                     {
@@ -857,22 +857,25 @@ namespace mRemoteNC
 
                     pnlcForm.TabPageContextMenuStrip = cMen;
 
-                    (cForm as UI.Window.Connection).SetFormText(title.Replace("&", "&&"));
-
-                    if (frmMain.Default.pnlDock.DocumentsCount > 1)
+                    cForm.SetFormText(title.Replace("&", "&&"));
+                    
+                    //ToDo: Fix this
+                    try
                     {
-                        frmMain.Default.pnlDock.DocumentStyle = DocumentStyle.DockingMdi;
+                        frmMain.Default.pnlDock.DocumentStyle = frmMain.Default.pnlDock.DocumentsCount > 1 ? DocumentStyle.DockingMdi : DocumentStyle.DockingSdi;
+                        pnlcForm.Show(frmMain.Default.pnlDock, DockState.Document);
                     }
-                    else
+                    catch (Exception)
                     {
                         frmMain.Default.pnlDock.DocumentStyle = DocumentStyle.DockingSdi;
+                        pnlcForm.Show(frmMain.Default.pnlDock, DockState.Document);
                     }
 
-                    pnlcForm.Show(frmMain.Default.pnlDock, DockState.Document);
+                    
 
                     if (noTabber)
                     {
-                        (cForm as UI.Window.Connection).TabController.Dispose();
+                        cForm.TabController.Dispose();
                     }
                     else
                     {
@@ -1019,7 +1022,7 @@ namespace mRemoteNC
 
                     // Load config
                     conL.ConnectionFileName = filename;
-                    conL.Load_Renamed();
+                    conL.LoadConnections();
 
                     Windows.treeForm.tvConnections.SelectedNode = conL.RootTreeNode;
                 }
@@ -1148,7 +1151,7 @@ namespace mRemoteNC
                                                      (string)General.EncryptionKey);
                     conL.SQLUpdate = Update;
 
-                    conL.Load_Renamed();
+                    conL.LoadConnections();
 
                     if (Settings.Default.UseSQLServer == true)
                     {
@@ -1319,7 +1322,7 @@ namespace mRemoteNC
                                                 ContainerList = ContainerList
                                             };
 
-                            conL.Load_Renamed();
+                            conL.LoadConnections();
 
                             Windows.treeForm.tvConnections.SelectedNode.Nodes.Add(nNode);
                         }
@@ -1643,7 +1646,7 @@ namespace mRemoteNC
                                                          (string)General.EncryptionKey);
                     }
 
-                    conS.Save_Renamed();
+                    conS.SaveConnections();
 
                     if (Settings.Default.UseSQLServer == true)
                     {
@@ -1734,7 +1737,7 @@ namespace mRemoteNC
                     conS.SaveSecurity = SaveSecurity;
                     conS.RootTreeNode = RootNode;
 
-                    conS.Save_Renamed();
+                    conS.SaveConnections();
                 }
                 catch (Exception ex)
                 {

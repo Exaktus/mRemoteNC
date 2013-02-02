@@ -74,6 +74,7 @@ namespace mRemoteNC
             this.cmenTabSendSpecialKeys = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenTabSendSpecialKeysCtrlAltDel = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenTabSendSpecialKeysCtrlEsc = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmenShowPuTTYMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenTabPuttySettings = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenTabExternalApps = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenTabSep1 = new System.Windows.Forms.ToolStripSeparator();
@@ -81,7 +82,6 @@ namespace mRemoteNC
             this.cmenTabDuplicateTab = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenTabReconnect = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenTabDisconnect = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmenShowPuTTYMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenTab.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -134,7 +134,7 @@ namespace mRemoteNC
             this.cmenTabDisconnect});
             this.cmenTab.Name = "cmenTab";
             this.cmenTab.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.cmenTab.Size = new System.Drawing.Size(202, 368);
+            this.cmenTab.Size = new System.Drawing.Size(202, 346);
             // 
             // cmenTabFullscreen
             // 
@@ -221,6 +221,13 @@ namespace mRemoteNC
             this.cmenTabSendSpecialKeysCtrlEsc.Text = "Ctrl+Esc";
             this.cmenTabSendSpecialKeysCtrlEsc.Click += new System.EventHandler(this.cmenTabSendSpecialKeysCtrlEsc_Click);
             // 
+            // cmenShowPuTTYMenu
+            // 
+            this.cmenShowPuTTYMenu.Name = "cmenShowPuTTYMenu";
+            this.cmenShowPuTTYMenu.Size = new System.Drawing.Size(201, 22);
+            this.cmenShowPuTTYMenu.Text = "Show PuTTY Menu";
+            this.cmenShowPuTTYMenu.Click += new System.EventHandler(this.cmenShowPuTTYMenu_Click);
+            // 
             // cmenTabPuttySettings
             // 
             this.cmenTabPuttySettings.Name = "cmenTabPuttySettings";
@@ -271,19 +278,12 @@ namespace mRemoteNC
             this.cmenTabDisconnect.Text = "Disconnect";
             this.cmenTabDisconnect.Click += new System.EventHandler(this.cmenTabDisconnect_Click);
             // 
-            // cmenShowPuTTYMenu
-            // 
-            this.cmenShowPuTTYMenu.Name = "cmenShowPuTTYMenu";
-            this.cmenShowPuTTYMenu.Size = new System.Drawing.Size(201, 22);
-            this.cmenShowPuTTYMenu.Text = "Show PuTTY Menu";
-            this.cmenShowPuTTYMenu.Click += new System.EventHandler(this.cmenShowPuTTYMenu_Click);
-            // 
             // Connection
             // 
             this.ClientSize = new System.Drawing.Size(632, 453);
             this.Controls.Add(this.TabController);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Icon = global::My.Resources.Resources.mRemote_Icon;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Connection";
             this.TabText = "UI.Window.Connection";
             this.Text = "UI.Window.Connection";

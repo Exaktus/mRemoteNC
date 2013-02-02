@@ -38,7 +38,7 @@ namespace mRemoteNC.Config
                 this._MainForm = MainForm;
             }
 
-            public void Load_Renamed()
+            public void Load_Settings()
             {
                 try
                 {
@@ -52,6 +52,7 @@ namespace mRemoteNC.Config
                         // This is used for automatic updates, not for settings migration, but it
                         // needs to be cleared here because we know that we just updated.
                         Settings.Default.UpdatePending = false;
+                        Settings.Default.Save();
                     }
 
                     mRemoteNC.SupportedCultures.InstantiateSingleton();

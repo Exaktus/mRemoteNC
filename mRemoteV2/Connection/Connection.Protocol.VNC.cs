@@ -23,21 +23,21 @@ namespace mRemoteNC
 
         public bool SmartSize
         {
-            get { return VNC_Renamed.Scaled; }
-            set { VNC_Renamed.Scaled = value; }
+            get { return VNC_Client.Scaled; }
+            set { VNC_Client.Scaled = value; }
         }
 
         public bool ViewOnly
         {
-            get { return VNC_Renamed.ViewOnly; }
-            set { VNC_Renamed.ViewOnly = value; }
+            get { return VNC_Client.ViewOnly; }
+            set { VNC_Client.ViewOnly = value; }
         }
 
         #endregion Properties
 
         #region Private Declarations
 
-        private VncSharp.RemoteDesktop VNC_Renamed;
+        private VncSharp.RemoteDesktop VNC_Client;
         private Info Info;
 
         #endregion Private Declarations
@@ -55,11 +55,11 @@ namespace mRemoteNC
 
             try
             {
-                VNC_Renamed = (VncSharp.RemoteDesktop)this.Control;
+                VNC_Client = (VncSharp.RemoteDesktop)this.Control;
 
                 Info = this.InterfaceControl.Info;
 
-                VNC_Renamed.VncPort = System.Convert.ToInt32(this.Info.Port);
+                VNC_Client.VncPort = System.Convert.ToInt32(this.Info.Port);
 
                 //If Info.VNCCompression <> Compression.CompNone Then
                 //    VNC.JPEGCompression = True
@@ -141,7 +141,7 @@ namespace mRemoteNC
 
             try
             {
-                VNC_Renamed.Connect((string)this.Info.Hostname, System.Convert.ToBoolean(this.Info.VNCViewOnly),
+                VNC_Client.Connect((string)this.Info.Hostname, System.Convert.ToBoolean(this.Info.VNCViewOnly),
                                     System.Convert.ToBoolean(Info.VNCSmartSizeMode != SmartSizeMode.SmartSNo));
             }
             catch (Exception ex)
@@ -159,7 +159,7 @@ namespace mRemoteNC
         {
             try
             {
-                VNC_Renamed.Disconnect();
+                VNC_Client.Disconnect();
             }
             catch (Exception ex)
             {
@@ -176,10 +176,10 @@ namespace mRemoteNC
                 switch (Keys)
                 {
                     case SpecialKeys.CtrlAltDel:
-                        VNC_Renamed.SendSpecialKeys(VncSharp.SpecialKeys.CtrlAltDel);
+                        VNC_Client.SendSpecialKeys(VncSharp.SpecialKeys.CtrlAltDel);
                         break;
                     case SpecialKeys.CtrlEsc:
-                        VNC_Renamed.SendSpecialKeys(VncSharp.SpecialKeys.CtrlEsc);
+                        VNC_Client.SendSpecialKeys(VncSharp.SpecialKeys.CtrlEsc);
                         break;
                 }
             }
@@ -257,7 +257,7 @@ namespace mRemoteNC
         {
             try
             {
-                VNC_Renamed.FullScreenUpdate();
+                VNC_Client.FullScreenUpdate();
             }
             catch (Exception ex)
             {
@@ -275,12 +275,12 @@ namespace mRemoteNC
         {
             try
             {
-                VNC_Renamed.ConnectComplete += new VncSharp.ConnectCompleteHandler(VNCEvent_Connected);
-                VNC_Renamed.ConnectionLost += new System.EventHandler(VNCEvent_Disconnected);
+                VNC_Client.ConnectComplete += new VncSharp.ConnectCompleteHandler(VNCEvent_Connected);
+                VNC_Client.ConnectionLost += new System.EventHandler(VNCEvent_Disconnected);
                 frmMain.clipboardchange += new frmMain.clipboardchangeEventHandler(VNCEvent_ClipboardChanged);
                 if (!string.IsNullOrEmpty((string)Info.Password))
                 {
-                    VNC_Renamed.GetPassword = VNCEvent_Authenticate;
+                    VNC_Client.GetPassword = VNCEvent_Authenticate;
                 }
             }
             catch (Exception ex)
@@ -298,7 +298,7 @@ namespace mRemoteNC
         private void VNCEvent_Connected(object sender, EventArgs e)
         {
             base.Event_Connected(this);
-            VNC_Renamed.AutoScroll = System.Convert.ToBoolean(Info.VNCSmartSizeMode == SmartSizeMode.SmartSNo);
+            VNC_Client.AutoScroll = System.Convert.ToBoolean(Info.VNCSmartSizeMode == SmartSizeMode.SmartSNo);
         }
 
         private void VNCEvent_Disconnected(object sender, EventArgs e)
@@ -309,7 +309,7 @@ namespace mRemoteNC
 
         private void VNCEvent_ClipboardChanged()
         {
-            this.VNC_Renamed.FillServerClipboard();
+            this.VNC_Client.FillServerClipboard();
         }
 
         private string VNCEvent_Authenticate()
@@ -418,10 +418,4 @@ namespace mRemoteNC
 
         #endregion Enums
     }
-}
-
-//using mRemoteNC.Tools.LocalizedAttributes;
-
-namespace mRemoteNC.Connection
-{
 }

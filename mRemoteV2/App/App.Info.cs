@@ -8,10 +8,10 @@ namespace mRemoteNC
         {
             public class General
             {
-                public static readonly string URLHome = "http://www.mRemoteNC.org/";
+                public static readonly string URLHome = "https://github.com/Exaktus/mRemoteNC/";
                 public static readonly string URLDonate = "http://donate.mRemoteNC.org/";
                 public static readonly string URLForum = "http://forum.mRemoteNC.org/";
-                public static readonly string URLBugs = "http://bugs.mRemoteNC.org/";
+                public static readonly string URLBugs = "https://github.com/Exaktus/mRemoteNC/issues/";
                 public static readonly string URLAnnouncement = "http://update.mRemoteNC.org/announcement.txt";
 
                 public static readonly string HomePath =

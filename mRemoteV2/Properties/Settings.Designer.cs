@@ -39,6 +39,7 @@ namespace My {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
         public global::System.Drawing.Size MainFormSize {
             get {
                 return ((global::System.Drawing.Size)(this["MainFormSize"]));
@@ -413,6 +414,7 @@ namespace My {
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool ResetPanels {
@@ -893,6 +895,7 @@ namespace My {
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool ResetToolbars {
@@ -2062,6 +2065,7 @@ namespace My {
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("\r\n        de,en,en-US,es,fr,nl,pl,ru,uk\r\n      ")]
         public string SupportedUICultures {
@@ -2190,6 +2194,7 @@ namespace My {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
         public global::System.Drawing.Size MainFormRestoreSize {
             get {
                 return ((global::System.Drawing.Size)(this["MainFormRestoreSize"]));
@@ -2202,6 +2207,7 @@ namespace My {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
         public global::System.Drawing.Point MainFormRestoreLocation {
             get {
                 return ((global::System.Drawing.Point)(this["MainFormRestoreLocation"]));
@@ -2279,6 +2285,7 @@ namespace My {
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool DoubleClickStartsNewConnection {
@@ -2291,6 +2298,7 @@ namespace My {
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Ping")]
         public string ConnectStatusTestType {
@@ -2303,6 +2311,7 @@ namespace My {
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool ConnectStatusAutoupdate {
@@ -2315,6 +2324,7 @@ namespace My {
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string TeamViewerPath {
@@ -2327,6 +2337,7 @@ namespace My {
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("6, 0")]
         public global::System.Drawing.Point tsMainLocation {
@@ -2339,6 +2350,7 @@ namespace My {
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("560, 0")]
         public global::System.Drawing.Point tsQuickConnectLocation {
@@ -2351,6 +2363,7 @@ namespace My {
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1078, 0")]
         public global::System.Drawing.Point tsQuickTextsLocation {
@@ -2363,6 +2376,7 @@ namespace My {
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("627, 0")]
         public global::System.Drawing.Point tsExternalToolsLocation {
@@ -2375,6 +2389,7 @@ namespace My {
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("191, 0")]
         public global::System.Drawing.Point ToolStrip1Location {
@@ -2387,6 +2402,7 @@ namespace My {
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool QuickTextToolbarVisible {

@@ -90,7 +90,7 @@ namespace mRemoteNC
             Config.SettingsManager.Load SettingsLoad = new Config.SettingsManager.Load(this);
 
             // Load GUI Configuration
-            SettingsLoad.Load_Renamed();
+            SettingsLoad.Load_Settings();
 
             Debug.Print((string)("---------------------------" + Constants.vbNewLine + "[START] - " + DateTime.Now));
 

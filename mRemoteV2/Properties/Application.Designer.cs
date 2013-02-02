@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using System;
 using AxWFICALib;
@@ -9,7 +8,8 @@ using AxMSTSCLib;
 using Microsoft.VisualBasic;
 using System.Collections;
 using System.Windows.Forms;
-
+using mRemoteNC.App;
+using My;
 
 
 //------------------------------------------------------------------------------

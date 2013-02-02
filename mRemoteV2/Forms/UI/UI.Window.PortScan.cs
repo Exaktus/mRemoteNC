@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using AxMSTSCLib;
 using AxWFICALib;
 using Microsoft.VisualBasic;
+using iptb;
 using mRemoteNC;
 using mRemoteNC.App;
 using My;
@@ -29,7 +30,7 @@ namespace mRemoteNC
                 internal System.Windows.Forms.Label lblStartIP;
                 internal System.Windows.Forms.Button btnScan;
                 internal System.Windows.Forms.Panel pnlDivider;
-                internal IPTextBox.IPTextBox ipEnd;
+                internal IPTextBox ipEnd;
                 internal System.Windows.Forms.SplitContainer splContainer;
                 internal System.Windows.Forms.ListView lvHosts;
                 internal System.Windows.Forms.ColumnHeader clmHost;
@@ -52,341 +53,349 @@ namespace mRemoteNC
                 internal System.Windows.Forms.Label Label1;
                 internal System.Windows.Forms.Button btnImport;
                 internal System.Windows.Forms.Button btnCancel;
-                internal IPTextBox.IPTextBox ipStart;
+                internal IPTextBox ipStart;
 
                 private void InitializeComponent()
                 {
-                    System.ComponentModel.ComponentResourceManager resources =
-                        new System.ComponentModel.ComponentResourceManager(typeof(PortScan));
-                    this.ipStart = new IPTextBox.IPTextBox();
-                    this.ipEnd = new IPTextBox.IPTextBox();
-                    this.lblStartIP = new System.Windows.Forms.Label();
-                    this.lblEndIP = new System.Windows.Forms.Label();
-                    this.btnScan = new System.Windows.Forms.Button();
-                    this.btnScan.Click += new System.EventHandler(this.btnScan_Click);
-                    this.pnlDivider = new System.Windows.Forms.Panel();
-                    this.splContainer = new System.Windows.Forms.SplitContainer();
-                    this.lvHosts = new System.Windows.Forms.ListView();
-                    this.btnCancel = new System.Windows.Forms.Button();
-                    this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-                    this.btnImport = new System.Windows.Forms.Button();
-                    this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
-                    this.cbProtocol = new System.Windows.Forms.ComboBox();
-                    this.lblOnlyImport = new System.Windows.Forms.Label();
-                    this.clmHost = new System.Windows.Forms.ColumnHeader();
-                    this.clmSSH = new System.Windows.Forms.ColumnHeader();
-                    this.clmTelnet = new System.Windows.Forms.ColumnHeader();
-                    this.clmHTTP = new System.Windows.Forms.ColumnHeader();
-                    this.clmHTTPS = new System.Windows.Forms.ColumnHeader();
-                    this.clmRlogin = new System.Windows.Forms.ColumnHeader();
-                    this.clmRDP = new System.Windows.Forms.ColumnHeader();
-                    this.clmVNC = new System.Windows.Forms.ColumnHeader();
-                    this.clmOpenPorts = new System.Windows.Forms.ColumnHeader();
-                    this.clmClosedPorts = new System.Windows.Forms.ColumnHeader();
-                    this.prgBar = new System.Windows.Forms.ProgressBar();
-                    this.pnlPorts = new System.Windows.Forms.Panel();
-                    this.portEnd = new System.Windows.Forms.NumericUpDown();
-                    this.portStart = new System.Windows.Forms.NumericUpDown();
-                    this.Label2 = new System.Windows.Forms.Label();
-                    this.Label1 = new System.Windows.Forms.Label();
-                    this.splContainer.Panel1.SuspendLayout();
-                    this.splContainer.Panel2.SuspendLayout();
-                    this.splContainer.SuspendLayout();
-                    this.pnlPorts.SuspendLayout();
-                    ((System.ComponentModel.ISupportInitialize)this.portEnd).BeginInit();
-                    ((System.ComponentModel.ISupportInitialize)this.portStart).BeginInit();
-                    this.SuspendLayout();
-                    //
-                    //ipStart
-                    //
-                    this.ipStart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-                    this.ipStart.Location = new System.Drawing.Point(7, 24);
-                    this.ipStart.Name = "ipStart";
-                    this.ipStart.Size = new System.Drawing.Size(113, 20);
-                    this.ipStart.TabIndex = 10;
-                    //
-                    //ipEnd
-                    //
-                    this.ipEnd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-                    this.ipEnd.Location = new System.Drawing.Point(133, 24);
-                    this.ipEnd.Name = "ipEnd";
-                    this.ipEnd.Size = new System.Drawing.Size(113, 20);
-                    this.ipEnd.TabIndex = 15;
-                    //
-                    //lblStartIP
-                    //
-                    this.lblStartIP.AutoSize = true;
-                    this.lblStartIP.Location = new System.Drawing.Point(4, 8);
-                    this.lblStartIP.Name = "lblStartIP";
-                    this.lblStartIP.Size = new System.Drawing.Size(45, 13);
-                    this.lblStartIP.TabIndex = 0;
-                    this.lblStartIP.Text = "Start IP:";
-                    //
-                    //lblEndIP
-                    //
-                    this.lblEndIP.AutoSize = true;
-                    this.lblEndIP.Location = new System.Drawing.Point(130, 8);
-                    this.lblEndIP.Name = "lblEndIP";
-                    this.lblEndIP.Size = new System.Drawing.Size(42, 13);
-                    this.lblEndIP.TabIndex = 5;
-                    this.lblEndIP.Text = "End IP:";
-                    //
-                    //btnScan
-                    //
-                    this.btnScan.Anchor =
-                        (System.Windows.Forms.AnchorStyles)
-                        (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
-                    this.btnScan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    this.btnScan.Image = global::My.Resources.Resources.Search;
-                    this.btnScan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                    this.btnScan.Location = new System.Drawing.Point(448, 8);
-                    this.btnScan.Name = "btnScan";
-                    this.btnScan.Size = new System.Drawing.Size(86, 58);
-                    this.btnScan.TabIndex = 20;
-                    this.btnScan.Text = "&Scan";
-                    this.btnScan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-                    this.btnScan.UseVisualStyleBackColor = true;
-                    //
-                    //pnlDivider
-                    //
-                    this.pnlDivider.Anchor =
-                        (System.Windows.Forms.AnchorStyles)
-                        ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) |
-                         System.Windows.Forms.AnchorStyles.Right);
-                    this.pnlDivider.BackColor = System.Drawing.Color.DimGray;
-                    this.pnlDivider.Location = new System.Drawing.Point(0, 0);
-                    this.pnlDivider.Name = "pnlDivider";
-                    this.pnlDivider.Size = new System.Drawing.Size(542, 4);
-                    this.pnlDivider.TabIndex = 20;
-                    //
-                    //splContainer
-                    //
-                    this.splContainer.Anchor =
-                        (System.Windows.Forms.AnchorStyles)
-                        (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) |
-                          System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right);
-                    this.splContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-                    this.splContainer.IsSplitterFixed = true;
-                    this.splContainer.Location = new System.Drawing.Point(0, 74);
-                    this.splContainer.Name = "splContainer";
-                    this.splContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
-                    //
-                    //splContainer.Panel1
-                    //
-                    this.splContainer.Panel1.Controls.Add(this.lvHosts);
-                    this.splContainer.Panel1.Controls.Add(this.pnlDivider);
-                    //
-                    //splContainer.Panel2
-                    //
-                    this.splContainer.Panel2.Controls.Add(this.btnCancel);
-                    this.splContainer.Panel2.Controls.Add(this.btnImport);
-                    this.splContainer.Panel2.Controls.Add(this.cbProtocol);
-                    this.splContainer.Panel2.Controls.Add(this.lblOnlyImport);
-                    this.splContainer.Size = new System.Drawing.Size(542, 256);
-                    this.splContainer.SplitterDistance = 213;
-                    this.splContainer.TabIndex = 27;
-                    //
-                    //lvHosts
-                    //
-                    this.lvHosts.Anchor =
-                        (System.Windows.Forms.AnchorStyles)
-                        (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) |
-                          System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right);
-                    this.lvHosts.BorderStyle = System.Windows.Forms.BorderStyle.None;
-                    this.lvHosts.FullRowSelect = true;
-                    this.lvHosts.GridLines = true;
-                    this.lvHosts.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-                    this.lvHosts.HideSelection = false;
-                    this.lvHosts.Location = new System.Drawing.Point(0, 7);
-                    this.lvHosts.Name = "lvHosts";
-                    this.lvHosts.Size = new System.Drawing.Size(542, 205);
-                    this.lvHosts.TabIndex = 26;
-                    this.lvHosts.UseCompatibleStateImageBehavior = false;
-                    this.lvHosts.View = System.Windows.Forms.View.Details;
-                    //
-                    //btnCancel
-                    //
-                    this.btnCancel.Anchor =
-                        (System.Windows.Forms.AnchorStyles)
-                        (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
-                    this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-                    this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    this.btnCancel.Location = new System.Drawing.Point(459, 8);
-                    this.btnCancel.Name = "btnCancel";
-                    this.btnCancel.Size = new System.Drawing.Size(75, 23);
-                    this.btnCancel.TabIndex = 111;
-                    this.btnCancel.Text = "&Cancel";
-                    this.btnCancel.UseVisualStyleBackColor = true;
-                    //
-                    //btnImport
-                    //
-                    this.btnImport.Anchor =
-                        (System.Windows.Forms.AnchorStyles)
-                        (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
-                    this.btnImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    this.btnImport.Location = new System.Drawing.Point(378, 8);
-                    this.btnImport.Name = "btnImport";
-                    this.btnImport.Size = new System.Drawing.Size(75, 23);
-                    this.btnImport.TabIndex = 101;
-                    this.btnImport.Text = "&Import";
-                    this.btnImport.UseVisualStyleBackColor = true;
-                    //
-                    //cbProtocol
-                    //
-                    this.cbProtocol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-                    this.cbProtocol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    this.cbProtocol.FormattingEnabled = true;
-                    this.cbProtocol.Items.AddRange(new object[] { "SSH2", "Telnet", "HTTP", "HTTPS", "Rlogin", "RDP", "VNC" });
-                    this.cbProtocol.Location = new System.Drawing.Point(111, 9);
-                    this.cbProtocol.Name = "cbProtocol";
-                    this.cbProtocol.Size = new System.Drawing.Size(122, 21);
-                    this.cbProtocol.TabIndex = 28;
-                    //
-                    //lblOnlyImport
-                    //
-                    this.lblOnlyImport.AutoSize = true;
-                    this.lblOnlyImport.Location = new System.Drawing.Point(3, 12);
-                    this.lblOnlyImport.Name = "lblOnlyImport";
-                    this.lblOnlyImport.Size = new System.Drawing.Size(92, 13);
-                    this.lblOnlyImport.TabIndex = 1;
-                    this.lblOnlyImport.Text = "Protocol to import:";
-                    //
-                    //clmHost
-                    //
-                    this.clmHost.Text = "Hostname/IP";
-                    this.clmHost.Width = 130;
-                    //
-                    //clmSSH
-                    //
-                    this.clmSSH.Text = "SSH";
-                    this.clmSSH.Width = 50;
-                    //
-                    //clmTelnet
-                    //
-                    this.clmTelnet.Text = "Telnet";
-                    this.clmTelnet.Width = 50;
-                    //
-                    //clmHTTP
-                    //
-                    this.clmHTTP.Text = "HTTP";
-                    this.clmHTTP.Width = 50;
-                    //
-                    //clmHTTPS
-                    //
-                    this.clmHTTPS.Text = "HTTPS";
-                    this.clmHTTPS.Width = 50;
-                    //
-                    //clmRlogin
-                    //
-                    this.clmRlogin.Text = "Rlogin";
-                    this.clmRlogin.Width = 50;
-                    //
-                    //clmRDP
-                    //
-                    this.clmRDP.Text = "RDP";
-                    this.clmRDP.Width = 50;
-                    //
-                    //clmVNC
-                    //
-                    this.clmVNC.Text = "VNC";
-                    this.clmVNC.Width = 50;
-                    //
-                    //clmOpenPorts
-                    //
-                    this.clmOpenPorts.Text = "Open Ports";
-                    this.clmOpenPorts.Width = 150;
-                    //
-                    //clmClosedPorts
-                    //
-                    this.clmClosedPorts.Text = "Closed Ports";
-                    this.clmClosedPorts.Width = 150;
-                    //
-                    //prgBar
-                    //
-                    this.prgBar.Anchor =
-                        (System.Windows.Forms.AnchorStyles)
-                        ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) |
-                         System.Windows.Forms.AnchorStyles.Right);
-                    this.prgBar.Location = new System.Drawing.Point(7, 50);
-                    this.prgBar.Name = "prgBar";
-                    this.prgBar.Size = new System.Drawing.Size(432, 16);
-                    this.prgBar.Step = 1;
-                    this.prgBar.TabIndex = 28;
-                    //
-                    //pnlPorts
-                    //
-                    this.pnlPorts.Controls.Add(this.portEnd);
-                    this.pnlPorts.Controls.Add(this.portStart);
-                    this.pnlPorts.Controls.Add(this.Label2);
-                    this.pnlPorts.Controls.Add(this.Label1);
-                    this.pnlPorts.Location = new System.Drawing.Point(268, 7);
-                    this.pnlPorts.Name = "pnlPorts";
-                    this.pnlPorts.Size = new System.Drawing.Size(152, 38);
-                    this.pnlPorts.TabIndex = 18;
-                    //
-                    //portEnd
-                    //
-                    this.portEnd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-                    this.portEnd.Location = new System.Drawing.Point(81, 17);
-                    this.portEnd.Maximum = new decimal(new int[] { 65535, 0, 0, 0 });
-                    this.portEnd.Name = "portEnd";
-                    this.portEnd.Size = new System.Drawing.Size(67, 20);
-                    this.portEnd.TabIndex = 15;
-                    //
-                    //portStart
-                    //
-                    this.portStart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-                    this.portStart.Location = new System.Drawing.Point(3, 17);
-                    this.portStart.Maximum = new decimal(new int[] { 65535, 0, 0, 0 });
-                    this.portStart.Name = "portStart";
-                    this.portStart.Size = new System.Drawing.Size(67, 20);
-                    this.portStart.TabIndex = 5;
-                    //
-                    //Label2
-                    //
-                    this.Label2.AutoSize = true;
-                    this.Label2.Location = new System.Drawing.Point(78, 1);
-                    this.Label2.Name = "Label2";
-                    this.Label2.Size = new System.Drawing.Size(51, 13);
-                    this.Label2.TabIndex = 10;
-                    this.Label2.Text = "End Port:";
-                    //
-                    //Label1
-                    //
-                    this.Label1.AutoSize = true;
-                    this.Label1.Location = new System.Drawing.Point(0, 2);
-                    this.Label1.Name = "Label1";
-                    this.Label1.Size = new System.Drawing.Size(54, 13);
-                    this.Label1.TabIndex = 0;
-                    this.Label1.Text = "Start Port:";
-                    //
-                    //PortScan
-                    //
-                    this.AcceptButton = this.btnImport;
-                    this.CancelButton = this.btnCancel;
-                    this.ClientSize = new System.Drawing.Size(542, 330);
-                    this.Controls.Add(this.pnlPorts);
-                    this.Controls.Add(this.prgBar);
-                    this.Controls.Add(this.splContainer);
-                    this.Controls.Add(this.btnScan);
-                    this.Controls.Add(this.lblEndIP);
-                    this.Controls.Add(this.lblStartIP);
-                    this.Controls.Add(this.ipEnd);
-                    this.Controls.Add(this.ipStart);
-                    this.Icon = (System.Drawing.Icon)(resources.GetObject("$this.Icon"));
-                    this.Name = "PortScan";
-                    this.TabText = "Port Scan";
-                    this.Text = "Port Scan";
-                    this.splContainer.Panel1.ResumeLayout(false);
-                    this.splContainer.Panel2.ResumeLayout(false);
-                    this.splContainer.Panel2.PerformLayout();
-                    this.splContainer.ResumeLayout(false);
-                    this.pnlPorts.ResumeLayout(false);
-                    this.pnlPorts.PerformLayout();
-                    ((System.ComponentModel.ISupportInitialize)this.portEnd).EndInit();
-                    ((System.ComponentModel.ISupportInitialize)this.portStart).EndInit();
-                    this.ResumeLayout(false);
-                    this.PerformLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PortScan));
+            this.ipStart = new iptb.IPTextBox();
+            this.ipEnd = new iptb.IPTextBox();
+            this.lblStartIP = new System.Windows.Forms.Label();
+            this.lblEndIP = new System.Windows.Forms.Label();
+            this.btnScan = new System.Windows.Forms.Button();
+            this.pnlDivider = new System.Windows.Forms.Panel();
+            this.splContainer = new System.Windows.Forms.SplitContainer();
+            this.lvHosts = new System.Windows.Forms.ListView();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.cbProtocol = new System.Windows.Forms.ComboBox();
+            this.lblOnlyImport = new System.Windows.Forms.Label();
+            this.clmHost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmSSH = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmTelnet = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmHTTP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmHTTPS = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmRlogin = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmRDP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmVNC = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmOpenPorts = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmClosedPorts = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.prgBar = new System.Windows.Forms.ProgressBar();
+            this.pnlPorts = new System.Windows.Forms.Panel();
+            this.portEnd = new System.Windows.Forms.NumericUpDown();
+            this.portStart = new System.Windows.Forms.NumericUpDown();
+            this.Label2 = new System.Windows.Forms.Label();
+            this.Label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.splContainer)).BeginInit();
+            this.splContainer.Panel1.SuspendLayout();
+            this.splContainer.Panel2.SuspendLayout();
+            this.splContainer.SuspendLayout();
+            this.pnlPorts.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.portEnd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.portStart)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // ipStart
+            // 
+            this.ipStart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ipStart.Location = new System.Drawing.Point(7, 37);
+            this.ipStart.Name = "ipStart";
+            this.ipStart.Size = new System.Drawing.Size(132, 20);
+            this.ipStart.TabIndex = 10;
+            this.ipStart.ToolTipText = "";
+            // 
+            // ipEnd
+            // 
+            this.ipEnd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ipEnd.Location = new System.Drawing.Point(159, 37);
+            this.ipEnd.Name = "ipEnd";
+            this.ipEnd.Size = new System.Drawing.Size(135, 20);
+            this.ipEnd.TabIndex = 15;
+            this.ipEnd.ToolTipText = "";
+            // 
+            // lblStartIP
+            // 
+            this.lblStartIP.AutoSize = true;
+            this.lblStartIP.Location = new System.Drawing.Point(4, 10);
+            this.lblStartIP.Name = "lblStartIP";
+            this.lblStartIP.Size = new System.Drawing.Size(45, 13);
+            this.lblStartIP.TabIndex = 0;
+            this.lblStartIP.Text = "Start IP:";
+            // 
+            // lblEndIP
+            // 
+            this.lblEndIP.AutoSize = true;
+            this.lblEndIP.Location = new System.Drawing.Point(156, 10);
+            this.lblEndIP.Name = "lblEndIP";
+            this.lblEndIP.Size = new System.Drawing.Size(42, 13);
+            this.lblEndIP.TabIndex = 5;
+            this.lblEndIP.Text = "End IP:";
+            // 
+            // btnScan
+            // 
+            this.btnScan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnScan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnScan.Image = global::My.Resources.Resources.Search;
+            this.btnScan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnScan.Location = new System.Drawing.Point(763, 9);
+            this.btnScan.Name = "btnScan";
+            this.btnScan.Size = new System.Drawing.Size(86, 59);
+            this.btnScan.TabIndex = 20;
+            this.btnScan.Text = "&Scan";
+            this.btnScan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnScan.UseVisualStyleBackColor = true;
+            this.btnScan.Click += new System.EventHandler(this.btnScan_Click);
+            // 
+            // pnlDivider
+            // 
+            this.pnlDivider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlDivider.BackColor = System.Drawing.Color.DimGray;
+            this.pnlDivider.Location = new System.Drawing.Point(0, 11);
+            this.pnlDivider.Name = "pnlDivider";
+            this.pnlDivider.Size = new System.Drawing.Size(861, 10);
+            this.pnlDivider.TabIndex = 20;
+            // 
+            // splContainer
+            // 
+            this.splContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splContainer.IsSplitterFixed = true;
+            this.splContainer.Location = new System.Drawing.Point(0, 74);
+            this.splContainer.Name = "splContainer";
+            this.splContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splContainer.Panel1
+            // 
+            this.splContainer.Panel1.Controls.Add(this.lvHosts);
+            this.splContainer.Panel1.Controls.Add(this.pnlDivider);
+            // 
+            // splContainer.Panel2
+            // 
+            this.splContainer.Panel2.Controls.Add(this.btnCancel);
+            this.splContainer.Panel2.Controls.Add(this.btnImport);
+            this.splContainer.Panel2.Controls.Add(this.cbProtocol);
+            this.splContainer.Panel2.Controls.Add(this.lblOnlyImport);
+            this.splContainer.Size = new System.Drawing.Size(861, 410);
+            this.splContainer.SplitterDistance = 367;
+            this.splContainer.TabIndex = 27;
+            // 
+            // lvHosts
+            // 
+            this.lvHosts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvHosts.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lvHosts.FullRowSelect = true;
+            this.lvHosts.GridLines = true;
+            this.lvHosts.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lvHosts.HideSelection = false;
+            this.lvHosts.Location = new System.Drawing.Point(0, 27);
+            this.lvHosts.Name = "lvHosts";
+            this.lvHosts.Size = new System.Drawing.Size(861, 339);
+            this.lvHosts.TabIndex = 26;
+            this.lvHosts.UseCompatibleStateImageBehavior = false;
+            this.lvHosts.View = System.Windows.Forms.View.Details;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Location = new System.Drawing.Point(778, 8);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 111;
+            this.btnCancel.Text = "&Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnImport
+            // 
+            this.btnImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImport.Location = new System.Drawing.Point(697, 8);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(75, 23);
+            this.btnImport.TabIndex = 101;
+            this.btnImport.Text = "&Import";
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
+            // cbProtocol
+            // 
+            this.cbProtocol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbProtocol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbProtocol.FormattingEnabled = true;
+            this.cbProtocol.Items.AddRange(new object[] {
+            "SSH2",
+            "Telnet",
+            "HTTP",
+            "HTTPS",
+            "Rlogin",
+            "RDP",
+            "VNC"});
+            this.cbProtocol.Location = new System.Drawing.Point(111, 9);
+            this.cbProtocol.Name = "cbProtocol";
+            this.cbProtocol.Size = new System.Drawing.Size(122, 21);
+            this.cbProtocol.TabIndex = 28;
+            // 
+            // lblOnlyImport
+            // 
+            this.lblOnlyImport.AutoSize = true;
+            this.lblOnlyImport.Location = new System.Drawing.Point(3, 12);
+            this.lblOnlyImport.Name = "lblOnlyImport";
+            this.lblOnlyImport.Size = new System.Drawing.Size(92, 13);
+            this.lblOnlyImport.TabIndex = 1;
+            this.lblOnlyImport.Text = "Protocol to import:";
+            // 
+            // clmHost
+            // 
+            this.clmHost.Text = "Hostname/IP";
+            this.clmHost.Width = 130;
+            // 
+            // clmSSH
+            // 
+            this.clmSSH.Text = "SSH";
+            this.clmSSH.Width = 50;
+            // 
+            // clmTelnet
+            // 
+            this.clmTelnet.Text = "Telnet";
+            this.clmTelnet.Width = 50;
+            // 
+            // clmHTTP
+            // 
+            this.clmHTTP.Text = "HTTP";
+            this.clmHTTP.Width = 50;
+            // 
+            // clmHTTPS
+            // 
+            this.clmHTTPS.Text = "HTTPS";
+            this.clmHTTPS.Width = 50;
+            // 
+            // clmRlogin
+            // 
+            this.clmRlogin.Text = "Rlogin";
+            this.clmRlogin.Width = 50;
+            // 
+            // clmRDP
+            // 
+            this.clmRDP.Text = "RDP";
+            this.clmRDP.Width = 50;
+            // 
+            // clmVNC
+            // 
+            this.clmVNC.Text = "VNC";
+            this.clmVNC.Width = 50;
+            // 
+            // clmOpenPorts
+            // 
+            this.clmOpenPorts.Text = "Open Ports";
+            this.clmOpenPorts.Width = 150;
+            // 
+            // clmClosedPorts
+            // 
+            this.clmClosedPorts.Text = "Closed Ports";
+            this.clmClosedPorts.Width = 150;
+            // 
+            // prgBar
+            // 
+            this.prgBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.prgBar.Location = new System.Drawing.Point(7, 63);
+            this.prgBar.Name = "prgBar";
+            this.prgBar.Size = new System.Drawing.Size(751, 16);
+            this.prgBar.Step = 1;
+            this.prgBar.TabIndex = 28;
+            // 
+            // pnlPorts
+            // 
+            this.pnlPorts.Controls.Add(this.portEnd);
+            this.pnlPorts.Controls.Add(this.portStart);
+            this.pnlPorts.Controls.Add(this.Label2);
+            this.pnlPorts.Controls.Add(this.Label1);
+            this.pnlPorts.Location = new System.Drawing.Point(319, 8);
+            this.pnlPorts.Name = "pnlPorts";
+            this.pnlPorts.Size = new System.Drawing.Size(152, 51);
+            this.pnlPorts.TabIndex = 18;
+            // 
+            // portEnd
+            // 
+            this.portEnd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.portEnd.Location = new System.Drawing.Point(79, 28);
+            this.portEnd.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.portEnd.Name = "portEnd";
+            this.portEnd.Size = new System.Drawing.Size(67, 20);
+            this.portEnd.TabIndex = 15;
+            // 
+            // portStart
+            // 
+            this.portStart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.portStart.Location = new System.Drawing.Point(6, 28);
+            this.portStart.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.portStart.Name = "portStart";
+            this.portStart.Size = new System.Drawing.Size(67, 20);
+            this.portStart.TabIndex = 5;
+            // 
+            // Label2
+            // 
+            this.Label2.AutoSize = true;
+            this.Label2.Location = new System.Drawing.Point(78, 1);
+            this.Label2.Name = "Label2";
+            this.Label2.Size = new System.Drawing.Size(51, 13);
+            this.Label2.TabIndex = 10;
+            this.Label2.Text = "End Port:";
+            // 
+            // Label1
+            // 
+            this.Label1.AutoSize = true;
+            this.Label1.Location = new System.Drawing.Point(3, 0);
+            this.Label1.Name = "Label1";
+            this.Label1.Size = new System.Drawing.Size(54, 13);
+            this.Label1.TabIndex = 0;
+            this.Label1.Text = "Start Port:";
+            // 
+            // PortScan
+            // 
+            this.AcceptButton = this.btnImport;
+            this.CancelButton = this.btnCancel;
+            this.ClientSize = new System.Drawing.Size(861, 484);
+            this.Controls.Add(this.pnlPorts);
+            this.Controls.Add(this.prgBar);
+            this.Controls.Add(this.splContainer);
+            this.Controls.Add(this.btnScan);
+            this.Controls.Add(this.lblEndIP);
+            this.Controls.Add(this.lblStartIP);
+            this.Controls.Add(this.ipEnd);
+            this.Controls.Add(this.ipStart);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "PortScan";
+            this.TabText = "Port Scan";
+            this.Text = "Port Scan";
+            this.splContainer.Panel1.ResumeLayout(false);
+            this.splContainer.Panel2.ResumeLayout(false);
+            this.splContainer.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splContainer)).EndInit();
+            this.splContainer.ResumeLayout(false);
+            this.pnlPorts.ResumeLayout(false);
+            this.pnlPorts.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.portEnd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.portStart)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
                 }
 
                 #endregion Form Init
@@ -606,41 +615,7 @@ namespace mRemoteNC
 
                 private bool ipOK()
                 {
-                    if (ipStart.Octet1 == "")
-                    {
-                        return false;
-                    }
-                    if (ipStart.Octet2 == "")
-                    {
-                        return false;
-                    }
-                    if (ipStart.Octet3 == "")
-                    {
-                        return false;
-                    }
-                    if (ipStart.Octet4 == "")
-                    {
-                        return false;
-                    }
-
-                    if (ipEnd.Octet1 == "")
-                    {
-                        return false;
-                    }
-                    if (ipEnd.Octet2 == "")
-                    {
-                        return false;
-                    }
-                    if (ipEnd.Octet3 == "")
-                    {
-                        return false;
-                    }
-                    if (ipEnd.Octet4 == "")
-                    {
-                        return false;
-                    }
-
-                    return true;
+                    return ipStart.IsValid() && ipEnd.IsValid();
                 }
 
                 #endregion Methods

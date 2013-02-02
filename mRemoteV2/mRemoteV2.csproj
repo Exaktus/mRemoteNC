@@ -101,9 +101,8 @@
     <Reference Include="AxInterop.MSTSCLib">
       <HintPath>References\AxInterop.MSTSCLib.dll</HintPath>
     </Reference>
-    <Reference Include="AxInterop.WFICALib, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug Portable\AxInterop.WFICALib.dll</HintPath>
+    <Reference Include="AxInterop.WFICALib">
+      <HintPath>References\AxInterop.WFICALib.dll</HintPath>
     </Reference>
     <Reference Include="FilteredPropertyGrid, Version=1.0.2258.31541, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -113,14 +112,9 @@
       <HintPath>References\Interop.SHDocVw.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Interop.WFICALib, Version=2.8.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Interop.WFICALib">
+      <HintPath>References\Interop.WFICALib.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>bin\Debug Portable\Interop.WFICALib.dll</HintPath>
-    </Reference>
-    <Reference Include="IPTextBox, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>References\IPTextBox.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -273,6 +267,9 @@
     <Compile Include="Security\Security.Impersonator.cs" />
     <Compile Include="Security\Security.Save.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="Tools\IPTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Tools\QuickText.cs" />
     <Compile Include="Tools\ReconnectGroup.Designer.cs">
       <DependentUpon>ReconnectGroup.cs</DependentUpon>
@@ -406,6 +403,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\IPTextBox.resx">
+      <DependentUpon>IPTextBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\ReconnectGroup.resx">
       <DependentUpon>ReconnectGroup.cs</DependentUpon>
@@ -675,6 +675,8 @@
     <Content Include="Help\Update.htm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\mRemoteNC.ico" />
+    <None Include="Resources\SmallIco.bmp" />
     <None Include="Notes\Help.txt" />
     <None Include="Notes\ICA.txt" />
     <None Include="Notes\Misc.txt" />
@@ -830,6 +832,7 @@
     <Content Include="Icons\mRemote.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Icons\mRemoteNC.ico" />
     <Content Include="Icons\mRemoteNG.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

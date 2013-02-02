@@ -82,7 +82,7 @@ namespace mRemoteNC
 
                 #endregion Private Methods
 
-                private mRemoteNC.Announcement aN;
+                private mRemoteNC.Announcement aN=new mRemoteNC.Announcement();
                 private Thread uT;
 
                 public delegate void AnnouncementCheckCompletedEventHandler(bool AnnouncementAvailable);

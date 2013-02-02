@@ -89,7 +89,7 @@ namespace mRemoteNC.Tools
                     this._nI = new NotifyIcon();
                     this._nI.Text = "mRemote";
                     this._nI.BalloonTipText = "mRemote";
-                    this._nI.Icon = global::My.Resources.Resources.mRemote_Icon;
+                    this._nI.Icon = System.Drawing.Icon.FromHandle(global::My.Resources.Resources.mRemote_Icon.GetHicon());
                     this._nI.ContextMenuStrip = this._cMen;
                     this._nI.Visible = true;
 

@@ -12,3 +12,5 @@ Currently these protocols are supported:
  * HTTP/S (Hypertext Transfer Protocol)
  * Rlogin (Rlogin)
  * RAW
+ * Serial
+ * TeamViewer

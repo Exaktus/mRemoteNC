@@ -41,29 +41,25 @@ namespace mRemoteNC
 		[System.Diagnostics.DebuggerStepThrough()]private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            WeifenLuo.WinFormsUI.Docking.DockPanelSkin dockPanelSkin2 = new WeifenLuo.WinFormsUI.Docking.DockPanelSkin();
-            WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin autoHideStripSkin2 = new WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin();
-            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient4 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient8 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin dockPaneStripSkin2 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin();
-            WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient dockPaneStripGradient2 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient9 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient5 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient10 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient dockPaneStripToolWindowGradient2 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient11 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient12 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient6 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient13 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient14 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPanelSkin dockPanelSkin1 = new WeifenLuo.WinFormsUI.Docking.DockPanelSkin();
+            WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin autoHideStripSkin1 = new WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient1 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient1 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin dockPaneStripSkin1 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient dockPaneStripGradient1 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient2 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient2 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient3 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient dockPaneStripToolWindowGradient1 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient4 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient5 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient3 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient6 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient7 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.pnlDock = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.mMenSep3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsContainer = new System.Windows.Forms.ToolStripContainer();
-            this.cMenExtAppsToolbar = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cMenToolbarShowText = new System.Windows.Forms.ToolStripMenuItem();
-            this.tmrShowUpdate = new System.Windows.Forms.Timer(this.components);
-            this.tmrAutoSave = new System.Windows.Forms.Timer(this.components);
             this.msMain = new System.Windows.Forms.MenuStrip();
             this.mMenFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mMenFileNewConnection = new System.Windows.Forms.ToolStripMenuItem();
@@ -144,13 +140,17 @@ namespace mRemoteNC
             this.mMenQuickyCon = new System.Windows.Forms.ToolStripMenuItem();
             this.tsExternalTools = new System.Windows.Forms.ToolStrip();
             this.tsQuickTexts = new System.Windows.Forms.ToolStrip();
+            this.cMenExtAppsToolbar = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cMenToolbarShowText = new System.Windows.Forms.ToolStripMenuItem();
+            this.tmrShowUpdate = new System.Windows.Forms.Timer(this.components);
+            this.tmrAutoSave = new System.Windows.Forms.Timer(this.components);
             this.tsContainer.ContentPanel.SuspendLayout();
             this.tsContainer.TopToolStripPanel.SuspendLayout();
             this.tsContainer.SuspendLayout();
-            this.cMenExtAppsToolbar.SuspendLayout();
             this.msMain.SuspendLayout();
             this.ToolStrip1.SuspendLayout();
             this.tsQuickConnect.SuspendLayout();
+            this.cMenExtAppsToolbar.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlDock
@@ -162,53 +162,53 @@ namespace mRemoteNC
             this.pnlDock.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingWindow;
             this.pnlDock.Location = new System.Drawing.Point(0, 0);
             this.pnlDock.Name = "pnlDock";
-            this.pnlDock.Size = new System.Drawing.Size(1258, 666);
-            dockPanelGradient4.EndColor = System.Drawing.SystemColors.ControlLight;
-            dockPanelGradient4.StartColor = System.Drawing.SystemColors.ControlLight;
-            autoHideStripSkin2.DockStripGradient = dockPanelGradient4;
-            tabGradient8.EndColor = System.Drawing.SystemColors.Control;
-            tabGradient8.StartColor = System.Drawing.SystemColors.Control;
-            tabGradient8.TextColor = System.Drawing.SystemColors.ControlDarkDark;
-            autoHideStripSkin2.TabGradient = tabGradient8;
-            autoHideStripSkin2.TextFont = new System.Drawing.Font("Segoe UI", 9F);
-            dockPanelSkin2.AutoHideStripSkin = autoHideStripSkin2;
-            tabGradient9.EndColor = System.Drawing.SystemColors.ControlLightLight;
-            tabGradient9.StartColor = System.Drawing.SystemColors.ControlLightLight;
-            tabGradient9.TextColor = System.Drawing.SystemColors.ControlText;
-            dockPaneStripGradient2.ActiveTabGradient = tabGradient9;
-            dockPanelGradient5.EndColor = System.Drawing.SystemColors.Control;
-            dockPanelGradient5.StartColor = System.Drawing.SystemColors.Control;
-            dockPaneStripGradient2.DockStripGradient = dockPanelGradient5;
-            tabGradient10.EndColor = System.Drawing.SystemColors.ControlLight;
-            tabGradient10.StartColor = System.Drawing.SystemColors.ControlLight;
-            tabGradient10.TextColor = System.Drawing.SystemColors.ControlText;
-            dockPaneStripGradient2.InactiveTabGradient = tabGradient10;
-            dockPaneStripSkin2.DocumentGradient = dockPaneStripGradient2;
-            dockPaneStripSkin2.TextFont = new System.Drawing.Font("Segoe UI", 9F);
-            tabGradient11.EndColor = System.Drawing.SystemColors.ActiveCaption;
-            tabGradient11.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            tabGradient11.StartColor = System.Drawing.SystemColors.GradientActiveCaption;
-            tabGradient11.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dockPaneStripToolWindowGradient2.ActiveCaptionGradient = tabGradient11;
-            tabGradient12.EndColor = System.Drawing.SystemColors.Control;
-            tabGradient12.StartColor = System.Drawing.SystemColors.Control;
-            tabGradient12.TextColor = System.Drawing.SystemColors.ControlText;
-            dockPaneStripToolWindowGradient2.ActiveTabGradient = tabGradient12;
-            dockPanelGradient6.EndColor = System.Drawing.SystemColors.ControlLight;
-            dockPanelGradient6.StartColor = System.Drawing.SystemColors.ControlLight;
-            dockPaneStripToolWindowGradient2.DockStripGradient = dockPanelGradient6;
-            tabGradient13.EndColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            tabGradient13.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            tabGradient13.StartColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            tabGradient13.TextColor = System.Drawing.SystemColors.ControlText;
-            dockPaneStripToolWindowGradient2.InactiveCaptionGradient = tabGradient13;
-            tabGradient14.EndColor = System.Drawing.Color.Transparent;
-            tabGradient14.StartColor = System.Drawing.Color.Transparent;
-            tabGradient14.TextColor = System.Drawing.SystemColors.ControlDarkDark;
-            dockPaneStripToolWindowGradient2.InactiveTabGradient = tabGradient14;
-            dockPaneStripSkin2.ToolWindowGradient = dockPaneStripToolWindowGradient2;
-            dockPanelSkin2.DockPaneStripSkin = dockPaneStripSkin2;
-            this.pnlDock.Skin = dockPanelSkin2;
+            this.pnlDock.Size = new System.Drawing.Size(1258, 592);
+            dockPanelGradient1.EndColor = System.Drawing.SystemColors.ControlLight;
+            dockPanelGradient1.StartColor = System.Drawing.SystemColors.ControlLight;
+            autoHideStripSkin1.DockStripGradient = dockPanelGradient1;
+            tabGradient1.EndColor = System.Drawing.SystemColors.Control;
+            tabGradient1.StartColor = System.Drawing.SystemColors.Control;
+            tabGradient1.TextColor = System.Drawing.SystemColors.ControlDarkDark;
+            autoHideStripSkin1.TabGradient = tabGradient1;
+            autoHideStripSkin1.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            dockPanelSkin1.AutoHideStripSkin = autoHideStripSkin1;
+            tabGradient2.EndColor = System.Drawing.SystemColors.ControlLightLight;
+            tabGradient2.StartColor = System.Drawing.SystemColors.ControlLightLight;
+            tabGradient2.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripGradient1.ActiveTabGradient = tabGradient2;
+            dockPanelGradient2.EndColor = System.Drawing.SystemColors.Control;
+            dockPanelGradient2.StartColor = System.Drawing.SystemColors.Control;
+            dockPaneStripGradient1.DockStripGradient = dockPanelGradient2;
+            tabGradient3.EndColor = System.Drawing.SystemColors.ControlLight;
+            tabGradient3.StartColor = System.Drawing.SystemColors.ControlLight;
+            tabGradient3.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripGradient1.InactiveTabGradient = tabGradient3;
+            dockPaneStripSkin1.DocumentGradient = dockPaneStripGradient1;
+            dockPaneStripSkin1.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            tabGradient4.EndColor = System.Drawing.SystemColors.ActiveCaption;
+            tabGradient4.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            tabGradient4.StartColor = System.Drawing.SystemColors.GradientActiveCaption;
+            tabGradient4.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dockPaneStripToolWindowGradient1.ActiveCaptionGradient = tabGradient4;
+            tabGradient5.EndColor = System.Drawing.SystemColors.Control;
+            tabGradient5.StartColor = System.Drawing.SystemColors.Control;
+            tabGradient5.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripToolWindowGradient1.ActiveTabGradient = tabGradient5;
+            dockPanelGradient3.EndColor = System.Drawing.SystemColors.ControlLight;
+            dockPanelGradient3.StartColor = System.Drawing.SystemColors.ControlLight;
+            dockPaneStripToolWindowGradient1.DockStripGradient = dockPanelGradient3;
+            tabGradient6.EndColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            tabGradient6.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            tabGradient6.StartColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            tabGradient6.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripToolWindowGradient1.InactiveCaptionGradient = tabGradient6;
+            tabGradient7.EndColor = System.Drawing.Color.Transparent;
+            tabGradient7.StartColor = System.Drawing.Color.Transparent;
+            tabGradient7.TextColor = System.Drawing.SystemColors.ControlDarkDark;
+            dockPaneStripToolWindowGradient1.InactiveTabGradient = tabGradient7;
+            dockPaneStripSkin1.ToolWindowGradient = dockPaneStripToolWindowGradient1;
+            dockPanelSkin1.DockPaneStripSkin = dockPaneStripSkin1;
+            this.pnlDock.Skin = dockPanelSkin1;
             this.pnlDock.TabIndex = 13;
             this.pnlDock.ActiveDocumentChanged += new System.EventHandler(this.pnlDock_ActiveDocumentChanged);
             // 
@@ -228,7 +228,7 @@ namespace mRemoteNC
             // 
             this.tsContainer.ContentPanel.Controls.Add(this.pnlDock);
             this.tsContainer.ContentPanel.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.tsContainer.ContentPanel.Size = new System.Drawing.Size(1258, 666);
+            this.tsContainer.ContentPanel.Size = new System.Drawing.Size(1258, 592);
             this.tsContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
             // tsContainer.LeftToolStripPanel
@@ -253,33 +253,6 @@ namespace mRemoteNC
             this.tsContainer.TopToolStripPanel.Controls.Add(this.tsQuickTexts);
             this.tsContainer.TopToolStripPanel.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.tsContainer.TopToolStripPanel.Click += new System.EventHandler(this.tsContainer_TopToolStripPanel_Click);
-            // 
-            // cMenExtAppsToolbar
-            // 
-            this.cMenExtAppsToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cMenToolbarShowText});
-            this.cMenExtAppsToolbar.Name = "cMenToolbar";
-            this.cMenExtAppsToolbar.Size = new System.Drawing.Size(129, 26);
-            // 
-            // cMenToolbarShowText
-            // 
-            this.cMenToolbarShowText.Checked = true;
-            this.cMenToolbarShowText.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cMenToolbarShowText.Name = "cMenToolbarShowText";
-            this.cMenToolbarShowText.Size = new System.Drawing.Size(128, 22);
-            this.cMenToolbarShowText.Text = "Show Text";
-            this.cMenToolbarShowText.Click += new System.EventHandler(this.cMenToolbarShowText_Click);
-            // 
-            // tmrShowUpdate
-            // 
-            this.tmrShowUpdate.Enabled = true;
-            this.tmrShowUpdate.Interval = 5000;
-            this.tmrShowUpdate.Tick += new System.EventHandler(this.tmrShowUpdate_Tick);
-            // 
-            // tmrAutoSave
-            // 
-            this.tmrAutoSave.Interval = 10000;
-            this.tmrAutoSave.Tick += new System.EventHandler(this.tmrAutoSave_Tick);
             // 
             // msMain
             // 
@@ -780,20 +753,20 @@ namespace mRemoteNC
             this.mMenInfoHelp.Image = ((System.Drawing.Image)(resources.GetObject("mMenInfoHelp.Image")));
             this.mMenInfoHelp.Name = "mMenInfoHelp";
             this.mMenInfoHelp.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.mMenInfoHelp.Size = new System.Drawing.Size(190, 22);
-            this.mMenInfoHelp.Text = "mRemoteNC Help";
+            this.mMenInfoHelp.Size = new System.Drawing.Size(179, 22);
+            this.mMenInfoHelp.Text = "mRemote Help";
             this.mMenInfoHelp.Click += new System.EventHandler(this.mMenInfoHelp_Click);
             // 
             // mMenInfoSep1
             // 
             this.mMenInfoSep1.Name = "mMenInfoSep1";
-            this.mMenInfoSep1.Size = new System.Drawing.Size(187, 6);
+            this.mMenInfoSep1.Size = new System.Drawing.Size(176, 6);
             // 
             // mMenInfoWebsite
             // 
             this.mMenInfoWebsite.Image = ((System.Drawing.Image)(resources.GetObject("mMenInfoWebsite.Image")));
             this.mMenInfoWebsite.Name = "mMenInfoWebsite";
-            this.mMenInfoWebsite.Size = new System.Drawing.Size(190, 22);
+            this.mMenInfoWebsite.Size = new System.Drawing.Size(179, 22);
             this.mMenInfoWebsite.Text = "Website";
             this.mMenInfoWebsite.Click += new System.EventHandler(this.mMenInfoWebsite_Click);
             // 
@@ -801,56 +774,61 @@ namespace mRemoteNC
             // 
             this.mMenInfoDonate.Image = global::My.Resources.Resources.Donate;
             this.mMenInfoDonate.Name = "mMenInfoDonate";
-            this.mMenInfoDonate.Size = new System.Drawing.Size(190, 22);
+            this.mMenInfoDonate.Size = new System.Drawing.Size(179, 22);
             this.mMenInfoDonate.Text = "Donate";
+            this.mMenInfoDonate.Visible = false;
             this.mMenInfoDonate.Click += new System.EventHandler(this.mMenInfoDonate_Click);
             // 
             // mMenInfoForum
             // 
             this.mMenInfoForum.Name = "mMenInfoForum";
-            this.mMenInfoForum.Size = new System.Drawing.Size(190, 22);
+            this.mMenInfoForum.Size = new System.Drawing.Size(179, 22);
             this.mMenInfoForum.Text = "Support Forum";
+            this.mMenInfoForum.Visible = false;
             this.mMenInfoForum.Click += new System.EventHandler(this.mMenInfoForum_Click);
             // 
             // mMenInfoBugReport
             // 
             this.mMenInfoBugReport.Image = global::My.Resources.Resources.Bug;
             this.mMenInfoBugReport.Name = "mMenInfoBugReport";
-            this.mMenInfoBugReport.Size = new System.Drawing.Size(190, 22);
+            this.mMenInfoBugReport.Size = new System.Drawing.Size(179, 22);
             this.mMenInfoBugReport.Text = "Report a Bug";
             this.mMenInfoBugReport.Click += new System.EventHandler(this.mMenInfoBugReport_Click);
             // 
             // ToolStripSeparator2
             // 
             this.ToolStripSeparator2.Name = "ToolStripSeparator2";
-            this.ToolStripSeparator2.Size = new System.Drawing.Size(187, 6);
+            this.ToolStripSeparator2.Size = new System.Drawing.Size(176, 6);
             // 
             // mMenInfoAnnouncements
             // 
             this.mMenInfoAnnouncements.Image = global::My.Resources.Resources.News;
             this.mMenInfoAnnouncements.Name = "mMenInfoAnnouncements";
-            this.mMenInfoAnnouncements.Size = new System.Drawing.Size(190, 22);
+            this.mMenInfoAnnouncements.Size = new System.Drawing.Size(179, 22);
             this.mMenInfoAnnouncements.Text = "Announcements";
+            this.mMenInfoAnnouncements.Visible = false;
             this.mMenInfoAnnouncements.Click += new System.EventHandler(this.mMenInfoAnnouncements_Click);
             // 
             // mMenToolsUpdate
             // 
             this.mMenToolsUpdate.Image = global::My.Resources.Resources.Update;
             this.mMenToolsUpdate.Name = "mMenToolsUpdate";
-            this.mMenToolsUpdate.Size = new System.Drawing.Size(190, 22);
+            this.mMenToolsUpdate.Size = new System.Drawing.Size(179, 22);
             this.mMenToolsUpdate.Text = "Check for Updates";
+            this.mMenToolsUpdate.Visible = false;
             this.mMenToolsUpdate.Click += new System.EventHandler(this.mMenToolsUpdate_Click);
             // 
             // mMenInfoSep2
             // 
             this.mMenInfoSep2.Name = "mMenInfoSep2";
-            this.mMenInfoSep2.Size = new System.Drawing.Size(187, 6);
+            this.mMenInfoSep2.Size = new System.Drawing.Size(176, 6);
+            this.mMenInfoSep2.Visible = false;
             // 
             // mMenInfoAbout
             // 
-            this.mMenInfoAbout.Image = global::My.Resources.Resources.mRemote;
+            this.mMenInfoAbout.Image = global::My.Resources.Resources.mRemoteNC;
             this.mMenInfoAbout.Name = "mMenInfoAbout";
-            this.mMenInfoAbout.Size = new System.Drawing.Size(190, 22);
+            this.mMenInfoAbout.Size = new System.Drawing.Size(179, 22);
             this.mMenInfoAbout.Text = "About mRemoteNC";
             this.mMenInfoAbout.Click += new System.EventHandler(this.mMenInfoAbout_Click);
             // 
@@ -987,9 +965,36 @@ namespace mRemoteNC
             this.tsQuickTexts.Dock = System.Windows.Forms.DockStyle.None;
             this.tsQuickTexts.Location = global::My.Settings.Default.tsQuickTextsLocation;
             this.tsQuickTexts.Name = "tsQuickTexts";
-            this.tsQuickTexts.Size = new System.Drawing.Size(43, 25);
+            this.tsQuickTexts.Size = new System.Drawing.Size(111, 25);
             this.tsQuickTexts.TabIndex = 20;
             this.tsQuickTexts.Visible = global::My.Settings.Default.QuickTextToolbarVisible;
+            // 
+            // cMenExtAppsToolbar
+            // 
+            this.cMenExtAppsToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cMenToolbarShowText});
+            this.cMenExtAppsToolbar.Name = "cMenToolbar";
+            this.cMenExtAppsToolbar.Size = new System.Drawing.Size(129, 26);
+            // 
+            // cMenToolbarShowText
+            // 
+            this.cMenToolbarShowText.Checked = true;
+            this.cMenToolbarShowText.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cMenToolbarShowText.Name = "cMenToolbarShowText";
+            this.cMenToolbarShowText.Size = new System.Drawing.Size(128, 22);
+            this.cMenToolbarShowText.Text = "Show Text";
+            this.cMenToolbarShowText.Click += new System.EventHandler(this.cMenToolbarShowText_Click);
+            // 
+            // tmrShowUpdate
+            // 
+            this.tmrShowUpdate.Enabled = true;
+            this.tmrShowUpdate.Interval = 5000;
+            this.tmrShowUpdate.Tick += new System.EventHandler(this.tmrShowUpdate_Tick);
+            // 
+            // tmrAutoSave
+            // 
+            this.tmrAutoSave.Interval = 10000;
+            this.tmrAutoSave.Tick += new System.EventHandler(this.tmrAutoSave_Tick);
             // 
             // frmMain
             // 
@@ -997,7 +1002,9 @@ namespace mRemoteNC
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1258, 691);
             this.Controls.Add(this.tsContainer);
-            this.Icon = global::My.Resources.Resources.mRemote_Icon;
+            this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::My.Settings.Default, "MainFormLocation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Location = global::My.Settings.Default.MainFormLocation;
             this.MainMenuStrip = this.msMain;
             this.Name = "frmMain";
             this.Opacity = 0D;
@@ -1010,13 +1017,13 @@ namespace mRemoteNC
             this.tsContainer.TopToolStripPanel.PerformLayout();
             this.tsContainer.ResumeLayout(false);
             this.tsContainer.PerformLayout();
-            this.cMenExtAppsToolbar.ResumeLayout(false);
             this.msMain.ResumeLayout(false);
             this.msMain.PerformLayout();
             this.ToolStrip1.ResumeLayout(false);
             this.ToolStrip1.PerformLayout();
             this.tsQuickConnect.ResumeLayout(false);
             this.tsQuickConnect.PerformLayout();
+            this.cMenExtAppsToolbar.ResumeLayout(false);
             this.ResumeLayout(false);
 
 		}

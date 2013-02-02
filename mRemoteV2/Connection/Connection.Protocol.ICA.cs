@@ -4,7 +4,6 @@ using System.Windows.Forms;
 using AxWFICALib;
 using Microsoft.VisualBasic;
 using mRemoteNC.App;
-using mRemoteNC.Config.Connections;
 using mRemoteNC.Connection;
 using My;
 
@@ -14,7 +13,7 @@ namespace mRemoteNC
     {
         #region Private Properties
 
-        private AxICAClient ICA_Renamed;
+        private AxICAClient ICA_Client;
         private Info Info;
 
         #endregion Private Properties
@@ -41,18 +40,18 @@ namespace mRemoteNC
 
             try
             {
-                ICA_Renamed = (AxICAClient)this.Control;
+                ICA_Client = (AxICAClient)this.Control;
                 Info = this.InterfaceControl.Info;
 
-                ICA_Renamed.CreateControl();
+                ICA_Client.CreateControl();
 
-                while (!this.ICA_Renamed.Created)
+                while (!this.ICA_Client.Created)
                 {
                     Thread.Sleep(10);
                     System.Windows.Forms.Application.DoEvents();
                 }
 
-                ICA_Renamed.Address = Info.Hostname;
+                ICA_Client.Address = Info.Hostname;
 
                 this.SetCredentials();
 
@@ -62,32 +61,32 @@ namespace mRemoteNC
                 this.SetSecurity();
 
                 //Disable hotkeys for international users
-                ICA_Renamed.Hotkey1Shift = null;
-                ICA_Renamed.Hotkey1Char = null;
-                ICA_Renamed.Hotkey2Shift = null;
-                ICA_Renamed.Hotkey2Char = null;
-                ICA_Renamed.Hotkey3Shift = null;
-                ICA_Renamed.Hotkey3Char = null;
-                ICA_Renamed.Hotkey4Shift = null;
-                ICA_Renamed.Hotkey4Char = null;
-                ICA_Renamed.Hotkey5Shift = null;
-                ICA_Renamed.Hotkey5Char = null;
-                ICA_Renamed.Hotkey6Shift = null;
-                ICA_Renamed.Hotkey6Char = null;
-                ICA_Renamed.Hotkey7Shift = null;
-                ICA_Renamed.Hotkey7Char = null;
-                ICA_Renamed.Hotkey8Shift = null;
-                ICA_Renamed.Hotkey8Char = null;
-                ICA_Renamed.Hotkey9Shift = null;
-                ICA_Renamed.Hotkey9Char = null;
-                ICA_Renamed.Hotkey10Shift = null;
-                ICA_Renamed.Hotkey10Char = null;
-                ICA_Renamed.Hotkey11Shift = null;
-                ICA_Renamed.Hotkey11Char = null;
+                ICA_Client.Hotkey1Shift = null;
+                ICA_Client.Hotkey1Char = null;
+                ICA_Client.Hotkey2Shift = null;
+                ICA_Client.Hotkey2Char = null;
+                ICA_Client.Hotkey3Shift = null;
+                ICA_Client.Hotkey3Char = null;
+                ICA_Client.Hotkey4Shift = null;
+                ICA_Client.Hotkey4Char = null;
+                ICA_Client.Hotkey5Shift = null;
+                ICA_Client.Hotkey5Char = null;
+                ICA_Client.Hotkey6Shift = null;
+                ICA_Client.Hotkey6Char = null;
+                ICA_Client.Hotkey7Shift = null;
+                ICA_Client.Hotkey7Char = null;
+                ICA_Client.Hotkey8Shift = null;
+                ICA_Client.Hotkey8Char = null;
+                ICA_Client.Hotkey9Shift = null;
+                ICA_Client.Hotkey9Char = null;
+                ICA_Client.Hotkey10Shift = null;
+                ICA_Client.Hotkey10Char = null;
+                ICA_Client.Hotkey11Shift = null;
+                ICA_Client.Hotkey11Char = null;
 
-                ICA_Renamed.PersistentCacheEnabled = Info.CacheBitmaps;
+                ICA_Client.PersistentCacheEnabled = Info.CacheBitmaps;
 
-                ICA_Renamed.Title = Info.Name;
+                ICA_Client.Title = Info.Name;
 
                 return true;
             }
@@ -106,7 +105,7 @@ namespace mRemoteNC
 
             try
             {
-                ICA_Renamed.Connect();
+                ICA_Client.Connect();
                 base.Connect();
                 return true;
             }
@@ -135,16 +134,16 @@ namespace mRemoteNC
                 {
                     if ((string)Settings.Default.EmptyCredentials == "windows")
                     {
-                        ICA_Renamed.Username = Environment.UserName;
+                        ICA_Client.Username = Environment.UserName;
                     }
                     else if ((string)Settings.Default.EmptyCredentials == "custom")
                     {
-                        ICA_Renamed.Username = Settings.Default.DefaultUsername;
+                        ICA_Client.Username = Settings.Default.DefaultUsername;
                     }
                 }
                 else
                 {
-                    ICA_Renamed.Username = _user;
+                    ICA_Client.Username = _user;
                 }
 
                 if (_pass == "")
@@ -153,7 +152,7 @@ namespace mRemoteNC
                     {
                         if (Settings.Default.DefaultPassword != "")
                         {
-                            ICA_Renamed.SetProp("ClearPassword",
+                            ICA_Client.SetProp("ClearPassword",
                                                 Security.Crypt.Decrypt((string)Settings.Default.DefaultPassword,
                                                                        (string)
                                                                        mRemoteNC.App.Info.General.EncryptionKey));
@@ -162,23 +161,23 @@ namespace mRemoteNC
                 }
                 else
                 {
-                    ICA_Renamed.SetProp("ClearPassword", _pass);
+                    ICA_Client.SetProp("ClearPassword", _pass);
                 }
 
                 if (_dom == "")
                 {
                     if ((string)Settings.Default.EmptyCredentials == "windows")
                     {
-                        ICA_Renamed.Domain = Environment.UserDomainName;
+                        ICA_Client.Domain = Environment.UserDomainName;
                     }
                     else if ((string)Settings.Default.EmptyCredentials == "custom")
                     {
-                        ICA_Renamed.Domain = Settings.Default.DefaultDomain;
+                        ICA_Client.Domain = Settings.Default.DefaultDomain;
                     }
                 }
                 else
                 {
-                    ICA_Renamed.Domain = _dom;
+                    ICA_Client.Domain = _dom;
                 }
             }
             catch (Exception ex)
@@ -195,34 +194,34 @@ namespace mRemoteNC
             {
                 if (this.Force == Connection.Info.Force.Fullscreen) //Fixme
                 {
-                    ICA_Renamed.SetWindowSize(WFICALib.ICAWindowType.WindowTypeClient,
+                    ICA_Client.SetWindowSize(WFICALib.ICAWindowType.WindowTypeClient,
                                               Screen.FromControl(frmMain.defaultInstance).Bounds.Width,
                                               Screen.FromControl(frmMain.defaultInstance).Bounds.Height, 0);
-                    ICA_Renamed.FullScreenWindow();
+                    ICA_Client.FullScreenWindow();
 
                     return;
                 }
 
                 if (this.InterfaceControl.Info.Resolution == RDP.RDPResolutions.FitToWindow)
                 {
-                    ICA_Renamed.SetWindowSize(WFICALib.ICAWindowType.WindowTypeClient,
+                    ICA_Client.SetWindowSize(WFICALib.ICAWindowType.WindowTypeClient,
                                               this.InterfaceControl.Size.Width, this.InterfaceControl.Size.Height, 0);
                 }
                 else if (this.InterfaceControl.Info.Resolution == RDP.RDPResolutions.SmartSize)
                 {
-                    ICA_Renamed.SetWindowSize(WFICALib.ICAWindowType.WindowTypeClient,
+                    ICA_Client.SetWindowSize(WFICALib.ICAWindowType.WindowTypeClient,
                                               this.InterfaceControl.Size.Width, this.InterfaceControl.Size.Height, 0);
                 }
                 else if (this.InterfaceControl.Info.Resolution == RDP.RDPResolutions.Fullscreen)
                 {
-                    ICA_Renamed.SetWindowSize(WFICALib.ICAWindowType.WindowTypeClient,
+                    ICA_Client.SetWindowSize(WFICALib.ICAWindowType.WindowTypeClient,
                                               Screen.FromControl(frmMain.defaultInstance).Bounds.Width,
                                               Screen.FromControl(frmMain.defaultInstance).Bounds.Height, 0);
-                    ICA_Renamed.FullScreenWindow();
+                    ICA_Client.FullScreenWindow();
                 }
                 else
                 {
-                    ICA_Renamed.SetWindowSize(WFICALib.ICAWindowType.WindowTypeClient,
+                    ICA_Client.SetWindowSize(WFICALib.ICAWindowType.WindowTypeClient,
                                               RDP.Resolutions.Items(Conversion.Int(Info.Resolution)).Width,
                                               RDP.Resolutions.Items(Conversion.Int(Info.Resolution)).Height, 0);
                 }
@@ -239,19 +238,19 @@ namespace mRemoteNC
         {
             if (Info.Colors == RDP.RDPColors.Colors256)
             {
-                ICA_Renamed.SetProp("DesiredColor", "2");
+                ICA_Client.SetProp("DesiredColor", "2");
             }
             else if (Info.Colors == RDP.RDPColors.Colors15Bit)
             {
-                ICA_Renamed.SetProp("DesiredColor", "4");
+                ICA_Client.SetProp("DesiredColor", "4");
             }
             else if (Info.Colors == RDP.RDPColors.Colors16Bit)
             {
-                ICA_Renamed.SetProp("DesiredColor", "4");
+                ICA_Client.SetProp("DesiredColor", "4");
             }
             else
             {
-                ICA_Renamed.SetProp("DesiredColor", "8");
+                ICA_Client.SetProp("DesiredColor", "8");
             }
         }
 
@@ -259,23 +258,23 @@ namespace mRemoteNC
         {
             if (Info.ICAEncryption == EncryptionStrength.Encr128BitLogonOnly)
             {
-                ICA_Renamed.Encrypt = true;
-                ICA_Renamed.EncryptionLevelSession = "EncRC5-0";
+                ICA_Client.Encrypt = true;
+                ICA_Client.EncryptionLevelSession = "EncRC5-0";
             }
             else if (Info.ICAEncryption == EncryptionStrength.Encr40Bit)
             {
-                ICA_Renamed.Encrypt = true;
-                ICA_Renamed.EncryptionLevelSession = "EncRC5-40";
+                ICA_Client.Encrypt = true;
+                ICA_Client.EncryptionLevelSession = "EncRC5-40";
             }
             else if (Info.ICAEncryption == EncryptionStrength.Encr56Bit)
             {
-                ICA_Renamed.Encrypt = true;
-                ICA_Renamed.EncryptionLevelSession = "EncRC5-56";
+                ICA_Client.Encrypt = true;
+                ICA_Client.EncryptionLevelSession = "EncRC5-56";
             }
             else if (Info.ICAEncryption == EncryptionStrength.Encr128Bit)
             {
-                ICA_Renamed.Encrypt = true;
-                ICA_Renamed.EncryptionLevelSession = "EncRC5-128";
+                ICA_Client.Encrypt = true;
+                ICA_Client.EncryptionLevelSession = "EncRC5-128";
             }
         }
 
@@ -283,10 +282,10 @@ namespace mRemoteNC
         {
             try
             {
-                ICA_Renamed.OnConnecting += new System.EventHandler(ICAEvent_OnConnecting);
-                ICA_Renamed.OnConnect += new System.EventHandler(ICAEvent_OnConnected);
-                ICA_Renamed.OnConnectFailed += new System.EventHandler(ICAEvent_OnConnectFailed);
-                ICA_Renamed.OnDisconnect += new System.EventHandler(ICAEvent_OnDisconnect);
+                ICA_Client.OnConnecting += new System.EventHandler(ICAEvent_OnConnecting);
+                ICA_Client.OnConnect += new System.EventHandler(ICAEvent_OnConnected);
+                ICA_Client.OnConnectFailed += new System.EventHandler(ICAEvent_OnConnectFailed);
+                ICA_Client.OnDisconnect += new System.EventHandler(ICAEvent_OnDisconnect);
             }
             catch (Exception ex)
             {
@@ -355,7 +354,7 @@ namespace mRemoteNC
             {
                 tmrReconnect.Enabled = false;
                 ReconnectGroup.DisposeReconnectGroup();
-                ICA_Renamed.Connect();
+                ICA_Client.Connect();
             }
         }
 
@@ -385,12 +384,4 @@ namespace mRemoteNC
 
         #endregion Enums
     }
-}
-
-//using mRemoteNC.Runtime;
-
-//using mRemoteNC.Tools.LocalizedAttributes;
-
-namespace mRemoteNC.Connection
-{
 }

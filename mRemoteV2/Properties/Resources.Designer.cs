@@ -452,10 +452,17 @@ namespace My.Resources {
             }
         }
         
-        internal static System.Drawing.Icon mRemote_Icon {
+        internal static System.Drawing.Bitmap mRemote_Icon {
             get {
                 object obj = ResourceManager.GetObject("mRemote_Icon", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap mRemoteNC {
+            get {
+                object obj = ResourceManager.GetObject("mRemoteNC", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -708,6 +715,13 @@ namespace My.Resources {
             get {
                 object obj = ResourceManager.GetObject("Sessions_Icon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap SmallIco {
+            get {
+                object obj = ResourceManager.GetObject("SmallIco", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

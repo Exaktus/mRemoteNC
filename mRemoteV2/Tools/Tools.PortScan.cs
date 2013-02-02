@@ -607,6 +607,10 @@ namespace mRemoteNC
                 {
                     try
                     {
+                        if (fromIP == toIP)
+                        {
+                            return new ArrayList(1){toIP};
+                        }
                         ArrayList arrIPs = new ArrayList();
 
                         int[] ipFrom = fromIP.Split(".".ToCharArray()).ToList().ConvertAll(Convert.ToInt32).ToArray();

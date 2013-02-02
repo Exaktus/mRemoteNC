@@ -73,7 +73,7 @@ namespace mRemoteNC.Config
 
             #region Public Methods
 
-            public void Save_Renamed()
+            public void SaveConnections()
             {
                 switch (SaveFormat)
                 {

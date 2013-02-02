@@ -1,10 +1,13 @@
-2.70 (Forked as mRemoteNC)
-	Ported to C#, .Net 4.0
+﻿2.70 pre-alfa (Forked as mRemoteNC)
+​	Ported to C#, .Net 4.0
 	Fixed PuTTY tab focus issue
+	Fixed crash on startup after update from version 1.69 and older
 	Updated WeifenLuo.WinFormsUI.Docking to 2.7
 	The version of the RDP AX client updated to 7
 	ICA broken
-	Items in context menu on connection tab now hides instead of disabeling
+	SQL probably broken
+	Items in context menu on connection tab now hides instead of disabling
+	Integrated IPTextBox
 	Added option to start connection on app startup
 	Added option to start connection on double click
 	Added basic Serial protocol support (buggy)

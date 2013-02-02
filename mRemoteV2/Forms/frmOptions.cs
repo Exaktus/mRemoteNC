@@ -1,16 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-
-//using mRemoteNC.Runtime;
 using System.Linq;
 using System.Windows.Forms;
-using AxMSTSCLib;
-using AxWFICALib;
 using Microsoft.VisualBasic;
 using mRemoteNC.App;
 using mRemoteNC.App.Info;
@@ -2158,7 +2151,7 @@ namespace mRemoteNC
         private void btnTestProxy_Click(System.Object sender, System.EventArgs e)
         {
             SaveOptions();
-            mRemoteNC.Update ud = new mRemoteNC.Update();
+            var ud = new Update();
 
             if (ud.IsProxyOK())
             {

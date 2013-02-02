@@ -6,7 +6,7 @@
       <Value Profile="(Default)">0, 0</Value>
     </Setting>
     <Setting Name="MainFormSize" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Drawing.Size" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">0, 0</Value>
     </Setting>
     <Setting Name="MainFormState" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Windows.Forms.FormWindowState" Scope="User">
       <Value Profile="(Default)">Normal</Value>
@@ -92,7 +92,7 @@
     <Setting Name="ShowProtocolOnTabs" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="ResetPanels" Type="System.Boolean" Scope="User">
+    <Setting Name="ResetPanels" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="UpdateUseProxy" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Boolean" Scope="User">
@@ -203,7 +203,7 @@
     <Setting Name="QuickyTBParentDock" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.String" Scope="User">
       <Value Profile="(Default)">Top</Value>
     </Setting>
-    <Setting Name="ResetToolbars" Type="System.Boolean" Scope="User">
+    <Setting Name="ResetToolbars" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="UseSQLServer" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Boolean" Scope="User">
@@ -473,7 +473,7 @@
     <Setting Name="OverrideUICulture" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="SupportedUICultures" Type="System.String" Scope="Application">
+    <Setting Name="SupportedUICultures" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.String" Scope="Application">
       <Value Profile="(Default)">
         de,en,en-US,es,fr,nl,pl,ru,uk
       </Value>
@@ -506,10 +506,10 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="MainFormRestoreSize" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Drawing.Size" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">0, 0</Value>
     </Setting>
     <Setting Name="MainFormRestoreLocation" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Drawing.Point" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">0, 0</Value>
     </Setting>
     <Setting Name="SQLDatabaseName" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.String" Scope="User">
       <Value Profile="(Default)">mRemoteNG</Value>
@@ -528,34 +528,34 @@
     <Setting Name="InhDefaultUseCredSsp" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="DoubleClickStartsNewConnection" Type="System.Boolean" Scope="User">
+    <Setting Name="DoubleClickStartsNewConnection" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="ConnectStatusTestType" Type="System.String" Scope="User">
+    <Setting Name="ConnectStatusTestType" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.String" Scope="User">
       <Value Profile="(Default)">Ping</Value>
     </Setting>
-    <Setting Name="ConnectStatusAutoupdate" Type="System.Boolean" Scope="User">
+    <Setting Name="ConnectStatusAutoupdate" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="TeamViewerPath" Type="System.String" Scope="User">
+    <Setting Name="TeamViewerPath" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="tsMainLocation" Type="System.Drawing.Point" Scope="User">
+    <Setting Name="tsMainLocation" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">6, 0</Value>
     </Setting>
-    <Setting Name="tsQuickConnectLocation" Type="System.Drawing.Point" Scope="User">
+    <Setting Name="tsQuickConnectLocation" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">560, 0</Value>
     </Setting>
-    <Setting Name="tsQuickTextsLocation" Type="System.Drawing.Point" Scope="User">
+    <Setting Name="tsQuickTextsLocation" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">1078, 0</Value>
     </Setting>
-    <Setting Name="tsExternalToolsLocation" Type="System.Drawing.Point" Scope="User">
+    <Setting Name="tsExternalToolsLocation" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">627, 0</Value>
     </Setting>
-    <Setting Name="ToolStrip1Location" Type="System.Drawing.Point" Scope="User">
+    <Setting Name="ToolStrip1Location" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">191, 0</Value>
     </Setting>
-    <Setting Name="QuickTextToolbarVisible" Type="System.Boolean" Scope="User">
+    <Setting Name="QuickTextToolbarVisible" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>

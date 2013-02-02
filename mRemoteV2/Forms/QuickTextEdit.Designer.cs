@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuickTextEdit));
             this.grpEditor = new System.Windows.Forms.GroupBox();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.txtFilename = new System.Windows.Forms.TextBox();
@@ -158,7 +159,7 @@
             this.cMenAppsAdd.Image = global::My.Resources.Resources.ExtApp_Add;
             this.cMenAppsAdd.Name = "cMenAppsAdd";
             this.cMenAppsAdd.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F4)));
-            this.cMenAppsAdd.Size = new System.Drawing.Size(152, 22);
+            this.cMenAppsAdd.Size = new System.Drawing.Size(147, 22);
             this.cMenAppsAdd.Text = "Add";
             this.cMenAppsAdd.Click += new System.EventHandler(this.cMenAppsAdd_Click);
             // 
@@ -167,7 +168,7 @@
             this.cMenAppsRemove.Image = global::My.Resources.Resources.ExtApp_Delete;
             this.cMenAppsRemove.Name = "cMenAppsRemove";
             this.cMenAppsRemove.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.cMenAppsRemove.Size = new System.Drawing.Size(152, 22);
+            this.cMenAppsRemove.Size = new System.Drawing.Size(147, 22);
             this.cMenAppsRemove.Text = "Remove";
             this.cMenAppsRemove.Click += new System.EventHandler(this.cMenAppsRemove_Click);
             // 
@@ -179,6 +180,7 @@
             this.Controls.Add(this.grpEditor);
             this.Controls.Add(this.lvApps);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "QuickTextEdit";
             this.Text = "QuickTextEdit";
             this.Load += new System.EventHandler(this.QuickTextEdit_Load);
