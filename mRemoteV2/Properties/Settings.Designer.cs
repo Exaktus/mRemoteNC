@@ -2413,5 +2413,18 @@ namespace My {
                 this["QuickTextToolbarVisible"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string RAdminPath {
+            get {
+                return ((string)(this["RAdminPath"]));
+            }
+            set {
+                this["RAdminPath"] = value;
+            }
+        }
     }
 }

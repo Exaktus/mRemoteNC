@@ -13,6 +13,7 @@ using PSTaskDialog;
 using Shell32;
 using WFICALib;
 using mRemoteNC.App;
+using mRemoteNC.Forms;
 
 namespace mRemoteNC.Tools
 {
@@ -179,37 +180,15 @@ namespace mRemoteNC.Tools
             
         }
 
-        public static IEnumerable<string> FindTvPaths()
-        {
-            var res = new List<string>();
-            var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "TeamViewer");
-            if (Directory.Exists(path))
-            {
-                res.AddRange(Directory.GetDirectories(path).Select(dir => Path.Combine(path, dir, "TeamViewer.exe")));
-            }
-            res.Add(Path.Combine(Environment.CurrentDirectory, "TeamViewerPortable", "TeamViewer.exe"));
-            return res.Where(File.Exists);
-        }
-
-        public static IEnumerable<string> FindGeckoPaths()
-        {
-            var res = new List<string>();
-            res.Add(Path.Combine(Environment.CurrentDirectory, "xulrunner", "xpcom.dll"));
-            return res.Where(File.Exists).Select(Path.GetDirectoryName);
-        }
+        
 
         public static void InstallXul()
         {
             try
             {
                 var temFile = Path.GetTempFileName() + ".zip";
-                using (var webClient = new WebClient())
-                {
-                    webClient.DownloadFile(
-                        "http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/xulrunner-16.0.2.en-US.win32.zip",
-                        temFile);
-                }
-                Extract(temFile, ".\\");
+                Misc.DownloadFileVisual("http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/xulrunner-16.0.2.en-US.win32.zip",temFile);
+                Misc.UnZipFile(temFile, ".\\");
                 File.Delete(temFile);
             }
             catch (Exception)
@@ -222,7 +201,7 @@ namespace mRemoteNC.Tools
         {
             try
             {
-                if (!FindTvPaths().Any())
+                if (!Misc.FindTvPaths().Any())
                 {
                     cTaskDialog.CommandButtonResult = 99;
                     cTaskDialog.ShowTaskDialogBox(Language.strPfTVProblemFound,
@@ -247,14 +226,14 @@ namespace mRemoteNC.Tools
                                                   Language.ProblemFixer_FixTVProblem_TeamViewer_found__but_not_set_in_options,
                                                   Language.ProblemFixer_FixTVProblem_You_should_setup_TeamViewer,
                                                   "", "", "", "",
-                                                  Language.ProblemFixer_FixTVProblem_ + FindTvPaths().First(), eTaskDialogButtons.OK, eSysIcons.Information, eSysIcons.Information);
+                                                  Language.ProblemFixer_FixTVProblem_ + Misc.FindTvPaths().First(), eTaskDialogButtons.OK, eSysIcons.Information, eSysIcons.Information);
                     switch (cTaskDialog.CommandButtonResult)
                     {
                         case 0:
                             Runtime.Windows.Show(UI.Window.Type.Options);
                             break;
                         case 1:
-                            Settings.Default.TeamViewerPath = FindTvPaths().First();
+                            Settings.Default.TeamViewerPath = Misc.FindTvPaths().First();
                             Settings.Default.Save();
                             break;
                     }
@@ -266,22 +245,13 @@ namespace mRemoteNC.Tools
             }
         }
 
-        public static void Extract(string zipFileName, string targetPath)
-        {
-            Folder srcFolder = new Shell().NameSpace(Path.GetFullPath(zipFileName));
-            if (!Directory.Exists(targetPath))
-            {
-                Directory.CreateDirectory(targetPath);
-            }
-            Folder dstFolder = new Shell().NameSpace(Path.GetFullPath(targetPath));
-            dstFolder.CopyHere(srcFolder.Items(), 20);
-        }
+        
 
         internal static void FixGeckoProblem()
         {
             try
             {
-                if (!FindGeckoPaths().Any())
+                if (!Misc.FindGeckoPaths().Any())
                 {
                     cTaskDialog.CommandButtonResult = 99;
                     cTaskDialog.ShowTaskDialogBox(Language.ProblemFixer_FixGeckoProblem_Gecko__problem_found,
@@ -315,14 +285,14 @@ namespace mRemoteNC.Tools
                                                   Language.ProblemFixer_FixGeckoProblem_Xulrunner_found__but_not_set_in_options,
                                                   Language.ProblemFixer_FixGeckoProblem_You_should_setup_Xulrunner_path,
                                                   "", "", "", "",
-                                                  Language.ProblemFixer_FixGeckoProblem_OpenOptions + FindGeckoPaths().First() + Language.ProblemFixer_FixGeckoProblem_OpenXULR, eTaskDialogButtons.OK, eSysIcons.Information, eSysIcons.Information);
+                                                  Language.ProblemFixer_FixGeckoProblem_OpenOptions + Misc.FindGeckoPaths().First() + Language.ProblemFixer_FixGeckoProblem_OpenXULR, eTaskDialogButtons.OK, eSysIcons.Information, eSysIcons.Information);
                     switch (cTaskDialog.CommandButtonResult)
                     {
                         case 0:
                             Runtime.Windows.Show(UI.Window.Type.Options);
                             break;
                         case 1:
-                            Settings.Default.XULRunnerPath = FindGeckoPaths().First();
+                            Settings.Default.XULRunnerPath = Misc.FindGeckoPaths().First();
                             Settings.Default.Save();
                             break;
                         case 2:
@@ -340,30 +310,6 @@ namespace mRemoteNC.Tools
                 }
             }
             catch (Exception)
-            {
-                
-            }
-        }
-
-        public static void Registar_Dlls(string filePath)
-        {
-            try
-            {
-                //'/s' : Specifies regsvr32 to run silently and to not display any message boxes.
-                string arg_fileinfo = "/s" + " " + "\"" + filePath + "\"";
-                Process reg = new Process();
-                //This file registers .dll files as command components in the registry.
-                reg.StartInfo.FileName = "regsvr32.exe";
-                reg.StartInfo.Arguments = arg_fileinfo;
-                reg.StartInfo.UseShellExecute = false;
-                reg.StartInfo.CreateNoWindow = true;
-                reg.StartInfo.Verb = "runas";
-                reg.StartInfo.RedirectStandardOutput = true;
-                reg.Start();
-                reg.WaitForExit();
-                reg.Close();
-            }
-            catch (Exception ex)
             {
                 
             }
@@ -391,12 +337,8 @@ namespace mRemoteNC.Tools
                         Process.Start("http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html");
                         break;
                     case 3:
-                        using (var webClient = new WebClient())
-                        {
-                            webClient.DownloadFile(
-                                "http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe",
-                                "putty.exe");
-                        }
+                        Misc.DownloadFileVisual("http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe", "putty.exe");
+                        
                         Settings.Default.UseCustomPuttyPath = true;
                         Settings.Default.CustomPuttyPath = Path.GetFullPath("putty.exe");
                         Settings.Default.Save();
@@ -425,7 +367,7 @@ namespace mRemoteNC.Tools
                     switch (cTaskDialog.CommandButtonResult)
                     {
                         case 0:
-                            Registar_Dlls(Path.GetFullPath("eolwtscom.dll"));
+                            Misc.RegisterDll(Path.GetFullPath("eolwtscom.dll"));
                             break;
                     }
                 }
@@ -449,6 +391,77 @@ namespace mRemoteNC.Tools
             catch (Exception)
             {
                 
+            }
+        }
+
+        public static string RAVer;
+
+        internal static bool IsRAdminOk()
+        {
+            try
+            {
+                if (File.Exists(Settings.Default.RAdminPath))
+                {
+                    RAVer = FileVersionInfo.GetVersionInfo(Settings.Default.RAdminPath).FileVersion;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        internal static void FixRAdminProblem()
+        {
+            try
+            {
+                if (!Misc.FindRAdminPaths().Any())
+                {
+                    cTaskDialog.CommandButtonResult = 99;
+                    cTaskDialog.ShowTaskDialogBox(Language.ProblemFixer_FixRAdminProblem_RAdmin__Problem_found,
+                                                  Language.ProblemFixer_FixRAdminProblem_RAdmin_not_found__neither_installed_nor_portable,
+                                                  Language.ProblemFixer_FixRAdminProblem_You_shold_install_RAdmin_or_setup_RAdmin_path,
+                                                  "", "", "", "",
+                                                  Language.ProblemFixer_FixRAdminProblem_Open_Options_Open_RAdmin_Download_page, eTaskDialogButtons.OK, eSysIcons.Information, eSysIcons.Information);
+                    switch (cTaskDialog.CommandButtonResult)
+                    {
+                        case 0:
+                            Runtime.Windows.Show(UI.Window.Type.Options);
+                            break;
+                        case 1:
+                            Process.Start("http://www.radmin.ru/download/index.php");
+                            break;
+                    }
+                }
+                else
+                {
+                    cTaskDialog.CommandButtonResult = 99;
+                    cTaskDialog.ShowTaskDialogBox(Language.ProblemFixer_FixRAdminProblem_RAdmin__Problem_found,
+                                                  Language.ProblemFixer_FixRAdminProblem_RAdmin_found__but_not_set_in_options,
+                                                  Language.ProblemFixer_FixRAdminProblem_You_should_setup_TeamViewer_path_in_options_or_I_can_do_it_for_you_,
+                                                  "", "", "", "",
+                                                  "Open Options|Setup path:"+ "\r\n"+ Misc.FindRAdminPaths().First(), eTaskDialogButtons.OK, eSysIcons.Information, eSysIcons.Information);
+                    switch (cTaskDialog.CommandButtonResult)
+                    {
+                        case 0:
+                            Runtime.Windows.Show(UI.Window.Type.Options);
+                            break;
+                        case 1:
+                            Settings.Default.RAdminPath = Misc.FindRAdminPaths().First();
+                            Settings.Default.Save();
+                            break;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
             }
         }
     }

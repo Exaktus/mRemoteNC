@@ -168,9 +168,20 @@ namespace mRemoteNC
                         switch (WindowType)
                         {
                             case Type.About:
-                                aboutForm = new About(aboutPanel);
-                                aboutPanel = aboutForm;
-                                aboutForm.Show(frmMain.Default.pnlDock);
+                                if (aboutForm == null || aboutPanel == null | aboutPanel.VisibleState==DockState.Unknown)
+                                {
+                                    aboutForm = new About(aboutPanel);
+                                    aboutPanel = aboutForm;
+                                    aboutForm.Show(frmMain.Default.pnlDock);
+                                }
+                                else
+                                {
+                                    aboutPanel.Focus();
+                                    aboutPanel.Show();
+                                    aboutPanel.BringToFront();
+                                    aboutForm.Focus();
+                                }
+                                
                                 break;
                             case Type.ADImport:
                                 adimportForm = new ADImport(adimportPanel);
@@ -232,9 +243,21 @@ namespace mRemoteNC
                                 connectionStatusForm.Show(frmMain.Default.pnlDock);
                                 break;
                             case Type.QuickText:
-                                quicktextForm = new QuickTextEdit(quicktextPanel);
-                                quicktextPanel = quicktextForm;
-                                quicktextForm.Show(frmMain.Default.pnlDock);
+
+                                if (quicktextPanel != null && (quicktextForm == null || quicktextPanel == null | quicktextPanel.VisibleState == DockState.Unknown))
+                                {
+                                    quicktextForm = new QuickTextEdit(quicktextPanel);
+                                    quicktextPanel = quicktextForm;
+                                    quicktextForm.Show(frmMain.Default.pnlDock);
+                                }
+                                else
+                                {
+                                    quicktextPanel.Focus();
+                                    quicktextPanel.Show();
+                                    quicktextPanel.BringToFront();
+                                    quicktextForm.Focus();
+                                }
+                                
                                 break;
                         }
                     }
@@ -1973,6 +1996,9 @@ namespace mRemoteNC
                         case Protocols.TeamViewer:
                             newProtocol = new TeamViewer();
                             break;
+                        case Protocols.RAdmin:
+                            newProtocol=new RAdmin();
+                            break;
                         case Protocols.ICA:
                             newProtocol = new ICA();
                             break;
@@ -2040,8 +2066,8 @@ namespace mRemoteNC
                         }
                     }
 
-                    newProtocol.Closed += Prot_Event_Closed;
-
+                    newProtocol.Closed +=  (cForm as UI.Window.Connection).Prot_Event_Closed;
+                    newProtocol.Connected += (cForm as UI.Window.Connection).Prot_Event_Connected;
                     newProtocol.Disconnected += Prot_Event_Disconnected;
                     newProtocol.Connected += Prot_Event_Connected;
                     newProtocol.Closed += Prot_Event_Closed;

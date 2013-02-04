@@ -64,7 +64,3 @@ namespace mRemoteNC
         #endregion "Public Methods"
     }
 }
-
-namespace mRemoteNC.Connection
-{
-}

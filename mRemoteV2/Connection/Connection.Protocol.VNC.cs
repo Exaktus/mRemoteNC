@@ -309,7 +309,7 @@ namespace mRemoteNC
 
         private void VNCEvent_ClipboardChanged()
         {
-            this.VNC_Client.FillServerClipboard();
+            if (VNC_Client != null) VNC_Client.FillServerClipboard();
         }
 
         private string VNCEvent_Authenticate()

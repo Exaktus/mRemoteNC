@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -9,17 +9,25 @@ using System.Diagnostics;
 using System.Drawing;
 
 //using mRemoteNC.Runtime;
+using System.Globalization;
 using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows.Forms;
-using AxMSTSCLib;
-using AxWFICALib;
 using Microsoft.VisualBasic;
+using Shell32;
 using mRemoteNC.App;
 using mRemoteNC.App.Info;
 using My;
+using mRemoteNC.Forms;
+using mRemoteNC.Messages;
+using mRemoteNC.Security;
 using Settings = My.Settings;
 
 namespace mRemoteNC.Tools
@@ -64,21 +72,21 @@ namespace mRemoteNC.Tools
 
                 //Use this to get the small icon.
                 hImgSmall = SHGetFileInfo(FileName, 0, ref shinfo, Marshal.SizeOf(shinfo),
-                                          System.Convert.ToInt32(SHGFI_ICON | SHGFI_SMALLICON));
+                                          Convert.ToInt32(SHGFI_ICON | SHGFI_SMALLICON));
 
                 //Use this to get the large icon.
                 //hImgLarge = SHGetFileInfo(fName, 0, ref shinfo, (uint)Marshal.SizeOf(shinfo), SHGFI_ICON | SHGFI_LARGEICON);
 
                 //The icon is returned in the hIcon member of the
                 //shinfo struct.
-                System.Drawing.Icon myIcon;
-                myIcon = System.Drawing.Icon.FromHandle(shinfo.hIcon);
+                Icon myIcon;
+                myIcon = Icon.FromHandle(shinfo.hIcon);
 
                 return myIcon;
             }
             catch (Exception ex)
             {
-                Runtime.MessageCollector.AddMessage(Messages.MessageClass.WarningMsg,
+                Runtime.MessageCollector.AddMessage(MessageClass.WarningMsg,
                                                     (string)
                                                     ("GetIconFromFile failed (Tools.Misc)" + Constants.vbNewLine +
                                                      ex.Message), true);
@@ -95,19 +103,19 @@ namespace mRemoteNC.Tools
             add
             {
                 SQLUpdateCheckFinishedEvent =
-                    (SQLUpdateCheckFinishedEventHandler)System.Delegate.Combine(SQLUpdateCheckFinishedEvent, value);
+                    (SQLUpdateCheckFinishedEventHandler)Delegate.Combine(SQLUpdateCheckFinishedEvent, value);
             }
             remove
             {
                 SQLUpdateCheckFinishedEvent =
-                    (SQLUpdateCheckFinishedEventHandler)System.Delegate.Remove(SQLUpdateCheckFinishedEvent, value);
+                    (SQLUpdateCheckFinishedEventHandler)Delegate.Remove(SQLUpdateCheckFinishedEvent, value);
             }
         }
 
         public static void IsSQLUpdateAvailableBG()
         {
-            System.Threading.Thread t = new System.Threading.Thread(() => IsSQLUpdateAvailable());
-            t.SetApartmentState(System.Threading.ApartmentState.STA);
+            Thread t = new Thread(() => IsSQLUpdateAvailable());
+            t.SetApartmentState(ApartmentState.STA);
             t.Start();
         }
 
@@ -128,7 +136,7 @@ namespace mRemoteNC.Tools
                             (string)
                             ("Data Source=" + Settings.Default.SQLHost + ";Initial Catalog=" +
                              Settings.Default.SQLDatabaseName + ";User Id=" + Settings.Default.SQLUser + ";Password=" +
-                             Security.Crypt.Decrypt((string)Settings.Default.SQLPass, (string)General.EncryptionKey)));
+                             Crypt.Decrypt((string)Settings.Default.SQLPass, (string)General.EncryptionKey)));
                 }
                 else
                 {
@@ -161,7 +169,7 @@ namespace mRemoteNC.Tools
             }
             catch (Exception ex)
             {
-                Runtime.MessageCollector.AddMessage(Messages.MessageClass.WarningMsg,
+                Runtime.MessageCollector.AddMessage(MessageClass.WarningMsg,
                                                     (string)
                                                     ("IsSQLUpdateAvailable failed (Tools.Misc)" + Constants.vbNewLine +
                                                      ex.Message), true);
@@ -207,12 +215,12 @@ namespace mRemoteNC.Tools
             }
 
             cID =
-                System.Convert.ToString(DateTime.Now.Year + LeadingZero(DateTime.Now.Month.ToString()) +
+                Convert.ToString(DateTime.Now.Year + LeadingZero(DateTime.Now.Month.ToString()) +
                                         LeadingZero(DateTime.Now.Day.ToString()) +
                                         LeadingZero(DateTime.Now.Hour.ToString()) +
                                         LeadingZero(DateTime.Now.Minute.ToString()) +
                                         LeadingZero(DateTime.Now.Second.ToString()) +
-                                        LeadingZero(System.Convert.ToString(DateTime.Now.Millisecond + iRnd.ToString())));
+                                        LeadingZero(Convert.ToString(DateTime.Now.Millisecond + iRnd.ToString())));
 
             return cID;
         }
@@ -229,12 +237,50 @@ namespace mRemoteNC.Tools
             }
         }
 
+        internal static IEnumerable<string> FindRAdminPaths()
+        {
+            var res = new List<string>();
+            res.Add(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "Radmin Viewer 3", "Radmin.exe"));
+            return res.Where(File.Exists);
+        }
+
+        public static IEnumerable<string> FindTvPaths()
+        {
+            var res = new List<string>();
+            var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "TeamViewer");
+            if (Directory.Exists(path))
+            {
+                res.AddRange(Directory.GetDirectories(path).Select(dir => Path.Combine(path, dir, "TeamViewer.exe")));
+            }
+            res.Add(Path.Combine(Environment.CurrentDirectory, "TeamViewerPortable", "TeamViewer.exe"));
+            return res.Where(File.Exists);
+        }
+
+        public static IEnumerable<string> FindGeckoPaths()
+        {
+            var res = new List<string>();
+            res.Add(Path.Combine(Environment.CurrentDirectory, "xulrunner", "xpcom.dll"));
+            return res.Where(File.Exists).Select(Path.GetDirectoryName);
+        }
+
+        public static void UnZipFile(string zipFileName, string targetPath)
+        {
+            var fullTargetPath = Path.GetFullPath(targetPath);
+            Folder srcFile = new Shell().NameSpace(Path.GetFullPath(zipFileName));
+            if (!Directory.Exists(fullTargetPath))
+            {
+                Directory.CreateDirectory(fullTargetPath);
+            }
+            Folder dstFolder = new Shell().NameSpace(fullTargetPath);
+            dstFolder.CopyHere(srcFile.Items(), 20);
+        }
+
         public static string DBDate(DateTime Dt)
         {
             string strDate;
 
             strDate =
-                System.Convert.ToString(Dt.Year + LeadingZero(Dt.Month.ToString()) + LeadingZero(Dt.Day.ToString()) +
+                Convert.ToString(Dt.Year + LeadingZero(Dt.Month.ToString()) + LeadingZero(Dt.Day.ToString()) +
                                         " " + LeadingZero(Dt.Hour.ToString()) + ":" + LeadingZero(Dt.Minute.ToString()) +
                                         ":" + LeadingZero(Dt.Second.ToString()));
 
@@ -266,8 +312,8 @@ namespace mRemoteNC.Tools
                 }
             }
 
-            Exception ex = new Exception(string.Format("Can\'t convert {0} to {1}", value, t.ToString()));
-            Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+            Exception ex = new Exception(String.Format("Can\'t convert {0} to {1}", value, t.ToString()));
+            Runtime.MessageCollector.AddMessage(MessageClass.ErrorMsg,
                                                 (string)("StringToEnum failed" + Constants.vbNewLine + ex.Message),
                                                 true);
             throw (ex);
@@ -278,21 +324,21 @@ namespace mRemoteNC.Tools
             try
             {
                 int LeftStart =
-                    System.Convert.ToInt32(
+                    Convert.ToInt32(
                         sender.TabController.SelectedTab.PointToScreen(new Point(sender.TabController.SelectedTab.Left))
                             .X); //Me.Left + Splitter.SplitterDistance + 11
                 int TopStart =
-                    System.Convert.ToInt32(
+                    Convert.ToInt32(
                         sender.TabController.SelectedTab.PointToScreen(new Point(sender.TabController.SelectedTab.Top)).
                             Y); //Me.Top + Splitter.Top + TabController.Top + TabController.SelectedTab.Top * 2 - 3
-                int LeftWidth = System.Convert.ToInt32(sender.TabController.SelectedTab.Width);
+                int LeftWidth = Convert.ToInt32(sender.TabController.SelectedTab.Width);
                 //Me.Width - (Splitter.SplitterDistance + 16)
-                int TopHeight = System.Convert.ToInt32(sender.TabController.SelectedTab.Height);
+                int TopHeight = Convert.ToInt32(sender.TabController.SelectedTab.Height);
                 //Me.Height - (Splitter.Top + TabController.Top + TabController.SelectedTab.Top * 2 + 2)
 
                 Size currentFormSize = new Size(LeftWidth, TopHeight);
                 Bitmap ScreenToBitmap = new Bitmap(LeftWidth, TopHeight);
-                System.Drawing.Graphics gGraphics = System.Drawing.Graphics.FromImage(ScreenToBitmap);
+                Graphics gGraphics = Graphics.FromImage(ScreenToBitmap);
 
                 gGraphics.CopyFromScreen(new Point(LeftStart, TopStart), new Point(0, 0), currentFormSize);
 
@@ -300,7 +346,7 @@ namespace mRemoteNC.Tools
             }
             catch (Exception ex)
             {
-                Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                Runtime.MessageCollector.AddMessage(MessageClass.ErrorMsg,
                                                     (string)
                                                     ("Taking Screenshot failed" + Constants.vbNewLine + ex.Message),
                                                     true);
@@ -311,21 +357,21 @@ namespace mRemoteNC.Tools
 
         public class EnumTypeConverter : EnumConverter
         {
-            private System.Type _enumType;
+            private Type _enumType;
 
-            public EnumTypeConverter(System.Type type)
+            public EnumTypeConverter(Type type)
                 : base(type)
             {
                 _enumType = type;
             }
 
-            public override bool CanConvertTo(ITypeDescriptorContext context, System.Type destType)
+            public override bool CanConvertTo(ITypeDescriptorContext context, Type destType)
             {
                 return destType == typeof(string);
             }
 
-            public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
-                                             object value, System.Type destType)
+            public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture,
+                                             object value, Type destType)
             {
                 FieldInfo fi = _enumType.GetField(Enum.GetName(_enumType, value));
                 DescriptionAttribute dna =
@@ -341,12 +387,12 @@ namespace mRemoteNC.Tools
                 }
             }
 
-            public override bool CanConvertFrom(ITypeDescriptorContext context, System.Type srcType)
+            public override bool CanConvertFrom(ITypeDescriptorContext context, Type srcType)
             {
                 return srcType == typeof(string);
             }
 
-            public override object ConvertFrom(ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
+            public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture,
                                                object value)
             {
                 foreach (FieldInfo fi in _enumType.GetFields())
@@ -386,7 +432,7 @@ namespace mRemoteNC.Tools
                 return base.CanConvertTo(context, destinationType);
             }
 
-            public override object ConvertFrom(ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
+            public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture,
                                                object value)
             {
                 if (value.GetType() == typeof(string))
@@ -407,12 +453,12 @@ namespace mRemoteNC.Tools
                 return base.ConvertFrom(context, culture, value);
             }
 
-            public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
+            public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture,
                                              object value, Type destinationType)
             {
                 if (destinationType == typeof(string))
                 {
-                    return ((System.Convert.ToBoolean(value)) ? Language.strYes : Language.strNo);
+                    return ((Convert.ToBoolean(value)) ? Language.strYes : Language.strNo);
                 }
 
                 return base.ConvertTo(context, culture, value, destinationType);
@@ -423,13 +469,13 @@ namespace mRemoteNC.Tools
                 return true;
             }
 
-            public override System.ComponentModel.TypeConverter.StandardValuesCollection GetStandardValues(
+            public override StandardValuesCollection GetStandardValues(
                 ITypeDescriptorContext context)
             {
                 bool[] bools = new bool[] { true, false };
 
-                System.ComponentModel.TypeConverter.StandardValuesCollection svc =
-                    new System.ComponentModel.TypeConverter.StandardValuesCollection(bools);
+                StandardValuesCollection svc =
+                    new StandardValuesCollection(bools);
 
                 return svc;
             }
@@ -460,7 +506,7 @@ namespace mRemoteNC.Tools
                 }
                 catch (Exception ex)
                 {
-                    Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                    Runtime.MessageCollector.AddMessage(MessageClass.ErrorMsg,
                                                         (string)
                                                         ("Entering Fullscreen failed" + Constants.vbNewLine + ex.Message),
                                                         true);
@@ -485,7 +531,7 @@ namespace mRemoteNC.Tools
                 }
                 catch (Exception ex)
                 {
-                    Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                    Runtime.MessageCollector.AddMessage(MessageClass.ErrorMsg,
                                                         (string)
                                                         ("Exiting Fullscreen failed" + Constants.vbNewLine + ex.Message),
                                                         true);
@@ -513,7 +559,7 @@ namespace mRemoteNC.Tools
                 }
                 catch (Exception ex)
                 {
-                    Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                    Runtime.MessageCollector.AddMessage(MessageClass.ErrorMsg,
                                                         (string)
                                                         ("SetWindowPos failed" + Constants.vbNewLine + ex.Message), true);
                 }
@@ -617,11 +663,89 @@ namespace mRemoteNC.Tools
                 }
                 catch (Exception ex)
                 {
-                    Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                    Runtime.MessageCollector.AddMessage(MessageClass.ErrorMsg,
                                                         (string)
                                                         ("Creating new Args failed" + Constants.vbNewLine + ex.Message),
                                                         true);
                 }
+            }
+        }
+
+        internal static void RegisterDll(string filePath)
+        {
+            try
+            {
+                string arg_fileinfo = String.Format("/s \"{0}\"", filePath);
+                Process reg = new Process
+                    {
+                        StartInfo =
+                            {
+                                FileName = "regsvr32.exe",
+                                Arguments = arg_fileinfo,
+                                UseShellExecute = false,
+                                CreateNoWindow = true,
+                                Verb = "runas",
+                                RedirectStandardOutput = true
+                            }
+                    };
+                reg.Start();
+                reg.WaitForExit();
+                reg.Close();
+            }
+            catch (Exception ex)
+            {
+                
+            }
+        }
+
+        public static void DownloadFileVisual(string url, string path)
+        {
+            using (var webClient = new WebClient())
+            {
+                var frm = new ProgressForm();
+                frm.Text = "Downloading...";
+                webClient.DownloadProgressChanged += (sender, e) =>
+                    { frm.mainProgressBar.Value = e.ProgressPercentage; };
+                webClient.DownloadFileCompleted += (sender, args) =>
+                    {
+                        frm.AllowClose = true;
+                        frm.Close();
+                    };
+                webClient.DownloadFileAsync(new Uri(url), path);
+                frm.ShowDialog(frmMain.defaultInstance);
+            }
+        }
+
+
+        public static bool Pinger(string host)
+        {
+            Ping pingSender = new Ping();
+            PingReply pReply;
+
+            try
+            {
+                pReply = pingSender.Send(host);
+
+                return pReply.Status == IPStatus.Success;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public static bool TestConnect(string host, int port)
+        {
+            try
+            {
+                var client = new TcpClient();
+                client.Connect(host, port);
+                client.Close();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }

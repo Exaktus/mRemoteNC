@@ -2,19 +2,23 @@
 ​	Ported to C#, .Net 4.0
 	Fixed PuTTY tab focus issue
 	Fixed crash on startup after update from version 1.69 and older
+	​Fixed About multiple instance bug
 	Updated WeifenLuo.WinFormsUI.Docking to 2.7
 	The version of the RDP AX client updated to 7
 	ICA broken
 	SQL probably broken
 	Items in context menu on connection tab now hides instead of disabling
 	Integrated IPTextBox
+	Added scanning host for common services
 	Added GeckoFX v16 HTTP(S) Rendering engine - http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/
 	Added option to start connection on app startup
 	Added option to start connection on double click
 	Added basic Serial protocol support (buggy)
 	Added basic TeamViewer support (buggy)
+	Added basic RAdmin support (buggy)
 	Added Connection Status Form
 	Added Quick Text (limited support)
+	Added Components problem fixer
 
 1.70 (XXXX-XX-XX):
   Fix issue MR-77 - VerifyDatabaseVersion (Config.Connections.Save) failed. Version string portion was too short or too long.

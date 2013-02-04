@@ -212,6 +212,61 @@ namespace My {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Open Options|Open RAdmin Download page.
+        /// </summary>
+        internal static string ProblemFixer_FixRAdminProblem_Open_Options_Open_RAdmin_Download_page {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixRAdminProblem_Open_Options_Open_RAdmin_Download_page", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на RAdmin: Problem found.
+        /// </summary>
+        internal static string ProblemFixer_FixRAdminProblem_RAdmin__Problem_found {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixRAdminProblem_RAdmin__Problem_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на RAdmin found, but not set in options.
+        /// </summary>
+        internal static string ProblemFixer_FixRAdminProblem_RAdmin_found__but_not_set_in_options {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixRAdminProblem_RAdmin_found__but_not_set_in_options", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на RAdmin not found, neither installed nor portable.
+        /// </summary>
+        internal static string ProblemFixer_FixRAdminProblem_RAdmin_not_found__neither_installed_nor_portable {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixRAdminProblem_RAdmin_not_found__neither_installed_nor_portable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на You shold install RAdmin or setup RAdmin  path manualy in Options. After installing(or unpacking portable version), set path in mRemoteNC&apos;s Options menu..
+        /// </summary>
+        internal static string ProblemFixer_FixRAdminProblem_You_shold_install_RAdmin_or_setup_RAdmin_path {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixRAdminProblem_You_shold_install_RAdmin_or_setup_RAdmin_path", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на You should setup RAdmin path in options or I can do it for you..
+        /// </summary>
+        internal static string ProblemFixer_FixRAdminProblem_You_should_setup_TeamViewer_path_in_options_or_I_can_do_it_for_you_ {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixRAdminProblem_You_should_setup_TeamViewer_path_in_options_or_I_ca" +
+                        "n_do_it_for_you_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Open Options|Setup path:
         ///.
         /// </summary>
@@ -766,7 +821,7 @@ namespace My {
         ///   Ищет локализованную строку, похожую на The (RDP) Sessions feature requires that you have a registered copy of eolwtscom.dll on your system.
         ///mRemoteNC ships with this component but will not register it automatically unless you run the setup package.
         ///To do register it manually do this: Open up the run dialog (Start - Run) and enter the following: regsvr32 &quot;c:\Program Files\mRemoteNC\eolwtscom.dll&quot; (Where c:\Program Files\mRemoteNC\ is the path to your mRemoteNC installation).
-        ///If you are still not able to pass this check or use the (RDP) Sessions f [остаток строки не уместился]&quot;;.
+        ///If you are still not able to pass this check or use the (RDP) Session [остаток строки не уместился]&quot;;.
         /// </summary>
         internal static string strCcEOLFailed {
             get {
@@ -786,7 +841,7 @@ namespace My {
         /// <summary>
         ///   Ищет локализованную строку, похожую на To use the Gecko Rendering Engine you need to have XULrunner 1.8.1.x and the path to the installation set in your Options.
         ///You can download XULrunner 1.8.1.3 here: ftp://ftp.mozilla.org/pub/xulrunner/releases/1.8.1.3/contrib/win32/
-        /// or http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/ (for GheckoFx v16)When you are finished downloading extract the package to a path of your choice. Then in mRemoteNC go to Tools - Options - Advanced and enter the correct path in the XULrunner path fie [остаток строки не уместился]&quot;;.
+        /// or http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/ (for GheckoFx v16)When you are finished downloading extract the package to a path of your choice. Then in mRemoteNC go to Tools - Options - Advanced and enter the correct path in the XULrunner path f [остаток строки не уместился]&quot;;.
         /// </summary>
         internal static string strCcGeckoFailed {
             get {
@@ -818,7 +873,7 @@ namespace My {
         /// <summary>
         ///   Ищет локализованную строку, похожую на ICA requires that the XenDesktop Online Plugin is installed and that the wfica.ocx library is registered. You can download the client here: http://www.citrix.com/download/
         ///If you have the XenDesktop Online Plugin installed and the check still fails, try to register wfica.ocx manually.
-        ///To do this open up the run dialog (Start - Run) and enter the following: regsvr32 &quot;c:\Program Files\Citrix\ICA Client\wfica.ocx&quot; (Where c:\Program Files\Citrix\ICA Client\ is the path to your XenDesktop Online Plugin installat [остаток строки не уместился]&quot;;.
+        ///To do this open up the run dialog (Start - Run) and enter the following: regsvr32 &quot;c:\Program Files\Citrix\ICA Client\wfica.ocx&quot; (Where c:\Program Files\Citrix\ICA Client\ is the path to your XenDesktop Online Plugin install [остаток строки не уместился]&quot;;.
         /// </summary>
         internal static string strCcICAFailed {
             get {
@@ -867,7 +922,7 @@ namespace My {
         /// <summary>
         ///   Ищет локализованную строку, похожую на For RDP to work properly you need to have at least Remote Desktop Connection (Terminal Services Client) 6.1 installed. You can get it here: http://support.microsoft.com/kb/951616
         ///If you have RDP 6.1 installed and the check still fails, try to register mstscax.dll manually. To do this open up the run dialog (Start - Run) and enter the following: regsvr32 &quot;c:\windows\system32\mstscax.dll&quot; (Where c:\ is your system drive).
-        ///If you still have trouble getting RDP to work please consult the mRemoteNC Forum at http [остаток строки не уместился]&quot;;.
+        ///If you still have trouble getting RDP to work please consult the mRemoteNC Forum at ht [остаток строки не уместился]&quot;;.
         /// </summary>
         internal static string strCcRDPFailed {
             get {
@@ -4622,6 +4677,15 @@ namespace My {
         internal static string strQuickConnectHistoryExistsFailed {
             get {
                 return ResourceManager.GetString("strQuickConnectHistoryExistsFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на RAdmin.
+        /// </summary>
+        internal static string strRAdmin {
+            get {
+                return ResourceManager.GetString("strRAdmin", resourceCulture);
             }
         }
         

@@ -479,6 +479,10 @@ namespace mRemoteNC
 
             private static void SetNodeImageIndex(TreeNode tNode, int ImgIndex)
             {
+                if (tNode==null)
+                {
+                    return;//FixME
+                }
                 if (_TreeView.InvokeRequired)
                 {
                     SetNodeImageIndexCB s = new SetNodeImageIndexCB(SetNodeImageIndex);

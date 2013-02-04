@@ -277,7 +277,9 @@ namespace mRemoteNC
             this.Name = "Connection";
             this.TabText = "UI.Window.Connection";
             this.Text = "UI.Window.Connection";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Connection_FormClosing);
             this.Load += new System.EventHandler(this.Connection_Load);
+            this.Resize += new System.EventHandler(this.Connection_Resize);
             this.cmenTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -357,7 +359,7 @@ namespace mRemoteNC
                         }
 
                         nTab.Selected = true;
-
+                        
                         return nTab;
                     }
                     catch (Exception ex)
@@ -1274,6 +1276,12 @@ namespace mRemoteNC
                                 {
                                     (IC.Protocol as TeamViewer).Resize();
                                 }
+
+                                //TODO
+                                if (IC.Protocol as RAdmin != null && frmMain.Default.Width > 200)
+                                {
+                                    (IC.Protocol as RAdmin).Resize();
+                                }
                             }
                         }
                     }
@@ -1422,6 +1430,12 @@ namespace mRemoteNC
                                                             ("cmenShowPuTTYMenu_Click (UI.Window.Connections) failed" +
                                                              Constants.vbNewLine + ex.Message), true);
                     }
+                }
+
+                public void Prot_Event_Connected(object sender)
+                {
+                    FocusIC();
+                    RefreshIC();
                 }
             }
         }

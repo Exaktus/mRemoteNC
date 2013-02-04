@@ -687,6 +687,53 @@ namespace mRemoteNC
 
                             switch (conI.Protocol)
                             {
+                                case Protocols.RAdmin:
+                                    strHide.Add("ICAEncryption");
+                                    strHide.Add("PuttySession");
+                                    strHide.Add("RenderingEngine");
+                                    strHide.Add("VNCAuthMode");
+                                    strHide.Add("VNCColors");
+                                    strHide.Add("VNCCompression");
+                                    strHide.Add("VNCEncoding");
+                                    strHide.Add("VNCProxyIP");
+                                    strHide.Add("VNCProxyPassword");
+                                    strHide.Add("VNCProxyPort");
+                                    strHide.Add("VNCProxyType");
+                                    strHide.Add("VNCProxyUsername");
+                                    strHide.Add("VNCSmartSizeMode");
+                                    strHide.Add("VNCViewOnly");
+                                    strHide.Add("RDGatewayDomain");
+                                    strHide.Add("RDGatewayHostname");
+                                    strHide.Add("RDGatewayPassword");
+                                    strHide.Add("RDGatewayUseConnectionCredentials");
+                                    strHide.Add("RDGatewayUsername");
+                                    strHide.Add("CacheBitmaps");
+                                    strHide.Add("DisplayThemes");
+                                    strHide.Add("DisplayWallpaper");
+                                    strHide.Add("EnableFontSmoothing");
+                                    strHide.Add("EnableDesktopComposition");
+                                    strHide.Add("Domain");
+                                    strHide.Add("ExtApp");
+                                    strHide.Add("ICAEncryption");
+                                    strHide.Add("RDGatewayDomain");
+                                    strHide.Add("RDGatewayHostname");
+                                    strHide.Add("RDGatewayPassword");
+                                    strHide.Add("RDGatewayUsageMethod");
+                                    strHide.Add("RDGatewayUseConnectionCredentials");
+                                    strHide.Add("RDGatewayUsername");
+                                    strHide.Add("RDPAuthenticationLevel");
+                                    strHide.Add("RedirectDiskDrives");
+                                    strHide.Add("RedirectKeys");
+                                    strHide.Add("RedirectPorts");
+                                    strHide.Add("RedirectPrinters");
+                                    strHide.Add("RedirectSmartCards");
+                                    strHide.Add("RedirectSound");
+                                    strHide.Add("RenderingEngine");
+                                    strHide.Add("Resolution");
+                                    strHide.Add("UseConsoleSession");
+                                    strHide.Add("UseCredSsp");
+                                    break;
+
                                 case Protocols.TeamViewer:
                                     strHide.Add("ICAEncryption");
                                     strHide.Add("PuttySession");

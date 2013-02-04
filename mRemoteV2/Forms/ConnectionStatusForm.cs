@@ -10,6 +10,7 @@ using My;
 using WeifenLuo.WinFormsUI.Docking;
 using mRemoteNC.App;
 using mRemoteNC.Connection;
+using mRemoteNC.Tools;
 
 
 namespace mRemoteNC.Forms
@@ -59,38 +60,6 @@ namespace mRemoteNC.Forms
             }
         }
 
-        public bool Pinger(string host)
-        {
-            Ping pingSender = new Ping();
-            PingReply pReply;
-
-            try
-            {
-                pReply = pingSender.Send(host);
-
-                return pReply.Status == IPStatus.Success;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
-        public bool TestConnect(string host, int port)
-        {
-            try
-            {
-                var client = new TcpClient();
-                client.Connect(host, port);
-                client.Close();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
         bool TestStatus(Connection.Info con)
         {
             try
@@ -99,11 +68,11 @@ namespace mRemoteNC.Forms
                 bool upConnect = true;
                 if (Settings.Default.ConnectStatusTestType == "Ping" || Settings.Default.ConnectStatusTestType == "Both")
                 {
-                    upPing = Pinger(con.Hostname);
+                    upPing = Misc.Pinger(con.Hostname);
                 }
                 if (Settings.Default.ConnectStatusTestType == "Connect" || Settings.Default.ConnectStatusTestType == "Both")
                 {
-                    upConnect = TestConnect(con.Hostname, con.Port);
+                    upConnect = Misc.TestConnect(con.Hostname, con.Port);
                 }
                 return upPing && upConnect;
             }

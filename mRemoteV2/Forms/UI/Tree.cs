@@ -8,7 +8,7 @@ using My;
 using WeifenLuo.WinFormsUI.Docking;
 using mRemoteNC.App;
 using mRemoteNC.Connection;
-using mRemoteNC;
+using mRemoteNC.Forms;
 using mRemoteNC.Messages;
 using mRemoteNC.Tools;
 using mRemoteNC.Tree;
@@ -69,6 +69,7 @@ namespace mRemoteNC
                 internal System.Windows.Forms.ToolStripMenuItem mMenSortAscending;
                 internal System.Windows.Forms.ToolStripMenuItem mMenAddConnection;
                 internal System.Windows.Forms.ToolStripMenuItem mMenAddFolder;
+                private ToolStripMenuItem checkTypicalPPortsToolStripMenuItem;
                 public System.Windows.Forms.TreeView tvConnections;
 
                 private void InitializeComponent()
@@ -101,6 +102,7 @@ namespace mRemoteNC
             this.cMenTreeToolsSortDescending = new System.Windows.Forms.ToolStripMenuItem();
             this.cMenTreeToolsExternalApps = new System.Windows.Forms.ToolStripMenuItem();
             this.cMenTreeSep3 = new System.Windows.Forms.ToolStripSeparator();
+            this.checkTypicalPPortsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cMenTreeDuplicate = new System.Windows.Forms.ToolStripMenuItem();
             this.cMenTreeRename = new System.Windows.Forms.ToolStripMenuItem();
             this.cMenTreeDelete = new System.Windows.Forms.ToolStripMenuItem();
@@ -169,6 +171,7 @@ namespace mRemoteNC
             this.cMenTreeDisconnect,
             this.cMenTreeSep2,
             this.cMenTreeToolsTransferFile,
+            this.checkTypicalPPortsToolStripMenuItem,
             this.cMenTreeToolsImportExport,
             this.cMenTreeToolsSort,
             this.cMenTreeToolsExternalApps,
@@ -181,7 +184,7 @@ namespace mRemoteNC
             this.cMenTreeMoveDown});
             this.cMenTree.Name = "cMenTree";
             this.cMenTree.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.cMenTree.Size = new System.Drawing.Size(187, 336);
+            this.cMenTree.Size = new System.Drawing.Size(187, 380);
             this.cMenTree.Opening += new System.ComponentModel.CancelEventHandler(this.cMenTree_DropDownOpening);
             // 
             // cMenTreeAddConnection
@@ -367,11 +370,20 @@ namespace mRemoteNC
             this.cMenTreeToolsExternalApps.Name = "cMenTreeToolsExternalApps";
             this.cMenTreeToolsExternalApps.Size = new System.Drawing.Size(186, 22);
             this.cMenTreeToolsExternalApps.Text = "External Applications";
+            this.cMenTreeToolsExternalApps.Click += new System.EventHandler(this.cMenTreeToolsExternalApps_Click);
             // 
             // cMenTreeSep3
             // 
             this.cMenTreeSep3.Name = "cMenTreeSep3";
             this.cMenTreeSep3.Size = new System.Drawing.Size(183, 6);
+            // 
+            // checkTypicalPPortsToolStripMenuItem
+            // 
+            this.checkTypicalPPortsToolStripMenuItem.Image = global::My.Resources.Resources.HostStatus_Check;
+            this.checkTypicalPPortsToolStripMenuItem.Name = "checkTypicalPPortsToolStripMenuItem";
+            this.checkTypicalPPortsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.checkTypicalPPortsToolStripMenuItem.Text = "Check typical ports";
+            this.checkTypicalPPortsToolStripMenuItem.Click += new System.EventHandler(this.checkTypicalPPortsToolStripMenuItem_Click);
             // 
             // cMenTreeDuplicate
             // 
@@ -481,6 +493,7 @@ namespace mRemoteNC
             this.msMain.Size = new System.Drawing.Size(192, 24);
             this.msMain.TabIndex = 10;
             this.msMain.Text = "MenuStrip1";
+            this.msMain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.msMain_ItemClicked);
             // 
             // mMenAddConnection
             // 
@@ -1240,7 +1253,7 @@ namespace mRemoteNC
 
                 private void cMenTreeToolsExternalAppsEntry_Click(object sender, System.EventArgs e)
                 {
-                    StartExternalApp((ExternalTool) ((Control) sender).Tag);
+                    StartExternalApp((ExternalTool) ((System.Windows.Forms.ToolStripMenuItem) sender).Tag);
                 }
 
                 private void cMenTreeDuplicate_Click(System.Object sender, System.EventArgs e)
@@ -1276,6 +1289,69 @@ namespace mRemoteNC
                 #endregion
 
                 #region Context Menu Actions
+
+                public void AddConnection(string host,int port, Protocols prot)
+                {
+                    try
+                    {
+                        TreeNode nNode = Node.AddNode(Node.Type.Connection, host + " - " + prot);
+
+                        if (nNode != null)
+                        {
+                            Info nConI = new Info();
+
+
+                            if (tvConnections.Nodes.Count < 1)
+                            {
+                                System.Windows.Forms.TreeNode treeNode1 =
+                                    new System.Windows.Forms.TreeNode("Connections");
+                                treeNode1.Name = "nodeRoot";
+                                treeNode1.Text = "Connections";
+                                this.tvConnections.Nodes.AddRange(new[] { treeNode1 });
+                            }
+
+                            if (this.tvConnections.SelectedNode == null)
+                            {
+                                this.tvConnections.SelectedNode = this.tvConnections.Nodes[0];
+                            }
+                            if (this.tvConnections.SelectedNode.Tag is Container.Info)
+                            {
+                                nConI.Parent = this.tvConnections.SelectedNode.Tag;
+                            }
+                            else
+                            {
+                                nConI.Inherit.TurnOffInheritanceCompletely();
+                            }
+
+                            nConI.Name = host + " - " + port;
+                            nConI.Protocol = prot;
+                            nConI.Hostname = host;
+                            nConI.Port = port;
+                            nConI.TreeNode = nNode;
+                            nNode.Tag = nConI;
+                            Runtime.ConnectionList.Add(nConI);
+
+                            if (Node.GetNodeType(this.tvConnections.SelectedNode) == Node.Type.Connection)
+                            {
+                                this.tvConnections.SelectedNode.Parent.Nodes.Add(nNode);
+                            }
+                            else
+                            {
+                                this.tvConnections.SelectedNode.Nodes.Add(nNode);
+                            }
+
+                            this.tvConnections.SelectedNode = nNode;
+                            //this.tvConnections.SelectedNode.BeginEdit();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                                                            (string)
+                                                            ("AddConnectionEx (UI.Window.Tree) failed" +
+                                                             Constants.vbNewLine + ex.Message), true);
+                    }
+                }
 
                 public void AddConnection()
                 {
@@ -1720,6 +1796,31 @@ namespace mRemoteNC
                 }
 
                 #endregion
+
+                private void checkTypicalPPortsToolStripMenuItem_Click(object sender, EventArgs e)
+                {
+                    if (Runtime.Windows.treeForm.tvConnections.SelectedNode.Tag == null)
+                    {
+                        return;
+                    }
+
+                    if (Node.GetNodeType(Node.SelectedNode) == Node.Type.Connection)
+                    {
+                        var qhs = new QuickHostScanner();
+                        qhs.txtIP.Text=((Info)Runtime.Windows.treeForm.tvConnections.SelectedNode.Tag).Hostname;
+                        qhs.ShowDialog(frmMain.defaultInstance);
+                    }
+                }
+
+                private void cMenTreeToolsExternalApps_Click(object sender, EventArgs e)
+                {
+
+                }
+
+                private void msMain_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+                {
+
+                }
             }
         }
     }

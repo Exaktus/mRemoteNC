@@ -1,5 +1,3 @@
-#region
-
 using System;
 using System.Threading;
 using System.Windows.Forms;
@@ -231,8 +229,8 @@ namespace mRemoteNC
 
         public event ConnectingEventHandler Connecting
         {
-            add { ConnectingEvent = (ConnectingEventHandler)System.Delegate.Combine(ConnectingEvent, value); }
-            remove { ConnectingEvent = (ConnectingEventHandler)System.Delegate.Remove(ConnectingEvent, value); }
+            add { ConnectingEvent = (ConnectingEventHandler) System.Delegate.Combine(ConnectingEvent, value); }
+            remove { ConnectingEvent = (ConnectingEventHandler) System.Delegate.Remove(ConnectingEvent, value); }
         }
 
         public delegate void ConnectedEventHandler(object sender);
@@ -241,8 +239,8 @@ namespace mRemoteNC
 
         public event ConnectedEventHandler Connected
         {
-            add { ConnectedEvent = (ConnectedEventHandler)System.Delegate.Combine(ConnectedEvent, value); }
-            remove { ConnectedEvent = (ConnectedEventHandler)System.Delegate.Remove(ConnectedEvent, value); }
+            add { ConnectedEvent = (ConnectedEventHandler) System.Delegate.Combine(ConnectedEvent, value); }
+            remove { ConnectedEvent = (ConnectedEventHandler) System.Delegate.Remove(ConnectedEvent, value); }
         }
 
         public delegate void DisconnectedEventHandler(object sender, string DisconnectedMessage);
@@ -251,8 +249,8 @@ namespace mRemoteNC
 
         public event DisconnectedEventHandler Disconnected
         {
-            add { DisconnectedEvent = (DisconnectedEventHandler)System.Delegate.Combine(DisconnectedEvent, value); }
-            remove { DisconnectedEvent = (DisconnectedEventHandler)System.Delegate.Remove(DisconnectedEvent, value); }
+            add { DisconnectedEvent = (DisconnectedEventHandler) System.Delegate.Combine(DisconnectedEvent, value); }
+            remove { DisconnectedEvent = (DisconnectedEventHandler) System.Delegate.Remove(DisconnectedEvent, value); }
         }
 
         public delegate void ErrorOccuredEventHandler(object sender, string ErrorMessage);
@@ -261,8 +259,8 @@ namespace mRemoteNC
 
         public event ErrorOccuredEventHandler ErrorOccured
         {
-            add { ErrorOccuredEvent = (ErrorOccuredEventHandler)System.Delegate.Combine(ErrorOccuredEvent, value); }
-            remove { ErrorOccuredEvent = (ErrorOccuredEventHandler)System.Delegate.Remove(ErrorOccuredEvent, value); }
+            add { ErrorOccuredEvent = (ErrorOccuredEventHandler) System.Delegate.Combine(ErrorOccuredEvent, value); }
+            remove { ErrorOccuredEvent = (ErrorOccuredEventHandler) System.Delegate.Remove(ErrorOccuredEvent, value); }
         }
 
         public delegate void ClosingEventHandler(object sender);
@@ -271,8 +269,8 @@ namespace mRemoteNC
 
         public event ClosingEventHandler Closing
         {
-            add { ClosingEvent = (ClosingEventHandler)System.Delegate.Combine(ClosingEvent, value); }
-            remove { ClosingEvent = (ClosingEventHandler)System.Delegate.Remove(ClosingEvent, value); }
+            add { ClosingEvent = (ClosingEventHandler) System.Delegate.Combine(ClosingEvent, value); }
+            remove { ClosingEvent = (ClosingEventHandler) System.Delegate.Remove(ClosingEvent, value); }
         }
 
         public delegate void ClosedEventHandler(object sender);
@@ -281,8 +279,8 @@ namespace mRemoteNC
 
         public event ClosedEventHandler Closed
         {
-            add { ClosedEvent = (ClosedEventHandler)System.Delegate.Combine(ClosedEvent, value); }
-            remove { ClosedEvent = (ClosedEventHandler)System.Delegate.Remove(ClosedEvent, value); }
+            add { ClosedEvent = (ClosedEventHandler) System.Delegate.Combine(ClosedEvent, value); }
+            remove { ClosedEvent = (ClosedEventHandler) System.Delegate.Remove(ClosedEvent, value); }
         }
 
         public void Event_Closing(object sender)
@@ -328,12 +326,4 @@ namespace mRemoteNC
 
         #endregion Events
     }
-}
-
-#endregion
-
-//using mRemoteNC.Runtime;
-
-namespace mRemoteNC.Connection
-{
 }

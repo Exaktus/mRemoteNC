@@ -1786,6 +1786,9 @@ namespace mRemoteNC.Connection
                     case Protocols.TeamViewer:
                         this._Port = 0;
                         break;
+                    case Protocols.RAdmin:
+                        _Port = 4899;
+                        break;
                 }
             }
             catch (Exception ex)

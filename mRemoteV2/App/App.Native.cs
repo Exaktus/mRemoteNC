@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -104,8 +105,8 @@ namespace mRemoteNC
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         public static extern long SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
 
-        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
-        public static extern int SetWindowLong(IntPtr hWnd, int nIndex, long dwNewLong);
+        /*[DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        public static extern int SetWindowLong(IntPtr hWnd, int nIndex, long dwNewLong);*/
 
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         public static extern int ShowWindow(IntPtr hWnd, int nCmdShow);
@@ -422,5 +423,219 @@ namespace mRemoteNC
             }
             return strbTitle.ToString();
         }
+
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
+
+        public static Process PtrToProc(IntPtr wnd)
+        {
+            uint processId;
+            GetWindowThreadProcessId(wnd, out processId);
+            return Process.GetProcessById((int)processId);
+        }
+
+        //public const int GWL_STYLE = -16;
+        public const int GWL_EXSTYLE = -20;
+        public const uint WS_EX_TOPMOST = 0x00000008;
+
+        private delegate bool EnumWindowsDelegate(IntPtr hWnd, IntPtr lParam);
+
+        /// <summary>
+        /// Return titles of all visible windows on desktop
+        /// </summary>
+        /// <returns>List of titles in type of string</returns>
+        private static IEnumerable<string> GetDesktopWindowsTitles()
+        {
+            try
+            {
+               var mylstTitles = new List<string>();
+                EnumWindowsProc delEnumfunc = (hWnd, param) =>
+                {
+                    try
+                    {
+                        string strTitle = GetWindowText(hWnd);
+                        //if (strTitle != "" & IsWindowVisible(hWnd)) //TODO: Имеет ли смысл следующая оптимизация
+                        if (!string.IsNullOrEmpty(strTitle))
+                        {
+                            mylstTitles.Add(strTitle);
+                        }
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex);
+                        return false;
+                    }
+                };
+                bool bSuccessful = EnumWindows(delEnumfunc, IntPtr.Zero); //for current desktop
+                if (bSuccessful)
+                {
+                    return mylstTitles.ToArray();
+                }
+                else
+                {
+                    // Get the last Win32 error code
+                    int nErrorCode = Marshal.GetLastWin32Error();
+                    string strErrMsg = String.Format("EnumDesktopWindows failed with code {0}.", nErrorCode);
+                    throw new Exception(strErrMsg);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return new string[0];
+            }
+        }
+
+        internal static IntPtr GetWHandeleOfWindowWithTextInTitle(string cap)
+        {
+            IntPtr res=IntPtr.Zero;
+            EnumWindowsProc delEnumfunc = (hWnd, param) =>
+                {
+                try
+                {
+                    string strTitle = GetWindowText(hWnd);
+                    if (!string.IsNullOrEmpty(strTitle)&&strTitle.Contains(cap))
+                    {
+                        res = hWnd;
+                    }
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    return false;
+                }
+            };
+            bool bSuccessful = EnumWindows(delEnumfunc, IntPtr.Zero); //for current desktop
+            return res;
+        }
+
+        internal static bool IsWindowOpen(string cap)
+        {
+            try
+            {
+                foreach (var strWindowsTitle in GetDesktopWindowsTitles())
+                {
+                    if (strWindowsTitle.Contains(cap))
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+
+            return false;
+        }
+
+        public static WINDOWPLACEMENT GetPlacement(IntPtr hwnd)
+        {
+            WINDOWPLACEMENT placement = new WINDOWPLACEMENT();
+            placement.length = Marshal.SizeOf(placement);
+            GetWindowPlacement(hwnd, ref placement);
+            return placement;
+        }
+
+        [DllImport("user32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        internal static extern bool GetWindowPlacement(
+            IntPtr hWnd, ref WINDOWPLACEMENT lpwndpl);
+
+        [Serializable]
+        [StructLayout(LayoutKind.Sequential)]
+        public  struct WINDOWPLACEMENT
+        {
+            public int length;
+            public int flags;
+            public ShowWindowCommands showCmd;
+            public System.Drawing.Point ptMinPosition;
+            public System.Drawing.Point ptMaxPosition;
+            public System.Drawing.Rectangle rcNormalPosition;
+        }
+
+        public  enum ShowWindowCommands : int
+        {
+            Hide = 0,
+            Normal = 1,
+            Minimized = 2,
+            Maximized = 3,
+        }
+
+        /// <summary>Enumeration of the different ways of showing a window using 
+        /// ShowWindow</summary>
+        public enum WindowShowStyle : uint
+        {
+            /// <summary>Hides the window and activates another window.</summary>
+            /// <remarks>See SW_HIDE</remarks>
+            Hide = 0,
+            /// <summary>Activates and displays a window. If the window is minimized 
+            /// or maximized, the system restores it to its original size and 
+            /// position. An application should specify this flag when displaying 
+            /// the window for the first time.</summary>
+            /// <remarks>See SW_SHOWNORMAL</remarks>
+            ShowNormal = 1,
+            /// <summary>Activates the window and displays it as a minimized window.</summary>
+            /// <remarks>See SW_SHOWMINIMIZED</remarks>
+            ShowMinimized = 2,
+            /// <summary>Activates the window and displays it as a maximized window.</summary>
+            /// <remarks>See SW_SHOWMAXIMIZED</remarks>
+            ShowMaximized = 3,
+            /// <summary>Maximizes the specified window.</summary>
+            /// <remarks>See SW_MAXIMIZE</remarks>
+            Maximize = 3,
+            /// <summary>Displays a window in its most recent size and position. 
+            /// This value is similar to "ShowNormal", except the window is not 
+            /// actived.</summary>
+            /// <remarks>See SW_SHOWNOACTIVATE</remarks>
+            ShowNormalNoActivate = 4,
+            /// <summary>Activates the window and displays it in its current size 
+            /// and position.</summary>
+            /// <remarks>See SW_SHOW</remarks>
+            Show = 5,
+            /// <summary>Minimizes the specified window and activates the next 
+            /// top-level window in the Z order.</summary>
+            /// <remarks>See SW_MINIMIZE</remarks>
+            Minimize = 6,
+              /// <summary>Displays the window as a minimized window. This value is 
+              /// similar to "ShowMinimized", except the window is not activated.</summary>
+            /// <remarks>See SW_SHOWMINNOACTIVE</remarks>
+            ShowMinNoActivate = 7,
+            /// <summary>Displays the window in its current size and position. This 
+            /// value is similar to "Show", except the window is not activated.</summary>
+            /// <remarks>See SW_SHOWNA</remarks>
+            ShowNoActivate = 8,
+            /// <summary>Activates and displays the window. If the window is 
+            /// minimized or maximized, the system restores it to its original size 
+            /// and position. An application should specify this flag when restoring 
+            /// a minimized window.</summary>
+            /// <remarks>See SW_RESTORE</remarks>
+            Restore = 9,
+            /// <summary>Sets the show state based on the SW_ value specified in the 
+            /// STARTUPINFO structure passed to the CreateProcess function by the 
+            /// program that started the application.</summary>
+            /// <remarks>See SW_SHOWDEFAULT</remarks>
+            ShowDefault = 10,
+            /// <summary>Windows 2000/XP: Minimizes a window, even if the thread 
+            /// that owns the window is hung. This flag should only be used when 
+            /// minimizing windows from a different thread.</summary>
+            /// <remarks>See SW_FORCEMINIMIZE</remarks>
+            ForceMinimized = 11
+        }
+
+        /// <summary>
+        /// Changes an attribute of the specified window. The function also sets the 32-bit (long) value at the specified offset into the extra window memory.
+        /// </summary>
+        /// <param name="hWnd">A handle to the window and, indirectly, the class to which the window belongs..</param>
+        /// <param name="nIndex">The zero-based offset to the value to be set. Valid values are in the range zero through the number of bytes of extra window memory, minus the size of an integer. To set any other value, specify one of the following values: GWL_EXSTYLE, GWL_HINSTANCE, GWL_ID, GWL_STYLE, GWL_USERDATA, GWL_WNDPROC </param>
+        /// <param name="dwNewLong">The replacement value.</param>
+        /// <returns>If the function succeeds, the return value is the previous value of the specified 32-bit integer. 
+        /// If the function fails, the return value is zero. To get extended error information, call GetLastError. </returns>
+        [DllImport("user32.dll")]
+        public static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+        public const uint WS_POPUP = 0x80000000;
+        public const uint WS_MINIMIZEBOX = 0x00020000;
     }
 }

@@ -40,7 +40,11 @@ namespace mRemoteNC
         Serial = 10,
         [LocalizedAttributes.LocalizedDescriptionAttribute("strTeamViewer")]
         TeamViewer = 11,
+        [LocalizedAttributes.LocalizedDescriptionAttribute("strRAdmin")]
+        RAdmin=12,
         [Browsable(false)]
-        NONE = 999
+        NONE = 999,
+
+        
     }
 }

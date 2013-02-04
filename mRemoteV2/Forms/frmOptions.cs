@@ -29,13 +29,10 @@ namespace mRemoteNC
         internal System.Windows.Forms.CheckBox chkEncryptCompleteFile;
         internal System.Windows.Forms.Button btnBrowseXulRunnerPath;
         internal System.Windows.Forms.CheckBox chkUseCustomPuttyPath;
-        internal System.Windows.Forms.TextBox txtXULrunnerPath;
         internal System.Windows.Forms.TextBox txtCustomPuttyPath;
-        internal System.Windows.Forms.Label lblUVNCSCPort;
         internal System.Windows.Forms.Button btnBrowseCustomPuttyPath;
         internal System.Windows.Forms.Label lblSeconds;
         internal System.Windows.Forms.Button btnLaunchPutty;
-        internal System.Windows.Forms.NumericUpDown numUVNCSCPort;
         internal System.Windows.Forms.Label lblConfigurePuttySessions;
         internal System.Windows.Forms.NumericUpDown numPuttyWaitTime;
         internal System.Windows.Forms.CheckBox chkAutomaticReconnect;
@@ -126,6 +123,12 @@ namespace mRemoteNC
         internal Button btnTVPathBrpwse;
         private ComboBox txtTVPath;
         private Label lblTVPath;
+        internal NumericUpDown numUVNCSCPort;
+        internal Label lblUVNCSCPort;
+        internal Button button1;
+        private ComboBox txtRAdminPath;
+        private Label lblRAdminPath;
+        private ComboBox txtXULrunnerPath;
         private System.ComponentModel.IContainer components;
 
         private void InitializeComponent()
@@ -147,13 +150,10 @@ namespace mRemoteNC
             this.chkAutomaticReconnect = new System.Windows.Forms.CheckBox();
             this.numPuttyWaitTime = new System.Windows.Forms.NumericUpDown();
             this.lblConfigurePuttySessions = new System.Windows.Forms.Label();
-            this.numUVNCSCPort = new System.Windows.Forms.NumericUpDown();
             this.btnLaunchPutty = new System.Windows.Forms.Button();
             this.lblSeconds = new System.Windows.Forms.Label();
             this.btnBrowseCustomPuttyPath = new System.Windows.Forms.Button();
-            this.lblUVNCSCPort = new System.Windows.Forms.Label();
             this.txtCustomPuttyPath = new System.Windows.Forms.TextBox();
-            this.txtXULrunnerPath = new System.Windows.Forms.TextBox();
             this.chkUseCustomPuttyPath = new System.Windows.Forms.CheckBox();
             this.btnBrowseXulRunnerPath = new System.Windows.Forms.Button();
             this.chkEncryptCompleteFile = new System.Windows.Forms.CheckBox();
@@ -246,8 +246,13 @@ namespace mRemoteNC
             this.btnTVPathBrpwse = new System.Windows.Forms.Button();
             this.txtTVPath = new System.Windows.Forms.ComboBox();
             this.lblTVPath = new System.Windows.Forms.Label();
+            this.txtXULrunnerPath = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtRAdminPath = new System.Windows.Forms.ComboBox();
+            this.lblRAdminPath = new System.Windows.Forms.Label();
+            this.numUVNCSCPort = new System.Windows.Forms.NumericUpDown();
+            this.lblUVNCSCPort = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numPuttyWaitTime)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUVNCSCPort)).BeginInit();
             this.pnlProxy.SuspendLayout();
             this.pnlProxyBasic.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numProxyPort)).BeginInit();
@@ -266,10 +271,11 @@ namespace mRemoteNC
             this.tabSQLServer.SuspendLayout();
             this.tabUpdates.SuspendLayout();
             this.tabAdvanced.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numUVNCSCPort)).BeginInit();
             this.SuspendLayout();
-            //
+            // 
             // btnOK
-            //
+            // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.Location = new System.Drawing.Point(626, 507);
             this.btnOK.Name = "btnOK";
@@ -278,9 +284,9 @@ namespace mRemoteNC
             this.btnOK.Text = "&OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-            //
+            // 
             // btnCancel
-            //
+            // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(707, 507);
@@ -290,11 +296,11 @@ namespace mRemoteNC
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            //
+            // 
             // lvPages
-            //
+            // 
             this.lvPages.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.lvPages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.lvPages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lvPages.FullRowSelect = true;
             this.lvPages.HideSelection = false;
@@ -319,9 +325,9 @@ namespace mRemoteNC
             this.lvPages.View = System.Windows.Forms.View.Tile;
             this.lvPages.SelectedIndexChanged += new System.EventHandler(this.lvPages_SelectedIndexChanged);
             this.lvPages.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lvPages_MouseUp);
-            //
+            // 
             // imgListPages
-            //
+            // 
             this.imgListPages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgListPages.ImageStream")));
             this.imgListPages.TransparentColor = System.Drawing.Color.Fuchsia;
             this.imgListPages.Images.SetKeyName(0, "StartupExit_Icon.ico");
@@ -331,18 +337,18 @@ namespace mRemoteNC
             this.imgListPages.Images.SetKeyName(4, "database.bmp");
             this.imgListPages.Images.SetKeyName(5, "Update_Icon.ico");
             this.imgListPages.Images.SetKeyName(6, "Config_Icon.ico");
-            //
+            // 
             // lblMaximumPuttyWaitTime
-            //
+            // 
             this.lblMaximumPuttyWaitTime.Location = new System.Drawing.Point(3, 188);
             this.lblMaximumPuttyWaitTime.Name = "lblMaximumPuttyWaitTime";
             this.lblMaximumPuttyWaitTime.Size = new System.Drawing.Size(364, 13);
             this.lblMaximumPuttyWaitTime.TabIndex = 9;
             this.lblMaximumPuttyWaitTime.Text = "Maximum PuTTY wait time:";
             this.lblMaximumPuttyWaitTime.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            //
+            // 
             // chkAutomaticReconnect
-            //
+            // 
             this.chkAutomaticReconnect.AutoSize = true;
             this.chkAutomaticReconnect.Location = new System.Drawing.Point(3, 72);
             this.chkAutomaticReconnect.Name = "chkAutomaticReconnect";
@@ -350,9 +356,9 @@ namespace mRemoteNC
             this.chkAutomaticReconnect.TabIndex = 3;
             this.chkAutomaticReconnect.Text = "Automatically try to reconnect when disconnected from server (RDP && ICA only)";
             this.chkAutomaticReconnect.UseVisualStyleBackColor = true;
-            //
+            // 
             // numPuttyWaitTime
-            //
+            // 
             this.numPuttyWaitTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numPuttyWaitTime.Location = new System.Drawing.Point(373, 186);
             this.numPuttyWaitTime.Maximum = new decimal(new int[] {
@@ -368,36 +374,18 @@ namespace mRemoteNC
             0,
             0,
             0});
-            //
+            // 
             // lblConfigurePuttySessions
-            //
+            // 
             this.lblConfigurePuttySessions.Location = new System.Drawing.Point(3, 157);
             this.lblConfigurePuttySessions.Name = "lblConfigurePuttySessions";
             this.lblConfigurePuttySessions.Size = new System.Drawing.Size(364, 13);
             this.lblConfigurePuttySessions.TabIndex = 7;
             this.lblConfigurePuttySessions.Text = "To configure PuTTY sessions click this button:";
             this.lblConfigurePuttySessions.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            //
-            // numUVNCSCPort
-            //
-            this.numUVNCSCPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numUVNCSCPort.Location = new System.Drawing.Point(373, 291);
-            this.numUVNCSCPort.Maximum = new decimal(new int[] {
-            65535,
-            0,
-            0,
-            0});
-            this.numUVNCSCPort.Name = "numUVNCSCPort";
-            this.numUVNCSCPort.Size = new System.Drawing.Size(72, 20);
-            this.numUVNCSCPort.TabIndex = 16;
-            this.numUVNCSCPort.Value = new decimal(new int[] {
-            5500,
-            0,
-            0,
-            0});
-            //
+            // 
             // btnLaunchPutty
-            //
+            // 
             this.btnLaunchPutty.Image = global::My.Resources.Resources.PuttyConfig;
             this.btnLaunchPutty.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLaunchPutty.Location = new System.Drawing.Point(373, 152);
@@ -408,18 +396,18 @@ namespace mRemoteNC
             this.btnLaunchPutty.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLaunchPutty.UseVisualStyleBackColor = true;
             this.btnLaunchPutty.Click += new System.EventHandler(this.btnLaunchPutty_Click);
-            //
+            // 
             // lblSeconds
-            //
+            // 
             this.lblSeconds.AutoSize = true;
             this.lblSeconds.Location = new System.Drawing.Point(428, 188);
             this.lblSeconds.Name = "lblSeconds";
             this.lblSeconds.Size = new System.Drawing.Size(47, 13);
             this.lblSeconds.TabIndex = 11;
             this.lblSeconds.Text = "seconds";
-            //
+            // 
             // btnBrowseCustomPuttyPath
-            //
+            // 
             this.btnBrowseCustomPuttyPath.Enabled = false;
             this.btnBrowseCustomPuttyPath.Location = new System.Drawing.Point(373, 116);
             this.btnBrowseCustomPuttyPath.Name = "btnBrowseCustomPuttyPath";
@@ -428,35 +416,18 @@ namespace mRemoteNC
             this.btnBrowseCustomPuttyPath.Text = "Browse...";
             this.btnBrowseCustomPuttyPath.UseVisualStyleBackColor = true;
             this.btnBrowseCustomPuttyPath.Click += new System.EventHandler(this.btnBrowseCustomPuttyPath_Click);
-            //
-            // lblUVNCSCPort
-            //
-            this.lblUVNCSCPort.Location = new System.Drawing.Point(3, 293);
-            this.lblUVNCSCPort.Name = "lblUVNCSCPort";
-            this.lblUVNCSCPort.Size = new System.Drawing.Size(364, 13);
-            this.lblUVNCSCPort.TabIndex = 15;
-            this.lblUVNCSCPort.Text = "UltraVNC SingleClick Listening Port:";
-            this.lblUVNCSCPort.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            //
+            // 
             // txtCustomPuttyPath
-            //
+            // 
             this.txtCustomPuttyPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCustomPuttyPath.Enabled = false;
             this.txtCustomPuttyPath.Location = new System.Drawing.Point(21, 118);
             this.txtCustomPuttyPath.Name = "txtCustomPuttyPath";
             this.txtCustomPuttyPath.Size = new System.Drawing.Size(346, 20);
             this.txtCustomPuttyPath.TabIndex = 5;
-            //
-            // txtXULrunnerPath
-            //
-            this.txtXULrunnerPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtXULrunnerPath.Location = new System.Drawing.Point(21, 250);
-            this.txtXULrunnerPath.Name = "txtXULrunnerPath";
-            this.txtXULrunnerPath.Size = new System.Drawing.Size(346, 20);
-            this.txtXULrunnerPath.TabIndex = 13;
-            //
+            // 
             // chkUseCustomPuttyPath
-            //
+            // 
             this.chkUseCustomPuttyPath.AutoSize = true;
             this.chkUseCustomPuttyPath.Location = new System.Drawing.Point(3, 95);
             this.chkUseCustomPuttyPath.Name = "chkUseCustomPuttyPath";
@@ -465,19 +436,19 @@ namespace mRemoteNC
             this.chkUseCustomPuttyPath.Text = "Use custom PuTTY path:";
             this.chkUseCustomPuttyPath.UseVisualStyleBackColor = true;
             this.chkUseCustomPuttyPath.CheckedChanged += new System.EventHandler(this.chkUseCustomPuttyPath_CheckedChanged);
-            //
+            // 
             // btnBrowseXulRunnerPath
-            //
-            this.btnBrowseXulRunnerPath.Location = new System.Drawing.Point(373, 248);
+            // 
+            this.btnBrowseXulRunnerPath.Location = new System.Drawing.Point(373, 274);
             this.btnBrowseXulRunnerPath.Name = "btnBrowseXulRunnerPath";
             this.btnBrowseXulRunnerPath.Size = new System.Drawing.Size(75, 23);
             this.btnBrowseXulRunnerPath.TabIndex = 14;
             this.btnBrowseXulRunnerPath.Text = "Browse...";
             this.btnBrowseXulRunnerPath.UseVisualStyleBackColor = true;
             this.btnBrowseXulRunnerPath.Click += new System.EventHandler(this.btnBrowseXulRunnerPath_Click);
-            //
+            // 
             // chkEncryptCompleteFile
-            //
+            // 
             this.chkEncryptCompleteFile.AutoSize = true;
             this.chkEncryptCompleteFile.Location = new System.Drawing.Point(2, 26);
             this.chkEncryptCompleteFile.Name = "chkEncryptCompleteFile";
@@ -485,18 +456,18 @@ namespace mRemoteNC
             this.chkEncryptCompleteFile.TabIndex = 1;
             this.chkEncryptCompleteFile.Text = "Encrypt complete connection file";
             this.chkEncryptCompleteFile.UseVisualStyleBackColor = true;
-            //
+            // 
             // lblXulRunnerPath
-            //
+            // 
             this.lblXulRunnerPath.AutoSize = true;
-            this.lblXulRunnerPath.Location = new System.Drawing.Point(3, 220);
+            this.lblXulRunnerPath.Location = new System.Drawing.Point(3, 246);
             this.lblXulRunnerPath.Name = "lblXulRunnerPath";
             this.lblXulRunnerPath.Size = new System.Drawing.Size(85, 13);
             this.lblXulRunnerPath.TabIndex = 12;
             this.lblXulRunnerPath.Text = "XULrunner path:";
-            //
+            // 
             // chkAutomaticallyGetSessionInfo
-            //
+            // 
             this.chkAutomaticallyGetSessionInfo.AutoSize = true;
             this.chkAutomaticallyGetSessionInfo.Location = new System.Drawing.Point(3, 49);
             this.chkAutomaticallyGetSessionInfo.Name = "chkAutomaticallyGetSessionInfo";
@@ -504,19 +475,19 @@ namespace mRemoteNC
             this.chkAutomaticallyGetSessionInfo.TabIndex = 2;
             this.chkAutomaticallyGetSessionInfo.Text = "Automatically get session information";
             this.chkAutomaticallyGetSessionInfo.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkWriteLogFile
-            //
+            // 
             this.chkWriteLogFile.AutoSize = true;
             this.chkWriteLogFile.Location = new System.Drawing.Point(3, 3);
             this.chkWriteLogFile.Name = "chkWriteLogFile";
-            this.chkWriteLogFile.Size = new System.Drawing.Size(171, 17);
+            this.chkWriteLogFile.Size = new System.Drawing.Size(170, 17);
             this.chkWriteLogFile.TabIndex = 0;
             this.chkWriteLogFile.Text = "Write log file (mRemoteNC.log)";
             this.chkWriteLogFile.UseVisualStyleBackColor = true;
-            //
+            // 
             // pnlProxy
-            //
+            // 
             this.pnlProxy.Controls.Add(this.pnlProxyBasic);
             this.pnlProxy.Controls.Add(this.chkUseProxyForAutomaticUpdates);
             this.pnlProxy.Controls.Add(this.chkUseProxyAuthentication);
@@ -526,9 +497,9 @@ namespace mRemoteNC
             this.pnlProxy.Name = "pnlProxy";
             this.pnlProxy.Size = new System.Drawing.Size(536, 224);
             this.pnlProxy.TabIndex = 2;
-            //
+            // 
             // pnlProxyBasic
-            //
+            // 
             this.pnlProxyBasic.Controls.Add(this.lblProxyAddress);
             this.pnlProxyBasic.Controls.Add(this.txtProxyAddress);
             this.pnlProxyBasic.Controls.Add(this.lblProxyPort);
@@ -538,26 +509,26 @@ namespace mRemoteNC
             this.pnlProxyBasic.Name = "pnlProxyBasic";
             this.pnlProxyBasic.Size = new System.Drawing.Size(512, 40);
             this.pnlProxyBasic.TabIndex = 1;
-            //
+            // 
             // lblProxyAddress
-            //
+            // 
             this.lblProxyAddress.Location = new System.Drawing.Point(8, 4);
             this.lblProxyAddress.Name = "lblProxyAddress";
             this.lblProxyAddress.Size = new System.Drawing.Size(96, 24);
             this.lblProxyAddress.TabIndex = 0;
             this.lblProxyAddress.Text = "Address:";
             this.lblProxyAddress.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            //
+            // 
             // txtProxyAddress
-            //
+            // 
             this.txtProxyAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtProxyAddress.Location = new System.Drawing.Point(104, 8);
             this.txtProxyAddress.Name = "txtProxyAddress";
             this.txtProxyAddress.Size = new System.Drawing.Size(240, 20);
             this.txtProxyAddress.TabIndex = 1;
-            //
+            // 
             // lblProxyPort
-            //
+            // 
             this.lblProxyPort.Location = new System.Drawing.Point(350, 5);
             this.lblProxyPort.Name = "lblProxyPort";
             this.lblProxyPort.Size = new System.Drawing.Size(64, 23);
@@ -565,9 +536,9 @@ namespace mRemoteNC
             this.lblProxyPort.Text = "Port:";
             this.lblProxyPort.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblProxyPort.Click += new System.EventHandler(this.lblProxyPort_Click);
-            //
+            // 
             // numProxyPort
-            //
+            // 
             this.numProxyPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numProxyPort.Location = new System.Drawing.Point(420, 8);
             this.numProxyPort.Maximum = new decimal(new int[] {
@@ -588,9 +559,9 @@ namespace mRemoteNC
             0,
             0,
             0});
-            //
+            // 
             // chkUseProxyForAutomaticUpdates
-            //
+            // 
             this.chkUseProxyForAutomaticUpdates.AutoSize = true;
             this.chkUseProxyForAutomaticUpdates.Location = new System.Drawing.Point(8, 8);
             this.chkUseProxyForAutomaticUpdates.Name = "chkUseProxyForAutomaticUpdates";
@@ -599,9 +570,9 @@ namespace mRemoteNC
             this.chkUseProxyForAutomaticUpdates.Text = "Use a proxy server to connect";
             this.chkUseProxyForAutomaticUpdates.UseVisualStyleBackColor = true;
             this.chkUseProxyForAutomaticUpdates.CheckedChanged += new System.EventHandler(this.chkUseProxyForAutomaticUpdates_CheckedChanged);
-            //
+            // 
             // chkUseProxyAuthentication
-            //
+            // 
             this.chkUseProxyAuthentication.AutoSize = true;
             this.chkUseProxyAuthentication.Enabled = false;
             this.chkUseProxyAuthentication.Location = new System.Drawing.Point(32, 80);
@@ -611,9 +582,9 @@ namespace mRemoteNC
             this.chkUseProxyAuthentication.Text = "This proxy server requires authentication";
             this.chkUseProxyAuthentication.UseVisualStyleBackColor = true;
             this.chkUseProxyAuthentication.CheckedChanged += new System.EventHandler(this.chkUseProxyAuthentication_CheckedChanged);
-            //
+            // 
             // pnlProxyAuthentication
-            //
+            // 
             this.pnlProxyAuthentication.Controls.Add(this.lblProxyUsername);
             this.pnlProxyAuthentication.Controls.Add(this.txtProxyUsername);
             this.pnlProxyAuthentication.Controls.Add(this.lblProxyPassword);
@@ -623,44 +594,44 @@ namespace mRemoteNC
             this.pnlProxyAuthentication.Name = "pnlProxyAuthentication";
             this.pnlProxyAuthentication.Size = new System.Drawing.Size(512, 72);
             this.pnlProxyAuthentication.TabIndex = 3;
-            //
+            // 
             // lblProxyUsername
-            //
+            // 
             this.lblProxyUsername.Location = new System.Drawing.Point(8, 4);
             this.lblProxyUsername.Name = "lblProxyUsername";
             this.lblProxyUsername.Size = new System.Drawing.Size(96, 24);
             this.lblProxyUsername.TabIndex = 0;
             this.lblProxyUsername.Text = "Username:";
             this.lblProxyUsername.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            //
+            // 
             // txtProxyUsername
-            //
+            // 
             this.txtProxyUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtProxyUsername.Location = new System.Drawing.Point(104, 8);
             this.txtProxyUsername.Name = "txtProxyUsername";
             this.txtProxyUsername.Size = new System.Drawing.Size(240, 20);
             this.txtProxyUsername.TabIndex = 1;
-            //
+            // 
             // lblProxyPassword
-            //
+            // 
             this.lblProxyPassword.Location = new System.Drawing.Point(8, 36);
             this.lblProxyPassword.Name = "lblProxyPassword";
             this.lblProxyPassword.Size = new System.Drawing.Size(96, 24);
             this.lblProxyPassword.TabIndex = 2;
             this.lblProxyPassword.Text = "Password:";
             this.lblProxyPassword.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            //
+            // 
             // txtProxyPassword
-            //
+            // 
             this.txtProxyPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtProxyPassword.Location = new System.Drawing.Point(104, 40);
             this.txtProxyPassword.Name = "txtProxyPassword";
             this.txtProxyPassword.Size = new System.Drawing.Size(240, 20);
             this.txtProxyPassword.TabIndex = 3;
             this.txtProxyPassword.UseSystemPasswordChar = true;
-            //
+            // 
             // btnTestProxy
-            //
+            // 
             this.btnTestProxy.Location = new System.Drawing.Point(8, 184);
             this.btnTestProxy.Name = "btnTestProxy";
             this.btnTestProxy.Size = new System.Drawing.Size(120, 32);
@@ -668,9 +639,9 @@ namespace mRemoteNC
             this.btnTestProxy.Text = "Test Proxy";
             this.btnTestProxy.UseVisualStyleBackColor = true;
             this.btnTestProxy.Click += new System.EventHandler(this.btnTestProxy_Click);
-            //
+            // 
             // pnlUpdateCheck
-            //
+            // 
             this.pnlUpdateCheck.Controls.Add(this.btnUpdateCheckNow);
             this.pnlUpdateCheck.Controls.Add(this.chkCheckForUpdatesOnStartup);
             this.pnlUpdateCheck.Controls.Add(this.cboUpdateCheckFrequency);
@@ -678,9 +649,9 @@ namespace mRemoteNC
             this.pnlUpdateCheck.Name = "pnlUpdateCheck";
             this.pnlUpdateCheck.Size = new System.Drawing.Size(536, 120);
             this.pnlUpdateCheck.TabIndex = 1;
-            //
+            // 
             // btnUpdateCheckNow
-            //
+            // 
             this.btnUpdateCheckNow.Location = new System.Drawing.Point(8, 80);
             this.btnUpdateCheckNow.Name = "btnUpdateCheckNow";
             this.btnUpdateCheckNow.Size = new System.Drawing.Size(120, 32);
@@ -688,9 +659,9 @@ namespace mRemoteNC
             this.btnUpdateCheckNow.Text = "Check Now";
             this.btnUpdateCheckNow.UseVisualStyleBackColor = true;
             this.btnUpdateCheckNow.Click += new System.EventHandler(this.btnUpdateCheckNow_Click);
-            //
+            // 
             // chkCheckForUpdatesOnStartup
-            //
+            // 
             this.chkCheckForUpdatesOnStartup.AutoSize = true;
             this.chkCheckForUpdatesOnStartup.Location = new System.Drawing.Point(8, 8);
             this.chkCheckForUpdatesOnStartup.Name = "chkCheckForUpdatesOnStartup";
@@ -699,27 +670,27 @@ namespace mRemoteNC
             this.chkCheckForUpdatesOnStartup.Text = "Check for updates and announcements";
             this.chkCheckForUpdatesOnStartup.UseVisualStyleBackColor = true;
             this.chkCheckForUpdatesOnStartup.CheckedChanged += new System.EventHandler(this.chkCheckForUpdatesOnStartup_CheckedChanged);
-            //
+            // 
             // cboUpdateCheckFrequency
-            //
+            // 
             this.cboUpdateCheckFrequency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboUpdateCheckFrequency.FormattingEnabled = true;
             this.cboUpdateCheckFrequency.Location = new System.Drawing.Point(48, 40);
             this.cboUpdateCheckFrequency.Name = "cboUpdateCheckFrequency";
             this.cboUpdateCheckFrequency.Size = new System.Drawing.Size(128, 21);
             this.cboUpdateCheckFrequency.TabIndex = 1;
-            //
+            // 
             // lblUpdatesExplanation
-            //
+            // 
             this.lblUpdatesExplanation.Location = new System.Drawing.Point(3, 0);
             this.lblUpdatesExplanation.Name = "lblUpdatesExplanation";
             this.lblUpdatesExplanation.Size = new System.Drawing.Size(536, 40);
             this.lblUpdatesExplanation.TabIndex = 0;
             this.lblUpdatesExplanation.Text = "mRemoteNC can periodically connect to the mRemoteNC website to check for updates " +
     "and product announcements.";
-            //
+            // 
             // chkHostnameLikeDisplayName
-            //
+            // 
             this.chkHostnameLikeDisplayName.AutoSize = true;
             this.chkHostnameLikeDisplayName.Location = new System.Drawing.Point(3, 72);
             this.chkHostnameLikeDisplayName.Name = "chkHostnameLikeDisplayName";
@@ -727,9 +698,9 @@ namespace mRemoteNC
             this.chkHostnameLikeDisplayName.TabIndex = 2;
             this.chkHostnameLikeDisplayName.Text = "Set hostname like display name when creating new connections";
             this.chkHostnameLikeDisplayName.UseVisualStyleBackColor = true;
-            //
+            // 
             // pnlAutoSave
-            //
+            // 
             this.pnlAutoSave.Controls.Add(this.lblAutoSave1);
             this.pnlAutoSave.Controls.Add(this.numAutoSave);
             this.pnlAutoSave.Controls.Add(this.lblAutoSave2);
@@ -737,18 +708,18 @@ namespace mRemoteNC
             this.pnlAutoSave.Name = "pnlAutoSave";
             this.pnlAutoSave.Size = new System.Drawing.Size(500, 29);
             this.pnlAutoSave.TabIndex = 4;
-            //
+            // 
             // lblAutoSave1
-            //
+            // 
             this.lblAutoSave1.Location = new System.Drawing.Point(6, 9);
             this.lblAutoSave1.Name = "lblAutoSave1";
             this.lblAutoSave1.Size = new System.Drawing.Size(288, 13);
             this.lblAutoSave1.TabIndex = 0;
             this.lblAutoSave1.Text = "Auto Save every:";
             this.lblAutoSave1.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            //
+            // 
             // numAutoSave
-            //
+            // 
             this.numAutoSave.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numAutoSave.Location = new System.Drawing.Point(300, 7);
             this.numAutoSave.Maximum = new decimal(new int[] {
@@ -759,18 +730,18 @@ namespace mRemoteNC
             this.numAutoSave.Name = "numAutoSave";
             this.numAutoSave.Size = new System.Drawing.Size(53, 20);
             this.numAutoSave.TabIndex = 1;
-            //
+            // 
             // lblAutoSave2
-            //
+            // 
             this.lblAutoSave2.AutoSize = true;
             this.lblAutoSave2.Location = new System.Drawing.Point(359, 9);
             this.lblAutoSave2.Name = "lblAutoSave2";
             this.lblAutoSave2.Size = new System.Drawing.Size(135, 13);
             this.lblAutoSave2.TabIndex = 2;
             this.lblAutoSave2.Text = "Minutes (0 means disabled)";
-            //
+            // 
             // chkSingleClickOnOpenedConnectionSwitchesToIt
-            //
+            // 
             this.chkSingleClickOnOpenedConnectionSwitchesToIt.AutoSize = true;
             this.chkSingleClickOnOpenedConnectionSwitchesToIt.Location = new System.Drawing.Point(3, 49);
             this.chkSingleClickOnOpenedConnectionSwitchesToIt.Name = "chkSingleClickOnOpenedConnectionSwitchesToIt";
@@ -778,9 +749,9 @@ namespace mRemoteNC
             this.chkSingleClickOnOpenedConnectionSwitchesToIt.TabIndex = 1;
             this.chkSingleClickOnOpenedConnectionSwitchesToIt.Text = "Single click on opened connection switches to it";
             this.chkSingleClickOnOpenedConnectionSwitchesToIt.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkSingleClickOnConnectionOpensIt
-            //
+            // 
             this.chkSingleClickOnConnectionOpensIt.AutoSize = true;
             this.chkSingleClickOnConnectionOpensIt.Location = new System.Drawing.Point(3, 3);
             this.chkSingleClickOnConnectionOpensIt.Name = "chkSingleClickOnConnectionOpensIt";
@@ -788,27 +759,27 @@ namespace mRemoteNC
             this.chkSingleClickOnConnectionOpensIt.TabIndex = 0;
             this.chkSingleClickOnConnectionOpensIt.Text = "Single click on connection opens it";
             this.chkSingleClickOnConnectionOpensIt.UseVisualStyleBackColor = true;
-            //
+            // 
             // pnlRdpReconnectionCount
-            //
+            // 
             this.pnlRdpReconnectionCount.Controls.Add(this.lblRdpReconnectionCount);
             this.pnlRdpReconnectionCount.Controls.Add(this.numRdpReconnectionCount);
             this.pnlRdpReconnectionCount.Location = new System.Drawing.Point(3, 95);
             this.pnlRdpReconnectionCount.Name = "pnlRdpReconnectionCount";
             this.pnlRdpReconnectionCount.Size = new System.Drawing.Size(500, 29);
             this.pnlRdpReconnectionCount.TabIndex = 3;
-            //
+            // 
             // lblRdpReconnectionCount
-            //
+            // 
             this.lblRdpReconnectionCount.Location = new System.Drawing.Point(6, 9);
             this.lblRdpReconnectionCount.Name = "lblRdpReconnectionCount";
             this.lblRdpReconnectionCount.Size = new System.Drawing.Size(288, 13);
             this.lblRdpReconnectionCount.TabIndex = 0;
             this.lblRdpReconnectionCount.Text = "RDP Reconnection Count";
             this.lblRdpReconnectionCount.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            //
+            // 
             // numRdpReconnectionCount
-            //
+            // 
             this.numRdpReconnectionCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numRdpReconnectionCount.Location = new System.Drawing.Point(300, 7);
             this.numRdpReconnectionCount.Maximum = new decimal(new int[] {
@@ -824,9 +795,9 @@ namespace mRemoteNC
             0,
             0,
             0});
-            //
+            // 
             // chkAlwaysShowPanelSelectionDlg
-            //
+            // 
             this.chkAlwaysShowPanelSelectionDlg.AutoSize = true;
             this.chkAlwaysShowPanelSelectionDlg.Location = new System.Drawing.Point(3, 95);
             this.chkAlwaysShowPanelSelectionDlg.Name = "chkAlwaysShowPanelSelectionDlg";
@@ -834,9 +805,9 @@ namespace mRemoteNC
             this.chkAlwaysShowPanelSelectionDlg.TabIndex = 4;
             this.chkAlwaysShowPanelSelectionDlg.Text = "Always show panel selection dialog when opening connectins";
             this.chkAlwaysShowPanelSelectionDlg.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkShowLogonInfoOnTabs
-            //
+            // 
             this.chkShowLogonInfoOnTabs.AutoSize = true;
             this.chkShowLogonInfoOnTabs.Location = new System.Drawing.Point(3, 26);
             this.chkShowLogonInfoOnTabs.Name = "chkShowLogonInfoOnTabs";
@@ -844,9 +815,9 @@ namespace mRemoteNC
             this.chkShowLogonInfoOnTabs.TabIndex = 1;
             this.chkShowLogonInfoOnTabs.Text = "Show logon information on tab names";
             this.chkShowLogonInfoOnTabs.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkDoubleClickClosesTab
-            //
+            // 
             this.chkDoubleClickClosesTab.AutoSize = true;
             this.chkDoubleClickClosesTab.Location = new System.Drawing.Point(3, 72);
             this.chkDoubleClickClosesTab.Name = "chkDoubleClickClosesTab";
@@ -854,9 +825,9 @@ namespace mRemoteNC
             this.chkDoubleClickClosesTab.TabIndex = 3;
             this.chkDoubleClickClosesTab.Text = "Double click on tab closes it";
             this.chkDoubleClickClosesTab.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkShowProtocolOnTabs
-            //
+            // 
             this.chkShowProtocolOnTabs.AutoSize = true;
             this.chkShowProtocolOnTabs.Location = new System.Drawing.Point(3, 49);
             this.chkShowProtocolOnTabs.Name = "chkShowProtocolOnTabs";
@@ -864,9 +835,9 @@ namespace mRemoteNC
             this.chkShowProtocolOnTabs.TabIndex = 2;
             this.chkShowProtocolOnTabs.Text = "Show protocols on tab names";
             this.chkShowProtocolOnTabs.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkOpenNewTabRightOfSelected
-            //
+            // 
             this.chkOpenNewTabRightOfSelected.AutoSize = true;
             this.chkOpenNewTabRightOfSelected.Location = new System.Drawing.Point(3, 3);
             this.chkOpenNewTabRightOfSelected.Name = "chkOpenNewTabRightOfSelected";
@@ -874,9 +845,9 @@ namespace mRemoteNC
             this.chkOpenNewTabRightOfSelected.TabIndex = 0;
             this.chkOpenNewTabRightOfSelected.Text = "Open new tab to the right of the currently selected tab";
             this.chkOpenNewTabRightOfSelected.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkMCWarnings
-            //
+            // 
             this.chkMCWarnings.AutoSize = true;
             this.chkMCWarnings.Enabled = false;
             this.chkMCWarnings.Location = new System.Drawing.Point(19, 214);
@@ -885,9 +856,9 @@ namespace mRemoteNC
             this.chkMCWarnings.TabIndex = 8;
             this.chkMCWarnings.Text = "Warnings";
             this.chkMCWarnings.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkMCErrors
-            //
+            // 
             this.chkMCErrors.AutoSize = true;
             this.chkMCErrors.Enabled = false;
             this.chkMCErrors.Location = new System.Drawing.Point(19, 237);
@@ -896,9 +867,9 @@ namespace mRemoteNC
             this.chkMCErrors.TabIndex = 9;
             this.chkMCErrors.Text = "Errors";
             this.chkMCErrors.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkMCInformation
-            //
+            // 
             this.chkMCInformation.AutoSize = true;
             this.chkMCInformation.Enabled = false;
             this.chkMCInformation.Location = new System.Drawing.Point(19, 191);
@@ -907,18 +878,18 @@ namespace mRemoteNC
             this.chkMCInformation.TabIndex = 7;
             this.chkMCInformation.Text = "Informations";
             this.chkMCInformation.UseVisualStyleBackColor = true;
-            //
+            // 
             // lblSwitchToErrorsAndInfos
-            //
+            // 
             this.lblSwitchToErrorsAndInfos.AutoSize = true;
             this.lblSwitchToErrorsAndInfos.Location = new System.Drawing.Point(3, 171);
             this.lblSwitchToErrorsAndInfos.Name = "lblSwitchToErrorsAndInfos";
             this.lblSwitchToErrorsAndInfos.Size = new System.Drawing.Size(159, 13);
             this.lblSwitchToErrorsAndInfos.TabIndex = 6;
             this.lblSwitchToErrorsAndInfos.Text = "Switch to Notifications panel on:";
-            //
+            // 
             // chkUseOnlyErrorsAndInfosPanel
-            //
+            // 
             this.chkUseOnlyErrorsAndInfosPanel.AutoSize = true;
             this.chkUseOnlyErrorsAndInfosPanel.Location = new System.Drawing.Point(3, 146);
             this.chkUseOnlyErrorsAndInfosPanel.Name = "chkUseOnlyErrorsAndInfosPanel";
@@ -927,9 +898,9 @@ namespace mRemoteNC
             this.chkUseOnlyErrorsAndInfosPanel.Text = "Use only Notifications panel (no messagebox popups)";
             this.chkUseOnlyErrorsAndInfosPanel.UseVisualStyleBackColor = true;
             this.chkUseOnlyErrorsAndInfosPanel.CheckedChanged += new System.EventHandler(this.chkUseOnlyErrorsAndInfosPanel_CheckedChanged);
-            //
+            // 
             // chkShowFullConnectionsFilePathInTitle
-            //
+            // 
             this.chkShowFullConnectionsFilePathInTitle.AutoSize = true;
             this.chkShowFullConnectionsFilePathInTitle.Location = new System.Drawing.Point(3, 128);
             this.chkShowFullConnectionsFilePathInTitle.Name = "chkShowFullConnectionsFilePathInTitle";
@@ -937,9 +908,9 @@ namespace mRemoteNC
             this.chkShowFullConnectionsFilePathInTitle.TabIndex = 4;
             this.chkShowFullConnectionsFilePathInTitle.Text = "Show full connections file path in window title";
             this.chkShowFullConnectionsFilePathInTitle.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkShowSystemTrayIcon
-            //
+            // 
             this.chkShowSystemTrayIcon.AutoSize = true;
             this.chkShowSystemTrayIcon.Location = new System.Drawing.Point(3, 176);
             this.chkShowSystemTrayIcon.Name = "chkShowSystemTrayIcon";
@@ -947,9 +918,9 @@ namespace mRemoteNC
             this.chkShowSystemTrayIcon.TabIndex = 5;
             this.chkShowSystemTrayIcon.Text = "Always show System Tray Icon";
             this.chkShowSystemTrayIcon.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkMinimizeToSystemTray
-            //
+            // 
             this.chkMinimizeToSystemTray.AutoSize = true;
             this.chkMinimizeToSystemTray.Location = new System.Drawing.Point(3, 200);
             this.chkMinimizeToSystemTray.Name = "chkMinimizeToSystemTray";
@@ -957,9 +928,9 @@ namespace mRemoteNC
             this.chkMinimizeToSystemTray.TabIndex = 6;
             this.chkMinimizeToSystemTray.Text = "Minimize to System Tray";
             this.chkMinimizeToSystemTray.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkShowDescriptionTooltipsInTree
-            //
+            // 
             this.chkShowDescriptionTooltipsInTree.AutoSize = true;
             this.chkShowDescriptionTooltipsInTree.Location = new System.Drawing.Point(3, 104);
             this.chkShowDescriptionTooltipsInTree.Name = "chkShowDescriptionTooltipsInTree";
@@ -967,18 +938,18 @@ namespace mRemoteNC
             this.chkShowDescriptionTooltipsInTree.TabIndex = 3;
             this.chkShowDescriptionTooltipsInTree.Text = "Show description tooltips in connection tree";
             this.chkShowDescriptionTooltipsInTree.UseVisualStyleBackColor = true;
-            //
+            // 
             // lblLanguage
-            //
+            // 
             this.lblLanguage.AutoSize = true;
             this.lblLanguage.Location = new System.Drawing.Point(3, 0);
             this.lblLanguage.Name = "lblLanguage";
             this.lblLanguage.Size = new System.Drawing.Size(55, 13);
             this.lblLanguage.TabIndex = 0;
             this.lblLanguage.Text = "Language";
-            //
+            // 
             // cboLanguage
-            //
+            // 
             this.cboLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLanguage.FormattingEnabled = true;
             this.cboLanguage.Location = new System.Drawing.Point(3, 24);
@@ -986,18 +957,18 @@ namespace mRemoteNC
             this.cboLanguage.Size = new System.Drawing.Size(304, 21);
             this.cboLanguage.Sorted = true;
             this.cboLanguage.TabIndex = 1;
-            //
+            // 
             // lblLanguageRestartRequired
-            //
+            // 
             this.lblLanguageRestartRequired.AutoSize = true;
             this.lblLanguageRestartRequired.Location = new System.Drawing.Point(3, 56);
             this.lblLanguageRestartRequired.Name = "lblLanguageRestartRequired";
-            this.lblLanguageRestartRequired.Size = new System.Drawing.Size(380, 13);
+            this.lblLanguageRestartRequired.Size = new System.Drawing.Size(379, 13);
             this.lblLanguageRestartRequired.TabIndex = 2;
             this.lblLanguageRestartRequired.Text = "mRemoteNC must be restarted before changes to the language will take effect.";
-            //
+            // 
             // chkReconnectOnStart
-            //
+            // 
             this.chkReconnectOnStart.AutoSize = true;
             this.chkReconnectOnStart.Location = new System.Drawing.Point(3, 75);
             this.chkReconnectOnStart.Name = "chkReconnectOnStart";
@@ -1005,9 +976,9 @@ namespace mRemoteNC
             this.chkReconnectOnStart.TabIndex = 3;
             this.chkReconnectOnStart.Text = "Reconnect to previously opened sessions on startup";
             this.chkReconnectOnStart.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkSingleInstance
-            //
+            // 
             this.chkSingleInstance.AutoSize = true;
             this.chkSingleInstance.Location = new System.Drawing.Point(3, 99);
             this.chkSingleInstance.Name = "chkSingleInstance";
@@ -1015,9 +986,9 @@ namespace mRemoteNC
             this.chkSingleInstance.TabIndex = 4;
             this.chkSingleInstance.Text = "Allow only a single instance of the application (mRemote restart required)";
             this.chkSingleInstance.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkConfirmExit
-            //
+            // 
             this.chkConfirmExit.AutoSize = true;
             this.chkConfirmExit.Location = new System.Drawing.Point(3, 27);
             this.chkConfirmExit.Name = "chkConfirmExit";
@@ -1025,9 +996,9 @@ namespace mRemoteNC
             this.chkConfirmExit.TabIndex = 1;
             this.chkConfirmExit.Text = "Confirm exit if there are open connections";
             this.chkConfirmExit.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkProperInstallationOfComponentsAtStartup
-            //
+            // 
             this.chkProperInstallationOfComponentsAtStartup.AutoSize = true;
             this.chkProperInstallationOfComponentsAtStartup.Location = new System.Drawing.Point(3, 123);
             this.chkProperInstallationOfComponentsAtStartup.Name = "chkProperInstallationOfComponentsAtStartup";
@@ -1035,9 +1006,9 @@ namespace mRemoteNC
             this.chkProperInstallationOfComponentsAtStartup.TabIndex = 5;
             this.chkProperInstallationOfComponentsAtStartup.Text = "Check proper installation of components at startup";
             this.chkProperInstallationOfComponentsAtStartup.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkSaveConsOnExit
-            //
+            // 
             this.chkSaveConsOnExit.AutoSize = true;
             this.chkSaveConsOnExit.Location = new System.Drawing.Point(3, 51);
             this.chkSaveConsOnExit.Name = "chkSaveConsOnExit";
@@ -1045,9 +1016,9 @@ namespace mRemoteNC
             this.chkSaveConsOnExit.TabIndex = 2;
             this.chkSaveConsOnExit.Text = "Save connections on exit";
             this.chkSaveConsOnExit.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkConfirmCloseConnection
-            //
+            // 
             this.chkConfirmCloseConnection.AutoSize = true;
             this.chkConfirmCloseConnection.Location = new System.Drawing.Point(3, 3);
             this.chkConfirmCloseConnection.Name = "chkConfirmCloseConnection";
@@ -1055,9 +1026,9 @@ namespace mRemoteNC
             this.chkConfirmCloseConnection.TabIndex = 0;
             this.chkConfirmCloseConnection.Text = "Confirm closing connection tabs";
             this.chkConfirmCloseConnection.UseVisualStyleBackColor = true;
-            //
+            // 
             // tcTabControl
-            //
+            // 
             this.tcTabControl.Controls.Add(this.tabStartupExit);
             this.tcTabControl.Controls.Add(this.tabAppearance);
             this.tcTabControl.Controls.Add(this.tabTabsAndPanels);
@@ -1072,9 +1043,9 @@ namespace mRemoteNC
             this.tcTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tcTabControl.TabIndex = 1;
             this.tcTabControl.TabStop = false;
-            //
+            // 
             // tabStartupExit
-            //
+            // 
             this.tabStartupExit.Controls.Add(this.chkConfirmCloseConnection);
             this.tabStartupExit.Controls.Add(this.chkReconnectOnStart);
             this.tabStartupExit.Controls.Add(this.chkSaveConsOnExit);
@@ -1087,9 +1058,9 @@ namespace mRemoteNC
             this.tabStartupExit.TabIndex = 0;
             this.tabStartupExit.Text = "Startup/Exit";
             this.tabStartupExit.UseVisualStyleBackColor = true;
-            //
+            // 
             // tabAppearance
-            //
+            // 
             this.tabAppearance.Controls.Add(this.lblLanguageRestartRequired);
             this.tabAppearance.Controls.Add(this.cboLanguage);
             this.tabAppearance.Controls.Add(this.lblLanguage);
@@ -1103,9 +1074,9 @@ namespace mRemoteNC
             this.tabAppearance.TabIndex = 1;
             this.tabAppearance.Text = "Appearance";
             this.tabAppearance.UseVisualStyleBackColor = true;
-            //
+            // 
             // tabTabsAndPanels
-            //
+            // 
             this.tabTabsAndPanels.Controls.Add(this.chkUseOnlyErrorsAndInfosPanel);
             this.tabTabsAndPanels.Controls.Add(this.chkOpenNewTabRightOfSelected);
             this.tabTabsAndPanels.Controls.Add(this.lblSwitchToErrorsAndInfos);
@@ -1122,9 +1093,9 @@ namespace mRemoteNC
             this.tabTabsAndPanels.TabIndex = 2;
             this.tabTabsAndPanels.Text = "Tabs & Panels";
             this.tabTabsAndPanels.UseVisualStyleBackColor = true;
-            //
+            // 
             // tabConnections
-            //
+            // 
             this.tabConnections.Controls.Add(this.chkDoubleClickOpensNewConnection);
             this.tabConnections.Controls.Add(this.pnlRdpReconnectionCount);
             this.tabConnections.Controls.Add(this.chkSingleClickOnConnectionOpensIt);
@@ -1138,9 +1109,9 @@ namespace mRemoteNC
             this.tabConnections.TabIndex = 3;
             this.tabConnections.Text = "Connections";
             this.tabConnections.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkDoubleClickOpensNewConnection
-            //
+            // 
             this.chkDoubleClickOpensNewConnection.AutoSize = true;
             this.chkDoubleClickOpensNewConnection.Location = new System.Drawing.Point(3, 26);
             this.chkDoubleClickOpensNewConnection.Name = "chkDoubleClickOpensNewConnection";
@@ -1148,9 +1119,9 @@ namespace mRemoteNC
             this.chkDoubleClickOpensNewConnection.TabIndex = 6;
             this.chkDoubleClickOpensNewConnection.Text = "Double click on connection opens new connection";
             this.chkDoubleClickOpensNewConnection.UseVisualStyleBackColor = true;
-            //
+            // 
             // pnlDefaultCredentials
-            //
+            // 
             this.pnlDefaultCredentials.Controls.Add(this.radCredentialsCustom);
             this.pnlDefaultCredentials.Controls.Add(this.lblDefaultCredentials);
             this.pnlDefaultCredentials.Controls.Add(this.radCredentialsNoInfo);
@@ -1165,9 +1136,9 @@ namespace mRemoteNC
             this.pnlDefaultCredentials.Name = "pnlDefaultCredentials";
             this.pnlDefaultCredentials.Size = new System.Drawing.Size(596, 175);
             this.pnlDefaultCredentials.TabIndex = 5;
-            //
+            // 
             // radCredentialsCustom
-            //
+            // 
             this.radCredentialsCustom.AutoSize = true;
             this.radCredentialsCustom.Location = new System.Drawing.Point(16, 69);
             this.radCredentialsCustom.Name = "radCredentialsCustom";
@@ -1176,18 +1147,18 @@ namespace mRemoteNC
             this.radCredentialsCustom.Text = "the following:";
             this.radCredentialsCustom.UseVisualStyleBackColor = true;
             this.radCredentialsCustom.CheckedChanged += new System.EventHandler(this.radCredentialsCustom_CheckedChanged);
-            //
+            // 
             // lblDefaultCredentials
-            //
+            // 
             this.lblDefaultCredentials.AutoSize = true;
             this.lblDefaultCredentials.Location = new System.Drawing.Point(3, 9);
             this.lblDefaultCredentials.Name = "lblDefaultCredentials";
             this.lblDefaultCredentials.Size = new System.Drawing.Size(257, 13);
             this.lblDefaultCredentials.TabIndex = 0;
             this.lblDefaultCredentials.Text = "For empty Username, Password or Domain fields use:";
-            //
+            // 
             // radCredentialsNoInfo
-            //
+            // 
             this.radCredentialsNoInfo.AutoSize = true;
             this.radCredentialsNoInfo.Checked = true;
             this.radCredentialsNoInfo.Location = new System.Drawing.Point(16, 31);
@@ -1197,9 +1168,9 @@ namespace mRemoteNC
             this.radCredentialsNoInfo.TabStop = true;
             this.radCredentialsNoInfo.Text = "no information";
             this.radCredentialsNoInfo.UseVisualStyleBackColor = true;
-            //
+            // 
             // radCredentialsWindows
-            //
+            // 
             this.radCredentialsWindows.AutoSize = true;
             this.radCredentialsWindows.Location = new System.Drawing.Point(16, 50);
             this.radCredentialsWindows.Name = "radCredentialsWindows";
@@ -1207,18 +1178,18 @@ namespace mRemoteNC
             this.radCredentialsWindows.TabIndex = 2;
             this.radCredentialsWindows.Text = "my current credentials (windows logon info)";
             this.radCredentialsWindows.UseVisualStyleBackColor = true;
-            //
+            // 
             // txtCredentialsDomain
-            //
+            // 
             this.txtCredentialsDomain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCredentialsDomain.Enabled = false;
             this.txtCredentialsDomain.Location = new System.Drawing.Point(140, 147);
             this.txtCredentialsDomain.Name = "txtCredentialsDomain";
             this.txtCredentialsDomain.Size = new System.Drawing.Size(150, 20);
             this.txtCredentialsDomain.TabIndex = 9;
-            //
+            // 
             // lblCredentialsUsername
-            //
+            // 
             this.lblCredentialsUsername.Enabled = false;
             this.lblCredentialsUsername.Location = new System.Drawing.Point(37, 95);
             this.lblCredentialsUsername.Name = "lblCredentialsUsername";
@@ -1226,9 +1197,9 @@ namespace mRemoteNC
             this.lblCredentialsUsername.TabIndex = 4;
             this.lblCredentialsUsername.Text = "Username:";
             this.lblCredentialsUsername.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            //
+            // 
             // txtCredentialsPassword
-            //
+            // 
             this.txtCredentialsPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCredentialsPassword.Enabled = false;
             this.txtCredentialsPassword.Location = new System.Drawing.Point(140, 120);
@@ -1236,9 +1207,9 @@ namespace mRemoteNC
             this.txtCredentialsPassword.Size = new System.Drawing.Size(150, 20);
             this.txtCredentialsPassword.TabIndex = 7;
             this.txtCredentialsPassword.UseSystemPasswordChar = true;
-            //
+            // 
             // lblCredentialsPassword
-            //
+            // 
             this.lblCredentialsPassword.Enabled = false;
             this.lblCredentialsPassword.Location = new System.Drawing.Point(34, 123);
             this.lblCredentialsPassword.Name = "lblCredentialsPassword";
@@ -1246,18 +1217,18 @@ namespace mRemoteNC
             this.lblCredentialsPassword.TabIndex = 6;
             this.lblCredentialsPassword.Text = "Password:";
             this.lblCredentialsPassword.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            //
+            // 
             // txtCredentialsUsername
-            //
+            // 
             this.txtCredentialsUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCredentialsUsername.Enabled = false;
             this.txtCredentialsUsername.Location = new System.Drawing.Point(140, 93);
             this.txtCredentialsUsername.Name = "txtCredentialsUsername";
             this.txtCredentialsUsername.Size = new System.Drawing.Size(150, 20);
             this.txtCredentialsUsername.TabIndex = 5;
-            //
+            // 
             // lblCredentialsDomain
-            //
+            // 
             this.lblCredentialsDomain.Enabled = false;
             this.lblCredentialsDomain.Location = new System.Drawing.Point(34, 150);
             this.lblCredentialsDomain.Name = "lblCredentialsDomain";
@@ -1265,9 +1236,9 @@ namespace mRemoteNC
             this.lblCredentialsDomain.TabIndex = 8;
             this.lblCredentialsDomain.Text = "Domain:";
             this.lblCredentialsDomain.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            //
+            // 
             // tabSQLServer
-            //
+            // 
             this.tabSQLServer.Controls.Add(this.lblSQLDatabaseName);
             this.tabSQLServer.Controls.Add(this.txtSQLDatabaseName);
             this.tabSQLServer.Controls.Add(this.lblExperimental);
@@ -1285,9 +1256,9 @@ namespace mRemoteNC
             this.tabSQLServer.TabIndex = 6;
             this.tabSQLServer.Text = "SQL Server";
             this.tabSQLServer.UseVisualStyleBackColor = true;
-            //
+            // 
             // lblSQLDatabaseName
-            //
+            // 
             this.lblSQLDatabaseName.Enabled = false;
             this.lblSQLDatabaseName.Location = new System.Drawing.Point(23, 132);
             this.lblSQLDatabaseName.Name = "lblSQLDatabaseName";
@@ -1295,20 +1266,20 @@ namespace mRemoteNC
             this.lblSQLDatabaseName.TabIndex = 5;
             this.lblSQLDatabaseName.Text = "Database:";
             this.lblSQLDatabaseName.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            //
+            // 
             // txtSQLDatabaseName
-            //
+            // 
             this.txtSQLDatabaseName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSQLDatabaseName.Enabled = false;
             this.txtSQLDatabaseName.Location = new System.Drawing.Point(140, 130);
             this.txtSQLDatabaseName.Name = "txtSQLDatabaseName";
             this.txtSQLDatabaseName.Size = new System.Drawing.Size(153, 20);
             this.txtSQLDatabaseName.TabIndex = 6;
-            //
+            // 
             // lblExperimental
-            //
-            this.lblExperimental.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            // 
+            this.lblExperimental.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblExperimental.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World);
             this.lblExperimental.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -1318,9 +1289,9 @@ namespace mRemoteNC
             this.lblExperimental.TabIndex = 0;
             this.lblExperimental.Text = "EXPERIMENTAL";
             this.lblExperimental.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //
+            // 
             // chkUseSQLServer
-            //
+            // 
             this.chkUseSQLServer.AutoSize = true;
             this.chkUseSQLServer.Location = new System.Drawing.Point(3, 76);
             this.chkUseSQLServer.Name = "chkUseSQLServer";
@@ -1329,9 +1300,9 @@ namespace mRemoteNC
             this.chkUseSQLServer.Text = "Use SQL Server to load && save connections";
             this.chkUseSQLServer.UseVisualStyleBackColor = true;
             this.chkUseSQLServer.CheckedChanged += new System.EventHandler(this.chkUseSQLServer_CheckedChanged);
-            //
+            // 
             // lblSQLUsername
-            //
+            // 
             this.lblSQLUsername.Enabled = false;
             this.lblSQLUsername.Location = new System.Drawing.Point(23, 158);
             this.lblSQLUsername.Name = "lblSQLUsername";
@@ -1339,9 +1310,9 @@ namespace mRemoteNC
             this.lblSQLUsername.TabIndex = 7;
             this.lblSQLUsername.Text = "Username:";
             this.lblSQLUsername.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            //
+            // 
             // txtSQLPassword
-            //
+            // 
             this.txtSQLPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSQLPassword.Enabled = false;
             this.txtSQLPassword.Location = new System.Drawing.Point(140, 182);
@@ -1349,11 +1320,11 @@ namespace mRemoteNC
             this.txtSQLPassword.Size = new System.Drawing.Size(153, 20);
             this.txtSQLPassword.TabIndex = 10;
             this.txtSQLPassword.UseSystemPasswordChar = true;
-            //
+            // 
             // lblSQLInfo
-            //
-            this.lblSQLInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            // 
+            this.lblSQLInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSQLInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World);
             this.lblSQLInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -1363,9 +1334,9 @@ namespace mRemoteNC
             this.lblSQLInfo.TabIndex = 1;
             this.lblSQLInfo.Text = "Please see Help - Getting started - SQL Configuration for more Info!";
             this.lblSQLInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //
+            // 
             // lblSQLServer
-            //
+            // 
             this.lblSQLServer.Enabled = false;
             this.lblSQLServer.Location = new System.Drawing.Point(23, 106);
             this.lblSQLServer.Name = "lblSQLServer";
@@ -1373,27 +1344,27 @@ namespace mRemoteNC
             this.lblSQLServer.TabIndex = 3;
             this.lblSQLServer.Text = "SQL Server:";
             this.lblSQLServer.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            //
+            // 
             // txtSQLUsername
-            //
+            // 
             this.txtSQLUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSQLUsername.Enabled = false;
             this.txtSQLUsername.Location = new System.Drawing.Point(140, 156);
             this.txtSQLUsername.Name = "txtSQLUsername";
             this.txtSQLUsername.Size = new System.Drawing.Size(153, 20);
             this.txtSQLUsername.TabIndex = 8;
-            //
+            // 
             // txtSQLServer
-            //
+            // 
             this.txtSQLServer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSQLServer.Enabled = false;
             this.txtSQLServer.Location = new System.Drawing.Point(140, 103);
             this.txtSQLServer.Name = "txtSQLServer";
             this.txtSQLServer.Size = new System.Drawing.Size(153, 20);
             this.txtSQLServer.TabIndex = 4;
-            //
+            // 
             // lblSQLPassword
-            //
+            // 
             this.lblSQLPassword.Enabled = false;
             this.lblSQLPassword.Location = new System.Drawing.Point(23, 184);
             this.lblSQLPassword.Name = "lblSQLPassword";
@@ -1401,9 +1372,9 @@ namespace mRemoteNC
             this.lblSQLPassword.TabIndex = 9;
             this.lblSQLPassword.Text = "Password:";
             this.lblSQLPassword.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            //
+            // 
             // tabUpdates
-            //
+            // 
             this.tabUpdates.Controls.Add(this.lblUpdatesExplanation);
             this.tabUpdates.Controls.Add(this.pnlUpdateCheck);
             this.tabUpdates.Controls.Add(this.pnlProxy);
@@ -1413,9 +1384,15 @@ namespace mRemoteNC
             this.tabUpdates.TabIndex = 4;
             this.tabUpdates.Text = "Updates";
             this.tabUpdates.UseVisualStyleBackColor = true;
-            //
+            // 
             // tabAdvanced
-            //
+            // 
+            this.tabAdvanced.Controls.Add(this.numUVNCSCPort);
+            this.tabAdvanced.Controls.Add(this.lblUVNCSCPort);
+            this.tabAdvanced.Controls.Add(this.button1);
+            this.tabAdvanced.Controls.Add(this.txtRAdminPath);
+            this.tabAdvanced.Controls.Add(this.lblRAdminPath);
+            this.tabAdvanced.Controls.Add(this.txtXULrunnerPath);
             this.tabAdvanced.Controls.Add(this.btnTVPathBrpwse);
             this.tabAdvanced.Controls.Add(this.txtTVPath);
             this.tabAdvanced.Controls.Add(this.lblTVPath);
@@ -1429,11 +1406,8 @@ namespace mRemoteNC
             this.tabAdvanced.Controls.Add(this.numPuttyWaitTime);
             this.tabAdvanced.Controls.Add(this.chkUseCustomPuttyPath);
             this.tabAdvanced.Controls.Add(this.lblConfigurePuttySessions);
-            this.tabAdvanced.Controls.Add(this.txtXULrunnerPath);
-            this.tabAdvanced.Controls.Add(this.numUVNCSCPort);
             this.tabAdvanced.Controls.Add(this.txtCustomPuttyPath);
             this.tabAdvanced.Controls.Add(this.btnLaunchPutty);
-            this.tabAdvanced.Controls.Add(this.lblUVNCSCPort);
             this.tabAdvanced.Controls.Add(this.lblSeconds);
             this.tabAdvanced.Controls.Add(this.btnBrowseCustomPuttyPath);
             this.tabAdvanced.Location = new System.Drawing.Point(4, 22);
@@ -1442,35 +1416,96 @@ namespace mRemoteNC
             this.tabAdvanced.TabIndex = 5;
             this.tabAdvanced.Text = "Advanced";
             this.tabAdvanced.UseVisualStyleBackColor = true;
-            //
+            // 
             // btnTVPathBrpwse
-            //
-            this.btnTVPathBrpwse.Location = new System.Drawing.Point(373, 340);
+            // 
+            this.btnTVPathBrpwse.Location = new System.Drawing.Point(373, 344);
             this.btnTVPathBrpwse.Name = "btnTVPathBrpwse";
             this.btnTVPathBrpwse.Size = new System.Drawing.Size(75, 23);
             this.btnTVPathBrpwse.TabIndex = 19;
             this.btnTVPathBrpwse.Text = "Browse...";
             this.btnTVPathBrpwse.UseVisualStyleBackColor = true;
-            //
+            // 
             // txtTVPath
-            //
+            // 
             this.txtTVPath.FormattingEnabled = true;
-            this.txtTVPath.Location = new System.Drawing.Point(21, 342);
+            this.txtTVPath.Location = new System.Drawing.Point(21, 346);
             this.txtTVPath.Name = "txtTVPath";
             this.txtTVPath.Size = new System.Drawing.Size(346, 21);
             this.txtTVPath.TabIndex = 18;
-            //
+            // 
             // lblTVPath
-            //
+            // 
             this.lblTVPath.AutoSize = true;
-            this.lblTVPath.Location = new System.Drawing.Point(3, 312);
+            this.lblTVPath.Location = new System.Drawing.Point(3, 316);
             this.lblTVPath.Name = "lblTVPath";
             this.lblTVPath.Size = new System.Drawing.Size(97, 13);
             this.lblTVPath.TabIndex = 17;
             this.lblTVPath.Text = "Team Viewer Path:";
-            //
+            // 
+            // txtXULrunnerPath
+            // 
+            this.txtXULrunnerPath.FormattingEnabled = true;
+            this.txtXULrunnerPath.Location = new System.Drawing.Point(21, 274);
+            this.txtXULrunnerPath.Name = "txtXULrunnerPath";
+            this.txtXULrunnerPath.Size = new System.Drawing.Size(346, 21);
+            this.txtXULrunnerPath.TabIndex = 20;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(373, 420);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 24;
+            this.button1.Text = "Browse...";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // txtRAdminPath
+            // 
+            this.txtRAdminPath.FormattingEnabled = true;
+            this.txtRAdminPath.Location = new System.Drawing.Point(21, 422);
+            this.txtRAdminPath.Name = "txtRAdminPath";
+            this.txtRAdminPath.Size = new System.Drawing.Size(346, 21);
+            this.txtRAdminPath.TabIndex = 23;
+            // 
+            // lblRAdminPath
+            // 
+            this.lblRAdminPath.AutoSize = true;
+            this.lblRAdminPath.Location = new System.Drawing.Point(3, 392);
+            this.lblRAdminPath.Name = "lblRAdminPath";
+            this.lblRAdminPath.Size = new System.Drawing.Size(72, 13);
+            this.lblRAdminPath.TabIndex = 22;
+            this.lblRAdminPath.Text = "RAdmin Path:";
+            // 
+            // numUVNCSCPort
+            // 
+            this.numUVNCSCPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numUVNCSCPort.Location = new System.Drawing.Point(373, 218);
+            this.numUVNCSCPort.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.numUVNCSCPort.Name = "numUVNCSCPort";
+            this.numUVNCSCPort.Size = new System.Drawing.Size(72, 20);
+            this.numUVNCSCPort.TabIndex = 26;
+            this.numUVNCSCPort.Value = new decimal(new int[] {
+            5500,
+            0,
+            0,
+            0});
+            // 
+            // lblUVNCSCPort
+            // 
+            this.lblUVNCSCPort.Location = new System.Drawing.Point(3, 220);
+            this.lblUVNCSCPort.Name = "lblUVNCSCPort";
+            this.lblUVNCSCPort.Size = new System.Drawing.Size(364, 13);
+            this.lblUVNCSCPort.TabIndex = 25;
+            this.lblUVNCSCPort.Text = "UltraVNC SingleClick Listening Port:";
+            this.lblUVNCSCPort.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // frmOptions
-            //
+            // 
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(794, 542);
             this.Controls.Add(this.tcTabControl);
@@ -1488,7 +1523,6 @@ namespace mRemoteNC
             this.Text = "Options";
             this.Load += new System.EventHandler(this.Options_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numPuttyWaitTime)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUVNCSCPort)).EndInit();
             this.pnlProxy.ResumeLayout(false);
             this.pnlProxy.PerformLayout();
             this.pnlProxyBasic.ResumeLayout(false);
@@ -1519,25 +1553,32 @@ namespace mRemoteNC
             this.tabUpdates.ResumeLayout(false);
             this.tabAdvanced.ResumeLayout(false);
             this.tabAdvanced.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numUVNCSCPort)).EndInit();
             this.ResumeLayout(false);
+
         }
 
         #endregion Form Init
 
         #region Private Methods
 
-        private void UpdateTVPaths()
+        private void UpdatePaths()
         {
             txtTVPath.DropDownStyle = ComboBoxStyle.DropDown;
-            txtTVPath.Items.AddRange(ProblemFixer.FindTvPaths().ToArray());
+            txtTVPath.Items.AddRange(Misc.FindTvPaths().ToArray());
+            txtXULrunnerPath.DropDownStyle = ComboBoxStyle.DropDown;
+            txtXULrunnerPath.Items.AddRange(Misc.FindGeckoPaths().ToArray());
+            txtRAdminPath.DropDownStyle = ComboBoxStyle.DropDown;
+            txtRAdminPath.Items.AddRange(Misc.FindRAdminPaths().ToArray());
         }
 
         private void LoadOptions()
         {
             try
             {
-                UpdateTVPaths();
+                UpdatePaths();
                 Settings.Default.Reload();
+                txtRAdminPath.Text = Settings.Default.RAdminPath;
                 txtTVPath.Text = Settings.Default.TeamViewerPath;
                 chkDoubleClickOpensNewConnection.Checked = System.Convert.ToBoolean(Settings.Default.DoubleClickStartsNewConnection);
                 this.chkSaveConsOnExit.Checked = System.Convert.ToBoolean(Settings.Default.SaveConsOnExit);
@@ -1697,6 +1738,7 @@ namespace mRemoteNC
         {
             try
             {
+                Settings.Default.RAdminPath = txtRAdminPath.Text;
                 Settings.Default.TeamViewerPath = txtTVPath.Text;
                 Settings.Default.DoubleClickStartsNewConnection = chkDoubleClickOpensNewConnection.Checked;
                 Settings.Default.SaveConsOnExit = this.chkSaveConsOnExit.Checked;

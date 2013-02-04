@@ -50,6 +50,10 @@ namespace mRemoteNC
                 internal System.Windows.Forms.TextBox txtCheck7;
                 internal System.Windows.Forms.Label lblCheck7;
                 internal System.Windows.Forms.PictureBox pbCheck7;
+                internal TextBox txtCheck8;
+                internal Panel pnlCheck8;
+                internal Label lblCheck8;
+                internal PictureBox pbCheck8;
                 internal System.Windows.Forms.Panel pnlCheck1;
 
                 private void InitializeComponent()
@@ -85,6 +89,10 @@ namespace mRemoteNC
             this.txtCheck6 = new System.Windows.Forms.TextBox();
             this.lblCheck6 = new System.Windows.Forms.Label();
             this.pbCheck6 = new System.Windows.Forms.PictureBox();
+            this.txtCheck8 = new System.Windows.Forms.TextBox();
+            this.pnlCheck8 = new System.Windows.Forms.Panel();
+            this.lblCheck8 = new System.Windows.Forms.Label();
+            this.pbCheck8 = new System.Windows.Forms.PictureBox();
             this.pnlCheck1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCheck1)).BeginInit();
             this.pnlCheck2.SuspendLayout();
@@ -100,6 +108,8 @@ namespace mRemoteNC
             ((System.ComponentModel.ISupportInitialize)(this.pbCheck7)).BeginInit();
             this.pnlCheck6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCheck6)).BeginInit();
+            this.pnlCheck8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCheck8)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlCheck1
@@ -111,7 +121,7 @@ namespace mRemoteNC
             this.pnlCheck1.Controls.Add(this.pbCheck1);
             this.pnlCheck1.Location = new System.Drawing.Point(3, 3);
             this.pnlCheck1.Name = "pnlCheck1";
-            this.pnlCheck1.Size = new System.Drawing.Size(562, 130);
+            this.pnlCheck1.Size = new System.Drawing.Size(562, 100);
             this.pnlCheck1.TabIndex = 10;
             this.pnlCheck1.Visible = false;
             // 
@@ -126,7 +136,7 @@ namespace mRemoteNC
             this.txtCheck1.Multiline = true;
             this.txtCheck1.Name = "txtCheck1";
             this.txtCheck1.ReadOnly = true;
-            this.txtCheck1.Size = new System.Drawing.Size(430, 97);
+            this.txtCheck1.Size = new System.Drawing.Size(430, 67);
             this.txtCheck1.TabIndex = 2;
             // 
             // lblCheck1
@@ -145,9 +155,9 @@ namespace mRemoteNC
             // 
             this.pbCheck1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.pbCheck1.Location = new System.Drawing.Point(3, 3);
+            this.pbCheck1.Location = new System.Drawing.Point(6, 4);
             this.pbCheck1.Name = "pbCheck1";
-            this.pbCheck1.Size = new System.Drawing.Size(72, 123);
+            this.pbCheck1.Size = new System.Drawing.Size(72, 93);
             this.pbCheck1.TabIndex = 0;
             this.pbCheck1.TabStop = false;
             // 
@@ -158,9 +168,9 @@ namespace mRemoteNC
             this.pnlCheck2.Controls.Add(this.txtCheck2);
             this.pnlCheck2.Controls.Add(this.lblCheck2);
             this.pnlCheck2.Controls.Add(this.pbCheck2);
-            this.pnlCheck2.Location = new System.Drawing.Point(3, 139);
+            this.pnlCheck2.Location = new System.Drawing.Point(6, 109);
             this.pnlCheck2.Name = "pnlCheck2";
-            this.pnlCheck2.Size = new System.Drawing.Size(562, 130);
+            this.pnlCheck2.Size = new System.Drawing.Size(562, 100);
             this.pnlCheck2.TabIndex = 20;
             this.pnlCheck2.Visible = false;
             // 
@@ -175,7 +185,7 @@ namespace mRemoteNC
             this.txtCheck2.Multiline = true;
             this.txtCheck2.Name = "txtCheck2";
             this.txtCheck2.ReadOnly = true;
-            this.txtCheck2.Size = new System.Drawing.Size(430, 97);
+            this.txtCheck2.Size = new System.Drawing.Size(430, 67);
             this.txtCheck2.TabIndex = 2;
             // 
             // lblCheck2
@@ -195,7 +205,7 @@ namespace mRemoteNC
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pbCheck2.Location = new System.Drawing.Point(3, 3);
             this.pbCheck2.Name = "pbCheck2";
-            this.pbCheck2.Size = new System.Drawing.Size(72, 123);
+            this.pbCheck2.Size = new System.Drawing.Size(72, 93);
             this.pbCheck2.TabIndex = 0;
             this.pbCheck2.TabStop = false;
             // 
@@ -206,9 +216,9 @@ namespace mRemoteNC
             this.pnlCheck3.Controls.Add(this.txtCheck3);
             this.pnlCheck3.Controls.Add(this.lblCheck3);
             this.pnlCheck3.Controls.Add(this.pbCheck3);
-            this.pnlCheck3.Location = new System.Drawing.Point(3, 275);
+            this.pnlCheck3.Location = new System.Drawing.Point(6, 215);
             this.pnlCheck3.Name = "pnlCheck3";
-            this.pnlCheck3.Size = new System.Drawing.Size(562, 130);
+            this.pnlCheck3.Size = new System.Drawing.Size(562, 100);
             this.pnlCheck3.TabIndex = 30;
             this.pnlCheck3.Visible = false;
             // 
@@ -223,7 +233,7 @@ namespace mRemoteNC
             this.txtCheck3.Multiline = true;
             this.txtCheck3.Name = "txtCheck3";
             this.txtCheck3.ReadOnly = true;
-            this.txtCheck3.Size = new System.Drawing.Size(430, 97);
+            this.txtCheck3.Size = new System.Drawing.Size(430, 67);
             this.txtCheck3.TabIndex = 2;
             // 
             // lblCheck3
@@ -243,7 +253,7 @@ namespace mRemoteNC
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pbCheck3.Location = new System.Drawing.Point(3, 3);
             this.pbCheck3.Name = "pbCheck3";
-            this.pbCheck3.Size = new System.Drawing.Size(72, 123);
+            this.pbCheck3.Size = new System.Drawing.Size(72, 93);
             this.pbCheck3.TabIndex = 0;
             this.pbCheck3.TabStop = false;
             this.pbCheck3.Click += new System.EventHandler(this.pbCheck3_Click);
@@ -255,9 +265,9 @@ namespace mRemoteNC
             this.pnlCheck4.Controls.Add(this.txtCheck4);
             this.pnlCheck4.Controls.Add(this.lblCheck4);
             this.pnlCheck4.Controls.Add(this.pbCheck4);
-            this.pnlCheck4.Location = new System.Drawing.Point(3, 411);
+            this.pnlCheck4.Location = new System.Drawing.Point(3, 321);
             this.pnlCheck4.Name = "pnlCheck4";
-            this.pnlCheck4.Size = new System.Drawing.Size(562, 130);
+            this.pnlCheck4.Size = new System.Drawing.Size(562, 100);
             this.pnlCheck4.TabIndex = 40;
             this.pnlCheck4.Visible = false;
             // 
@@ -272,7 +282,7 @@ namespace mRemoteNC
             this.txtCheck4.Multiline = true;
             this.txtCheck4.Name = "txtCheck4";
             this.txtCheck4.ReadOnly = true;
-            this.txtCheck4.Size = new System.Drawing.Size(430, 97);
+            this.txtCheck4.Size = new System.Drawing.Size(430, 67);
             this.txtCheck4.TabIndex = 2;
             // 
             // lblCheck4
@@ -292,7 +302,7 @@ namespace mRemoteNC
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pbCheck4.Location = new System.Drawing.Point(3, 3);
             this.pbCheck4.Name = "pbCheck4";
-            this.pbCheck4.Size = new System.Drawing.Size(72, 123);
+            this.pbCheck4.Size = new System.Drawing.Size(72, 93);
             this.pbCheck4.TabIndex = 0;
             this.pbCheck4.TabStop = false;
             // 
@@ -303,9 +313,9 @@ namespace mRemoteNC
             this.pnlCheck5.Controls.Add(this.txtCheck5);
             this.pnlCheck5.Controls.Add(this.lblCheck5);
             this.pnlCheck5.Controls.Add(this.pbCheck5);
-            this.pnlCheck5.Location = new System.Drawing.Point(3, 547);
+            this.pnlCheck5.Location = new System.Drawing.Point(3, 424);
             this.pnlCheck5.Name = "pnlCheck5";
-            this.pnlCheck5.Size = new System.Drawing.Size(562, 130);
+            this.pnlCheck5.Size = new System.Drawing.Size(562, 100);
             this.pnlCheck5.TabIndex = 50;
             this.pnlCheck5.Visible = false;
             // 
@@ -320,7 +330,7 @@ namespace mRemoteNC
             this.txtCheck5.Multiline = true;
             this.txtCheck5.Name = "txtCheck5";
             this.txtCheck5.ReadOnly = true;
-            this.txtCheck5.Size = new System.Drawing.Size(430, 97);
+            this.txtCheck5.Size = new System.Drawing.Size(430, 67);
             this.txtCheck5.TabIndex = 2;
             // 
             // lblCheck5
@@ -340,7 +350,7 @@ namespace mRemoteNC
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pbCheck5.Location = new System.Drawing.Point(3, 3);
             this.pbCheck5.Name = "pbCheck5";
-            this.pbCheck5.Size = new System.Drawing.Size(72, 123);
+            this.pbCheck5.Size = new System.Drawing.Size(72, 93);
             this.pbCheck5.TabIndex = 0;
             this.pbCheck5.TabStop = false;
             this.pbCheck5.Click += new System.EventHandler(this.pbCheck5_Click);
@@ -349,7 +359,7 @@ namespace mRemoteNC
             // 
             this.btnCheckAgain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCheckAgain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCheckAgain.Location = new System.Drawing.Point(476, 989);
+            this.btnCheckAgain.Location = new System.Drawing.Point(476, 895);
             this.btnCheckAgain.Name = "btnCheckAgain";
             this.btnCheckAgain.Size = new System.Drawing.Size(104, 23);
             this.btnCheckAgain.TabIndex = 0;
@@ -362,7 +372,7 @@ namespace mRemoteNC
             this.chkAlwaysShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkAlwaysShow.AutoSize = true;
             this.chkAlwaysShow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkAlwaysShow.Location = new System.Drawing.Point(12, 993);
+            this.chkAlwaysShow.Location = new System.Drawing.Point(12, 899);
             this.chkAlwaysShow.Name = "chkAlwaysShow";
             this.chkAlwaysShow.Size = new System.Drawing.Size(185, 17);
             this.chkAlwaysShow.TabIndex = 51;
@@ -376,8 +386,8 @@ namespace mRemoteNC
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlChecks.AutoScroll = true;
-            this.pnlChecks.Controls.Add(this.pnlCheck7);
             this.pnlChecks.Controls.Add(this.pnlCheck1);
+            this.pnlChecks.Controls.Add(this.pnlCheck7);
             this.pnlChecks.Controls.Add(this.pnlCheck2);
             this.pnlChecks.Controls.Add(this.pnlCheck3);
             this.pnlChecks.Controls.Add(this.pnlCheck6);
@@ -385,7 +395,7 @@ namespace mRemoteNC
             this.pnlChecks.Controls.Add(this.pnlCheck4);
             this.pnlChecks.Location = new System.Drawing.Point(12, 12);
             this.pnlChecks.Name = "pnlChecks";
-            this.pnlChecks.Size = new System.Drawing.Size(568, 975);
+            this.pnlChecks.Size = new System.Drawing.Size(568, 877);
             this.pnlChecks.TabIndex = 52;
             // 
             // pnlCheck7
@@ -395,9 +405,9 @@ namespace mRemoteNC
             this.pnlCheck7.Controls.Add(this.txtCheck7);
             this.pnlCheck7.Controls.Add(this.lblCheck7);
             this.pnlCheck7.Controls.Add(this.pbCheck7);
-            this.pnlCheck7.Location = new System.Drawing.Point(6, 819);
+            this.pnlCheck7.Location = new System.Drawing.Point(0, 636);
             this.pnlCheck7.Name = "pnlCheck7";
-            this.pnlCheck7.Size = new System.Drawing.Size(562, 130);
+            this.pnlCheck7.Size = new System.Drawing.Size(562, 100);
             this.pnlCheck7.TabIndex = 51;
             // 
             // txtCheck7
@@ -411,7 +421,7 @@ namespace mRemoteNC
             this.txtCheck7.Multiline = true;
             this.txtCheck7.Name = "txtCheck7";
             this.txtCheck7.ReadOnly = true;
-            this.txtCheck7.Size = new System.Drawing.Size(430, 97);
+            this.txtCheck7.Size = new System.Drawing.Size(430, 67);
             this.txtCheck7.TabIndex = 2;
             // 
             // lblCheck7
@@ -431,7 +441,7 @@ namespace mRemoteNC
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pbCheck7.Location = new System.Drawing.Point(3, 3);
             this.pbCheck7.Name = "pbCheck7";
-            this.pbCheck7.Size = new System.Drawing.Size(72, 123);
+            this.pbCheck7.Size = new System.Drawing.Size(72, 93);
             this.pbCheck7.TabIndex = 0;
             this.pbCheck7.TabStop = false;
             this.pbCheck7.Click += new System.EventHandler(this.pbCheck7_Click);
@@ -443,9 +453,9 @@ namespace mRemoteNC
             this.pnlCheck6.Controls.Add(this.txtCheck6);
             this.pnlCheck6.Controls.Add(this.lblCheck6);
             this.pnlCheck6.Controls.Add(this.pbCheck6);
-            this.pnlCheck6.Location = new System.Drawing.Point(3, 683);
+            this.pnlCheck6.Location = new System.Drawing.Point(3, 530);
             this.pnlCheck6.Name = "pnlCheck6";
-            this.pnlCheck6.Size = new System.Drawing.Size(562, 130);
+            this.pnlCheck6.Size = new System.Drawing.Size(562, 100);
             this.pnlCheck6.TabIndex = 50;
             this.pnlCheck6.Visible = false;
             // 
@@ -460,7 +470,7 @@ namespace mRemoteNC
             this.txtCheck6.Multiline = true;
             this.txtCheck6.Name = "txtCheck6";
             this.txtCheck6.ReadOnly = true;
-            this.txtCheck6.Size = new System.Drawing.Size(430, 97);
+            this.txtCheck6.Size = new System.Drawing.Size(430, 67);
             this.txtCheck6.TabIndex = 2;
             // 
             // lblCheck6
@@ -480,14 +490,63 @@ namespace mRemoteNC
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pbCheck6.Location = new System.Drawing.Point(3, 7);
             this.pbCheck6.Name = "pbCheck6";
-            this.pbCheck6.Size = new System.Drawing.Size(72, 123);
+            this.pbCheck6.Size = new System.Drawing.Size(72, 93);
             this.pbCheck6.TabIndex = 0;
             this.pbCheck6.TabStop = false;
             this.pbCheck6.Click += new System.EventHandler(this.pbCheck6_Click);
             // 
+            // txtCheck8
+            // 
+            this.txtCheck8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCheck8.BackColor = System.Drawing.SystemColors.Control;
+            this.txtCheck8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCheck8.Location = new System.Drawing.Point(129, 29);
+            this.txtCheck8.Multiline = true;
+            this.txtCheck8.Name = "txtCheck8";
+            this.txtCheck8.ReadOnly = true;
+            this.txtCheck8.Size = new System.Drawing.Size(430, 67);
+            this.txtCheck8.TabIndex = 2;
+            // 
+            // pnlCheck8
+            // 
+            this.pnlCheck8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlCheck8.Controls.Add(this.txtCheck8);
+            this.pnlCheck8.Controls.Add(this.lblCheck8);
+            this.pnlCheck8.Controls.Add(this.pbCheck8);
+            this.pnlCheck8.Location = new System.Drawing.Point(12, 754);
+            this.pnlCheck8.Name = "pnlCheck8";
+            this.pnlCheck8.Size = new System.Drawing.Size(562, 100);
+            this.pnlCheck8.TabIndex = 52;
+            // 
+            // lblCheck8
+            // 
+            this.lblCheck8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCheck8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCheck8.Location = new System.Drawing.Point(112, 3);
+            this.lblCheck8.Name = "lblCheck8";
+            this.lblCheck8.Size = new System.Drawing.Size(447, 23);
+            this.lblCheck8.TabIndex = 1;
+            this.lblCheck8.Text = "RDP check succeeded!";
+            // 
+            // pbCheck8
+            // 
+            this.pbCheck8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pbCheck8.Location = new System.Drawing.Point(3, 3);
+            this.pbCheck8.Name = "pbCheck8";
+            this.pbCheck8.Size = new System.Drawing.Size(72, 93);
+            this.pbCheck8.TabIndex = 0;
+            this.pbCheck8.TabStop = false;
+            this.pbCheck8.Click += new System.EventHandler(this.pbCheck8_Click);
+            // 
             // ComponentsCheck
             // 
-            this.ClientSize = new System.Drawing.Size(592, 1024);
+            this.ClientSize = new System.Drawing.Size(592, 930);
+            this.Controls.Add(this.pnlCheck8);
             this.Controls.Add(this.pnlChecks);
             this.Controls.Add(this.chkAlwaysShow);
             this.Controls.Add(this.btnCheckAgain);
@@ -519,6 +578,9 @@ namespace mRemoteNC
             this.pnlCheck6.ResumeLayout(false);
             this.pnlCheck6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCheck6)).EndInit();
+            this.pnlCheck8.ResumeLayout(false);
+            this.pnlCheck8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCheck8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -581,6 +643,7 @@ namespace mRemoteNC
                     pnlCheck5.Visible = true;
                     pnlCheck6.Visible = true;
                     pnlCheck7.Visible = true;
+                    pnlCheck8.Visible = true;
 
                     if (ProblemFixer.IsRDPOk())
                     {
@@ -709,6 +772,21 @@ namespace mRemoteNC
                         lblCheck7.Text = "TeamViewer " + Language.strCcCheckFailed;
                         txtCheck7.Text = Language.strCcClickOnSign;
                     }
+
+                    if (ProblemFixer.IsRAdminOk())
+                    {
+                        pbCheck8.Image = global::My.Resources.Resources.Good_Symbol;
+                        lblCheck8.ForeColor = Color.DarkOliveGreen;
+                        lblCheck8.Text = "RAdmin " + Language.strCcCheckSucceeded;
+                        txtCheck8.Text = "RAdmin Version: " + ProblemFixer.RAVer;
+                    }
+                    else
+                    {
+                        pbCheck8.Image = global::My.Resources.Resources.Bad_Symbol;
+                        lblCheck8.ForeColor = Color.Firebrick;
+                        lblCheck8.Text = "RAdmin " + Language.strCcCheckFailed;
+                        txtCheck8.Text = Language.strCcClickOnSign;
+                    }
                 }
 
                 #endregion Private Methods
@@ -745,6 +823,15 @@ namespace mRemoteNC
                     if (!ProblemFixer.IsRDPSessionsOk())
                     {
                         ProblemFixer.FixEolProblem();
+                        CheckComponents();
+                    }
+                }
+
+                private void pbCheck8_Click(object sender, EventArgs e)
+                {
+                    if (!ProblemFixer.IsRAdminOk())
+                    {
+                        ProblemFixer.FixRAdminProblem();
                         CheckComponents();
                     }
                 }
