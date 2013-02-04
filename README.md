@@ -18,3 +18,4 @@ Currently these protocols are supported:
  * RAW
  * Serial
  * TeamViewer
+ * RAdmin
