@@ -25,6 +25,10 @@ http://www.codeproject.com/KB/recipes/command_line.aspx
 Included Components
 ===================
 
+Renci.SshNet
+2013.1.27
+http://sshnet.codeplex.com/
+
 GeckoFx-Windows-16.0-0.2
 Mozilla Public License
 https://bitbucket.org/geckofx/geckofx-16.0

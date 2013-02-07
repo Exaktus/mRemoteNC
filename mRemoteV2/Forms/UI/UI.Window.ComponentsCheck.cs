@@ -359,7 +359,7 @@ namespace mRemoteNC
             // 
             this.btnCheckAgain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCheckAgain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCheckAgain.Location = new System.Drawing.Point(476, 895);
+            this.btnCheckAgain.Location = new System.Drawing.Point(476, 883);
             this.btnCheckAgain.Name = "btnCheckAgain";
             this.btnCheckAgain.Size = new System.Drawing.Size(104, 23);
             this.btnCheckAgain.TabIndex = 0;
@@ -372,7 +372,7 @@ namespace mRemoteNC
             this.chkAlwaysShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkAlwaysShow.AutoSize = true;
             this.chkAlwaysShow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkAlwaysShow.Location = new System.Drawing.Point(12, 899);
+            this.chkAlwaysShow.Location = new System.Drawing.Point(12, 887);
             this.chkAlwaysShow.Name = "chkAlwaysShow";
             this.chkAlwaysShow.Size = new System.Drawing.Size(185, 17);
             this.chkAlwaysShow.TabIndex = 51;
@@ -386,6 +386,7 @@ namespace mRemoteNC
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlChecks.AutoScroll = true;
+            this.pnlChecks.Controls.Add(this.pnlCheck8);
             this.pnlChecks.Controls.Add(this.pnlCheck1);
             this.pnlChecks.Controls.Add(this.pnlCheck7);
             this.pnlChecks.Controls.Add(this.pnlCheck2);
@@ -395,7 +396,7 @@ namespace mRemoteNC
             this.pnlChecks.Controls.Add(this.pnlCheck4);
             this.pnlChecks.Location = new System.Drawing.Point(12, 12);
             this.pnlChecks.Name = "pnlChecks";
-            this.pnlChecks.Size = new System.Drawing.Size(568, 877);
+            this.pnlChecks.Size = new System.Drawing.Size(568, 865);
             this.pnlChecks.TabIndex = 52;
             // 
             // pnlCheck7
@@ -516,7 +517,7 @@ namespace mRemoteNC
             this.pnlCheck8.Controls.Add(this.txtCheck8);
             this.pnlCheck8.Controls.Add(this.lblCheck8);
             this.pnlCheck8.Controls.Add(this.pbCheck8);
-            this.pnlCheck8.Location = new System.Drawing.Point(12, 754);
+            this.pnlCheck8.Location = new System.Drawing.Point(0, 742);
             this.pnlCheck8.Name = "pnlCheck8";
             this.pnlCheck8.Size = new System.Drawing.Size(562, 100);
             this.pnlCheck8.TabIndex = 52;
@@ -545,8 +546,7 @@ namespace mRemoteNC
             // 
             // ComponentsCheck
             // 
-            this.ClientSize = new System.Drawing.Size(592, 930);
-            this.Controls.Add(this.pnlCheck8);
+            this.ClientSize = new System.Drawing.Size(592, 918);
             this.Controls.Add(this.pnlChecks);
             this.Controls.Add(this.chkAlwaysShow);
             this.Controls.Add(this.btnCheckAgain);
@@ -707,8 +707,7 @@ namespace mRemoteNC
                         pbCheck4.Image = global::My.Resources.Resources.Good_Symbol;
                         lblCheck4.ForeColor = Color.DarkOliveGreen;
                         lblCheck4.Text = "ICA (Citrix ICA) " + Language.strCcCheckSucceeded;
-                        txtCheck4.Text = string.Format(Language.strCcICAOK, "FixMe");
-                        throw new Exception();
+                        txtCheck4.Text = string.Format(Language.strCcICAOK, ProblemFixer.ICAVer);
                     }
                     else
                     {

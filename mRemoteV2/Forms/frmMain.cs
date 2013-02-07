@@ -79,8 +79,111 @@ namespace mRemoteNC
 
         #region Startup & Shutdown
 
+
+        private void SaveToolbars()
+        {
+            //ToolStripManager.SaveSettings(this, "main");
+            Settings.Default.tsQuickConnectLocation = tsQuickConnect.Location;
+            Settings.Default.tsMainLocation = msMain.Location;
+            Settings.Default.ToolStrip1Location = ToolStrip1.Location;
+            Settings.Default.tsQuickTextsLocation = tsQuickTexts.Location;
+
+            /*Settings.Default.tsQuickConnectParentName = GetToolStripParentName(tsQuickConnect);
+            Settings.Default.tsMainLocationParentName = GetToolStripParentName(msMain);
+            Settings.Default.ToolStrip1ParentName = GetToolStripParentName(ToolStrip1);
+            Settings.Default.tsQuickTextsParentName = GetToolStripParentName(tsQuickTexts);*/
+            Settings.Default.Save();
+        }
+
+        private void RestoreToolbars()
+        {
+            Settings.Default.Reload();
+            tsContainer.TopToolStripPanel.SuspendLayout();
+
+            //tsQuickConnect.Parent = GetToolStripParentByName(tsContainer.TopToolStripPanel, Settings.Default.tsQuickConnectParentName) ?? tsQuickConnect.Parent;
+            tsQuickConnect.Location = Settings.Default.tsQuickConnectLocation;
+
+            //msMain.Parent = GetToolStripParentByName(tsContainer.TopToolStripPanel, Settings.Default.tsMainLocationParentName) ?? msMain.Parent;
+            msMain.Location = Settings.Default.tsMainLocation;
+
+            //ToolStrip1.Parent = GetToolStripParentByName(tsContainer.TopToolStripPanel, Settings.Default.ToolStrip1ParentName) ?? ToolStrip1.Parent;
+            ToolStrip1.Location = Settings.Default.ToolStrip1Location;
+
+            //tsQuickTexts.Parent = GetToolStripParentByName(tsContainer.TopToolStripPanel, Settings.Default.tsQuickTextsParentName) ?? tsQuickTexts.Parent;
+            tsQuickTexts.Location = Settings.Default.tsQuickTextsLocation;
+            //ToolStripManager.LoadSettings(this, "main");
+            tsContainer.ResumeLayout(true);
+            
+        }
+
+        private string GetToolStripParentName(ToolStrip toolStrip)
+        {
+            var panel = toolStrip.Parent as ToolStripPanel;
+            var defaultName = String.Empty;
+
+            if (panel == null)
+            {
+                return defaultName;
+            }
+
+            var container = panel.Parent as ToolStripContainer;
+
+            if (container == null)
+            {
+                return defaultName;
+            }
+
+            if (panel == container.LeftToolStripPanel)
+            {
+                return "LeftToolStripPanel";
+            }
+
+            if (panel == container.RightToolStripPanel)
+            {
+                return "RightToolStripPanel";
+            }
+
+            if (panel == container.TopToolStripPanel)
+            {
+                return "TopToolStripPanel";
+            }
+
+            if (panel == container.BottomToolStripPanel)
+            {
+                return "BottomToolStripPanel";
+            }
+
+            return defaultName;
+        }
+
+        private ToolStripPanel GetToolStripParentByName(ToolStripContainer container, string parentName)
+        {
+            if (parentName == "LeftToolStripPanel")
+            {
+                return container.LeftToolStripPanel;
+            }
+
+            if (parentName == "RightToolStripPanel")
+            {
+                return container.RightToolStripPanel;
+            }
+
+            if (parentName == "TopToolStripPanel")
+            {
+                return container.TopToolStripPanel;
+            }
+
+            if (parentName == "BottomToolStripPanel")
+            {
+                return container.BottomToolStripPanel;
+            }
+
+            return null;
+        }
+
         public void frmMain_Load(object sender, System.EventArgs e)
         {
+            mRemoteNC.My.MyApplication.MyApplication_Startup();
             ToolStrip1.Visible = false;
             Runtime.Startup.CheckCompatibility();
 
@@ -166,6 +269,8 @@ namespace mRemoteNC
             Microsoft.Win32.SystemEvents.DisplaySettingsChanged += DisplayChanged;
 
             this.Opacity = 1;
+
+            RestoreToolbars();
 
             foreach (Info con in Runtime.ConnectionList.Cast<Info>().Where(con => con.ConnectOnStartup))
             {
@@ -263,13 +368,15 @@ namespace mRemoteNC
 
             IsClosing = true;
 
+            SaveToolbars();
+
             foreach (UI.Window.Base Window in Runtime.WindowList)
             {
                 Window.Close();
             }
-
+            
             Runtime.Shutdown.BeforeQuit();
-
+            mRemoteNC.My.MyApplication.MyApplication_Shutdown();
             Debug.Print("[END] - " + DateTime.Now);
         }
 
@@ -304,6 +411,7 @@ namespace mRemoteNC
         public void tmrAutoSave_Tick(System.Object sender, System.EventArgs e)
         {
             Runtime.MessageCollector.AddMessage(Messages.MessageClass.InformationMsg, "Doing AutoSave", true);
+            SaveToolbars();
             Runtime.SaveConnections();
         }
 
@@ -959,21 +1067,7 @@ namespace mRemoteNC
 
         public void frmMain_Resize(object sender, System.EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Minimized)
-            {
-                if (Settings.Default.MinimizeToTray)
-                {
-                    if (Runtime.NotificationAreaIcon == null)
-                    {
-                        Runtime.NotificationAreaIcon = new Tools.Controls.NotificationAreaIcon();
-                    }
-                    this.Hide();
-                }
-            }
-            else
-            {
-                PreviousWindowState = this.WindowState;
-            }
+
         }
 
         private bool _inMouseActivate = false;
@@ -1244,6 +1338,11 @@ namespace mRemoteNC
         }
 
         private void tsQuickTexts_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void msMain_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }

@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using My;
 using PSTaskDialog;
-using Shell32;
-using WFICALib;
 using mRemoteNC.App;
-using mRemoteNC.Forms;
 
 namespace mRemoteNC.Tools
 {
@@ -23,12 +16,13 @@ namespace mRemoteNC.Tools
         public static string VNCVer;
         public static string XulVer;
         public static string TVVer;
+        public static string ICAVer;
 
         public static bool IsRDPOk()
         {
             try
             {
-                using (var RDP = new AxMSTSCLib.AxMsRdpClient7NotSafeForScripting())
+                using (var RDP = new AxMSTSCLib.AxMsRdpClient7())
                 {
                     RDP.CreateControl();
                     var i = 60;
@@ -55,8 +49,8 @@ namespace mRemoteNC.Tools
                 using (var VNC = new VncSharp.RemoteDesktop())
                 {
                     VNC.CreateControl();
-
-                    while (!VNC.Created)
+                    var i = 60;
+                    while (!VNC.Created && i-- > 0)
                     {
                         Thread.Sleep(10);
                         Application.DoEvents();
@@ -76,11 +70,10 @@ namespace mRemoteNC.Tools
         {
             try
             {
-                string pPath = "";
-                pPath = Settings.Default.UseCustomPuttyPath == false
-                            ? (new Microsoft.VisualBasic.ApplicationServices.WindowsFormsApplicationBase()).Info.
-                                  DirectoryPath + "\\PuTTYNG.exe"
-                            : Settings.Default.CustomPuttyPath;
+                string pPath = Settings.Default.UseCustomPuttyPath == false
+                                   ? (new Microsoft.VisualBasic.ApplicationServices.WindowsFormsApplicationBase()).Info.
+                                         DirectoryPath + "\\PuTTYNG.exe"
+                                   : Settings.Default.CustomPuttyPath;
 
                 return File.Exists(pPath);
             }
@@ -92,30 +85,16 @@ namespace mRemoteNC.Tools
 
         public static bool IsICAOk()
         {
-            
             try
             {
-                /*using (ICAClient ic = new ICAClient())
+                using (var ICA = new AxWFICALib.AxICAClient { Parent = frmMain.defaultInstance })
                 {
-                    //ICA = new AxICAClient { Parent = this };
-                    //ICA.CreateControl();
-
-                    /*while (!ICA.Created)
-                    {
-                        Thread.Sleep(10);
-                        System.Windows.Forms.Application.DoEvents();
-                    }
-                }*/
-                
-                /*MessageBox.Show(ic.ClientVersion);
-                pbCheck4.Image = global::My.Resources.Resources.Good_Symbol;
-                lblCheck4.ForeColor = Color.DarkOliveGreen;
-                lblCheck4.Text = "ICA (Citrix ICA) " + Language.strCcCheckSucceeded;
-                txtCheck4.Text = string.Format(Language.strCcICAOK, ic.Version);*/
-                //ICA.Dispose();
-                throw new Exception();
+                    ICA.CreateControl();
+                    ICAVer = ICA.ClientVersion;
+                }
+                return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -123,25 +102,32 @@ namespace mRemoteNC.Tools
 
         public static bool IsGeckoOk()
         {
-            bool GeckoBad = Settings.Default.XULRunnerPath == "";
-
-            if (Directory.Exists(Settings.Default.XULRunnerPath))
+            try
             {
-                if (File.Exists(Path.Combine(Settings.Default.XULRunnerPath, "xpcom.dll")) == false)
+                bool GeckoBad = Settings.Default.XULRunnerPath == "";
+
+                if (Directory.Exists(Settings.Default.XULRunnerPath))
                 {
-                    GeckoBad = true;
+                    if (File.Exists(Path.Combine(Settings.Default.XULRunnerPath, "xpcom.dll")) == false)
+                    {
+                        GeckoBad = true;
+                    }
+                    else
+                    {
+                        XulVer = FileVersionInfo.GetVersionInfo(@Path.Combine(Settings.Default.XULRunnerPath, "xpcom.dll")).FileVersion;
+                    }
                 }
                 else
                 {
-                    XulVer = FileVersionInfo.GetVersionInfo(@Path.Combine(Settings.Default.XULRunnerPath, "xpcom.dll")).FileVersion;
+                    GeckoBad = true;
                 }
-            }
-            else
-            {
-                GeckoBad = true;
-            }
 
-            return GeckoBad == false;
+                return GeckoBad == false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public static bool IsRDPSessionsOk()
@@ -180,9 +166,8 @@ namespace mRemoteNC.Tools
             
         }
 
-        
 
-        public static void InstallXul()
+        private static void InstallXul()
         {
             try
             {
@@ -191,9 +176,9 @@ namespace mRemoteNC.Tools
                 Misc.UnZipFile(temFile, ".\\");
                 File.Delete(temFile);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -239,9 +224,9 @@ namespace mRemoteNC.Tools
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -309,9 +294,9 @@ namespace mRemoteNC.Tools
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -345,9 +330,9 @@ namespace mRemoteNC.Tools
                         break;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -388,9 +373,9 @@ namespace mRemoteNC.Tools
                 }
                 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -459,9 +444,9 @@ namespace mRemoteNC.Tools
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
     }

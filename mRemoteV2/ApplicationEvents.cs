@@ -24,10 +24,9 @@ namespace mRemoteNC
         // NetworkAvailabilityChanged: Raised when the network connection is connected or disconnected.
         partial class MyApplication
         {
-            public System.Threading.Mutex mutex;
+            public static System.Threading.Mutex mutex;
 
-            private void MyApplication_Startup(object sender,
-                                               Microsoft.VisualBasic.ApplicationServices.StartupEventArgs e)
+            public static void MyApplication_Startup()
             {
                 if (Settings.Default.SingleInstance)
                 {
@@ -52,7 +51,7 @@ namespace mRemoteNC
                 }
             }
 
-            private IntPtr GetCurrentInstanceWindowHandle()
+            static private IntPtr GetCurrentInstanceWindowHandle()
             {
                 IntPtr hWnd = IntPtr.Zero;
                 Process curProc = Process.GetCurrentProcess();
@@ -70,7 +69,7 @@ namespace mRemoteNC
                 return hWnd;
             }
 
-            private void SwitchToCurrentInstance()
+            static private void SwitchToCurrentInstance()
             {
                 IntPtr hWnd = GetCurrentInstanceWindowHandle();
 
@@ -88,7 +87,7 @@ namespace mRemoteNC
                 }
             }
 
-            private void MyApplication_Shutdown(object sender, System.EventArgs e)
+            public static void MyApplication_Shutdown()
             {
                 if (mutex != null)
                 {

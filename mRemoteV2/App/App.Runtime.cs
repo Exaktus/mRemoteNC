@@ -213,9 +213,19 @@ namespace mRemoteNC
                                 helpForm.Show(frmMain.Default.pnlDock);
                                 break;
                             case Type.ExternalApps:
-                                externalappsForm = new ExternalApps(externalappsPanel);
-                                externalappsPanel = externalappsForm;
-                                externalappsForm.Show(frmMain.Default.pnlDock);
+                                if (externalappsForm == null || externalappsPanel == null | externalappsPanel.VisibleState == DockState.Unknown)
+                                {
+                                    externalappsForm = new ExternalApps(externalappsPanel);
+                                    externalappsPanel = externalappsForm;
+                                    externalappsForm.Show(frmMain.Default.pnlDock);
+                                }
+                                else
+                                {
+                                    externalappsPanel.Focus();
+                                    externalappsPanel.Show();
+                                    externalappsPanel.BringToFront();
+                                    externalappsForm.Focus();
+                                }
                                 break;
                             case Type.PortScan:
                                 portscanForm = new PortScan(portscanPanel, PortScanMode);
@@ -228,9 +238,20 @@ namespace mRemoteNC
                                 ultravncscForm.Show(frmMain.Default.pnlDock);
                                 break;
                             case Type.ComponentsCheck:
-                                componentscheckForm = new ComponentsCheck(componentscheckPanel);
-                                componentscheckPanel = componentscheckForm;
-                                componentscheckForm.Show(frmMain.Default.pnlDock);
+                                if (componentscheckForm == null || componentscheckPanel == null | componentscheckPanel.VisibleState == DockState.Unknown)
+                                {
+                                    componentscheckForm = new ComponentsCheck(componentscheckPanel);
+                                    componentscheckPanel = componentscheckForm;
+                                    componentscheckForm.Show(frmMain.Default.pnlDock);
+                                }
+                                else
+                                {
+                                    componentscheckPanel.Focus();
+                                    componentscheckPanel.Show();
+                                    componentscheckPanel.BringToFront();
+                                    componentscheckForm.Focus();
+                                }
+
                                 break;
                             case Type.Announcement:
                                 AnnouncementForm = new UI.Window.Announcement(AnnouncementPanel);
@@ -1951,76 +1972,71 @@ namespace mRemoteNC
                     }
 
                     //TODO
-                    if ((Force) != Connection.Info.Force.DoNotJump)
+                    if (!(((Force & Connection.Info.Force.DoNotJump) == Connection.Info.Force.DoNotJump) || !SwitchToOpenConnection(newConnectionInfo)))
                     {
-                        if (SwitchToOpenConnection(newConnectionInfo))
-                        {
-                            return;
-                        }
+                        return;
                     }
-
                     Base newProtocol = new Base();
-                    // Create connection based on protocol type
-                    switch (newConnectionInfo.Protocol)
-                    {
-                        case Protocols.RDP:
-                            newProtocol = new RDP();
-                            break;
-                        case Protocols.VNC:
-                            newProtocol = new VNC();
-                            break;
-                        case Protocols.SSH1:
-                            newProtocol = new SSH1();
-                            break;
-                        case Protocols.SSH2:
-                            newProtocol = new SSH2();
-                            break;
-                        case Protocols.Telnet:
-                            newProtocol = new Telnet();
-                            break;
-                        case Protocols.Rlogin:
-                            newProtocol = new Rlogin();
-                            break;
-                        case Protocols.Serial:
-                            newProtocol = new Serial();
-                            break;
-                        case Protocols.RAW:
-                            newProtocol = new RAW();
-                            break;
-                        case Protocols.HTTP:
-                            newProtocol = new HTTP(newConnectionInfo.RenderingEngine);
-                            break;
-                        case Protocols.HTTPS:
-                            newProtocol = new HTTPS(newConnectionInfo.RenderingEngine);
-                            break;
-                        case Protocols.TeamViewer:
-                            newProtocol = new TeamViewer();
-                            break;
-                        case Protocols.RAdmin:
-                            newProtocol=new RAdmin();
-                            break;
-                        case Protocols.ICA:
-                            newProtocol = new ICA();
-                            break;
-                        case Protocols.IntApp:
-                            newProtocol = new IntApp();
-                            if (newConnectionInfo.ExtApp == "")
-                            {
-                                throw (new Exception(Language.strNoExtAppDefined));
-                            }
-                            break;
-                        default:
-                            return;
-                    }
-
+                        // Create connection based on protocol type
+                        switch (newConnectionInfo.Protocol)
+                        {
+                            case Protocols.RDP:
+                                newProtocol = new RDP();
+                                break;
+                            case Protocols.VNC:
+                                newProtocol = new VNC();
+                                break;
+                            case Protocols.SSH1:
+                                newProtocol = new SSH1();
+                                break;
+                            case Protocols.SSH2:
+                                newProtocol = new SSH2();
+                                break;
+                            case Protocols.Telnet:
+                                newProtocol = new Telnet();
+                                break;
+                            case Protocols.Rlogin:
+                                newProtocol = new Rlogin();
+                                break;
+                            case Protocols.Serial:
+                                newProtocol = new Serial();
+                                break;
+                            case Protocols.RAW:
+                                newProtocol = new RAW();
+                                break;
+                            case Protocols.HTTP:
+                                newProtocol = new HTTP(newConnectionInfo.RenderingEngine);
+                                break;
+                            case Protocols.HTTPS:
+                                newProtocol = new HTTPS(newConnectionInfo.RenderingEngine);
+                                break;
+                            case Protocols.TeamViewer:
+                                newProtocol = new TeamViewer();
+                                break;
+                            case Protocols.RAdmin:
+                                newProtocol = new RAdmin();
+                                break;
+                            case Protocols.ICA:
+                                newProtocol = new ICA();
+                                break;
+                            case Protocols.IntApp:
+                                newProtocol = new IntApp();
+                                if (newConnectionInfo.ExtApp == "")
+                                {
+                                    throw (new Exception(Language.strNoExtAppDefined));
+                                }
+                                break;
+                            default:
+                                return;
+                        }
+                    
                     Control cContainer;
                     Form cForm;
 
                     string cPnl;
-                    if (newConnectionInfo.Panel == "" || (Force) == Connection.Info.Force.OverridePanel ||
-                        Settings.Default.AlwaysShowPanelSelectionDlg)
+                    if (((newConnectionInfo.Panel == "") | ((Force & Connection.Info.Force.OverridePanel) == Connection.Info.Force.OverridePanel)) | Settings.Default.AlwaysShowPanelSelectionDlg)
                     {
-                        frmChoosePanel frmPnl = new frmChoosePanel();
+                        var frmPnl = new frmChoosePanel();
                         if (frmPnl.ShowDialog() == DialogResult.OK)
                         {
                             cPnl = frmPnl.Panel;
@@ -2032,17 +2048,10 @@ namespace mRemoteNC
                     }
                     else
                     {
-                        cPnl = (string)newConnectionInfo.Panel;
+                        cPnl = newConnectionInfo.Panel;
                     }
 
-                    if (ConForm == null)
-                    {
-                        cForm = WindowList.FromString(cPnl);
-                    }
-                    else
-                    {
-                        cForm = ConForm;
-                    }
+                    cForm = ConForm ?? WindowList.FromString(cPnl);
 
                     if (cForm == null)
                     {
@@ -2128,7 +2137,7 @@ namespace mRemoteNC
 
                 if (IC != null)
                 {
-                    ((UI.Window.Connection)IC.FindForm()).Focus();
+                    IC.FindForm().Focus();
                     (IC.FindForm() as UI.Window.Connection).Show(frmMain.Default.pnlDock);
                     TabPage t = (TabPage)IC.Parent;
                     t.Selected = true;

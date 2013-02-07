@@ -1,14 +1,15 @@
 ﻿2.70 pre-alfa (Forked as mRemoteNC)
 ​	Ported to C#, .Net 4.0
-	Fixed PuTTY tab focus issue
-	Fixed crash on startup after update from version 1.69 and older
+	Fixed PuTTY tab focus issue (MR-305)
+	Fixed crash on startup after update from version 1.69 and older (MR-306)
+	Fixed protocol resize on window minimize (MR-284, MR-282, MR-129)
 	​Fixed About multiple instance bug
 	Updated WeifenLuo.WinFormsUI.Docking to 2.7
 	The version of the RDP AX client updated to 7
-	ICA broken
-	SQL probably broken
+	SharpSSH replaced with Renci.SshNet
 	Items in context menu on connection tab now hides instead of disabling
 	Integrated IPTextBox
+	Added extended ssh file transfer
 	Added scanning host for common services
 	Added GeckoFX v16 HTTP(S) Rendering engine - http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/
 	Added option to start connection on app startup

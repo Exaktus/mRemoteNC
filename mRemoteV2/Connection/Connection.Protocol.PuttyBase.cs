@@ -186,8 +186,11 @@ namespace mRemoteNC
                     }
 
                     //REMOVE IN RELEASE!
-                    //mC.AddMessage(Messages.MessageClass.InformationMsg, "PuTTY Arguments: " & .Arguments, True)
-
+#if DEBUG
+                    Runtime.MessageCollector.AddMessage(Messages.MessageClass.InformationMsg,
+                                                        "PuTTY Arguments: " + PuttyProcess.StartInfo.Arguments, true);
+                    Debug.WriteLine("PuTTY Arguments: " + PuttyProcess.StartInfo.Arguments);
+#endif
                     PuttyProcess.EnableRaisingEvents = true;
                     PuttyProcess.Exited += new System.EventHandler(ProcessExited);
 
@@ -237,10 +240,7 @@ namespace mRemoteNC
             {
                 try
                 {
-                    //var res = Native.SetForegroundWindow(PuttyHandle);
                     Native.ForceForegroundWindow(PuttyHandle);
-                    //Native.SetForegroundWindow(PuttyHandle);
-                    //Debug.WriteLine("SetForegroundWindow _" + PuttyHandle + "_ " + res);
                 }
                 catch (Exception ex)
                 {

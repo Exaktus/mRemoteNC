@@ -117,7 +117,7 @@ namespace My {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Open Options|Open XULrunner 1.8.1 Download page
         ///ftp://ftp.mozilla.org/pub/xulrunner/releases/1.8.1.3/contrib/win32/|Open XULrunner 16.0.2 Download page
-        ///http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/|Automatic problem fix.
+        ///http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/|Download and setup XULrunner 16.0.2.
         /// </summary>
         internal static string ProblemFixer_FixGeckoProblem_ {
             get {

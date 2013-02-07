@@ -34,6 +34,29 @@ namespace mRemoteNC.Tools
 {
     public class Misc
     {
+        public static Bitmap RotateFlip(RotateFlipType rotateFlipType, Bitmap input)
+        {
+            Bitmap temp = input;
+            Bitmap bmap = (Bitmap)temp.Clone();
+            bmap.RotateFlip(rotateFlipType);
+            return (Bitmap)bmap.Clone();
+        }
+
+        public static void ebfFolderCreate(Object s1)
+        {
+            DirectoryInfo di = new DirectoryInfo(s1.ToString());
+            if (di.Parent != null && !di.Exists)
+            {
+                ebfFolderCreate(di.Parent.FullName);
+            }
+
+            if (!di.Exists)
+            {
+                di.Create();
+                di.Refresh();
+            }
+        }
+
         private struct SHFILEINFO
         {
             public IntPtr hIcon; // : icon
@@ -52,6 +75,77 @@ namespace mRemoteNC.Tools
         private const int SHGFI_ICON = 0x100;
         private const int SHGFI_SMALLICON = 0x1;
         //Private Const SHGFI_LARGEICON = &H0    ' Large icon
+
+        public static string GetUnixPathParent(string input)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    return "/";
+                }
+                if (input == "/.." || input == "/.")
+                {
+                    return "/";
+                }
+                if (input.EndsWith("/.."))
+                {
+                    var i = AllIndexesOf(input, "/");
+                    return input.Remove(i[i.Count - 2]+1, (input.Length - i[i.Count - 2])-1);
+                }
+                if (input.EndsWith("/."))
+                {
+                    return input.Remove(input.Length - 1, 2);
+                }
+                return input;
+            }
+            catch (Exception ex)
+            {
+                return input;
+            }
+        }
+
+        public static string GetUnixDirecoryOfFile(string file)
+        {
+            var startReomveFrom = file.LastIndexOf('/');
+            return file.Remove(startReomveFrom, file.Length - startReomveFrom);
+        }
+
+        public static List<int> AllIndexesOf(string str, string value)
+        {
+            if (String.IsNullOrEmpty(value))
+                throw new ArgumentException("the string to find may not be empty", "value");
+            List<int> indexes = new List<int>();
+            for (int index = 0; ; index += value.Length)
+            {
+                index = str.IndexOf(value, index);
+                if (index == -1)
+                    return indexes;
+                indexes.Add(index);
+            }
+        }
+
+        public static string LengthToHumanReadable(double size)
+        {
+            try
+            {
+                string[] sizes = { "B", "KB", "MB", "GB" };
+                int order = 0;
+                while (size >= 1024 && order + 1 < sizes.Length)
+                {
+                    order++;
+                    size = size / 1024;
+                }
+
+                // Adjust the format string to your preferences. For example "{0:0.#}{1}" would
+                // show a single decimal place, and no space.
+                return String.Format("{0:0.##} {1}", size, sizes[order]);
+            }
+            catch (Exception)
+            {
+                return "";
+            }
+        }
 
         public static Icon GetIconFromFile(string FileName)
         {

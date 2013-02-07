@@ -1950,19 +1950,6 @@ namespace My {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("mRemoteNG")]
-        public string ConDefaultIcon {
-            get {
-                return ((string)(this["ConDefaultIcon"]));
-            }
-            set {
-                this["ConDefaultIcon"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool InhDefaultRDGatewayUsageMethod {
             get {
@@ -2339,7 +2326,7 @@ namespace My {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("6, 0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("17, 0")]
         public global::System.Drawing.Point tsMainLocation {
             get {
                 return ((global::System.Drawing.Point)(this["tsMainLocation"]));
@@ -2352,7 +2339,7 @@ namespace My {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3, 25")]
+        [global::System.Configuration.DefaultSettingValueAttribute("114, 49")]
         public global::System.Drawing.Point tsQuickConnectLocation {
             get {
                 return ((global::System.Drawing.Point)(this["tsQuickConnectLocation"]));
@@ -2365,7 +2352,7 @@ namespace My {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1078, 0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3, 25")]
         public global::System.Drawing.Point tsQuickTextsLocation {
             get {
                 return ((global::System.Drawing.Point)(this["tsQuickTextsLocation"]));
@@ -2378,7 +2365,7 @@ namespace My {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1208, 0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3, 50")]
         public global::System.Drawing.Point tsExternalToolsLocation {
             get {
                 return ((global::System.Drawing.Point)(this["tsExternalToolsLocation"]));
@@ -2391,7 +2378,7 @@ namespace My {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("944, 0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3, 25")]
         public global::System.Drawing.Point ToolStrip1Location {
             get {
                 return ((global::System.Drawing.Point)(this["ToolStrip1Location"]));
@@ -2424,6 +2411,71 @@ namespace My {
             }
             set {
                 this["RAdminPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("mRemoteNC")]
+        public string ConDefaultIcon {
+            get {
+                return ((string)(this["ConDefaultIcon"]));
+            }
+            set {
+                this["ConDefaultIcon"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string tsQuickConnectParentName {
+            get {
+                return ((string)(this["tsQuickConnectParentName"]));
+            }
+            set {
+                this["tsQuickConnectParentName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string tsMainLocationParentName {
+            get {
+                return ((string)(this["tsMainLocationParentName"]));
+            }
+            set {
+                this["tsMainLocationParentName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string tsQuickTextsParentName {
+            get {
+                return ((string)(this["tsQuickTextsParentName"]));
+            }
+            set {
+                this["tsQuickTextsParentName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ToolStrip1ParentName {
+            get {
+                return ((string)(this["ToolStrip1ParentName"]));
+            }
+            set {
+                this["ToolStrip1ParentName"] = value;
             }
         }
     }

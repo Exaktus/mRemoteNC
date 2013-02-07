@@ -459,7 +459,35 @@ namespace mRemoteNC
                                 if (tabP.Tag is InterfaceControl)
                                 {
                                     InterfaceControl IC = (InterfaceControl)tabP.Tag;
-                                    IC.Protocol.Resize();
+
+                                    if (IC.Info.Protocol == Protocols.VNC)
+                                    {
+                                        (IC.Protocol as VNC).RefreshScreen();
+                                    }
+
+                                    //TODO
+                                    if (IC.Protocol as PuttyBase != null && Width > 200)
+                                    {
+                                        (IC.Protocol as PuttyBase).Resize();
+                                    }
+
+                                    //TODO
+                                    if (IC.Protocol as RDP != null && Width > 200)
+                                    {
+                                        (IC.Protocol as RDP).Resize();
+                                    }
+
+                                    //TODO
+                                    if (IC.Protocol as TeamViewer != null && Width > 200)
+                                    {
+                                        (IC.Protocol as TeamViewer).Resize();
+                                    }
+
+                                    //TODO
+                                    if (IC.Protocol as RAdmin != null && Width > 200)
+                                    {
+                                        (IC.Protocol as RAdmin).Resize();
+                                    }
                                 }
                             }
                         }
