@@ -9,6 +9,7 @@ using mRemoteNC.Protocol;
 using My;
 using PSTaskDialog;
 using WeifenLuo.WinFormsUI.Docking;
+using mRemoteNC.Tools;
 using Icon = System.Drawing.Icon;
 
 //using mRemoteNC.Runtime;
@@ -289,6 +290,8 @@ namespace mRemoteNC
 
                 #region Public Methods
 
+                private Tools.Misc.Fullscreen fullscreenManager;
+
                 public Connection(DockContent Panel, string FormText = "")
                 {
                     if (FormText == "")
@@ -301,6 +304,7 @@ namespace mRemoteNC
                     this.InitializeComponent();
                     this.Text = FormText;
                     this.TabText = FormText;
+                    fullscreenManager=new Misc.Fullscreen(this);
                 }
 
                 public Crownwood.Magic.Controls.TabPage AddConnectionTab(Info conI)
@@ -991,6 +995,10 @@ namespace mRemoteNC
                                 {
                                     RDP rdp = (RDP)IC.Protocol;
                                     rdp.ToggleFullscreen();
+                                }
+                                if (IC.Protocol is PuttyBase)
+                                {
+                                    fullscreenManager.EnterFullscreen();
                                 }
                             }
                         }

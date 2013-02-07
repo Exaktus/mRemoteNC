@@ -101,6 +101,7 @@
             this.lstStatus.UseCompatibleStateImageBehavior = false;
             this.lstStatus.View = System.Windows.Forms.View.Details;
             this.lstStatus.SelectedIndexChanged += new System.EventHandler(this.lstStatus_SelectedIndexChanged);
+            this.lstStatus.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lstStatus_MouseClick);
             this.lstStatus.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstStatus_MouseDoubleClick);
             // 
             // chPort

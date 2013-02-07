@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Drawing;
 using Microsoft.VisualBasic;
@@ -75,7 +77,7 @@ namespace mRemoteNC
                 private void InitializeComponent()
                 {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Connections");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Connections");
             this.tvConnections = new System.Windows.Forms.TreeView();
             this.cMenTree = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cMenTreeAddConnection = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,6 +92,7 @@ namespace mRemoteNC
             this.cMenTreeDisconnect = new System.Windows.Forms.ToolStripMenuItem();
             this.cMenTreeSep2 = new System.Windows.Forms.ToolStripSeparator();
             this.cMenTreeToolsTransferFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkTypicalPPortsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cMenTreeToolsImportExport = new System.Windows.Forms.ToolStripMenuItem();
             this.cMenTreeToolsImportExportExportmRemoteXML = new System.Windows.Forms.ToolStripMenuItem();
             this.cMenTreeToolsImportExportImportmRemoteXML = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,7 +105,6 @@ namespace mRemoteNC
             this.cMenTreeToolsSortDescending = new System.Windows.Forms.ToolStripMenuItem();
             this.cMenTreeToolsExternalApps = new System.Windows.Forms.ToolStripMenuItem();
             this.cMenTreeSep3 = new System.Windows.Forms.ToolStripSeparator();
-            this.checkTypicalPPortsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cMenTreeDuplicate = new System.Windows.Forms.ToolStripMenuItem();
             this.cMenTreeRename = new System.Windows.Forms.ToolStripMenuItem();
             this.cMenTreeDelete = new System.Windows.Forms.ToolStripMenuItem();
@@ -140,12 +142,12 @@ namespace mRemoteNC
             this.tvConnections.LabelEdit = true;
             this.tvConnections.Location = new System.Drawing.Point(0, 0);
             this.tvConnections.Name = "tvConnections";
-            treeNode1.Name = "nodeRoot";
-            treeNode1.Text = "Connections";
+            treeNode2.Name = "nodeRoot";
+            treeNode2.Text = "Connections";
             this.tvConnections.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode2});
             this.tvConnections.SelectedImageIndex = 0;
-            this.tvConnections.Size = new System.Drawing.Size(192, 407);
+            this.tvConnections.Size = new System.Drawing.Size(210, 407);
             this.tvConnections.TabIndex = 20;
             this.tvConnections.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.tvConnections_AfterLabelEdit);
             this.tvConnections.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.tvConnections_ItemDrag);
@@ -184,7 +186,7 @@ namespace mRemoteNC
             this.cMenTreeMoveDown});
             this.cMenTree.Name = "cMenTree";
             this.cMenTree.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.cMenTree.Size = new System.Drawing.Size(187, 380);
+            this.cMenTree.Size = new System.Drawing.Size(187, 358);
             this.cMenTree.Opening += new System.ComponentModel.CancelEventHandler(this.cMenTree_DropDownOpening);
             // 
             // cMenTreeAddConnection
@@ -280,6 +282,14 @@ namespace mRemoteNC
             this.cMenTreeToolsTransferFile.Size = new System.Drawing.Size(186, 22);
             this.cMenTreeToolsTransferFile.Text = "Transfer File (SSH)";
             this.cMenTreeToolsTransferFile.Click += new System.EventHandler(this.cMenTreeToolsTransferFile_Click);
+            // 
+            // checkTypicalPPortsToolStripMenuItem
+            // 
+            this.checkTypicalPPortsToolStripMenuItem.Image = global::My.Resources.Resources.HostStatus_Check;
+            this.checkTypicalPPortsToolStripMenuItem.Name = "checkTypicalPPortsToolStripMenuItem";
+            this.checkTypicalPPortsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.checkTypicalPPortsToolStripMenuItem.Text = "Check typical ports";
+            this.checkTypicalPPortsToolStripMenuItem.Click += new System.EventHandler(this.checkTypicalPPortsToolStripMenuItem_Click);
             // 
             // cMenTreeToolsImportExport
             // 
@@ -377,14 +387,6 @@ namespace mRemoteNC
             this.cMenTreeSep3.Name = "cMenTreeSep3";
             this.cMenTreeSep3.Size = new System.Drawing.Size(183, 6);
             // 
-            // checkTypicalPPortsToolStripMenuItem
-            // 
-            this.checkTypicalPPortsToolStripMenuItem.Image = global::My.Resources.Resources.HostStatus_Check;
-            this.checkTypicalPPortsToolStripMenuItem.Name = "checkTypicalPPortsToolStripMenuItem";
-            this.checkTypicalPPortsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.checkTypicalPPortsToolStripMenuItem.Text = "Check typical ports";
-            this.checkTypicalPPortsToolStripMenuItem.Click += new System.EventHandler(this.checkTypicalPPortsToolStripMenuItem_Click);
-            // 
             // cMenTreeDuplicate
             // 
             this.cMenTreeDuplicate.Image = global::My.Resources.Resources.Connection_Duplicate;
@@ -451,7 +453,7 @@ namespace mRemoteNC
             this.pnlConnections.Controls.Add(this.tvConnections);
             this.pnlConnections.Location = new System.Drawing.Point(0, 25);
             this.pnlConnections.Name = "pnlConnections";
-            this.pnlConnections.Size = new System.Drawing.Size(192, 428);
+            this.pnlConnections.Size = new System.Drawing.Size(210, 428);
             this.pnlConnections.TabIndex = 9;
             // 
             // PictureBox1
@@ -472,7 +474,7 @@ namespace mRemoteNC
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSearch.Location = new System.Drawing.Point(21, 412);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(169, 13);
+            this.txtSearch.Size = new System.Drawing.Size(187, 13);
             this.txtSearch.TabIndex = 30;
             this.txtSearch.TabStop = false;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
@@ -490,7 +492,7 @@ namespace mRemoteNC
             this.msMain.Name = "msMain";
             this.msMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.msMain.ShowItemToolTips = true;
-            this.msMain.Size = new System.Drawing.Size(192, 24);
+            this.msMain.Size = new System.Drawing.Size(210, 24);
             this.msMain.TabIndex = 10;
             this.msMain.Text = "MenuStrip1";
             this.msMain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.msMain_ItemClicked);
@@ -544,11 +546,12 @@ namespace mRemoteNC
             this.mMenSortAscending.Image = global::My.Resources.Resources.Sort_AZ;
             this.mMenSortAscending.Name = "mMenSortAscending";
             this.mMenSortAscending.Size = new System.Drawing.Size(28, 20);
+            this.mMenSortAscending.Visible = false;
             this.mMenSortAscending.Click += new System.EventHandler(this.mMenSortAscending_Click);
             // 
             // Tree
             // 
-            this.ClientSize = new System.Drawing.Size(192, 453);
+            this.ClientSize = new System.Drawing.Size(210, 453);
             this.Controls.Add(this.msMain);
             this.Controls.Add(this.pnlConnections);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -797,12 +800,9 @@ namespace mRemoteNC
                     {
                         if (ConnectionInfos != null)
                         {
-                            foreach (Info conI in ConnectionInfos)
+                            if (ConnectionInfos.Any(conI => conI.OpenConnections.Count > 0))
                             {
-                                if (conI.OpenConnections.Count > 0)
-                                {
-                                    return true;
-                                }
+                                return true;
                             }
                         }
                     }
@@ -969,6 +969,10 @@ namespace mRemoteNC
                             TreeView selectedTreeview = (TreeView) sender;
                             TreeNode dropNode = (TreeNode) e.Data.GetData("System.Windows.Forms.TreeNode");
                             TreeNode targetNode = selectedTreeview.SelectedNode;
+                            if (targetNode==null)
+                            {
+                                return;
+                            }
                             if (((dropNode != targetNode) && (Node.GetNodeType(dropNode) != Node.Type.Root)) &&
                                 (dropNode != targetNode.Parent))
                             {
@@ -1806,7 +1810,7 @@ namespace mRemoteNC
 
                     if (Node.GetNodeType(Node.SelectedNode) == Node.Type.Connection)
                     {
-                        var qhs = new QuickHostScanner();
+                        var qhs = new QuickHostScanner((Info)Runtime.Windows.treeForm.tvConnections.SelectedNode.Tag);
                         qhs.txtIP.Text=((Info)Runtime.Windows.treeForm.tvConnections.SelectedNode.Tag).Hostname;
                         qhs.ShowDialog(frmMain.defaultInstance);
                     }
@@ -1820,6 +1824,47 @@ namespace mRemoteNC
                 private void msMain_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
                 {
 
+                }
+
+                IEnumerable<TreeNode> GetAllNodes(TreeNode nodes)
+                {
+                    var allNodes = new List<TreeNode>();
+                    allNodes.Add(nodes);
+                    foreach (TreeNode tn in nodes.Nodes)
+                    {
+                        allNodes.AddRange(GetAllNodes(tn));
+                    }
+                    return allNodes;
+                }
+
+                internal void ChangeConProp(Info info, int p, Protocols protocols)
+                {
+                    try
+                    {
+                        var allNodes = new List<TreeNode>();
+                        foreach (TreeNode t in tvConnections.Nodes)
+                        {
+                            allNodes.AddRange(GetAllNodes(t));
+                        }
+                        foreach (var treeNode in allNodes)
+                        {
+                            var il = treeNode.Tag as Info;
+                            if (il != null && il == info)
+                            {
+                                il.Protocol = protocols;
+                                il.Port = p;
+                                tvConnections.SelectedNode = treeNode;
+                                InitialRefresh();
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                                    (string)
+                                    ("ChangeConProp (UI.Window.Tree) failed" +
+                                        Constants.vbNewLine + ex.Message), true);
+                    }
                 }
             }
         }

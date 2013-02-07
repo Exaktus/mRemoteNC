@@ -541,19 +541,19 @@
       <Value Profile="(Default)">17, 0</Value>
     </Setting>
     <Setting Name="tsQuickConnectLocation" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Drawing.Point" Scope="User">
-      <Value Profile="(Default)">114, 49</Value>
+      <Value Profile="(Default)">185, 0</Value>
     </Setting>
     <Setting Name="tsQuickTextsLocation" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Drawing.Point" Scope="User">
-      <Value Profile="(Default)">3, 25</Value>
+      <Value Profile="(Default)">627, 0</Value>
     </Setting>
     <Setting Name="tsExternalToolsLocation" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Drawing.Point" Scope="User">
-      <Value Profile="(Default)">3, 50</Value>
+      <Value Profile="(Default)">516, 0</Value>
     </Setting>
     <Setting Name="ToolStrip1Location" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Drawing.Point" Scope="User">
-      <Value Profile="(Default)">3, 25</Value>
+      <Value Profile="(Default)">3, 24</Value>
     </Setting>
     <Setting Name="QuickTextToolbarVisible" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="RAdminPath" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.String" Scope="User">
       <Value Profile="(Default)" />

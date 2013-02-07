@@ -1259,7 +1259,24 @@ namespace mRemoteNC
                 {
                     string backupFileName = string.Format(Settings.Default.BackupFileNameFormat, fileName,
                                                           DateTime.UtcNow).Trim();
-                    File.Copy(fileName, backupFileName);
+
+                    try
+                    {
+                        File.Copy(fileName, backupFileName);
+                    }
+                    catch (Exception ex )
+                    {
+                        var newBackup = Path.Combine(Info.Settings.SettingsPath, "Backups", Path.GetFileName(backupFileName));
+                        MessageCollector.AddMessage(MessageClass.InformationMsg,
+                                                    Language.strConnectionsFileBackupFailed +
+                                                    Constants.vbNewLine +"Backup filename:" +newBackup + Constants.vbNewLine + ex.Message);
+                        if (!Directory.Exists(Path.GetDirectoryName(newBackup)))
+                        {
+                            Directory.CreateDirectory(Path.GetDirectoryName(newBackup));
+                        }
+                        File.Copy(fileName, newBackup);
+                    }
+                    
                     PruneBackupFiles(fileName);
                 }
                 catch (Exception ex)

@@ -121,7 +121,7 @@ namespace mRemoteNC.Config
 
                     if (Settings.Default.MainFormKiosk == true)
                     {
-                        Tools.Misc.Fullscreen.EnterFullscreen();
+                        frmMain.defaultInstance.fullscreenManager.EnterFullscreen();
                     }
 
                     if (Settings.Default.UseCustomPuttyPath)

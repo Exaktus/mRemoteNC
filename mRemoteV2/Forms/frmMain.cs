@@ -26,6 +26,7 @@ namespace mRemoteNC
             //Added to support default instance behavour in C#
             if (defaultInstance == null)
                 defaultInstance = this;
+            fullscreenManager = new Tools.Misc.Fullscreen(this);
             Runtime.Windows.Show(Type.Connection);
         }
 
@@ -33,9 +34,6 @@ namespace mRemoteNC
 
         public static frmMain defaultInstance;
 
-        /// <summary>
-        /// Added by the VB.Net to C# Converter to support default instance behavour in C#
-        /// </summary>
         public static frmMain Default
         {
             get
@@ -56,6 +54,9 @@ namespace mRemoteNC
         }
 
         #endregion Default Instance
+
+        public Tools.Misc.Fullscreen fullscreenManager;
+
 
         public FormWindowState PreviousWindowState { get; set; }
 
@@ -98,6 +99,7 @@ namespace mRemoteNC
         private void RestoreToolbars()
         {
             Settings.Default.Reload();
+            tsContainer.SuspendLayout();
             tsContainer.TopToolStripPanel.SuspendLayout();
 
             //tsQuickConnect.Parent = GetToolStripParentByName(tsContainer.TopToolStripPanel, Settings.Default.tsQuickConnectParentName) ?? tsQuickConnect.Parent;
@@ -113,6 +115,7 @@ namespace mRemoteNC
             tsQuickTexts.Location = Settings.Default.tsQuickTextsLocation;
             //ToolStripManager.LoadSettings(this, "main");
             tsContainer.ResumeLayout(true);
+            tsContainer.TopToolStripPanel.ResumeLayout(true);
             
         }
 
@@ -798,14 +801,14 @@ namespace mRemoteNC
 
         public void mMenViewFullscreen_Click(System.Object sender, System.EventArgs e)
         {
-            if (Tools.Misc.Fullscreen.FullscreenActive)
+            if (frmMain.defaultInstance.fullscreenManager.FullscreenActive)
             {
-                Tools.Misc.Fullscreen.ExitFullscreen();
+                frmMain.defaultInstance.fullscreenManager.ExitFullscreen();
                 this.mMenViewFullscreen.Checked = false;
             }
             else
             {
-                Tools.Misc.Fullscreen.EnterFullscreen();
+                frmMain.defaultInstance.fullscreenManager.EnterFullscreen();
                 this.mMenViewFullscreen.Checked = true;
             }
         }
@@ -1332,9 +1335,15 @@ namespace mRemoteNC
 
         private void quickTextToolbarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            tsContainer.SuspendLayout();
+            tsContainer.TopToolStripPanel.SuspendLayout();
             Settings.Default.QuickTextToolbarVisible = quickTextToolbarToolStripMenuItem.Checked;
             tsQuickTexts.Visible = quickTextToolbarToolStripMenuItem.Checked;
             Settings.Default.Save();
+            this.tsContainer.TopToolStripPanel.ResumeLayout(false);
+            this.tsContainer.TopToolStripPanel.PerformLayout();
+            this.tsContainer.ResumeLayout(false);
+            this.tsContainer.PerformLayout();
         }
 
         private void tsQuickTexts_ItemClicked(object sender, ToolStripItemClickedEventArgs e)

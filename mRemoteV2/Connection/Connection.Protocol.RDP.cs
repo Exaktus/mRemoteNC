@@ -17,15 +17,11 @@ namespace mRemoteNC
     {
         #region Properties
 
-        private bool _SmartSize;
-
         public bool SmartSize
         {
             get { return this.RDP_Client.AdvancedSettings4.SmartSizing; }
             set { this.RDP_Client.AdvancedSettings4.SmartSizing = value; }
         }
-
-        private bool _Fullscreen;
 
         public bool Fullscreen
         {

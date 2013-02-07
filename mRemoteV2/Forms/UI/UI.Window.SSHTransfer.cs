@@ -874,7 +874,12 @@ namespace mRemoteNC
                             }
                         }
                         long totalsize = filelist.Sum(pair => pair.Key.Length);
-                        MessageBox.Show(Tools.Misc.LengthToHumanReadable(totalsize));
+                        var result = MessageBox.Show(string.Format("Download {0} in {1} files?\r\nDestination directory:{2}", Tools.Misc.LengthToHumanReadable(totalsize), filelist.Count, txtLocalBrowserPath.Text), "Downloading", MessageBoxButtons.YesNoCancel);
+                        if (result!=DialogResult.Yes)
+                        {
+                            EnableButtons();
+                            return;
+                        }
                         long totaluploaded = 0;
                         ThreadPool.QueueUserWorkItem(state =>
                             {

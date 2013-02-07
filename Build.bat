@@ -26,7 +26,7 @@ set PortableZipName=%FileName:Installer=Portable%.zip
 set ReleaseZipName=%FileName:-Installer=%.zip
 set InstallerZipName=%FileName%.zip
 set InstallerReleaseName=%FileName%.exe
-set AioName=%ReleaseZipName%-AIO.zip
+set AioName=%FileName%-AIO.zip
 
 echo Creating portable ZIP file...
 del /f /q "%~dp0\Release\%PortableZipName%" > nul 2>&1
@@ -45,7 +45,7 @@ del /f /q "%~dp0\Release\%InstallerZipName%" > nul 2>&1
 echo Creating AIO ZIP file...
 del /f /q "%~dp0\Release\%AioName%" > nul 2>&1
 %RAR% a -m5 -r -ep1 -afzip -inul "%~dp0\Release\%AioName%" "%~dp0\Release\%PortableZipName%"
-%RAR% a -m5 -r -ep1 -afzip -inul "%~dp0\Release\%AioName%" "%~dp0\Release\%FileName%"
+%RAR% a -m5 -r -ep1 -afzip -inul "%~dp0\Release\%AioName%" "%~dp0\Release\%InstallerReleaseName%"
 
 echo Finished!
 pause

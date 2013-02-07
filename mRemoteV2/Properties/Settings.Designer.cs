@@ -2339,7 +2339,7 @@ namespace My {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("114, 49")]
+        [global::System.Configuration.DefaultSettingValueAttribute("185, 0")]
         public global::System.Drawing.Point tsQuickConnectLocation {
             get {
                 return ((global::System.Drawing.Point)(this["tsQuickConnectLocation"]));
@@ -2352,7 +2352,7 @@ namespace My {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3, 25")]
+        [global::System.Configuration.DefaultSettingValueAttribute("627, 0")]
         public global::System.Drawing.Point tsQuickTextsLocation {
             get {
                 return ((global::System.Drawing.Point)(this["tsQuickTextsLocation"]));
@@ -2365,7 +2365,7 @@ namespace My {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3, 50")]
+        [global::System.Configuration.DefaultSettingValueAttribute("516, 0")]
         public global::System.Drawing.Point tsExternalToolsLocation {
             get {
                 return ((global::System.Drawing.Point)(this["tsExternalToolsLocation"]));
@@ -2378,7 +2378,7 @@ namespace My {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3, 25")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3, 24")]
         public global::System.Drawing.Point ToolStrip1Location {
             get {
                 return ((global::System.Drawing.Point)(this["ToolStrip1Location"]));
@@ -2391,7 +2391,7 @@ namespace My {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool QuickTextToolbarVisible {
             get {
                 return ((bool)(this["QuickTextToolbarVisible"]));

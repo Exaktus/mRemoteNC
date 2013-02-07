@@ -23,7 +23,8 @@ namespace mRemoteNC
 
             private string _Name = "New Container";
 
-            //[mRemoteNC.Container.Info.Name("strCategoryDisplay", 1), Browsable(true), ReadOnly(false), Bindable(false), DefaultValue(""), DesignOnly(false), mRemoteNC.Container.Info.Name("strPropertyNameName"), mRemoteNC.Container.Info.Name("strPropertyDescriptionName"), Attributes.Container()]
+            //ToDo
+            //[LocalizedAttributes.LocalizedCategoryAttribute("strCategoryDisplay", 1), Browsable(true), ReadOnly(false), Bindable(false), DefaultValue(""), DesignOnly(false), mRemoteNC.Container.Info.Name("strPropertyNameName"), mRemoteNC.Container.Info.Name("strPropertyDescriptionName"), Attributes.Container()]
             public string Name
             {
                 get { return this._ConnectionInfo.Name; }

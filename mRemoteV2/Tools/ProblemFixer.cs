@@ -114,7 +114,7 @@ namespace mRemoteNC.Tools
                     }
                     else
                     {
-                        XulVer = FileVersionInfo.GetVersionInfo(@Path.Combine(Settings.Default.XULRunnerPath, "xpcom.dll")).FileVersion;
+                        XulVer = FileVersionInfo.GetVersionInfo(Path.Combine(Settings.Default.XULRunnerPath, "xpcom.dll")).FileVersion;
                     }
                 }
                 else

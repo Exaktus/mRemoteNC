@@ -57,23 +57,6 @@ namespace mRemoteNC.Tools
             }
         }
 
-        private struct SHFILEINFO
-        {
-            public IntPtr hIcon; // : icon
-            public int iIcon; // : icondex
-            public int dwAttributes; // : SFGAO_ flags
-            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 260)]
-            public string szDisplayName;
-            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 80)]
-            public string szTypeName;
-        }
-
-        [DllImport("shell32.dll")]
-        private static extern IntPtr SHGetFileInfo(string pszPath, int dwFileAttributes, ref SHFILEINFO psfi,
-                                                   int cbFileInfo, int uFlags);
-
-        private const int SHGFI_ICON = 0x100;
-        private const int SHGFI_SMALLICON = 0x1;
         //Private Const SHGFI_LARGEICON = &H0    ' Large icon
 
         public static string GetUnixPathParent(string input)
@@ -101,6 +84,7 @@ namespace mRemoteNC.Tools
             }
             catch (Exception ex)
             {
+                Runtime.MessageCollector.AddMessage(MessageClass.ErrorMsg, ("GetUnixPathParent failed" + Constants.vbNewLine + ex.Message), true);
                 return input;
             }
         }
@@ -158,15 +142,15 @@ namespace mRemoteNC.Tools
 
                 IntPtr hImgSmall; //The handle to the system image list.
                 //Dim hImgLarge As IntPtr  'The handle to the system image list.
-                SHFILEINFO shinfo;
-                shinfo = new SHFILEINFO();
+                Native.SHFILEINFO shinfo;
+                shinfo = new Native.SHFILEINFO();
 
                 shinfo.szDisplayName = new string('\0', 260);
                 shinfo.szTypeName = new string('\0', 80);
 
                 //Use this to get the small icon.
-                hImgSmall = SHGetFileInfo(FileName, 0, ref shinfo, Marshal.SizeOf(shinfo),
-                                          Convert.ToInt32(SHGFI_ICON | SHGFI_SMALLICON));
+                hImgSmall = Native.SHGetFileInfo(FileName, 0, ref shinfo, Marshal.SizeOf(shinfo),
+                                          Convert.ToInt32(Native.SHGFI_ICON | Native.SHGFI_SMALLICON));
 
                 //Use this to get the large icon.
                 //hImgLarge = SHGetFileInfo(fName, 0, ref shinfo, (uint)Marshal.SizeOf(shinfo), SHGFI_ICON | SHGFI_LARGEICON);
@@ -577,15 +561,20 @@ namespace mRemoteNC.Tools
 
         public class Fullscreen
         {
-            private static FormWindowState winState;
-            private static FormBorderStyle brdStyle;
-            private static bool topMost;
-            private static Rectangle bounds;
+            private FormWindowState winState;
+            private FormBorderStyle brdStyle;
+            private bool topMost;
+            private Rectangle bounds;
 
-            public static Form targetForm = frmMain.defaultInstance;
-            public static bool FullscreenActive = false;
+            public Form targetForm;
+            public bool FullscreenActive = false;
 
-            public static void EnterFullscreen()
+            public Fullscreen(Form tf)
+            {
+                targetForm = tf;
+            }
+
+            public void EnterFullscreen()
             {
                 try
                 {
@@ -593,9 +582,12 @@ namespace mRemoteNC.Tools
                     {
                         FullscreenActive = true;
                         Save();
+                        targetForm.Parent = null;
                         targetForm.WindowState = FormWindowState.Maximized;
                         targetForm.FormBorderStyle = FormBorderStyle.None;
+                        targetForm.TopMost = true;
                         SetWinFullScreen(targetForm.Handle);
+                        Native.SetForegroundWindow(targetForm.Handle);
                     }
                 }
                 catch (Exception ex)
@@ -607,14 +599,14 @@ namespace mRemoteNC.Tools
                 }
             }
 
-            public static void Save()
+            public void Save()
             {
                 winState = targetForm.WindowState;
                 brdStyle = targetForm.FormBorderStyle;
                 bounds = targetForm.Bounds;
             }
 
-            public static void ExitFullscreen()
+            public void ExitFullscreen()
             {
                 try
                 {
@@ -632,24 +624,16 @@ namespace mRemoteNC.Tools
                 }
             }
 
-            [DllImport("user32.dll", EntryPoint = "GetSystemMetrics")]
-            public static extern int GetSystemMetrics(int which);
-
-            [DllImport("user32.dll")]
-            public static extern void SetWindowPos(IntPtr hwnd, IntPtr hwndInsertAfter, int X, int Y, int width,
-                                                   int height, UInt32 flags);
-
             private static IntPtr HWND_TOP = IntPtr.Zero;
-            private const int SWP_SHOWWINDOW = 64;
             // 0Ч0040
 
-            public static void SetWinFullScreen(IntPtr hwnd)
+            public void SetWinFullScreen(IntPtr hwnd)
             {
                 try
                 {
                     Screen curScreen = Screen.FromHandle(targetForm.Handle);
-                    SetWindowPos(hwnd, HWND_TOP, curScreen.Bounds.Left, curScreen.Bounds.Top, curScreen.Bounds.Right,
-                                 curScreen.Bounds.Bottom, SWP_SHOWWINDOW);
+                    Native.SetWindowPos(hwnd, HWND_TOP, curScreen.Bounds.Left, curScreen.Bounds.Top, curScreen.Bounds.Right,
+                                 curScreen.Bounds.Bottom, (uint) Native.SWP_SHOWWINDOW);
                 }
                 catch (Exception ex)
                 {
@@ -788,7 +772,7 @@ namespace mRemoteNC.Tools
             }
             catch (Exception ex)
             {
-                
+                Runtime.MessageCollector.AddMessage(MessageClass.ErrorMsg, ("RegisterDll failed" + Constants.vbNewLine + ex.Message),true);
             }
         }
 

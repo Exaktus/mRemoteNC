@@ -39,7 +39,7 @@ namespace mRemoteNC.Config
 
                     Settings.Default.MainFormState = with_1.WindowState;
 
-                    Settings.Default.MainFormKiosk = Tools.Misc.Fullscreen.FullscreenActive;
+                    Settings.Default.MainFormKiosk = frmMain.defaultInstance.fullscreenManager.FullscreenActive;
 
                     Settings.Default.FirstStart = false;
                     Settings.Default.ResetPanels = false;

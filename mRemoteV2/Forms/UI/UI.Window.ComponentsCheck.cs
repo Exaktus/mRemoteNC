@@ -634,157 +634,164 @@ namespace mRemoteNC
 
                 private void CheckComponents()
                 {
-                    string errorMsg = Language.strCcNotInstalledProperly;
-
-                    pnlCheck1.Visible = true;
-                    pnlCheck2.Visible = true;
-                    pnlCheck3.Visible = true;
-                    pnlCheck4.Visible = true;
-                    pnlCheck5.Visible = true;
-                    pnlCheck6.Visible = true;
-                    pnlCheck7.Visible = true;
-                    pnlCheck8.Visible = true;
-
-                    if (ProblemFixer.IsRDPOk())
+                    try
                     {
-                        pbCheck1.Image = global::My.Resources.Resources.Good_Symbol;
-                        lblCheck1.ForeColor = Color.DarkOliveGreen;
-                        lblCheck1.Text = "RDP (Remote Desktop) " + Language.strCcCheckSucceeded;
-                        txtCheck1.Text = string.Format(Language.strCcRDPOK, ProblemFixer.RDPVer);
+                        string errorMsg = Language.strCcNotInstalledProperly;
+
+                        pnlCheck1.Visible = true;
+                        pnlCheck2.Visible = true;
+                        pnlCheck3.Visible = true;
+                        pnlCheck4.Visible = true;
+                        pnlCheck5.Visible = true;
+                        pnlCheck6.Visible = true;
+                        pnlCheck7.Visible = true;
+                        pnlCheck8.Visible = true;
+
+                        if (ProblemFixer.IsRDPOk())
+                        {
+                            pbCheck1.Image = global::My.Resources.Resources.Good_Symbol;
+                            lblCheck1.ForeColor = Color.DarkOliveGreen;
+                            lblCheck1.Text = "RDP (Remote Desktop) " + Language.strCcCheckSucceeded;
+                            txtCheck1.Text = string.Format(Language.strCcRDPOK, ProblemFixer.RDPVer);
+                        }
+                        else
+                        {
+                            pbCheck1.Image = global::My.Resources.Resources.Bad_Symbol;
+                            lblCheck1.ForeColor = Color.Firebrick;
+                            lblCheck1.Text = "RDP (Remote Desktop) " + Language.strCcCheckFailed;
+                            txtCheck1.Text = Language.strCcRDPFailed;
+
+                            Runtime.MessageCollector.AddMessage(Messages.MessageClass.WarningMsg, "RDP " + errorMsg, true);
+                        }
+
+
+
+                        if (ProblemFixer.IsVNCOk())
+                        {
+                            pbCheck2.Image = global::My.Resources.Resources.Good_Symbol;
+                            lblCheck2.ForeColor = Color.DarkOliveGreen;
+                            lblCheck2.Text = "VNC (Virtual Network Computing) " + Language.strCcCheckSucceeded;
+                            txtCheck2.Text = string.Format(Language.strCcVNCOK, ProblemFixer.VNCVer);
+                        }
+                        else
+                        {
+                            pbCheck2.Image = global::My.Resources.Resources.Bad_Symbol;
+                            lblCheck2.ForeColor = Color.Firebrick;
+                            lblCheck2.Text = "VNC (Virtual Network Computing) " + Language.strCcCheckFailed;
+                            txtCheck2.Text = Language.strCcVNCFailed;
+
+                            Runtime.MessageCollector.AddMessage(Messages.MessageClass.WarningMsg, "VNC " + errorMsg, true);
+                        }
+
+
+                        if (ProblemFixer.IsPuTTYOk())
+                        {
+                            pbCheck3.Image = global::My.Resources.Resources.Good_Symbol;
+                            lblCheck3.ForeColor = Color.DarkOliveGreen;
+                            lblCheck3.Text = "PuTTY (SSH/Telnet/Rlogin/RAW) " + Language.strCcCheckSucceeded;
+                            txtCheck3.Text = Language.strCcPuttyOK;
+                        }
+                        else
+                        {
+                            pbCheck3.Image = global::My.Resources.Resources.Bad_Symbol;
+                            lblCheck3.ForeColor = Color.Firebrick;
+                            lblCheck3.Text = "PuTTY (SSH/Telnet/Rlogin/RAW) " + Language.strCcCheckFailed;
+                            txtCheck3.Text = Language.strCcClickOnSign;
+
+                            Runtime.MessageCollector.AddMessage(Messages.MessageClass.WarningMsg, "PuTTY " + errorMsg, true);
+                            Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                                                                "File does not exist.", true);
+                        }
+
+                        if (ProblemFixer.IsICAOk())
+                        {
+
+                            pbCheck4.Image = global::My.Resources.Resources.Good_Symbol;
+                            lblCheck4.ForeColor = Color.DarkOliveGreen;
+                            lblCheck4.Text = "ICA (Citrix ICA) " + Language.strCcCheckSucceeded;
+                            txtCheck4.Text = string.Format(Language.strCcICAOK, ProblemFixer.ICAVer);
+                        }
+                        else
+                        {
+                            pbCheck4.Image = global::My.Resources.Resources.Bad_Symbol;
+                            lblCheck4.ForeColor = Color.Firebrick;
+                            lblCheck4.Text = "ICA (Citrix ICA) " + Language.strCcCheckFailed;
+                            txtCheck4.Text = Language.strCcICAFailed;
+
+                            Runtime.MessageCollector.AddMessage(Messages.MessageClass.WarningMsg, "ICA " + errorMsg, true);
+                        }
+
+                        if (ProblemFixer.IsGeckoOk())
+                        {
+                            pbCheck5.Image = global::My.Resources.Resources.Good_Symbol;
+                            lblCheck5.ForeColor = Color.DarkOliveGreen;
+                            lblCheck5.Text = "Gecko (Firefox) Rendering Engine (HTTP/S) " + Language.strCcCheckSucceeded;
+                            txtCheck5.Text = Language.strCcGeckoOK + " Gecko version: " + ProblemFixer.XulVer;
+                        }
+                        else
+                        {
+                            pbCheck5.Image = global::My.Resources.Resources.Bad_Symbol;
+                            lblCheck5.ForeColor = Color.Firebrick;
+                            lblCheck5.Text = "Gecko (Firefox) Rendering Engine (HTTP/S) " + Language.strCcCheckFailed;
+                            txtCheck5.Text = Language.strCcClickOnSign;
+
+                            Runtime.MessageCollector.AddMessage(Messages.MessageClass.WarningMsg, "Gecko " + errorMsg, true);
+                            Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                                                                "XULrunner was not found in " +
+                                                                Settings.Default.XULRunnerPath, true);
+                        }
+
+                        if (ProblemFixer.IsRDPSessionsOk())
+                        {
+                            pbCheck6.Image = global::My.Resources.Resources.Good_Symbol;
+                            lblCheck6.ForeColor = Color.DarkOliveGreen;
+                            lblCheck6.Text = "(RDP) Sessions " + Language.strCcCheckSucceeded;
+                            txtCheck6.Text = Language.strCcEOLOK;
+                        }
+                        else
+                        {
+                            pbCheck6.Image = global::My.Resources.Resources.Bad_Symbol;
+                            lblCheck6.ForeColor = Color.Firebrick;
+                            lblCheck6.Text = "(RDP) Sessions " + Language.strCcCheckFailed;
+                            txtCheck6.Text = Language.strCcClickOnSign;
+
+                            Runtime.MessageCollector.AddMessage(Messages.MessageClass.WarningMsg, "EOLWTSCOM " + errorMsg,
+                                                                true);
+                        }
+
+                        if (ProblemFixer.IsTeamViewerOk())
+                        {
+                            pbCheck7.Image = global::My.Resources.Resources.Good_Symbol;
+                            lblCheck7.ForeColor = Color.DarkOliveGreen;
+                            lblCheck7.Text = "TeamViewer " + Language.strCcCheckSucceeded;
+                            txtCheck7.Text = "TeamViewer Version: " + ProblemFixer.TVVer;
+                        }
+                        else
+                        {
+                            pbCheck7.Image = global::My.Resources.Resources.Bad_Symbol;
+                            lblCheck7.ForeColor = Color.Firebrick;
+                            lblCheck7.Text = "TeamViewer " + Language.strCcCheckFailed;
+                            txtCheck7.Text = Language.strCcClickOnSign;
+                        }
+
+                        if (ProblemFixer.IsRAdminOk())
+                        {
+                            pbCheck8.Image = global::My.Resources.Resources.Good_Symbol;
+                            lblCheck8.ForeColor = Color.DarkOliveGreen;
+                            lblCheck8.Text = "RAdmin " + Language.strCcCheckSucceeded;
+                            txtCheck8.Text = "RAdmin Version: " + ProblemFixer.RAVer;
+                        }
+                        else
+                        {
+                            pbCheck8.Image = global::My.Resources.Resources.Bad_Symbol;
+                            lblCheck8.ForeColor = Color.Firebrick;
+                            lblCheck8.Text = "RAdmin " + Language.strCcCheckFailed;
+                            txtCheck8.Text = Language.strCcClickOnSign;
+                        }
                     }
-                    else
+                    catch (Exception)
                     {
-                        pbCheck1.Image = global::My.Resources.Resources.Bad_Symbol;
-                        lblCheck1.ForeColor = Color.Firebrick;
-                        lblCheck1.Text = "RDP (Remote Desktop) " + Language.strCcCheckFailed;
-                        txtCheck1.Text = Language.strCcRDPFailed;
-
-                        Runtime.MessageCollector.AddMessage(Messages.MessageClass.WarningMsg, "RDP " + errorMsg, true);
-                    }
-                    
-                    
-
-                    if (ProblemFixer.IsVNCOk())
-                    {
-                        pbCheck2.Image = global::My.Resources.Resources.Good_Symbol;
-                        lblCheck2.ForeColor = Color.DarkOliveGreen;
-                        lblCheck2.Text = "VNC (Virtual Network Computing) " + Language.strCcCheckSucceeded;
-                        txtCheck2.Text = string.Format(Language.strCcVNCOK,ProblemFixer.VNCVer);
-                    }
-                    else
-                    {
-                        pbCheck2.Image = global::My.Resources.Resources.Bad_Symbol;
-                        lblCheck2.ForeColor = Color.Firebrick;
-                        lblCheck2.Text = "VNC (Virtual Network Computing) " + Language.strCcCheckFailed;
-                        txtCheck2.Text = Language.strCcVNCFailed;
-
-                        Runtime.MessageCollector.AddMessage(Messages.MessageClass.WarningMsg, "VNC " + errorMsg, true);
-                    }
-
-                    
-                    if (ProblemFixer.IsPuTTYOk())
-                    {
-                        pbCheck3.Image = global::My.Resources.Resources.Good_Symbol;
-                        lblCheck3.ForeColor = Color.DarkOliveGreen;
-                        lblCheck3.Text = "PuTTY (SSH/Telnet/Rlogin/RAW) " + Language.strCcCheckSucceeded;
-                        txtCheck3.Text = Language.strCcPuttyOK;
-                    }
-                    else
-                    {
-                        pbCheck3.Image = global::My.Resources.Resources.Bad_Symbol;
-                        lblCheck3.ForeColor = Color.Firebrick;
-                        lblCheck3.Text = "PuTTY (SSH/Telnet/Rlogin/RAW) " + Language.strCcCheckFailed;
-                        txtCheck3.Text = Language.strCcClickOnSign;
-
-                        Runtime.MessageCollector.AddMessage(Messages.MessageClass.WarningMsg, "PuTTY " + errorMsg, true);
-                        Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
-                                                            "File does not exist.", true);
-                    }
-
-                    if (ProblemFixer.IsICAOk())
-                    {
-
-                        pbCheck4.Image = global::My.Resources.Resources.Good_Symbol;
-                        lblCheck4.ForeColor = Color.DarkOliveGreen;
-                        lblCheck4.Text = "ICA (Citrix ICA) " + Language.strCcCheckSucceeded;
-                        txtCheck4.Text = string.Format(Language.strCcICAOK, ProblemFixer.ICAVer);
-                    }
-                    else
-                    {
-                        pbCheck4.Image = global::My.Resources.Resources.Bad_Symbol;
-                        lblCheck4.ForeColor = Color.Firebrick;
-                        lblCheck4.Text = "ICA (Citrix ICA) " + Language.strCcCheckFailed;
-                        txtCheck4.Text = Language.strCcICAFailed;
-
-                        Runtime.MessageCollector.AddMessage(Messages.MessageClass.WarningMsg, "ICA " + errorMsg, true);
-                    }
-
-                    if (ProblemFixer.IsGeckoOk())
-                    {
-                        pbCheck5.Image = global::My.Resources.Resources.Good_Symbol;
-                        lblCheck5.ForeColor = Color.DarkOliveGreen;
-                        lblCheck5.Text = "Gecko (Firefox) Rendering Engine (HTTP/S) " + Language.strCcCheckSucceeded;
-                        txtCheck5.Text = Language.strCcGeckoOK + " Gecko version: " + ProblemFixer.XulVer;
-                    }
-                    else
-                    {
-                        pbCheck5.Image = global::My.Resources.Resources.Bad_Symbol;
-                        lblCheck5.ForeColor = Color.Firebrick;
-                        lblCheck5.Text = "Gecko (Firefox) Rendering Engine (HTTP/S) " + Language.strCcCheckFailed;
-                        txtCheck5.Text = Language.strCcClickOnSign;
-
-                        Runtime.MessageCollector.AddMessage(Messages.MessageClass.WarningMsg, "Gecko " + errorMsg, true);
-                        Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
-                                                            "XULrunner was not found in " +
-                                                            Settings.Default.XULRunnerPath, true);
-                    }
-
-                    if (ProblemFixer.IsRDPSessionsOk())
-                    {
-                        pbCheck6.Image = global::My.Resources.Resources.Good_Symbol;
-                        lblCheck6.ForeColor = Color.DarkOliveGreen;
-                        lblCheck6.Text = "(RDP) Sessions " + Language.strCcCheckSucceeded;
-                        txtCheck6.Text = Language.strCcEOLOK;
-                    }
-                    else
-                    {
-                        pbCheck6.Image = global::My.Resources.Resources.Bad_Symbol;
-                        lblCheck6.ForeColor = Color.Firebrick;
-                        lblCheck6.Text = "(RDP) Sessions " + Language.strCcCheckFailed;
-                        txtCheck6.Text = Language.strCcClickOnSign;
-
-                        Runtime.MessageCollector.AddMessage(Messages.MessageClass.WarningMsg, "EOLWTSCOM " + errorMsg,
-                                                            true);
-                    }
-
-                    if (ProblemFixer.IsTeamViewerOk())
-                    {
-                        pbCheck7.Image = global::My.Resources.Resources.Good_Symbol;
-                        lblCheck7.ForeColor = Color.DarkOliveGreen;
-                        lblCheck7.Text = "TeamViewer " + Language.strCcCheckSucceeded;
-                        txtCheck7.Text = "TeamViewer Version: "+ProblemFixer.TVVer;
-                    }
-                    else
-                    {
-                        pbCheck7.Image = global::My.Resources.Resources.Bad_Symbol;
-                        lblCheck7.ForeColor = Color.Firebrick;
-                        lblCheck7.Text = "TeamViewer " + Language.strCcCheckFailed;
-                        txtCheck7.Text = Language.strCcClickOnSign;
-                    }
-
-                    if (ProblemFixer.IsRAdminOk())
-                    {
-                        pbCheck8.Image = global::My.Resources.Resources.Good_Symbol;
-                        lblCheck8.ForeColor = Color.DarkOliveGreen;
-                        lblCheck8.Text = "RAdmin " + Language.strCcCheckSucceeded;
-                        txtCheck8.Text = "RAdmin Version: " + ProblemFixer.RAVer;
-                    }
-                    else
-                    {
-                        pbCheck8.Image = global::My.Resources.Resources.Bad_Symbol;
-                        lblCheck8.ForeColor = Color.Firebrick;
-                        lblCheck8.Text = "RAdmin " + Language.strCcCheckFailed;
-                        txtCheck8.Text = Language.strCcClickOnSign;
+                        
                     }
                 }
 

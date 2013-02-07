@@ -19,7 +19,16 @@ namespace mRemoteNC.Forms
         {
             InitializeComponent();
         }
+
+        public QuickHostScanner(Info info)
+        {
+            InitializeComponent();
+            this.info = info;
+        }
         ConnectionStatusForm.ListViewSorter s = new ConnectionStatusForm.ListViewSorter();
+
+        private Info info;
+
         private void QuickHostScanner_Load(object sender, EventArgs e)
         {
             if (txtPorts.Text == "") txtPorts.Text = "22,80,443,4899,5800,5900,3389,5938,5500";
@@ -128,9 +137,43 @@ namespace mRemoteNC.Forms
         private void lstStatus_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             ListViewHitTestInfo hit = lstStatus.HitTest(e.Location);
-            if (hit.Item != null && hit.Item.ForeColor != Color.Gainsboro && hit.Item.ForeColor != Color.Gray&&MessageBox.Show("Add this connection?","Adding connection",MessageBoxButtons.YesNoCancel,MessageBoxIcon.Question)==DialogResult.Yes)
+            if (hit.Item != null && hit.Item.ForeColor != Color.Gainsboro && hit.Item.ForeColor != Color.Gray)
             {
-                Runtime.Windows.treeForm.AddConnection(txtIP.Text, Convert.ToInt32(hit.Item.Text), PortToProt(Convert.ToInt32(hit.Item.Text)));
+                Runtime.Windows.treeForm.ChangeConProp(info, Convert.ToInt32(hit.Item.Text),
+                                PortToProt(Convert.ToInt32(hit.Item.Text)));
+                Close();
+            }
+        }
+
+        private void lstStatus_MouseClick(object sender, MouseEventArgs e)
+        {
+            ListViewHitTestInfo hit = lstStatus.HitTest(e.Location);
+            if (hit.Item != null && hit.Item.ForeColor != Color.Gainsboro && hit.Item.ForeColor != Color.Gray)
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    var cm = new ContextMenu();
+                    cm.MenuItems.Add(new MenuItem("Set service", (o, args) =>
+                        {
+                            Runtime.Windows.treeForm.ChangeConProp(info, Convert.ToInt32(hit.Item.Text),
+                                PortToProt(Convert.ToInt32(hit.Item.Text)));
+                            Close();
+
+                        }));
+                    cm.MenuItems.Add(new MenuItem("Add as new", (o, args) =>
+                        {
+                            if (
+                                MessageBox.Show("Add this connection?", "Adding connection",
+                                                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) ==
+                                DialogResult.Yes)
+                            {
+                                Runtime.Windows.treeForm.AddConnection(txtIP.Text, Convert.ToInt32(hit.Item.Text),
+                                                                       PortToProt(Convert.ToInt32(hit.Item.Text)));
+                            }
+                        }));
+                    Point pos = PointToClient(Cursor.Position);
+                    cm.Show(this, pos, LeftRightAlignment.Right);
+                }
             }
         }
     }

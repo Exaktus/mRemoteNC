@@ -99,10 +99,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>References\ADTree.dll</HintPath>
     </Reference>
-    <Reference Include="AxInterop.MSTSCLib">
+    <Reference Include="AxInterop.MSTSCLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>References\AxInterop.MSTSCLib.dll</HintPath>
     </Reference>
-    <Reference Include="AxWfIcaLib">
+    <Reference Include="AxWfIcaLib, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>References\AxWfIcaLib.dll</HintPath>
     </Reference>
     <Reference Include="FilteredPropertyGrid, Version=1.0.2258.31541, Culture=neutral, processorArchitecture=MSIL">
@@ -381,6 +383,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Forms\ConnectionStatusForm.resx">
       <DependentUpon>ConnectionStatusForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmChoosePanel.resx">
       <DependentUpon>frmChoosePanel.cs</DependentUpon>

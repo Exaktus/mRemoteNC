@@ -1,15 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Security.Permissions;
 using System.Security.Principal;
-using System.Windows.Forms;
-using AxMSTSCLib;
-using AxWFICALib;
 using Microsoft.VisualBasic;
 using mRemoteNC.App;
 

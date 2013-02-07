@@ -455,7 +455,7 @@ namespace mRemoteNC
                     {
                         string strTitle = GetWindowText(hWnd);
                         //if (strTitle != "" & IsWindowVisible(hWnd)) //TODO: Имеет ли смысл следующая оптимизация
-                        if (!string.IsNullOrEmpty(strTitle))
+                        if (!String.IsNullOrEmpty(strTitle))
                         {
                             mylstTitles.Add(strTitle);
                         }
@@ -495,7 +495,7 @@ namespace mRemoteNC
                 try
                 {
                     string strTitle = GetWindowText(hWnd);
-                    if (!string.IsNullOrEmpty(strTitle)&&strTitle.Contains(cap))
+                    if (!String.IsNullOrEmpty(strTitle)&&strTitle.Contains(cap))
                     {
                         res = hWnd;
                     }
@@ -551,9 +551,9 @@ namespace mRemoteNC
             public int length;
             public int flags;
             public ShowWindowCommands showCmd;
-            public System.Drawing.Point ptMinPosition;
-            public System.Drawing.Point ptMaxPosition;
-            public System.Drawing.Rectangle rcNormalPosition;
+            public Point ptMinPosition;
+            public Point ptMaxPosition;
+            public Rectangle rcNormalPosition;
         }
 
         public  enum ShowWindowCommands : int
@@ -637,5 +637,32 @@ namespace mRemoteNC
         public static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
         public const uint WS_POPUP = 0x80000000;
         public const uint WS_MINIMIZEBOX = 0x00020000;
+
+        [DllImport("user32.dll", EntryPoint = "GetSystemMetrics")]
+        public static extern int GetSystemMetrics(int which);
+
+        [DllImport("user32.dll")]
+        public static extern void SetWindowPos(IntPtr hwnd, IntPtr hwndInsertAfter, int X, int Y, int width,
+                                               int height, UInt32 flags);
+
+        //private const int SWP_SHOWWINDOW = 64;
+
+        public struct SHFILEINFO
+        {
+            public IntPtr hIcon; // : icon
+            public int iIcon; // : icondex
+            public int dwAttributes; // : SFGAO_ flags
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 260)]
+            public string szDisplayName;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 80)]
+            public string szTypeName;
+        }
+
+        [DllImport("shell32.dll")]
+        public static extern IntPtr SHGetFileInfo(string pszPath, int dwFileAttributes, ref SHFILEINFO psfi,
+                                                   int cbFileInfo, int uFlags);
+
+        public const int SHGFI_ICON = 0x100;
+        public const int SHGFI_SMALLICON = 0x1;
     }
 }
