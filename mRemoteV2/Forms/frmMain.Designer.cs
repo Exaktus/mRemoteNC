@@ -60,6 +60,22 @@ namespace mRemoteNC
             this.pnlDock = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.mMenSep3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsContainer = new System.Windows.Forms.ToolStripContainer();
+            this.tsQuickConnect = new System.Windows.Forms.ToolStrip();
+            this.lblQuickConnect = new System.Windows.Forms.ToolStripLabel();
+            this.cmbQuickConnect = new System.Windows.Forms.ToolStripComboBox();
+            this.btnQuickyPlay = new System.Windows.Forms.ToolStripSplitButton();
+            this.mMenQuickyCon = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsQuickTexts = new System.Windows.Forms.ToolStrip();
+            this.cMenExtAppsToolbar = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cMenToolbarShowText = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsExternalTools = new System.Windows.Forms.ToolStrip();
+            this.ToolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.ToolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.ToolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.ToolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.ToolStripSplitButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.msMain = new System.Windows.Forms.MenuStrip();
             this.mMenFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mMenFileNewConnection = new System.Windows.Forms.ToolStripMenuItem();
@@ -126,43 +142,27 @@ namespace mRemoteNC
             this.mMenToolsUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.mMenInfoSep2 = new System.Windows.Forms.ToolStripSeparator();
             this.mMenInfoAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsQuickConnect = new System.Windows.Forms.ToolStrip();
-            this.lblQuickConnect = new System.Windows.Forms.ToolStripLabel();
-            this.cmbQuickConnect = new System.Windows.Forms.ToolStripComboBox();
-            this.btnQuickyPlay = new System.Windows.Forms.ToolStripSplitButton();
-            this.mMenQuickyCon = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsExternalTools = new System.Windows.Forms.ToolStrip();
-            this.tsQuickTexts = new System.Windows.Forms.ToolStrip();
-            this.cMenExtAppsToolbar = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cMenToolbarShowText = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.ToolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.ToolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.ToolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.ToolStripSplitButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.tmrShowUpdate = new System.Windows.Forms.Timer(this.components);
             this.tmrAutoSave = new System.Windows.Forms.Timer(this.components);
             this.tsContainer.ContentPanel.SuspendLayout();
             this.tsContainer.TopToolStripPanel.SuspendLayout();
             this.tsContainer.SuspendLayout();
-            this.msMain.SuspendLayout();
             this.tsQuickConnect.SuspendLayout();
             this.cMenExtAppsToolbar.SuspendLayout();
             this.ToolStrip1.SuspendLayout();
+            this.msMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlDock
             // 
             this.pnlDock.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlDock.DockBackColor = System.Drawing.SystemColors.Control;
+            this.pnlDock.DockBackColor = System.Drawing.SystemColors.ControlLightLight;
             this.pnlDock.DockLeftPortion = 230D;
             this.pnlDock.DockRightPortion = 230D;
             this.pnlDock.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingWindow;
             this.pnlDock.Location = new System.Drawing.Point(0, 0);
             this.pnlDock.Name = "pnlDock";
-            this.pnlDock.Size = new System.Drawing.Size(1258, 616);
+            this.pnlDock.Size = new System.Drawing.Size(1258, 592);
             dockPanelGradient1.EndColor = System.Drawing.SystemColors.ControlLight;
             dockPanelGradient1.StartColor = System.Drawing.SystemColors.ControlLight;
             autoHideStripSkin1.DockStripGradient = dockPanelGradient1;
@@ -229,7 +229,7 @@ namespace mRemoteNC
             // 
             this.tsContainer.ContentPanel.Controls.Add(this.pnlDock);
             this.tsContainer.ContentPanel.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.tsContainer.ContentPanel.Size = new System.Drawing.Size(1258, 616);
+            this.tsContainer.ContentPanel.Size = new System.Drawing.Size(1258, 592);
             this.tsContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
             // tsContainer.LeftToolStripPanel
@@ -247,16 +247,169 @@ namespace mRemoteNC
             // 
             // tsContainer.TopToolStripPanel
             // 
+            this.tsContainer.TopToolStripPanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tsContainer.TopToolStripPanel.Controls.Add(this.tsQuickConnect);
-            this.tsContainer.TopToolStripPanel.Controls.Add(this.tsQuickTexts);
-            this.tsContainer.TopToolStripPanel.Controls.Add(this.tsExternalTools);
             this.tsContainer.TopToolStripPanel.Controls.Add(this.ToolStrip1);
+            this.tsContainer.TopToolStripPanel.Controls.Add(this.tsExternalTools);
+            this.tsContainer.TopToolStripPanel.Controls.Add(this.tsQuickTexts);
             this.tsContainer.TopToolStripPanel.Controls.Add(this.msMain);
+            this.tsContainer.TopToolStripPanel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tsContainer.TopToolStripPanel.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.tsContainer.TopToolStripPanel.Click += new System.EventHandler(this.tsContainer_TopToolStripPanel_Click);
             // 
+            // tsQuickConnect
+            // 
+            this.tsQuickConnect.Dock = System.Windows.Forms.DockStyle.None;
+            this.tsQuickConnect.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblQuickConnect,
+            this.cmbQuickConnect,
+            this.btnQuickyPlay,
+            this.mMenQuickyCon});
+            this.tsQuickConnect.Location = new System.Drawing.Point(267, 74);
+            this.tsQuickConnect.Name = "tsQuickConnect";
+            this.tsQuickConnect.Size = new System.Drawing.Size(331, 25);
+            this.tsQuickConnect.TabIndex = 18;
+            // 
+            // lblQuickConnect
+            // 
+            this.lblQuickConnect.Name = "lblQuickConnect";
+            this.lblQuickConnect.Size = new System.Drawing.Size(55, 22);
+            this.lblQuickConnect.Text = "&Connect:";
+            this.lblQuickConnect.Click += new System.EventHandler(this.lblQuickConnect_Click);
+            // 
+            // cmbQuickConnect
+            // 
+            this.cmbQuickConnect.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbQuickConnect.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbQuickConnect.Name = "cmbQuickConnect";
+            this.cmbQuickConnect.Size = new System.Drawing.Size(200, 25);
+            this.cmbQuickConnect.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbQuickConnect_KeyDown);
+            // 
+            // btnQuickyPlay
+            // 
+            this.btnQuickyPlay.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnQuickyPlay.Image = ((System.Drawing.Image)(resources.GetObject("btnQuickyPlay.Image")));
+            this.btnQuickyPlay.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnQuickyPlay.Name = "btnQuickyPlay";
+            this.btnQuickyPlay.Size = new System.Drawing.Size(32, 22);
+            this.btnQuickyPlay.Text = "Connect";
+            this.btnQuickyPlay.ButtonClick += new System.EventHandler(this.btnQuickyPlay_ButtonClick);
+            this.btnQuickyPlay.DropDownOpening += new System.EventHandler(this.btnQuickyPlay_DropDownOpening);
+            // 
+            // mMenQuickyCon
+            // 
+            this.mMenQuickyCon.AutoSize = false;
+            this.mMenQuickyCon.AutoToolTip = true;
+            this.mMenQuickyCon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.mMenQuickyCon.Image = ((System.Drawing.Image)(resources.GetObject("mMenQuickyCon.Image")));
+            this.mMenQuickyCon.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mMenQuickyCon.Name = "mMenQuickyCon";
+            this.mMenQuickyCon.Size = new System.Drawing.Size(30, 22);
+            this.mMenQuickyCon.Text = "Connections";
+            this.mMenQuickyCon.DropDownOpening += new System.EventHandler(this.mMenQuickyCon_DropDownOpening);
+            // 
+            // tsQuickTexts
+            // 
+            this.tsQuickTexts.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tsQuickTexts.ContextMenuStrip = this.cMenExtAppsToolbar;
+            this.tsQuickTexts.Dock = System.Windows.Forms.DockStyle.None;
+            this.tsQuickTexts.Location = new System.Drawing.Point(39, 25);
+            this.tsQuickTexts.Name = "tsQuickTexts";
+            this.tsQuickTexts.Size = new System.Drawing.Size(111, 25);
+            this.tsQuickTexts.TabIndex = 20;
+            this.tsQuickTexts.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsQuickTexts_ItemClicked);
+            // 
+            // cMenExtAppsToolbar
+            // 
+            this.cMenExtAppsToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cMenToolbarShowText});
+            this.cMenExtAppsToolbar.Name = "cMenToolbar";
+            this.cMenExtAppsToolbar.Size = new System.Drawing.Size(129, 26);
+            // 
+            // cMenToolbarShowText
+            // 
+            this.cMenToolbarShowText.Checked = true;
+            this.cMenToolbarShowText.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cMenToolbarShowText.Name = "cMenToolbarShowText";
+            this.cMenToolbarShowText.Size = new System.Drawing.Size(128, 22);
+            this.cMenToolbarShowText.Text = "Show Text";
+            this.cMenToolbarShowText.Click += new System.EventHandler(this.cMenToolbarShowText_Click);
+            // 
+            // tsExternalTools
+            // 
+            this.tsExternalTools.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tsExternalTools.Dock = System.Windows.Forms.DockStyle.None;
+            this.tsExternalTools.Location = new System.Drawing.Point(3, 0);
+            this.tsExternalTools.Name = "tsExternalTools";
+            this.tsExternalTools.Size = new System.Drawing.Size(43, 25);
+            this.tsExternalTools.TabIndex = 17;
+            this.tsExternalTools.Text = "Text";
+            this.tsExternalTools.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsExternalTools_ItemClicked);
+            // 
+            // ToolStrip1
+            // 
+            this.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.ToolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripButton1,
+            this.ToolStripButton2,
+            this.ToolStripButton3,
+            this.ToolStripSplitButton1});
+            this.ToolStrip1.Location = new System.Drawing.Point(3, 74);
+            this.ToolStrip1.Name = "ToolStrip1";
+            this.ToolStrip1.Size = new System.Drawing.Size(264, 25);
+            this.ToolStrip1.TabIndex = 19;
+            // 
+            // ToolStripButton1
+            // 
+            this.ToolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripButton1.Image")));
+            this.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToolStripButton1.Name = "ToolStripButton1";
+            this.ToolStripButton1.Size = new System.Drawing.Size(72, 22);
+            this.ToolStripButton1.Text = "Connect";
+            // 
+            // ToolStripButton2
+            // 
+            this.ToolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripButton2.Image")));
+            this.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToolStripButton2.Name = "ToolStripButton2";
+            this.ToolStripButton2.Size = new System.Drawing.Size(85, 22);
+            this.ToolStripButton2.Text = "Screenshot";
+            // 
+            // ToolStripButton3
+            // 
+            this.ToolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripButton3.Image")));
+            this.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToolStripButton3.Name = "ToolStripButton3";
+            this.ToolStripButton3.Size = new System.Drawing.Size(66, 22);
+            this.ToolStripButton3.Text = "Refresh";
+            // 
+            // ToolStripSplitButton1
+            // 
+            this.ToolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ToolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem1,
+            this.ToolStripMenuItem2});
+            this.ToolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripSplitButton1.Image")));
+            this.ToolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ToolStripSplitButton1.Name = "ToolStripSplitButton1";
+            this.ToolStripSplitButton1.Size = new System.Drawing.Size(29, 22);
+            this.ToolStripSplitButton1.Text = "Special Keys";
+            // 
+            // ToolStripMenuItem1
+            // 
+            this.ToolStripMenuItem1.Name = "ToolStripMenuItem1";
+            this.ToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
+            this.ToolStripMenuItem1.Text = "Ctrl-Alt-Del";
+            // 
+            // ToolStripMenuItem2
+            // 
+            this.ToolStripMenuItem2.Name = "ToolStripMenuItem2";
+            this.ToolStripMenuItem2.Size = new System.Drawing.Size(135, 22);
+            this.ToolStripMenuItem2.Text = "Ctrl-Esc";
+            // 
             // msMain
             // 
+            this.msMain.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.msMain.Dock = System.Windows.Forms.DockStyle.None;
             this.msMain.GripMargin = new System.Windows.Forms.Padding(0);
             this.msMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
@@ -834,157 +987,6 @@ namespace mRemoteNC
             this.mMenInfoAbout.Text = "About mRemoteNC";
             this.mMenInfoAbout.Click += new System.EventHandler(this.mMenInfoAbout_Click);
             // 
-            // tsQuickConnect
-            // 
-            //this.tsQuickConnect.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::My.Settings.Default, "tsQuickConnectLocation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tsQuickConnect.Dock = System.Windows.Forms.DockStyle.None;
-            this.tsQuickConnect.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblQuickConnect,
-            this.cmbQuickConnect,
-            this.btnQuickyPlay,
-            this.mMenQuickyCon});
-            //this.tsQuickConnect.Location = global::My.Settings.Default.tsQuickConnectLocation;
-            this.tsQuickConnect.Name = "tsQuickConnect";
-            this.tsQuickConnect.Size = new System.Drawing.Size(331, 25);
-            this.tsQuickConnect.TabIndex = 18;
-            // 
-            // lblQuickConnect
-            // 
-            this.lblQuickConnect.Name = "lblQuickConnect";
-            this.lblQuickConnect.Size = new System.Drawing.Size(55, 22);
-            this.lblQuickConnect.Text = "&Connect:";
-            this.lblQuickConnect.Click += new System.EventHandler(this.lblQuickConnect_Click);
-            // 
-            // cmbQuickConnect
-            // 
-            this.cmbQuickConnect.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbQuickConnect.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbQuickConnect.Name = "cmbQuickConnect";
-            this.cmbQuickConnect.Size = new System.Drawing.Size(200, 25);
-            this.cmbQuickConnect.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbQuickConnect_KeyDown);
-            // 
-            // btnQuickyPlay
-            // 
-            this.btnQuickyPlay.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnQuickyPlay.Image = ((System.Drawing.Image)(resources.GetObject("btnQuickyPlay.Image")));
-            this.btnQuickyPlay.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnQuickyPlay.Name = "btnQuickyPlay";
-            this.btnQuickyPlay.Size = new System.Drawing.Size(32, 22);
-            this.btnQuickyPlay.Text = "Connect";
-            this.btnQuickyPlay.ButtonClick += new System.EventHandler(this.btnQuickyPlay_ButtonClick);
-            this.btnQuickyPlay.DropDownOpening += new System.EventHandler(this.btnQuickyPlay_DropDownOpening);
-            // 
-            // mMenQuickyCon
-            // 
-            this.mMenQuickyCon.AutoSize = false;
-            this.mMenQuickyCon.AutoToolTip = true;
-            this.mMenQuickyCon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.mMenQuickyCon.Image = ((System.Drawing.Image)(resources.GetObject("mMenQuickyCon.Image")));
-            this.mMenQuickyCon.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.mMenQuickyCon.Name = "mMenQuickyCon";
-            this.mMenQuickyCon.Size = new System.Drawing.Size(30, 22);
-            this.mMenQuickyCon.Text = "Connections";
-            this.mMenQuickyCon.DropDownOpening += new System.EventHandler(this.mMenQuickyCon_DropDownOpening);
-            // 
-            // tsExternalTools
-            // 
-            //this.tsExternalTools.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::My.Settings.Default, "tsExternalToolsLocation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tsExternalTools.Dock = System.Windows.Forms.DockStyle.None;
-            //this.tsExternalTools.Location = global::My.Settings.Default.tsExternalToolsLocation;
-            this.tsExternalTools.Name = "tsExternalTools";
-            this.tsExternalTools.Size = new System.Drawing.Size(111, 25);
-            this.tsExternalTools.TabIndex = 17;
-            this.tsExternalTools.Text = "Text";
-            this.tsExternalTools.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsExternalTools_ItemClicked);
-            // 
-            // tsQuickTexts
-            // 
-            this.tsQuickTexts.ContextMenuStrip = this.cMenExtAppsToolbar;
-            this.tsQuickTexts.Dock = System.Windows.Forms.DockStyle.None;
-            this.tsQuickTexts.Location = new System.Drawing.Point(39, 25);
-            this.tsQuickTexts.Name = "tsQuickTexts";
-            this.tsQuickTexts.Size = new System.Drawing.Size(111, 25);
-            this.tsQuickTexts.TabIndex = 20;
-            this.tsQuickTexts.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsQuickTexts_ItemClicked);
-            // 
-            // cMenExtAppsToolbar
-            // 
-            this.cMenExtAppsToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cMenToolbarShowText});
-            this.cMenExtAppsToolbar.Name = "cMenToolbar";
-            this.cMenExtAppsToolbar.Size = new System.Drawing.Size(129, 26);
-            // 
-            // cMenToolbarShowText
-            // 
-            this.cMenToolbarShowText.Checked = true;
-            this.cMenToolbarShowText.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cMenToolbarShowText.Name = "cMenToolbarShowText";
-            this.cMenToolbarShowText.Size = new System.Drawing.Size(128, 22);
-            this.cMenToolbarShowText.Text = "Show Text";
-            this.cMenToolbarShowText.Click += new System.EventHandler(this.cMenToolbarShowText_Click);
-            // 
-            // ToolStrip1
-            // 
-            //this.ToolStrip1.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::My.Settings.Default, "ToolStrip1Location", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.ToolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripButton1,
-            this.ToolStripButton2,
-            this.ToolStripButton3,
-            this.ToolStripSplitButton1});
-            //this.ToolStrip1.Location = global::My.Settings.Default.ToolStrip1Location;
-            this.ToolStrip1.Name = "ToolStrip1";
-            this.ToolStrip1.Size = new System.Drawing.Size(264, 25);
-            this.ToolStrip1.TabIndex = 19;
-            // 
-            // ToolStripButton1
-            // 
-            this.ToolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripButton1.Image")));
-            this.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ToolStripButton1.Name = "ToolStripButton1";
-            this.ToolStripButton1.Size = new System.Drawing.Size(72, 22);
-            this.ToolStripButton1.Text = "Connect";
-            // 
-            // ToolStripButton2
-            // 
-            this.ToolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripButton2.Image")));
-            this.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ToolStripButton2.Name = "ToolStripButton2";
-            this.ToolStripButton2.Size = new System.Drawing.Size(85, 22);
-            this.ToolStripButton2.Text = "Screenshot";
-            // 
-            // ToolStripButton3
-            // 
-            this.ToolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripButton3.Image")));
-            this.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ToolStripButton3.Name = "ToolStripButton3";
-            this.ToolStripButton3.Size = new System.Drawing.Size(66, 22);
-            this.ToolStripButton3.Text = "Refresh";
-            // 
-            // ToolStripSplitButton1
-            // 
-            this.ToolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItem1,
-            this.ToolStripMenuItem2});
-            this.ToolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripSplitButton1.Image")));
-            this.ToolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ToolStripSplitButton1.Name = "ToolStripSplitButton1";
-            this.ToolStripSplitButton1.Size = new System.Drawing.Size(29, 22);
-            this.ToolStripSplitButton1.Text = "Special Keys";
-            // 
-            // ToolStripMenuItem1
-            // 
-            this.ToolStripMenuItem1.Name = "ToolStripMenuItem1";
-            this.ToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
-            this.ToolStripMenuItem1.Text = "Ctrl-Alt-Del";
-            // 
-            // ToolStripMenuItem2
-            // 
-            this.ToolStripMenuItem2.Name = "ToolStripMenuItem2";
-            this.ToolStripMenuItem2.Size = new System.Drawing.Size(135, 22);
-            this.ToolStripMenuItem2.Text = "Ctrl-Esc";
-            // 
             // tmrShowUpdate
             // 
             this.tmrShowUpdate.Enabled = true;
@@ -1017,13 +1019,13 @@ namespace mRemoteNC
             this.tsContainer.TopToolStripPanel.PerformLayout();
             this.tsContainer.ResumeLayout(false);
             this.tsContainer.PerformLayout();
-            this.msMain.ResumeLayout(false);
-            this.msMain.PerformLayout();
             this.tsQuickConnect.ResumeLayout(false);
             this.tsQuickConnect.PerformLayout();
             this.cMenExtAppsToolbar.ResumeLayout(false);
             this.ToolStrip1.ResumeLayout(false);
             this.ToolStrip1.PerformLayout();
+            this.msMain.ResumeLayout(false);
+            this.msMain.PerformLayout();
             this.ResumeLayout(false);
 
 		}

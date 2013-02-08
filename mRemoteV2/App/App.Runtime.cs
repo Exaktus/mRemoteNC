@@ -1164,7 +1164,7 @@ namespace mRemoteNC
                             return;
                         }
 
-                        CreateBackupFile((string)conL.ConnectionFileName);
+                        CreateBackupFile(conL.ConnectionFileName);
                     }
 
                     conL.ConnectionList = ConnectionList;
@@ -1176,7 +1176,7 @@ namespace mRemoteNC
                         conL.PreviousContainerList = PreviousContainerList;
                     }
 
-                    if (Update == true)
+                    if (Update)
                     {
                         conL.PreviousSelected = LastSelected;
                     }
