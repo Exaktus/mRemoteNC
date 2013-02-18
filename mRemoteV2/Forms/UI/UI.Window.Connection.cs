@@ -1403,6 +1403,13 @@ namespace mRemoteNC
                     Debug.Print("UI.Window.Connection.TabController_MouseUp()");
                     try
                     {
+                        var clickedTab = TabController.TabPageFromPoint(e.Location);
+                        if (clickedTab != null & !ReferenceEquals(TabController.SelectedTab, clickedTab))
+                        {
+
+                            TabController.SelectedTab = clickedTab;
+                            return;
+                        }
                         switch (e.Button)
                         {
                             case MouseButtons.Left:

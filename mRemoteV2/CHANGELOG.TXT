@@ -18,6 +18,9 @@
 	[rmcardle] Fix issue MR-174 - Trailing Space on a Hostname/IP will cause the connection not to happen.
 	[rmcardle] Fix MR-171 Inherit configuration not showing friendly names for each inherit component
 	[rmcardle] Fix issue MR-235 - Config file gets corrupted when leaving the password entry box with ESC
+	[rmcardle] Fix issue MR-175 - Problem with focus when 2 or more PuTTY sessions opened
+	[rmcardle] Fix issue MR-190 - Can't click on tab/session
+	[rmcardle] Fix issue MR-224 - Session tabs become un-clickable after duplicating a tab or opening a new one in the same panel
 	Updated WeifenLuo.WinFormsUI.Docking to 2.7
 	The version of the RDP AX client updated to 7
 	SharpSSH replaced with Renci.SshNet
