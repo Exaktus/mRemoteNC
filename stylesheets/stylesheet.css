@@ -222,6 +222,15 @@ hr {
   background: url("../images/blacktocat.png") 0 0 no-repeat;
 }
 
+.btn-download .icon {
+  opacity: 0.6;
+  background: url("../images/download.png") 0 0 no-repeat;
+}
+
+.btn-bug .icon {
+  opacity: 0.6;
+  background: url("../images/bug.png") 0 0 no-repeat;
+}
 /* Links
    a, a:hover, a:visited
 */
