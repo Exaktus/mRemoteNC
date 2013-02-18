@@ -114,7 +114,7 @@ public class LocalizedAttributes
                 {
                     this.Localized = true;
                     this.DisplayNameValue = string.Format(Language.strFormatInherit,
-                                                          global::My.Resources.Resources.ResourceManager.GetString(
+                                                          global::My.Language.ResourceManager.GetString(
                                                               this.DisplayNameValue));
                 }
 
@@ -141,7 +141,7 @@ public class LocalizedAttributes
                 {
                     this.Localized = true;
                     this.DescriptionValue = string.Format(Language.strFormatInheritDescription,
-                                                          global::My.Resources.Resources.ResourceManager.GetString(
+                                                          global::My.Language.ResourceManager.GetString(
                                                               this.DescriptionValue));
                 }
 

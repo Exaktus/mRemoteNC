@@ -90,35 +90,22 @@ namespace mRemoteNC
             Settings.Default.tsMainLocation = msMain.Location;
             Settings.Default.ToolStrip1Location = ToolStrip1.Location;
             Settings.Default.tsQuickTextsLocation = tsQuickTexts.Location;
-
-            /*Settings.Default.tsQuickConnectParentName = GetToolStripParentName(tsQuickConnect);
-            Settings.Default.tsMainLocationParentName = GetToolStripParentName(msMain);
-            Settings.Default.ToolStrip1ParentName = GetToolStripParentName(ToolStrip1);
-            Settings.Default.tsQuickTextsParentName = GetToolStripParentName(tsQuickTexts);*/
-            Settings.Default.Save();
+            Settings.Default.tsExternalToolsLocation = tsExternalTools.Location;
         }
 
         private void RestoreToolbars()
         {
-            Settings.Default.Reload();
             tsContainer.SuspendLayout();
             tsContainer.TopToolStripPanel.SuspendLayout();
 
-            //tsQuickConnect.Parent = GetToolStripParentByName(tsContainer.TopToolStripPanel, Settings.Default.tsQuickConnectParentName) ?? tsQuickConnect.Parent;
+            tsExternalTools.Location = Settings.Default.tsExternalToolsLocation;
             tsQuickConnect.Location = Settings.Default.tsQuickConnectLocation;
-
-            //msMain.Parent = GetToolStripParentByName(tsContainer.TopToolStripPanel, Settings.Default.tsMainLocationParentName) ?? msMain.Parent;
             msMain.Location = Settings.Default.tsMainLocation;
-
-            //ToolStrip1.Parent = GetToolStripParentByName(tsContainer.TopToolStripPanel, Settings.Default.ToolStrip1ParentName) ?? ToolStrip1.Parent;
             ToolStrip1.Location = Settings.Default.ToolStrip1Location;
-
-            //tsQuickTexts.Parent = GetToolStripParentByName(tsContainer.TopToolStripPanel, Settings.Default.tsQuickTextsParentName) ?? tsQuickTexts.Parent;
             tsQuickTexts.Location = Settings.Default.tsQuickTextsLocation;
-            //ToolStripManager.LoadSettings(this, "main");
-            tsContainer.ResumeLayout(true);
             tsContainer.TopToolStripPanel.ResumeLayout(true);
-            
+            tsContainer.ResumeLayout(true);
+            //ToolStripManager.LoadSettings(this, "main");
         }
 
         private string GetToolStripParentName(ToolStrip toolStrip)
@@ -242,6 +229,8 @@ namespace mRemoteNC
 
             Runtime.Startup.ParseCommandLineArgs();
 
+            Runtime.Startup.FirstTimeRun();
+
             ApplyLanguage();
 
             fpChainedWindowHandle = Native.SetClipboardViewer(this.Handle);
@@ -266,7 +255,7 @@ namespace mRemoteNC
             //LoadCredentials()
             Runtime.LoadConnections();
 
-            if (Settings.Default.StartupComponentsCheck)
+            if (Settings.Default.StartupComponentsCheck || Settings.Default.FirstStart)
             {
                 Runtime.Windows.Show(Type.ComponentsCheck);
             }
@@ -315,7 +304,7 @@ namespace mRemoteNC
 
             RestoreToolbars();
 
-            pnlDock.Skin = CreateAEGIS();
+            //pnlDock.Skin = CreateAEGIS();
 
             foreach (Info con in Runtime.ConnectionList.Cast<Info>().Where(con => con.ConnectOnStartup))
             {
@@ -411,17 +400,18 @@ namespace mRemoteNC
                 }
             }
 
-            IsClosing = true;
-
             SaveToolbars();
+
+            Runtime.Shutdown.BeforeQuit();
+            My.MyApplication.MyApplication_Shutdown();
+
+            IsClosing = true;
 
             foreach (UI.Window.Base Window in Runtime.WindowList)
             {
                 Window.Close();
             }
             
-            Runtime.Shutdown.BeforeQuit();
-            mRemoteNC.My.MyApplication.MyApplication_Shutdown();
             Debug.Print("[END] - " + DateTime.Now);
         }
 
@@ -456,7 +446,6 @@ namespace mRemoteNC
         public void tmrAutoSave_Tick(System.Object sender, System.EventArgs e)
         {
             Runtime.MessageCollector.AddMessage(Messages.MessageClass.InformationMsg, "Doing AutoSave", true);
-            SaveToolbars();
             Runtime.SaveConnections();
         }
 
@@ -988,17 +977,7 @@ namespace mRemoteNC
 
         private string QuickyText()
         {
-            string txt;
-
-            txt = cmbQuickConnect.Text;
-
-            if (txt.StartsWith(" ") || txt.EndsWith(" "))
-            {
-                txt = txt.Replace(" ", "");
-                cmbQuickConnect.Text = txt;
-            }
-
-            return txt;
+            return cmbQuickConnect.Text.Trim();
         }
 
         #endregion Quick Connect
@@ -1109,12 +1088,6 @@ namespace mRemoteNC
         #endregion Connections DropDown
 
         #region Window Overrides and DockPanel Stuff
-
-        public void frmMain_Resize(object sender, System.EventArgs e)
-        {
-
-        }
-
         private bool _inMouseActivate = false;
         private bool _inSizeMove = false;
 
@@ -1212,13 +1185,12 @@ namespace mRemoteNC
                         fpChainedWindowHandle = m.LParam;
                         break;
                 }
+                base.WndProc(ref m);
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.ToString());
+                Runtime.MessageCollector.AddMessage(Messages.MessageClass.WarningMsg, ex.ToString(), true);
             }
-
-            base.WndProc(ref m);
         }
 
         private void ActivateConnection()
@@ -1394,6 +1366,11 @@ namespace mRemoteNC
         }
 
         private void msMain_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void cmbQuickConnect_Click(object sender, EventArgs e)
         {
 
         }

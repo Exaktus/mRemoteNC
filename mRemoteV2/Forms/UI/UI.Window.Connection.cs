@@ -346,7 +346,7 @@ namespace mRemoteNC
 
                             nTab.Title += ")";
                         }
-
+                        nTab.Title = nTab.Title.Replace("&", "&&");
                         Icon conIcon = mRemoteNC.Connection.Icon.FromString(conI.Icon);
                         if (conIcon != null)
                         {

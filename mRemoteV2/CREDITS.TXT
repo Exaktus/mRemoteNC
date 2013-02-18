@@ -24,6 +24,9 @@ http://www.codeproject.com/KB/recipes/command_line.aspx
 
 Included Components
 ===================
+Inno Setup prepareToInstall scripts 
+http://tonaday.blogspot.com/2011/01/inno-setup-preparetoinstall-scripts.html
+
 
 Renci.SshNet
 2013.1.27

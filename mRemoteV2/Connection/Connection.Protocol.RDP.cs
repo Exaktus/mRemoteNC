@@ -574,27 +574,28 @@ namespace mRemoteNC
         {
             base.Event_ErrorOccured(this, e.errorCode.ToString());
         }
-
-        private void RDPEvent_OnDisconnected(object sender, AxMSTSCLib.IMsTscAxEvents_OnDisconnectedEvent e)
+        
+        private void RDPEvent_OnDisconnected(object sender, IMsTscAxEvents_OnDisconnectedEvent e)
         {
-            string Reason =
-                (string)
-                (RDP_Client.GetErrorDescription((uint)e.discReason, (uint)RDP_Client.ExtendedDisconnectReason));
-            base.Event_Disconnected(this, e.discReason + "\r\n" + Reason);
+            const int UI_ERR_NORMAL_DISCONNECT = 0xb08;
+            if (e.discReason != UI_ERR_NORMAL_DISCONNECT)
+            {
+                string reason = RDP_Client.GetErrorDescription((uint)e.discReason, (uint)RDP_Client.ExtendedDisconnectReason);
+                Event_Disconnected(this, e.discReason + Constants.vbCrLf + reason);
+            }
 
             if (Settings.Default.ReconnectOnDisconnect)
             {
                 ReconnectGroup = new ReconnectGroup();
-                //this.Load += new System.EventHandler(ReconnectGroup_Load);
-                ReconnectGroup.Left = System.Convert.ToInt32((Control.Width / 2) - (ReconnectGroup.Width / 2));
-                ReconnectGroup.Top = System.Convert.ToInt32((Control.Height / 2) - (ReconnectGroup.Height / 2));
+                ReconnectGroup.Left = (Control.Width / 2) - (ReconnectGroup.Width / 2);
+                ReconnectGroup.Top = (Control.Height / 2) - (ReconnectGroup.Height / 2);
                 ReconnectGroup.Parent = Control;
                 ReconnectGroup.Show();
                 tmrReconnect.Enabled = true;
             }
             else
             {
-                base.Close();
+                Close();
             }
         }
 

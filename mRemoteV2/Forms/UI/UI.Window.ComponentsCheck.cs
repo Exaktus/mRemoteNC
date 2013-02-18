@@ -9,6 +9,7 @@ using mRemoteNC.App;
 using My;
 using WeifenLuo.WinFormsUI.Docking;
 using mRemoteNC.Tools;
+using System.Diagnostics;
 
 namespace mRemoteNC
 {
@@ -790,9 +791,9 @@ namespace mRemoteNC
                             txtCheck8.Text = Language.strCcClickOnSign;
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        
+                        Debug.WriteLine(ex.ToString());
                     }
                 }
 

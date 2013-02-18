@@ -221,6 +221,16 @@ namespace My {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Open Options|Setup path:
+        ///.
+        /// </summary>
+        internal static string ProblemFixer_FixRAdminProblem_OpenOptions_Setuppath {
+            get {
+                return ResourceManager.GetString("ProblemFixer_FixRAdminProblem_OpenOptions_Setuppath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на RAdmin: Problem found.
         /// </summary>
         internal static string ProblemFixer_FixRAdminProblem_RAdmin__Problem_found {
@@ -1591,6 +1601,15 @@ namespace My {
         internal static string strCouldNotCreateNewConnectionsFile {
             get {
                 return ResourceManager.GetString("strCouldNotCreateNewConnectionsFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Could not find ToolStrip control in FilteredPropertyGrid..
+        /// </summary>
+        internal static string strCouldNotFindToolStripInFilteredPropertyGrid {
+            get {
+                return ResourceManager.GetString("strCouldNotFindToolStripInFilteredPropertyGrid", resourceCulture);
             }
         }
         

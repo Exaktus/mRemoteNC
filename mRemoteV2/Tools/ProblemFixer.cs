@@ -83,7 +83,7 @@ namespace mRemoteNC.Tools
             }
         }
 
-        public static bool IsICAOk()
+        private static bool IsICAOkInternal()
         {
             try
             {
@@ -93,6 +93,19 @@ namespace mRemoteNC.Tools
                     ICAVer = ICA.ClientVersion;
                 }
                 return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public static bool IsICAOk()
+        {
+            try
+            {
+                //If ICA not installed (assembly not found) this will catch Exception
+                return IsICAOkInternal();
             }
             catch (Exception)
             {
@@ -327,6 +340,7 @@ namespace mRemoteNC.Tools
                         Settings.Default.UseCustomPuttyPath = true;
                         Settings.Default.CustomPuttyPath = Path.GetFullPath("putty.exe");
                         Settings.Default.Save();
+                        Settings.Default.Reload();
                         break;
                 }
             }
@@ -431,7 +445,7 @@ namespace mRemoteNC.Tools
                                                   Language.ProblemFixer_FixRAdminProblem_RAdmin_found__but_not_set_in_options,
                                                   Language.ProblemFixer_FixRAdminProblem_You_should_setup_TeamViewer_path_in_options_or_I_can_do_it_for_you_,
                                                   "", "", "", "",
-                                                  "Open Options|Setup path:"+ "\r\n"+ Misc.FindRAdminPaths().First(), eTaskDialogButtons.OK, eSysIcons.Information, eSysIcons.Information);
+                                                  Language.ProblemFixer_FixRAdminProblem_OpenOptions_Setuppath+ Misc.FindRAdminPaths().First(), eTaskDialogButtons.OK, eSysIcons.Information, eSysIcons.Information);
                     switch (cTaskDialog.CommandButtonResult)
                     {
                         case 0:

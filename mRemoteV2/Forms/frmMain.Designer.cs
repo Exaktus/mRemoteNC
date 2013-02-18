@@ -60,14 +60,6 @@ namespace mRemoteNC
             this.pnlDock = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.mMenSep3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsContainer = new System.Windows.Forms.ToolStripContainer();
-            this.tsQuickConnect = new System.Windows.Forms.ToolStrip();
-            this.lblQuickConnect = new System.Windows.Forms.ToolStripLabel();
-            this.cmbQuickConnect = new System.Windows.Forms.ToolStripComboBox();
-            this.btnQuickyPlay = new System.Windows.Forms.ToolStripSplitButton();
-            this.mMenQuickyCon = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsQuickTexts = new System.Windows.Forms.ToolStrip();
-            this.cMenExtAppsToolbar = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cMenToolbarShowText = new System.Windows.Forms.ToolStripMenuItem();
             this.tsExternalTools = new System.Windows.Forms.ToolStrip();
             this.ToolStrip1 = new System.Windows.Forms.ToolStrip();
             this.ToolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -76,6 +68,9 @@ namespace mRemoteNC
             this.ToolStripSplitButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsQuickTexts = new System.Windows.Forms.ToolStrip();
+            this.cMenExtAppsToolbar = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cMenToolbarShowText = new System.Windows.Forms.ToolStripMenuItem();
             this.msMain = new System.Windows.Forms.MenuStrip();
             this.mMenFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mMenFileNewConnection = new System.Windows.Forms.ToolStripMenuItem();
@@ -142,15 +137,20 @@ namespace mRemoteNC
             this.mMenToolsUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.mMenInfoSep2 = new System.Windows.Forms.ToolStripSeparator();
             this.mMenInfoAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsQuickConnect = new System.Windows.Forms.ToolStrip();
+            this.lblQuickConnect = new System.Windows.Forms.ToolStripLabel();
+            this.cmbQuickConnect = new System.Windows.Forms.ToolStripComboBox();
+            this.btnQuickyPlay = new System.Windows.Forms.ToolStripSplitButton();
+            this.mMenQuickyCon = new System.Windows.Forms.ToolStripMenuItem();
             this.tmrShowUpdate = new System.Windows.Forms.Timer(this.components);
             this.tmrAutoSave = new System.Windows.Forms.Timer(this.components);
             this.tsContainer.ContentPanel.SuspendLayout();
             this.tsContainer.TopToolStripPanel.SuspendLayout();
             this.tsContainer.SuspendLayout();
-            this.tsQuickConnect.SuspendLayout();
-            this.cMenExtAppsToolbar.SuspendLayout();
             this.ToolStrip1.SuspendLayout();
+            this.cMenExtAppsToolbar.SuspendLayout();
             this.msMain.SuspendLayout();
+            this.tsQuickConnect.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlDock
@@ -247,103 +247,24 @@ namespace mRemoteNC
             // 
             // tsContainer.TopToolStripPanel
             // 
-            this.tsContainer.TopToolStripPanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tsContainer.TopToolStripPanel.Controls.Add(this.tsQuickConnect);
-            this.tsContainer.TopToolStripPanel.Controls.Add(this.ToolStrip1);
-            this.tsContainer.TopToolStripPanel.Controls.Add(this.tsExternalTools);
-            this.tsContainer.TopToolStripPanel.Controls.Add(this.tsQuickTexts);
+            this.tsContainer.TopToolStripPanel.BackColor = System.Drawing.SystemColors.Control;
             this.tsContainer.TopToolStripPanel.Controls.Add(this.msMain);
+            this.tsContainer.TopToolStripPanel.Controls.Add(this.tsQuickConnect);
+            this.tsContainer.TopToolStripPanel.Controls.Add(this.tsQuickTexts);
+            this.tsContainer.TopToolStripPanel.Controls.Add(this.tsExternalTools);
+            this.tsContainer.TopToolStripPanel.Controls.Add(this.ToolStrip1);
             this.tsContainer.TopToolStripPanel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tsContainer.TopToolStripPanel.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.tsContainer.TopToolStripPanel.Click += new System.EventHandler(this.tsContainer_TopToolStripPanel_Click);
             // 
-            // tsQuickConnect
-            // 
-            this.tsQuickConnect.Dock = System.Windows.Forms.DockStyle.None;
-            this.tsQuickConnect.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblQuickConnect,
-            this.cmbQuickConnect,
-            this.btnQuickyPlay,
-            this.mMenQuickyCon});
-            this.tsQuickConnect.Location = new System.Drawing.Point(267, 74);
-            this.tsQuickConnect.Name = "tsQuickConnect";
-            this.tsQuickConnect.Size = new System.Drawing.Size(331, 25);
-            this.tsQuickConnect.TabIndex = 18;
-            // 
-            // lblQuickConnect
-            // 
-            this.lblQuickConnect.Name = "lblQuickConnect";
-            this.lblQuickConnect.Size = new System.Drawing.Size(55, 22);
-            this.lblQuickConnect.Text = "&Connect:";
-            this.lblQuickConnect.Click += new System.EventHandler(this.lblQuickConnect_Click);
-            // 
-            // cmbQuickConnect
-            // 
-            this.cmbQuickConnect.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbQuickConnect.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbQuickConnect.Name = "cmbQuickConnect";
-            this.cmbQuickConnect.Size = new System.Drawing.Size(200, 25);
-            this.cmbQuickConnect.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbQuickConnect_KeyDown);
-            // 
-            // btnQuickyPlay
-            // 
-            this.btnQuickyPlay.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnQuickyPlay.Image = ((System.Drawing.Image)(resources.GetObject("btnQuickyPlay.Image")));
-            this.btnQuickyPlay.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnQuickyPlay.Name = "btnQuickyPlay";
-            this.btnQuickyPlay.Size = new System.Drawing.Size(32, 22);
-            this.btnQuickyPlay.Text = "Connect";
-            this.btnQuickyPlay.ButtonClick += new System.EventHandler(this.btnQuickyPlay_ButtonClick);
-            this.btnQuickyPlay.DropDownOpening += new System.EventHandler(this.btnQuickyPlay_DropDownOpening);
-            // 
-            // mMenQuickyCon
-            // 
-            this.mMenQuickyCon.AutoSize = false;
-            this.mMenQuickyCon.AutoToolTip = true;
-            this.mMenQuickyCon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.mMenQuickyCon.Image = ((System.Drawing.Image)(resources.GetObject("mMenQuickyCon.Image")));
-            this.mMenQuickyCon.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.mMenQuickyCon.Name = "mMenQuickyCon";
-            this.mMenQuickyCon.Size = new System.Drawing.Size(30, 22);
-            this.mMenQuickyCon.Text = "Connections";
-            this.mMenQuickyCon.DropDownOpening += new System.EventHandler(this.mMenQuickyCon_DropDownOpening);
-            // 
-            // tsQuickTexts
-            // 
-            this.tsQuickTexts.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tsQuickTexts.ContextMenuStrip = this.cMenExtAppsToolbar;
-            this.tsQuickTexts.Dock = System.Windows.Forms.DockStyle.None;
-            this.tsQuickTexts.Location = new System.Drawing.Point(39, 25);
-            this.tsQuickTexts.Name = "tsQuickTexts";
-            this.tsQuickTexts.Size = new System.Drawing.Size(111, 25);
-            this.tsQuickTexts.TabIndex = 20;
-            this.tsQuickTexts.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsQuickTexts_ItemClicked);
-            // 
-            // cMenExtAppsToolbar
-            // 
-            this.cMenExtAppsToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cMenToolbarShowText});
-            this.cMenExtAppsToolbar.Name = "cMenToolbar";
-            this.cMenExtAppsToolbar.Size = new System.Drawing.Size(129, 26);
-            // 
-            // cMenToolbarShowText
-            // 
-            this.cMenToolbarShowText.Checked = true;
-            this.cMenToolbarShowText.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cMenToolbarShowText.Name = "cMenToolbarShowText";
-            this.cMenToolbarShowText.Size = new System.Drawing.Size(128, 22);
-            this.cMenToolbarShowText.Text = "Show Text";
-            this.cMenToolbarShowText.Click += new System.EventHandler(this.cMenToolbarShowText_Click);
-            // 
             // tsExternalTools
             // 
-            this.tsExternalTools.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tsExternalTools.BackColor = System.Drawing.SystemColors.Control;
             this.tsExternalTools.Dock = System.Windows.Forms.DockStyle.None;
-            this.tsExternalTools.Location = new System.Drawing.Point(3, 0);
+            this.tsExternalTools.Location = new System.Drawing.Point(39, 0);
             this.tsExternalTools.Name = "tsExternalTools";
-            this.tsExternalTools.Size = new System.Drawing.Size(43, 25);
+            this.tsExternalTools.Size = new System.Drawing.Size(111, 25);
             this.tsExternalTools.TabIndex = 17;
-            this.tsExternalTools.Text = "Text";
             this.tsExternalTools.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsExternalTools_ItemClicked);
             // 
             // ToolStrip1
@@ -354,10 +275,11 @@ namespace mRemoteNC
             this.ToolStripButton2,
             this.ToolStripButton3,
             this.ToolStripSplitButton1});
-            this.ToolStrip1.Location = new System.Drawing.Point(3, 74);
+            this.ToolStrip1.Location = new System.Drawing.Point(875, 50);
             this.ToolStrip1.Name = "ToolStrip1";
             this.ToolStrip1.Size = new System.Drawing.Size(264, 25);
             this.ToolStrip1.TabIndex = 19;
+            this.ToolStrip1.Visible = false;
             // 
             // ToolStripButton1
             // 
@@ -407,9 +329,36 @@ namespace mRemoteNC
             this.ToolStripMenuItem2.Size = new System.Drawing.Size(135, 22);
             this.ToolStripMenuItem2.Text = "Ctrl-Esc";
             // 
+            // tsQuickTexts
+            // 
+            this.tsQuickTexts.BackColor = System.Drawing.SystemColors.Control;
+            this.tsQuickTexts.ContextMenuStrip = this.cMenExtAppsToolbar;
+            this.tsQuickTexts.Dock = System.Windows.Forms.DockStyle.None;
+            this.tsQuickTexts.Location = new System.Drawing.Point(39, 25);
+            this.tsQuickTexts.Name = "tsQuickTexts";
+            this.tsQuickTexts.Size = new System.Drawing.Size(111, 25);
+            this.tsQuickTexts.TabIndex = 20;
+            this.tsQuickTexts.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsQuickTexts_ItemClicked);
+            // 
+            // cMenExtAppsToolbar
+            // 
+            this.cMenExtAppsToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cMenToolbarShowText});
+            this.cMenExtAppsToolbar.Name = "cMenToolbar";
+            this.cMenExtAppsToolbar.Size = new System.Drawing.Size(129, 26);
+            // 
+            // cMenToolbarShowText
+            // 
+            this.cMenToolbarShowText.Checked = true;
+            this.cMenToolbarShowText.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cMenToolbarShowText.Name = "cMenToolbarShowText";
+            this.cMenToolbarShowText.Size = new System.Drawing.Size(128, 22);
+            this.cMenToolbarShowText.Text = "Show Text";
+            this.cMenToolbarShowText.Click += new System.EventHandler(this.cMenToolbarShowText_Click);
+            // 
             // msMain
             // 
-            this.msMain.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.msMain.BackColor = System.Drawing.SystemColors.Control;
             this.msMain.Dock = System.Windows.Forms.DockStyle.None;
             this.msMain.GripMargin = new System.Windows.Forms.Padding(0);
             this.msMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
@@ -418,13 +367,12 @@ namespace mRemoteNC
             this.mMenView,
             this.mMenTools,
             this.mMenInfo});
-            this.msMain.Location = new System.Drawing.Point(3, 50);
+            this.msMain.Location = new System.Drawing.Point(3, 75);
             this.msMain.Name = "msMain";
             this.msMain.Padding = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.msMain.Size = new System.Drawing.Size(182, 24);
             this.msMain.Stretch = false;
             this.msMain.TabIndex = 16;
-            this.msMain.Text = "Main Toolbar";
             this.msMain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.msMain_ItemClicked);
             // 
             // mMenFile
@@ -987,6 +935,60 @@ namespace mRemoteNC
             this.mMenInfoAbout.Text = "About mRemoteNC";
             this.mMenInfoAbout.Click += new System.EventHandler(this.mMenInfoAbout_Click);
             // 
+            // tsQuickConnect
+            // 
+            this.tsQuickConnect.BackColor = System.Drawing.SystemColors.Control;
+            this.tsQuickConnect.Dock = System.Windows.Forms.DockStyle.None;
+            this.tsQuickConnect.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblQuickConnect,
+            this.cmbQuickConnect,
+            this.btnQuickyPlay,
+            this.mMenQuickyCon});
+            this.tsQuickConnect.Location = new System.Drawing.Point(3, 50);
+            this.tsQuickConnect.Name = "tsQuickConnect";
+            this.tsQuickConnect.Size = new System.Drawing.Size(362, 25);
+            this.tsQuickConnect.TabIndex = 18;
+            // 
+            // lblQuickConnect
+            // 
+            this.lblQuickConnect.BackColor = System.Drawing.SystemColors.Control;
+            this.lblQuickConnect.Name = "lblQuickConnect";
+            this.lblQuickConnect.Size = new System.Drawing.Size(55, 22);
+            this.lblQuickConnect.Text = "&Connect:";
+            this.lblQuickConnect.Click += new System.EventHandler(this.lblQuickConnect_Click);
+            // 
+            // cmbQuickConnect
+            // 
+            this.cmbQuickConnect.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbQuickConnect.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbQuickConnect.Name = "cmbQuickConnect";
+            this.cmbQuickConnect.Size = new System.Drawing.Size(200, 25);
+            this.cmbQuickConnect.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbQuickConnect_KeyDown);
+            this.cmbQuickConnect.Click += new System.EventHandler(this.cmbQuickConnect_Click);
+            // 
+            // btnQuickyPlay
+            // 
+            this.btnQuickyPlay.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnQuickyPlay.Image = ((System.Drawing.Image)(resources.GetObject("btnQuickyPlay.Image")));
+            this.btnQuickyPlay.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnQuickyPlay.Name = "btnQuickyPlay";
+            this.btnQuickyPlay.Size = new System.Drawing.Size(32, 22);
+            this.btnQuickyPlay.Text = "Connect";
+            this.btnQuickyPlay.ButtonClick += new System.EventHandler(this.btnQuickyPlay_ButtonClick);
+            this.btnQuickyPlay.DropDownOpening += new System.EventHandler(this.btnQuickyPlay_DropDownOpening);
+            // 
+            // mMenQuickyCon
+            // 
+            this.mMenQuickyCon.AutoSize = false;
+            this.mMenQuickyCon.AutoToolTip = true;
+            this.mMenQuickyCon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.mMenQuickyCon.Image = ((System.Drawing.Image)(resources.GetObject("mMenQuickyCon.Image")));
+            this.mMenQuickyCon.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mMenQuickyCon.Name = "mMenQuickyCon";
+            this.mMenQuickyCon.Size = new System.Drawing.Size(30, 22);
+            this.mMenQuickyCon.Text = "Connections";
+            this.mMenQuickyCon.DropDownOpening += new System.EventHandler(this.mMenQuickyCon_DropDownOpening);
+            // 
             // tmrShowUpdate
             // 
             this.tmrShowUpdate.Enabled = true;
@@ -1013,19 +1015,18 @@ namespace mRemoteNC
             this.Text = "mRemoteNC";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
-            this.Resize += new System.EventHandler(this.frmMain_Resize);
             this.tsContainer.ContentPanel.ResumeLayout(false);
             this.tsContainer.TopToolStripPanel.ResumeLayout(false);
             this.tsContainer.TopToolStripPanel.PerformLayout();
             this.tsContainer.ResumeLayout(false);
             this.tsContainer.PerformLayout();
-            this.tsQuickConnect.ResumeLayout(false);
-            this.tsQuickConnect.PerformLayout();
-            this.cMenExtAppsToolbar.ResumeLayout(false);
             this.ToolStrip1.ResumeLayout(false);
             this.ToolStrip1.PerformLayout();
+            this.cMenExtAppsToolbar.ResumeLayout(false);
             this.msMain.ResumeLayout(false);
             this.msMain.PerformLayout();
+            this.tsQuickConnect.ResumeLayout(false);
+            this.tsQuickConnect.PerformLayout();
             this.ResumeLayout(false);
 
 		}

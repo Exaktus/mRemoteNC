@@ -1693,7 +1693,7 @@ namespace mRemoteNC
 
                 private void mMenViewCollapseAllFolders_Click(System.Object sender, System.EventArgs e)
                 {
-                    if (this.tvConnections.SelectedNode.IsEditing)
+                    if (tvConnections.SelectedNode!=null&&this.tvConnections.SelectedNode.IsEditing)
                     {
                         this.tvConnections.SelectedNode.EndEdit(false);
                     }

@@ -131,8 +131,8 @@ namespace mRemoteNC.Connection
          LocalizedAttributes.LocalizedDescriptionAttribute("strPropertyDescriptionAddress")]
         public string Hostname
         {
-            get { return this._Hostname; }
-            set { this._Hostname = value; }
+            get { return this._Hostname.Trim(); }
+            set { this._Hostname = value.Trim(); }
         }
 
         private string _Username = (string)Settings.Default.ConDefaultUsername;
@@ -155,14 +155,14 @@ namespace mRemoteNC.Connection
                         parCon = parCont.ConnectionInfo;
                     }
 
-                    return parCon.Username;
+                    return parCon.Username.Trim();
                 }
                 else
                 {
-                    return this._Username;
+                    return this._Username.Trim();
                 }
             }
-            set { this._Username = value; }
+            set { this._Username = value.Trim(); }
         }
 
         private string _Password = (string)Settings.Default.ConDefaultPassword;
@@ -216,14 +216,14 @@ namespace mRemoteNC.Connection
                         parCon = parCont.ConnectionInfo;
                     }
 
-                    return parCon.Domain;
+                    return parCon.Domain.Trim();
                 }
                 else
                 {
-                    return this._Domain;
+                    return this._Domain.Trim();
                 }
             }
-            set { this._Domain = value; }
+            set { this._Domain = value.Trim(); }
         }
 
         #endregion 2 Connection
@@ -577,14 +577,14 @@ namespace mRemoteNC.Connection
                         parCon = parCont.ConnectionInfo;
                     }
 
-                    return parCon.RDGatewayHostname;
+                    return parCon.RDGatewayHostname.Trim();
                 }
                 else
                 {
-                    return this._RDGatewayHostname;
+                    return this._RDGatewayHostname.Trim();
                 }
             }
-            set { this._RDGatewayHostname = value; }
+            set { this._RDGatewayHostname = value.Trim(); }
         }
 
         private RDP.RDGatewayUseConnectionCredentials _RDGatewayUseConnectionCredentials =
@@ -703,14 +703,14 @@ namespace mRemoteNC.Connection
                         parCon = parCont.ConnectionInfo;
                     }
 
-                    return parCon.RDGatewayDomain;
+                    return parCon.RDGatewayDomain.Trim();
                 }
                 else
                 {
-                    return this._RDGatewayDomain;
+                    return this._RDGatewayDomain.Trim();
                 }
             }
-            set { this._RDGatewayDomain = value; }
+            set { this._RDGatewayDomain = value.Trim(); }
         }
 
         #endregion 4 RD Gateway

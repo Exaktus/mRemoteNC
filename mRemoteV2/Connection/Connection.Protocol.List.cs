@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace mRemoteNC
 {
@@ -37,7 +38,7 @@ namespace mRemoteNC
             return cProt;
         }
 
-        public void AddRange(Base[] cProt)
+        public void AddRange(IEnumerable<Base> cProt)
         {
             foreach (Base cP in cProt)
             {

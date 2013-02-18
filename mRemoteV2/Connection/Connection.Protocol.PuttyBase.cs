@@ -1,24 +1,12 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Runtime.InteropServices;
-
-//using mRemoteNC.App.Native;
 using System.Threading;
 using System.Windows.Forms;
-using AxMSTSCLib;
-using AxWFICALib;
 using Microsoft.VisualBasic;
 using Microsoft.Win32;
-using mRemoteNC;
 using mRemoteNC.App;
 using My;
-
-//using mRemoteNC.Runtime;
 
 namespace mRemoteNC
 {
@@ -109,6 +97,16 @@ namespace mRemoteNC
             {
             }
 
+            // Due to the way PuTTY handles command line arguments, backslashes followed by a quotation mark will be removed.
+            // Since all the strings we send to PuTTY are surrounded by quotation marks, we need to escape any trailing
+            // backslashes by adding another. See split_into_argv() in WINDOWS\WINUTILS.C of the PuTTY source for more info.
+            private static string PuttyEscapeArgument(string argument)
+            {
+                if (argument.EndsWith("\\"))
+                    argument = argument + "\\";
+                return argument;
+            }
+
             public override bool Connect()
             {
                 try
@@ -118,67 +116,47 @@ namespace mRemoteNC
                     PuttyProcess = new Process();
                     PuttyProcess.StartInfo.FileName = _PuttyPath;
 
-                    switch (this._PuttyProtocol)
-                    {
-                        case Putty_Protocol.raw:
-                            PuttyProcess.StartInfo.Arguments = "-load " + "\"" + this.InterfaceControl.Info.PuttySession +
-                                                               "\"" + " -" + this._PuttyProtocol.ToString() + " -P " +
-                                                               this.InterfaceControl.Info.Port + " \"" +
-                                                               this.InterfaceControl.Info.Hostname + "\"";
-                            break;
-                        case Putty_Protocol.rlogin:
-                            PuttyProcess.StartInfo.Arguments = "-load " + "\"" + this.InterfaceControl.Info.PuttySession +
-                                                               "\"" + " -" + this._PuttyProtocol.ToString() + " -P " +
-                                                               this.InterfaceControl.Info.Port + " \"" +
-                                                               this.InterfaceControl.Info.Hostname + "\"";
-                            break;
-                        case Putty_Protocol.ssh:
-                            string UserArg = "";
-                            string PassArg = "";
 
-                            if (Settings.Default.EmptyCredentials == "windows")
-                            {
-                                UserArg = " -l \"" + Environment.UserName + "\"";
+                    switch (_PuttyProtocol) {
+	                    case Putty_Protocol.raw:
+                                                PuttyProcess.StartInfo.Arguments = "-load " + "\"" + PuttyEscapeArgument(InterfaceControl.Info.PuttySession) + "\"" + " -" + _PuttyProtocol.ToString() + " -P " + InterfaceControl.Info.Port + " \"" + InterfaceControl.Info.Hostname + "\"";
+		                    break;
+	                    case Putty_Protocol.rlogin:
+		                    PuttyProcess.StartInfo.Arguments = "-load " + "\"" + PuttyEscapeArgument(InterfaceControl.Info.PuttySession) + "\"" + " -" + _PuttyProtocol.ToString() + " -P " + InterfaceControl.Info.Port + " \"" + InterfaceControl.Info.Hostname + "\"";
+		                    break;
+	                    case Putty_Protocol.ssh:
+		                    string userArgument = "";
+		                    string passwordArgument = "";
+
+		                    if (Settings.Default.EmptyCredentials == "windows") {
+			                    userArgument = " -l \"" + Environment.UserName + "\"";
                             }
                             else if (Settings.Default.EmptyCredentials == "custom")
                             {
-                                UserArg = " -l \"" + Settings.Default.DefaultUsername + "\"";
-                                PassArg = " -pw \"" +
-                                          Security.Crypt.Decrypt((string)Settings.Default.DefaultPassword,
-                                                                 (string)mRemoteNC.App.Info.General.EncryptionKey) +
-                                          "\"";
-                            }
+                                userArgument = " -l \"" + Settings.Default.DefaultUsername + "\"";
+                                passwordArgument = " -pw \"" + PuttyEscapeArgument(Security.Crypt.Decrypt(Settings.Default.DefaultPassword, App.Info.General.EncryptionKey)) + "\"";
+		                    }
 
-                            if (this.InterfaceControl.Info.Username != "")
-                            {
-                                UserArg = " -l \"" + this.InterfaceControl.Info.Username + "\"";
-                            }
+		                    if (!string.IsNullOrEmpty(InterfaceControl.Info.Username)) {
+			                    userArgument = " -l \"" + InterfaceControl.Info.Username + "\"";
+		                    }
 
-                            if (this.InterfaceControl.Info.Password != "")
-                            {
-                                PassArg = " -pw \"" + this.InterfaceControl.Info.Password + "\"";
-                            }
+		                    if (!string.IsNullOrEmpty(InterfaceControl.Info.Password)) {
+			                    passwordArgument = " -pw \"" + PuttyEscapeArgument(InterfaceControl.Info.Password) + "\"";
+		                    }
 
-                            PuttyProcess.StartInfo.Arguments = "-load " + "\"" + this.InterfaceControl.Info.PuttySession +
-                                                               "\"" + " -" + this._PuttyProtocol.ToString() + " -" +
-                                                               (int)_PuttySSHVersion + UserArg + PassArg + " -P " +
-                                                               this.InterfaceControl.Info.Port + " \"" +
-                                                               this.InterfaceControl.Info.Hostname + "\"";
-                            break;
-                        case Putty_Protocol.telnet:
-                            PuttyProcess.StartInfo.Arguments = "-load " + "\"" + this.InterfaceControl.Info.PuttySession +
-                                                               "\"" + " -" + this._PuttyProtocol.ToString() + " -P " +
-                                                               this.InterfaceControl.Info.Port + " \"" +
-                                                               this.InterfaceControl.Info.Hostname + "\"";
-                            break;
-                        case Putty_Protocol.serial:
-                            PuttyProcess.StartInfo.Arguments = "-load " + "\"" + this.InterfaceControl.Info.PuttySession +
-                                                               "\"" + " -" + this._PuttyProtocol.ToString() + " -P " +
-                                                               this.InterfaceControl.Info.Port + " \"" +
-                                                               this.InterfaceControl.Info.Hostname + "\"";
-                            break;
+		                    PuttyProcess.StartInfo.Arguments = "-load " + "\"" + PuttyEscapeArgument(InterfaceControl.Info.PuttySession)
+                                + "\"" + " -" + _PuttyProtocol.ToString() + " -" + (int)_PuttySSHVersion + userArgument + passwordArgument 
+                                + " -P " + InterfaceControl.Info.Port + " \"" + InterfaceControl.Info.Hostname + "\"";
+		                    break;
+	                    case Putty_Protocol.telnet:
+                            PuttyProcess.StartInfo.Arguments = "-load " + "\"" + PuttyEscapeArgument(InterfaceControl.Info.PuttySession) + "\"" + " -" + _PuttyProtocol.ToString() + " -P " + InterfaceControl.Info.Port + " \"" + InterfaceControl.Info.Hostname + "\"";
+		                    break;
+	                    case Putty_Protocol.serial:
+                            PuttyProcess.StartInfo.Arguments = "-load " + "\"" + PuttyEscapeArgument(InterfaceControl.Info.PuttySession) + "\"" + " -" + _PuttyProtocol.ToString() + " -P " + InterfaceControl.Info.Port + " \"" + InterfaceControl.Info.Hostname + "\"";
+		                    break;
                     }
-
+                    
                     if (_isPuttyNg)
                     {
                         PuttyProcess.StartInfo.Arguments = PuttyProcess.StartInfo.Arguments + " -hwndparent " +
@@ -197,14 +175,23 @@ namespace mRemoteNC
                     PuttyProcess.Start();
                     PuttyProcess.WaitForInputIdle();
 
-                    if (_isPuttyNg)
+                    int startTicks = Environment.TickCount;
+                    while (PuttyHandle.ToInt32() == 0 & Environment.TickCount < startTicks + 5000)
                     {
-                        PuttyHandle = Native.FindWindowEx(this.InterfaceControl.Handle, IntPtr.Zero,
-                                                          Constants.vbNullString, Constants.vbNullString);
+                        if (_isPuttyNg)
+                        {
+                            PuttyHandle = Native.FindWindowEx(InterfaceControl.Handle, IntPtr.Zero, Constants.vbNullString, Constants.vbNullString);
+                        }
+                        else
+                        {
+                            PuttyHandle = PuttyProcess.MainWindowHandle;
+                        }
+                        if (PuttyHandle.ToInt32() == 0)
+                            Thread.Sleep(0);
                     }
-                    else
+
+                    if (!_isPuttyNg)
                     {
-                        PuttyHandle = PuttyProcess.MainWindowHandle;
                         Native.SetParent(PuttyHandle, InterfaceControl.Handle);
                     }
 
@@ -378,9 +365,7 @@ namespace mRemoteNC
                 {
                     isPuttyNg = false;
                 }
-                Runtime.MessageCollector.AddMessage(Messages.MessageClass.InformationMsg,
-                                                    string.Format("IsFilePuttyNg(\"{0}\") = {1}", file, isPuttyNg),
-                                                    false);
+                
                 return isPuttyNg;
             }
 

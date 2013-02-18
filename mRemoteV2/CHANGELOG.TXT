@@ -4,6 +4,20 @@
 	Fixed crash on startup after update from version 1.69 and older (MR-306)
 	Fixed protocol resize on window minimize (MR-284, MR-282, MR-129)
 	​Fixed About multiple instance bug
+	Fixed MR-178 - 3 different panels crashes all connections
+	Fixed MR-306 - Fatal .NET exception on program start.
+	[rmcardle] Fix MR-313 - PuTTY window not maximized when loading from saved session
+	[rmcardle] Fix issue MR-165 - Can't close About window if it is the last tab
+	[rmcardle] Improve LoadFromXML to handle files from older versions of mRemoteNG 
+	[rmcardle] Fix issue MR-233 - Backslash at end of password prevents success of putty invocation and corresponding auto-logon
+	[rmcardle] Fix issue MR-181 - Sessions on startup
+	[rmcardle] Fix issue MR-172 - RDGatewayPassword is unencrypted in confCons.xml file, encrypt RDGateway password when saving to SQL
+	[rmcardle] Fix issue MR-101 - Collapse all folders causes a NullReferenceException
+	[rmcardle] Fix issue MR-202 - The Connection "Tab" show Ampersands as underscores.
+	[rmcardle] Fix issue MR-54 - Error When disconnecting from SSL channel RDP
+	[rmcardle] Fix issue MR-174 - Trailing Space on a Hostname/IP will cause the connection not to happen.
+	[rmcardle] Fix MR-171 Inherit configuration not showing friendly names for each inherit component
+	[rmcardle] Fix issue MR-235 - Config file gets corrupted when leaving the password entry box with ESC
 	Updated WeifenLuo.WinFormsUI.Docking to 2.7
 	The version of the RDP AX client updated to 7
 	SharpSSH replaced with Renci.SshNet

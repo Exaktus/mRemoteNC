@@ -784,7 +784,7 @@ namespace mRemoteNC.Config
 
                     if (xDom.DocumentElement.HasAttribute("ConfVersion"))
                     {
-                        this.confVersion = Convert.ToDouble(xDom.DocumentElement.Attributes["ConfVersion"].Value,
+                        this.confVersion = Convert.ToDouble(xDom.DocumentElement.Attributes["ConfVersion"].Value.Replace(",", "."),
                                                             CultureInfo.InvariantCulture);
                     }
                     else

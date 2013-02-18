@@ -336,7 +336,7 @@ namespace mRemoteNC
 
                     // Windows XP/Windows Server 2003
                     regKey = Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Lsa");
-                    if (!(Convert.ToInt32(regKey.GetValue("FIPSAlgorithmPolicy")) == 0))
+                    if (regKey != null && Convert.ToInt32(regKey.GetValue("FIPSAlgorithmPolicy")) != 0)
                     {
                         isFipsPolicyEnabled = true;
                     }
@@ -344,7 +344,7 @@ namespace mRemoteNC
                     // Windows Vista/Windows Server 2008 and newer
                     regKey =
                         Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Control\\Lsa\\FIPSAlgorithmPolicy");
-                    if (!(Convert.ToInt32(regKey.GetValue("Enabled")) == 0))
+                    if (regKey != null && Convert.ToInt32(regKey.GetValue("Enabled")) != 0)
                     {
                         isFipsPolicyEnabled = true;
                     }
@@ -542,7 +542,7 @@ namespace mRemoteNC
                 {
                     try
                     {
-                        Misc.CMDArguments cmd = new Misc.CMDArguments(Environment.GetCommandLineArgs());
+                        CMDArguments cmd = new CMDArguments(Environment.GetCommandLineArgs());
 
                         string ConsParam = "";
                         if (cmd["cons"] != null)
@@ -691,6 +691,29 @@ namespace mRemoteNC
                     catch (Exception)
                     {
                     }
+                }
+
+                internal static void FirstTimeRun()
+                {
+                    if (!Settings.Default.FirstStart)
+                    {
+                        return;
+                    }
+                    ThreadPool.QueueUserWorkItem(state =>
+                        {
+                            if (string.IsNullOrWhiteSpace(Settings.Default.TeamViewerPath))
+                            {
+                                Settings.Default.TeamViewerPath = Misc.FindTvPaths().FirstOrDefault();
+                            }
+                            if (string.IsNullOrWhiteSpace(Settings.Default.RAdminPath))
+                            {
+                                Settings.Default.RAdminPath = Misc.FindRAdminPaths().FirstOrDefault();
+                            }
+                            if (string.IsNullOrWhiteSpace(Settings.Default.XULRunnerPath))
+                            {
+                                Settings.Default.XULRunnerPath = Misc.FindGeckoPaths().FirstOrDefault();
+                            }
+                        });
                 }
             }
 
@@ -1639,7 +1662,7 @@ namespace mRemoteNC
             {
                 _saveUpdate = true;
 
-                Thread t = new Thread(new ThreadStart(SaveConnectionsBGd));
+                var t = new Thread(SaveConnectionsBGd);
                 t.SetApartmentState(ApartmentState.STA);
                 t.Start();
             }
@@ -1658,7 +1681,8 @@ namespace mRemoteNC
             {
                 try
                 {
-                    if (Update == true && Settings.Default.UseSQLServer == false)
+                    if (!IsConnectionsFileLoaded) return;
+                    if (Update && Settings.Default.UseSQLServer == false)
                     {
                         return;
                     }
@@ -1842,7 +1866,11 @@ namespace mRemoteNC
 
                         if (Protocol == Protocols.NONE)
                         {
-                            Windows.quickyPanel.Show(frmMain.Default.pnlDock, DockState.DockBottomAutoHide);
+                            Windows.quickyPanel.Show(frmMain.Default.pnlDock, DockState.DockBottom);
+                            Windows.quickyPanel.BringToFront();
+                            Windows.quickyPanel.Activate();
+                            Windows.quickyPanel.Show();
+                            Windows.quickyPanel.Focus();
                         }
 
                         return newConnectionInfo;

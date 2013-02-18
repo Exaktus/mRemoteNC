@@ -1716,7 +1716,7 @@ namespace My {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool StartupComponentsCheck {
             get {
                 return ((bool)(this["StartupComponentsCheck"]));

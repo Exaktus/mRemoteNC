@@ -8,6 +8,7 @@ using Microsoft.VisualBasic;
 using mRemoteNC.App;
 using mRemoteNC.Connection;
 using My;
+using mRemoteNC.Security;
 
 //using mRemoteNC.Runtime;
 //using mRemoteNC.Tools.Misc;
@@ -439,7 +440,7 @@ namespace mRemoteNC.Config
 
                 if (this.SaveSecurity.Password == true)
                 {
-                    _sqlQuery.CommandText += "\'" + with_1.RDGatewayPassword + "\',";
+                    _sqlQuery.CommandText += "\'" + Crypt.Encrypt(with_1.RDGatewayPassword, _password) + "\',";
                 }
                 else
                 {
@@ -886,7 +887,7 @@ namespace mRemoteNC.Config
 
                     if (this.SaveSecurity.Password == true)
                     {
-                        _xmlTextWriter.WriteAttributeString("RDGatewayPassword", "", (string)curConI.RDGatewayPassword);
+                        _xmlTextWriter.WriteAttributeString("RDGatewayPassword", "", Crypt.Encrypt(curConI.RDGatewayPassword, _password));
                     }
                     else
                     {

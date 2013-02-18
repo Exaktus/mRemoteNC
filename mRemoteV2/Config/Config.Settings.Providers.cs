@@ -154,11 +154,10 @@ namespace mRemoteNC
                             }
                             else
                             {
-                                ret =
-                                    SettingsXML.SelectSingleNode(
-                                        System.Convert.ToString(SETTINGSROOT + "/" +
-                                                                (new Microsoft.VisualBasic.Devices.Computer()).Name +
-                                                                "/" + setting.Name)).InnerText;
+                                var selectSingleNode = SettingsXML.SelectSingleNode(System.Convert.ToString(SETTINGSROOT + "/" + (new Microsoft.VisualBasic.Devices.Computer()).Name + "/" + setting.Name));
+                                if (selectSingleNode != null)//ToDO: What if Null?
+                                    ret =
+                                        selectSingleNode.InnerText;
                             }
                         }
                         catch (Exception)
@@ -226,7 +225,9 @@ namespace mRemoteNC
                                 {
                                     SettingNode.InnerText = propVal.SerializedValue.ToString();
                                 }
-                                SettingsXML.SelectSingleNode(SETTINGSROOT.ToString()).AppendChild(SettingNode);
+                                var selectSingleNode = SettingsXML.SelectSingleNode(SETTINGSROOT);
+                                if (selectSingleNode != null)//ToDO: What if Null?
+                                    selectSingleNode.AppendChild(SettingNode);
                             }
                             else
                             {

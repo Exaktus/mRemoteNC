@@ -26,7 +26,8 @@
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>false</SignManifests>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -87,7 +88,8 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug Portable\</OutputPath>
-    <NOWARN>1591,660,661</NOWARN>
+    <NOWARN>
+    </NOWARN>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <DefineConstants>DEBUG;PORTABLE</DefineConstants>

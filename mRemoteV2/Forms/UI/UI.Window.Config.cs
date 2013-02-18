@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
 using AxMSTSCLib;
@@ -35,126 +36,122 @@ namespace mRemoteNC
                 internal System.Windows.Forms.ToolStripButton btnIcon;
                 internal System.Windows.Forms.ToolStripButton btnHostStatus;
                 internal System.Windows.Forms.ContextMenuStrip cMenIcons;
-                private System.ComponentModel.Container components = null;
+                private System.ComponentModel.IContainer components;
                 internal Azuria.Common.Controls.FilteredPropertyGrid pGrid;
 
                 private void InitializeComponent()
                 {
-                    this.components = new System.ComponentModel.Container();
-                    this.Load += new System.EventHandler(this.Config_Load);
-                    this.pGrid = new Azuria.Common.Controls.FilteredPropertyGrid();
-                    this.pGrid.PropertyValueChanged +=
-                        new System.Windows.Forms.PropertyValueChangedEventHandler(this.pGrid_PropertyValueChanged);
-                    this.btnShowInheritance = new System.Windows.Forms.ToolStripButton();
-                    this.btnShowInheritance.Click += new System.EventHandler(this.btnShowInheritance_Click);
-                    this.btnShowDefaultInheritance = new System.Windows.Forms.ToolStripButton();
-                    this.btnShowDefaultInheritance.Click += new System.EventHandler(this.btnShowDefaultInheritance_Click);
-                    this.btnShowProperties = new System.Windows.Forms.ToolStripButton();
-                    this.btnShowProperties.Click += new System.EventHandler(this.btnShowProperties_Click);
-                    this.btnShowDefaultProperties = new System.Windows.Forms.ToolStripButton();
-                    this.btnShowDefaultProperties.Click += new System.EventHandler(this.btnShowDefaultProperties_Click);
-                    this.btnIcon = new System.Windows.Forms.ToolStripButton();
-                    this.btnIcon.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnIcon_Click);
-                    this.btnHostStatus = new System.Windows.Forms.ToolStripButton();
-                    this.btnHostStatus.Click += new System.EventHandler(this.btnHostStatus_Click);
-                    this.cMenIcons = new System.Windows.Forms.ContextMenuStrip(this.components);
-                    this.SuspendLayout();
-                    //
-                    //pGrid
-                    //
-                    this.pGrid.Anchor =
-                        (System.Windows.Forms.AnchorStyles)
-                        (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) |
-                          System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right);
-                    this.pGrid.BrowsableProperties = null;
-                    this.pGrid.Font = new System.Drawing.Font("Microsoft Sans Serif", (float)(8.25F),
-                                                              System.Drawing.FontStyle.Regular,
-                                                              System.Drawing.GraphicsUnit.Point, (byte)(0));
-                    this.pGrid.HiddenAttributes = null;
-                    this.pGrid.HiddenProperties = null;
-                    this.pGrid.Location = new System.Drawing.Point(0, 0);
-                    this.pGrid.Name = "pGrid";
-                    this.pGrid.PropertySort = System.Windows.Forms.PropertySort.Categorized;
-                    this.pGrid.Size = new System.Drawing.Size(226, 530);
-                    this.pGrid.TabIndex = 0;
-                    this.pGrid.UseCompatibleTextRendering = true;
-                    //
-                    //btnShowInheritance
-                    //
-                    this.btnShowInheritance.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-                    this.btnShowInheritance.Image = global::My.Resources.Resources.Inheritance;
-                    this.btnShowInheritance.ImageTransparentColor = System.Drawing.Color.Magenta;
-                    this.btnShowInheritance.Name = "btnShowInheritance";
-                    this.btnShowInheritance.Size = new System.Drawing.Size(23, 22);
-                    this.btnShowInheritance.Text = "Inheritance";
-                    //
-                    //btnShowDefaultInheritance
-                    //
-                    this.btnShowDefaultInheritance.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-                    this.btnShowDefaultInheritance.Image = global::My.Resources.Resources.Inheritance_Default;
-                    this.btnShowDefaultInheritance.ImageTransparentColor = System.Drawing.Color.Magenta;
-                    this.btnShowDefaultInheritance.Name = "btnShowDefaultInheritance";
-                    this.btnShowDefaultInheritance.Size = new System.Drawing.Size(23, 22);
-                    this.btnShowDefaultInheritance.Text = "Default Inheritance";
-                    //
-                    //btnShowProperties
-                    //
-                    this.btnShowProperties.Checked = true;
-                    this.btnShowProperties.CheckState = System.Windows.Forms.CheckState.Checked;
-                    this.btnShowProperties.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-                    this.btnShowProperties.Image = global::My.Resources.Resources.Properties;
-                    this.btnShowProperties.ImageTransparentColor = System.Drawing.Color.Magenta;
-                    this.btnShowProperties.Name = "btnShowProperties";
-                    this.btnShowProperties.Size = new System.Drawing.Size(23, 22);
-                    this.btnShowProperties.Text = "Properties";
-                    //
-                    //btnShowDefaultProperties
-                    //
-                    this.btnShowDefaultProperties.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-                    this.btnShowDefaultProperties.Image = global::My.Resources.Resources.Properties_Default;
-                    this.btnShowDefaultProperties.ImageTransparentColor = System.Drawing.Color.Magenta;
-                    this.btnShowDefaultProperties.Name = "btnShowDefaultProperties";
-                    this.btnShowDefaultProperties.Size = new System.Drawing.Size(23, 22);
-                    this.btnShowDefaultProperties.Text = "Default Properties";
-                    //
-                    //btnIcon
-                    //
-                    this.btnIcon.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-                    this.btnIcon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-                    this.btnIcon.ImageTransparentColor = System.Drawing.Color.Magenta;
-                    this.btnIcon.Name = "btnIcon";
-                    this.btnIcon.Size = new System.Drawing.Size(23, 22);
-                    this.btnIcon.Text = "Icon";
-                    //
-                    //btnHostStatus
-                    //
-                    this.btnHostStatus.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-                    this.btnHostStatus.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-                    this.btnHostStatus.Image = global::My.Resources.Resources.HostStatus_Check;
-                    this.btnHostStatus.ImageTransparentColor = System.Drawing.Color.Magenta;
-                    this.btnHostStatus.Name = "btnHostStatus";
-                    this.btnHostStatus.Size = new System.Drawing.Size(23, 22);
-                    this.btnHostStatus.Tag = "checking";
-                    this.btnHostStatus.Text = "Status";
-                    //
-                    //cMenIcons
-                    //
-                    this.cMenIcons.Name = "cMenIcons";
-                    this.cMenIcons.Size = new System.Drawing.Size(61, 4);
-                    //
-                    //Config
-                    //
-                    this.ClientSize = new System.Drawing.Size(226, 530);
-                    this.Controls.Add(this.pGrid);
-                    this.Font = new System.Drawing.Font("Microsoft Sans Serif", (float)(8.25F),
-                                                        System.Drawing.FontStyle.Regular,
-                                                        System.Drawing.GraphicsUnit.Point, (byte)(0));
-                    this.HideOnClose = true;
-                    this.Icon = global::My.Resources.Resources.Config_Icon;
-                    this.Name = "Config";
-                    this.TabText = "Config";
-                    this.Text = "Config";
-                    this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            this.pGrid = new Azuria.Common.Controls.FilteredPropertyGrid();
+            this.btnShowInheritance = new System.Windows.Forms.ToolStripButton();
+            this.btnShowDefaultInheritance = new System.Windows.Forms.ToolStripButton();
+            this.btnShowProperties = new System.Windows.Forms.ToolStripButton();
+            this.btnShowDefaultProperties = new System.Windows.Forms.ToolStripButton();
+            this.btnIcon = new System.Windows.Forms.ToolStripButton();
+            this.btnHostStatus = new System.Windows.Forms.ToolStripButton();
+            this.cMenIcons = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.SuspendLayout();
+            // 
+            // pGrid
+            // 
+            this.pGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pGrid.BrowsableProperties = null;
+            this.pGrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pGrid.HiddenAttributes = null;
+            this.pGrid.HiddenProperties = null;
+            this.pGrid.Location = new System.Drawing.Point(0, 0);
+            this.pGrid.Name = "pGrid";
+            this.pGrid.PropertySort = System.Windows.Forms.PropertySort.Categorized;
+            this.pGrid.Size = new System.Drawing.Size(226, 530);
+            this.pGrid.TabIndex = 0;
+            this.pGrid.UseCompatibleTextRendering = true;
+            this.pGrid.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.pGrid_PropertyValueChanged);
+            // 
+            // btnShowInheritance
+            // 
+            this.btnShowInheritance.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnShowInheritance.Image = global::My.Resources.Resources.Inheritance;
+            this.btnShowInheritance.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnShowInheritance.Name = "btnShowInheritance";
+            this.btnShowInheritance.Size = new System.Drawing.Size(23, 22);
+            this.btnShowInheritance.Text = "Inheritance";
+            this.btnShowInheritance.Click += new System.EventHandler(this.btnShowInheritance_Click);
+            // 
+            // btnShowDefaultInheritance
+            // 
+            this.btnShowDefaultInheritance.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnShowDefaultInheritance.Image = global::My.Resources.Resources.Inheritance_Default;
+            this.btnShowDefaultInheritance.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnShowDefaultInheritance.Name = "btnShowDefaultInheritance";
+            this.btnShowDefaultInheritance.Size = new System.Drawing.Size(23, 22);
+            this.btnShowDefaultInheritance.Text = "Default Inheritance";
+            this.btnShowDefaultInheritance.Click += new System.EventHandler(this.btnShowDefaultInheritance_Click);
+            // 
+            // btnShowProperties
+            // 
+            this.btnShowProperties.Checked = true;
+            this.btnShowProperties.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.btnShowProperties.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnShowProperties.Image = global::My.Resources.Resources.Properties;
+            this.btnShowProperties.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnShowProperties.Name = "btnShowProperties";
+            this.btnShowProperties.Size = new System.Drawing.Size(23, 22);
+            this.btnShowProperties.Text = "Properties";
+            this.btnShowProperties.Click += new System.EventHandler(this.btnShowProperties_Click);
+            // 
+            // btnShowDefaultProperties
+            // 
+            this.btnShowDefaultProperties.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnShowDefaultProperties.Image = global::My.Resources.Resources.Properties_Default;
+            this.btnShowDefaultProperties.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnShowDefaultProperties.Name = "btnShowDefaultProperties";
+            this.btnShowDefaultProperties.Size = new System.Drawing.Size(23, 22);
+            this.btnShowDefaultProperties.Text = "Default Properties";
+            this.btnShowDefaultProperties.Click += new System.EventHandler(this.btnShowDefaultProperties_Click);
+            // 
+            // btnIcon
+            // 
+            this.btnIcon.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnIcon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnIcon.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnIcon.Name = "btnIcon";
+            this.btnIcon.Size = new System.Drawing.Size(23, 22);
+            this.btnIcon.Text = "Icon";
+            this.btnIcon.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnIcon_Click);
+            // 
+            // btnHostStatus
+            // 
+            this.btnHostStatus.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnHostStatus.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnHostStatus.Image = global::My.Resources.Resources.HostStatus_Check;
+            this.btnHostStatus.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnHostStatus.Name = "btnHostStatus";
+            this.btnHostStatus.Size = new System.Drawing.Size(23, 22);
+            this.btnHostStatus.Tag = "checking";
+            this.btnHostStatus.Text = "Status";
+            this.btnHostStatus.Click += new System.EventHandler(this.btnHostStatus_Click);
+            // 
+            // cMenIcons
+            // 
+            this.cMenIcons.Name = "cMenIcons";
+            this.cMenIcons.Size = new System.Drawing.Size(61, 4);
+            // 
+            // Config
+            // 
+            this.ClientSize = new System.Drawing.Size(226, 530);
+            this.Controls.Add(this.pGrid);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HideOnClose = true;
+            this.Icon = global::My.Resources.Resources.Config_Icon;
+            this.Name = "Config";
+            this.TabText = "Config";
+            this.Text = "Config";
+            this.Load += new System.EventHandler(this.Config_Load);
+            this.SystemColorsChanged += new System.EventHandler(this.Config_SystemColorsChanged);
+            this.ResumeLayout(false);
+
                 }
 
                 #endregion Form Init
@@ -282,69 +279,169 @@ namespace mRemoteNC
                     this.InitializeComponent();
                 }
 
-                // Main form handle command key events
-                protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg,
-                                                      System.Windows.Forms.Keys keyData)
+                private void FindChildGridItems(GridItem item, ref List<GridItem> gridItems)
                 {
-#if Config
+                    gridItems.Add(item);
+
+                    if (!item.Expandable | item.Expanded)
+                    {
+                        foreach (GridItem child in item.GridItems)
+                        {
+                            FindChildGridItems(child, ref gridItems);
+                        }
+                    }
+                }
+
+                private bool ContainsGridItemProperty(List<GridItem> gridItems)
+                {
+                    foreach (GridItem item in gridItems)
+                    {
+                        if (item.GridItemType == GridItemType.Property)
+                            return true;
+                    }
+                    return false;
+                }
+
+                private GridItem FindPreviousGridItemProperty(List<GridItem> gridItems, GridItem startItem)
+                {
+                    if (gridItems.Count == 0)
+                        return null;
+                    if (startItem == null)
+                        return null;
+
+                    int startIndex = gridItems.IndexOf(startItem);
+
+                    if (startItem.GridItemType == GridItemType.Property)
+                    {
+                        startIndex = startIndex - 1;
+                        if (startIndex < 0)
+                            startIndex = gridItems.Count - 1;
+                    }
+
+                    int previousIndex = 0;
+                    bool previousIndexValid = false;
+                    for (int index = startIndex; index >= 0; index += -1)
+                    {
+                        if (gridItems[index].GridItemType == GridItemType.Property)
+                        {
+                            previousIndex = index;
+                            previousIndexValid = true;
+                            break; // TODO: might not be correct. Was : Exit For
+                        }
+                    }
+
+                    if (previousIndexValid)
+                        return gridItems[previousIndex];
+
+                    for (int index = gridItems.Count - 1; index >= startIndex + 1; index += -1)
+                    {
+                        if (gridItems[index].GridItemType == GridItemType.Property)
+                        {
+                            previousIndex = index;
+                            previousIndexValid = true;
+                            break; // TODO: might not be correct. Was : Exit For
+                        }
+                    }
+
+                    if (!previousIndexValid)
+                        return null;
+
+                    return gridItems[previousIndex];
+                }
+
+                private GridItem FindNextGridItemProperty(List<GridItem> gridItems, GridItem startItem)
+                {
+                    if (gridItems.Count == 0)
+                        return null;
+                    if (startItem == null)
+                        return null;
+
+                    int startIndex = gridItems.IndexOf(startItem);
+
+                    if (startItem.GridItemType == GridItemType.Property)
+                    {
+                        startIndex = startIndex + 1;
+                        if (startIndex >= gridItems.Count)
+                            startIndex = 0;
+                    }
+
+                    int nextIndex = 0;
+                    bool nextIndexValid = false;
+                    for (int index = startIndex; index <= gridItems.Count - 1; index++)
+                    {
+                        if (gridItems[index].GridItemType == GridItemType.Property)
+                        {
+                            nextIndex = index;
+                            nextIndexValid = true;
+                            break; // TODO: might not be correct. Was : Exit For
+                        }
+                    }
+
+                    if (nextIndexValid)
+                        return gridItems[nextIndex];
+
+                    for (int index = 0; index <= startIndex - 1; index++)
+                    {
+                        if (gridItems[index].GridItemType == GridItemType.Property)
+                        {
+                            nextIndex = index;
+                            nextIndexValid = true;
+                            break; // TODO: might not be correct. Was : Exit For
+                        }
+                    }
+
+                    if (!nextIndexValid)
+                        return null;
+
+                    return gridItems[nextIndex];
+                }
+
+                // Main form handle command key events
+                protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
+                {
+                    #if Config
 					Debug.Print("key: " + keyData.ToString());
 					Debug.Print("msg: " + msg.Msg);
 					Debug.Print("hwnd: " + msg.HWnd.ToString());
 					Debug.Print("lparam: " + msg.LParam.ToString());
 					Debug.Print("wparam: " + msg.WParam.ToString());
 					Debug.Print("result: " + msg.Result.ToString());
-#endif
-                    if (keyData == Keys.Tab)
+                    #endif
+                    if ((keyData & Keys.KeyCode) == Keys.Tab)
                     {
-                        string curGridItemLabel = pGrid.SelectedGridItem.Label;
-                        int gridItemIndex;
-
-                        for (gridItemIndex = 0;
-                             gridItemIndex <= pGrid.SelectedGridItem.Parent.GridItems.Count;
-                             gridItemIndex++)
+                        GridItem selectedItem = pGrid.SelectedGridItem;
+                        GridItem gridRoot = selectedItem;
+                        while (gridRoot.GridItemType != GridItemType.Root)
                         {
-                            if (pGrid.SelectedGridItem.Parent.GridItems[gridItemIndex].Label == curGridItemLabel)
-                            {
-                                break;
-                            }
+                            gridRoot = gridRoot.Parent;
                         }
 
-                        if (pGrid.SelectedGridItem.Parent.GridItems.Count > gridItemIndex + 1)
+                        var gridItems = new List<GridItem>();
+                        FindChildGridItems(gridRoot, ref gridItems);
+
+                        if (!ContainsGridItemProperty(gridItems))
+                            return true;
+
+                        GridItem newItem = selectedItem;
+
+                        if (keyData == (Keys.Tab | Keys.Shift))
                         {
-                            pGrid.SelectedGridItem.Parent.GridItems[gridItemIndex + 1].Select();
+                            newItem = FindPreviousGridItemProperty(gridItems, selectedItem);
                         }
-                        else
+                        else if (keyData == Keys.Tab)
                         {
-                            pGrid.SelectedGridItem.Parent.GridItems[0].Select();
+                            newItem = FindNextGridItemProperty(gridItems, selectedItem);
                         }
+
+                        pGrid.SelectedGridItem = newItem;
+
+                        return true;
+                        // Handled
                     }
-                    if (keyData == (Keys.Tab) || keyData == Keys.Shift)
+                    else
                     {
-                        string curGridItemLabel = pGrid.SelectedGridItem.Label;
-                        int gridItemIndex;
-
-                        for (gridItemIndex = 0;
-                             gridItemIndex <= pGrid.SelectedGridItem.Parent.GridItems.Count;
-                             gridItemIndex++)
-                        {
-                            if (pGrid.SelectedGridItem.Parent.GridItems[gridItemIndex].Label == curGridItemLabel)
-                            {
-                                break;
-                            }
-                        }
-
-                        if (gridItemIndex - 1 >= 0)
-                        {
-                            pGrid.SelectedGridItem.Parent.GridItems[gridItemIndex - 1].Select();
-                        }
-                        else
-                        {
-                            pGrid.SelectedGridItem.Parent.GridItems[pGrid.SelectedGridItem.Parent.GridItems.Count - 1].
-                                Select();
-                        }
+                        return base.ProcessCmdKey(ref msg, keyData);
                     }
-
-                    return base.ProcessCmdKey(ref msg, keyData);
                 }
 
                 public void SetPropertyGridObject(object Obj)
@@ -532,42 +629,7 @@ namespace mRemoteNC
                 private void Config_Load(object sender, System.EventArgs e)
                 {
                     ApplyLanguage();
-
-                    try
-                    {
-                        //Show PropertyGrid Toolbar buttons
-                        tsCustom = new ToolStrip();
-                        tsCustom.Items.Add(btnShowProperties);
-                        tsCustom.Items.Add(btnShowInheritance);
-                        tsCustom.Items.Add(btnShowDefaultProperties);
-                        tsCustom.Items.Add(btnShowDefaultInheritance);
-                        tsCustom.Items.Add(btnHostStatus);
-                        tsCustom.Items.Add(btnIcon);
-                        tsCustom.Show();
-
-                        ToolStrip tsDefault = new ToolStrip();
-
-                        foreach (System.Windows.Forms.Control ctrl in pGrid.Controls)
-                        {
-                            ToolStrip tStrip = ctrl as ToolStrip;
-
-                            if (tStrip != null)
-                            {
-                                tsDefault = tStrip;
-                                break;
-                            }
-                        }
-
-                        tsDefault.AllowMerge = true;
-                        tsDefault.Items[tsDefault.Items.Count - 1].Visible = false;
-                        ToolStripManager.Merge(tsCustom, tsDefault);
-                    }
-                    catch (Exception ex)
-                    {
-                        Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
-                                                            Language.strConfigUiLoadFailed + Constants.vbNewLine +
-                                                            ex.Message, true);
-                    }
+                    AddToolStripItems();
                 }
 
                 private void ApplyLanguage()
@@ -581,6 +643,66 @@ namespace mRemoteNC
                     Text = Language.strMenuConfig;
                     TabText = Language.strMenuConfig;
                 }
+
+                private bool _originalPropertyGridToolStripItemCountValid;
+
+                private int _originalPropertyGridToolStripItemCount;
+                private void AddToolStripItems()
+                {
+                    try
+                    {
+                        ToolStrip customToolStrip = new ToolStrip();
+                        customToolStrip.Items.Add(btnShowProperties);
+                        customToolStrip.Items.Add(btnShowInheritance);
+                        customToolStrip.Items.Add(btnShowDefaultProperties);
+                        customToolStrip.Items.Add(btnShowDefaultInheritance);
+                        customToolStrip.Items.Add(btnHostStatus);
+                        customToolStrip.Items.Add(btnIcon);
+                        customToolStrip.Show();
+
+                        ToolStrip propertyGridToolStrip = new ToolStrip();
+
+                        ToolStrip toolStrip = default(ToolStrip);
+                        foreach (Control control in pGrid.Controls)
+                        {
+                            toolStrip = control as ToolStrip;
+
+                            if (toolStrip != null)
+                            {
+                                propertyGridToolStrip = toolStrip;
+                                break; // TODO: might not be correct. Was : Exit For
+                            }
+                        }
+
+                        if (toolStrip == null)
+                        {
+                            Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg, Language.strCouldNotFindToolStripInFilteredPropertyGrid, true);
+                            return;
+                        }
+
+                        if (!_originalPropertyGridToolStripItemCountValid)
+                        {
+                            _originalPropertyGridToolStripItemCount = propertyGridToolStrip.Items.Count;
+                            _originalPropertyGridToolStripItemCountValid = true;
+                        }
+                        Debug.Assert(_originalPropertyGridToolStripItemCount == 5);
+
+                        // Hide the "Property Pages" button
+                        propertyGridToolStrip.Items[_originalPropertyGridToolStripItemCount - 1].Visible = false;
+
+                        int expectedToolStripItemCount = _originalPropertyGridToolStripItemCount + customToolStrip.Items.Count;
+                        if (propertyGridToolStrip.Items.Count != expectedToolStripItemCount)
+                        {
+                            propertyGridToolStrip.AllowMerge = true;
+                            ToolStripManager.Merge(customToolStrip, propertyGridToolStrip);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg, Language.strConfigUiLoadFailed + Constants.vbNewLine + ex.Message, true);
+                    }
+                }
+
 
                 private void pGrid_PropertyValueChanged(object s, System.Windows.Forms.PropertyValueChangedEventArgs e)
                 {
@@ -1713,6 +1835,11 @@ namespace mRemoteNC
                 }
 
                 #endregion Host Status (Ping)
+
+                private void Config_SystemColorsChanged(object sender, EventArgs e)
+                {
+                    AddToolStripItems();
+                }
             }
         }
     }

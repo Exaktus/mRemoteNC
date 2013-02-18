@@ -2183,4 +2183,11 @@ http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/|Downl
   <data name="ProblemFixer_FixRAdminProblem_You_should_setup_TeamViewer_path_in_options_or_I_can_do_it_for_you_" xml:space="preserve">
     <value>You should setup RAdmin path in options or I can do it for you.</value>
   </data>
+  <data name="strCouldNotFindToolStripInFilteredPropertyGrid" xml:space="preserve">
+    <value>Could not find ToolStrip control in FilteredPropertyGrid.</value>
+  </data>
+  <data name="ProblemFixer_FixRAdminProblem_OpenOptions_Setuppath">
+    <value xml:space="preserve">Open Options|Setup path:
+</value>
+  </data>
 </root>
