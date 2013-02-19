@@ -41,6 +41,7 @@
 	Added Connection Status Form
 	Added Quick Text (limited support)
 	Added Components problem fixer
+	Added option to lock ToolStrips
 
 1.70 (XXXX-XX-XX):
   Fix issue MR-77 - VerifyDatabaseVersion (Config.Connections.Save) failed. Version string portion was too short or too long.

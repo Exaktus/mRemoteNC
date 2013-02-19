@@ -278,7 +278,7 @@ namespace mRemoteNC
             this.Opacity = 1;
 
             quickTextToolbarToolStripMenuItem.Checked = tsQuickTexts.Visible;
-
+            ChangeToolStripLockState();
             foreach (Info con in Runtime.ConnectionList.Cast<Info>().Where(con => con.ConnectOnStartup))
             {
                 Runtime.OpenConnection(con, Info.Force.None);
@@ -1333,6 +1333,31 @@ namespace mRemoteNC
         private void cmbQuickConnect_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void lockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Settings.Default.ToolStripsIsLocked = lockToolStripMenuItem.Checked;
+            ChangeToolStripLockState();
+        }
+
+        private void ChangeToolStripLockState()
+        {
+            try
+            {
+                foreach (var ts in new[] { tsContainer.TopToolStripPanel, 
+                                        tsContainer.BottomToolStripPanel, 
+                                        tsContainer.LeftToolStripPanel, 
+                                        tsContainer.RightToolStripPanel }
+                                    .SelectMany(panel => panel.Controls.OfType<ToolStrip>()))
+                {
+                    ts.GripStyle = Settings.Default.ToolStripsIsLocked ? ToolStripGripStyle.Hidden : ToolStripGripStyle.Visible;
+                }
+            }
+            catch (Exception ex)
+            {
+                 Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,ex.Message, false);
+            }
         }
     }
 }
