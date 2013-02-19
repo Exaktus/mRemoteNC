@@ -522,8 +522,8 @@ namespace mRemoteNC
 
                 private void RefreshToolbar()
                 {
-                    frmMain.Default.AddExternalToolsToToolBar();
                     Runtime.GetExtApps();
+                    frmMain.Default.AddExternalToolsToToolBar();
                 }
 
                 #endregion Private Methods

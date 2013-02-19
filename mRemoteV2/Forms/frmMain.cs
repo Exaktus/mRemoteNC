@@ -82,32 +82,6 @@ namespace mRemoteNC
 
         #region Startup & Shutdown
 
-
-        private void SaveToolbars()
-        {
-            //ToolStripManager.SaveSettings(this, "main");
-            Settings.Default.tsQuickConnectLocation = tsQuickConnect.Location;
-            Settings.Default.tsMainLocation = msMain.Location;
-            Settings.Default.ToolStrip1Location = ToolStrip1.Location;
-            Settings.Default.tsQuickTextsLocation = tsQuickTexts.Location;
-            Settings.Default.tsExternalToolsLocation = tsExternalTools.Location;
-        }
-
-        private void RestoreToolbars()
-        {
-            tsContainer.SuspendLayout();
-            tsContainer.TopToolStripPanel.SuspendLayout();
-
-            tsExternalTools.Location = Settings.Default.tsExternalToolsLocation;
-            tsQuickConnect.Location = Settings.Default.tsQuickConnectLocation;
-            msMain.Location = Settings.Default.tsMainLocation;
-            ToolStrip1.Location = Settings.Default.ToolStrip1Location;
-            tsQuickTexts.Location = Settings.Default.tsQuickTextsLocation;
-            tsContainer.TopToolStripPanel.ResumeLayout(true);
-            tsContainer.ResumeLayout(true);
-            //ToolStripManager.LoadSettings(this, "main");
-        }
-
         private string GetToolStripParentName(ToolStrip toolStrip)
         {
             var panel = toolStrip.Parent as ToolStripPanel;
@@ -213,14 +187,14 @@ namespace mRemoteNC
 
         public void frmMain_Load(object sender, System.EventArgs e)
         {
-            mRemoteNC.My.MyApplication.MyApplication_Startup();
+            My.MyApplication.MyApplication_Startup();
             ToolStrip1.Visible = false;
             Runtime.Startup.CheckCompatibility();
 
             Runtime.Startup.CreateLogger();
 
             // Create gui config load and save objects
-            Config.SettingsManager.Load SettingsLoad = new Config.SettingsManager.Load(this);
+            var SettingsLoad = new Config.SettingsManager.Load(this);
 
             // Load GUI Configuration
             SettingsLoad.Load_Settings();
@@ -299,12 +273,11 @@ namespace mRemoteNC
 
             AddSysMenuItems();
             Microsoft.Win32.SystemEvents.DisplaySettingsChanged += DisplayChanged;
-
+            AddQuickTextsToToolBar();
+            AddExternalToolsToToolBar();
             this.Opacity = 1;
 
-            RestoreToolbars();
-
-            //pnlDock.Skin = CreateAEGIS();
+            quickTextToolbarToolStripMenuItem.Checked = tsQuickTexts.Visible;
 
             foreach (Info con in Runtime.ConnectionList.Cast<Info>().Where(con => con.ConnectOnStartup))
             {
@@ -378,6 +351,11 @@ namespace mRemoteNC
             ToolStripMenuItem2.Text = Language.strKeysCtrlEsc;
         }
 
+        public Control GetControlByName(string ControlName)
+        {
+            return Controls.Cast<Control>().FirstOrDefault(c => c.Name == ControlName);
+        }
+
         public void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (Settings.Default.ConfirmExit && Runtime.WindowList.Count > 0)
@@ -399,9 +377,7 @@ namespace mRemoteNC
                     return;
                 }
             }
-
-            SaveToolbars();
-
+            
             Runtime.Shutdown.BeforeQuit();
             My.MyApplication.MyApplication_Shutdown();
 
@@ -1291,15 +1267,15 @@ namespace mRemoteNC
         {
         }
 
-        private void tsQuickTextsEntry_Click(System.Object sender, System.EventArgs e)
+        private void tsQuickTextsEntry_Click(Object sender, EventArgs e)
         {
             var extA = (Tools.QuickText)((ToolStripButton)sender).Tag;
-            if (this.pnlDock.ActiveDocument is UI.Window.Connection)
+            var cW = pnlDock.ActiveDocument as UI.Window.Connection;
+            if (cW != null)
             {
-                UI.Window.Connection cW = (UI.Window.Connection)this.pnlDock.ActiveDocument;
                 if (cW.TabController.SelectedTab != null)
                 {
-                    InterfaceControl ifc = cW.TabController.SelectedTab.Tag as InterfaceControl;
+                    var ifc = cW.TabController.SelectedTab.Tag as InterfaceControl;
                     if (ifc != null)
                     {
                         ifc.Protocol.Focus();
@@ -1312,25 +1288,17 @@ namespace mRemoteNC
             }
         }
 
-        internal void AddQuickTextsToToolBar()
+        public void AddQuickTextsToToolBar()
         {
             try
             {
-                foreach (ToolStripItem item in tsQuickTexts.Items)
-                {
-                    item.Dispose();
-                }
                 tsQuickTexts.Items.Clear();
 
                 foreach (Tools.QuickText tool in Runtime.QuickTexts)
                 {
-                    var button = tsQuickTexts.Items.Add((string)tool.DisplayName, null, tsQuickTextsEntry_Click);
+                    var button = tsQuickTexts.Items.Add(tool.DisplayName, null, tsQuickTextsEntry_Click);
 
-                    button.DisplayStyle = cMenToolbarShowText.Checked
-                                              ? ToolStripItemDisplayStyle.ImageAndText
-                                              : (button.Image != null
-                                                     ? ToolStripItemDisplayStyle.Image
-                                                     : ToolStripItemDisplayStyle.ImageAndText);
+                    button.DisplayStyle = ToolStripItemDisplayStyle.Text;
 
                     button.Tag = tool;
                 }
@@ -1349,15 +1317,7 @@ namespace mRemoteNC
 
         private void quickTextToolbarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tsContainer.SuspendLayout();
-            tsContainer.TopToolStripPanel.SuspendLayout();
-            Settings.Default.QuickTextToolbarVisible = quickTextToolbarToolStripMenuItem.Checked;
             tsQuickTexts.Visible = quickTextToolbarToolStripMenuItem.Checked;
-            Settings.Default.Save();
-            this.tsContainer.TopToolStripPanel.ResumeLayout(false);
-            this.tsContainer.TopToolStripPanel.PerformLayout();
-            this.tsContainer.ResumeLayout(false);
-            this.tsContainer.PerformLayout();
         }
 
         private void tsQuickTexts_ItemClicked(object sender, ToolStripItemClickedEventArgs e)

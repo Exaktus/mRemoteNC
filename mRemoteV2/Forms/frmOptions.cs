@@ -120,12 +120,12 @@ namespace mRemoteNC
         internal System.Windows.Forms.Label lblSQLDatabaseName;
         internal System.Windows.Forms.TextBox txtSQLDatabaseName;
         internal CheckBox chkDoubleClickOpensNewConnection;
-        internal Button btnTVPathBrpwse;
+        internal Button btnTVPathBrowse;
         private ComboBox txtTVPath;
         private Label lblTVPath;
         internal NumericUpDown numUVNCSCPort;
         internal Label lblUVNCSCPort;
-        internal Button button1;
+        internal Button btnRAminPathBrowse;
         private ComboBox txtRAdminPath;
         private Label lblRAdminPath;
         private ComboBox txtXULrunnerPath;
@@ -134,13 +134,13 @@ namespace mRemoteNC
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Startup/Exit", 0);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Appearance", 1);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Tabs & Panels", 2);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Connections", 3);
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("SQL Server", 4);
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Updates", 5);
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Advanced", 6);
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Startup/Exit", 0);
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Appearance", 1);
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Tabs & Panels", 2);
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("Connections", 3);
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("SQL Server", 4);
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Updates", 5);
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("Advanced", 6);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOptions));
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -243,15 +243,15 @@ namespace mRemoteNC
             this.lblSQLPassword = new System.Windows.Forms.Label();
             this.tabUpdates = new System.Windows.Forms.TabPage();
             this.tabAdvanced = new System.Windows.Forms.TabPage();
-            this.btnTVPathBrpwse = new System.Windows.Forms.Button();
-            this.txtTVPath = new System.Windows.Forms.ComboBox();
-            this.lblTVPath = new System.Windows.Forms.Label();
-            this.txtXULrunnerPath = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.txtRAdminPath = new System.Windows.Forms.ComboBox();
-            this.lblRAdminPath = new System.Windows.Forms.Label();
             this.numUVNCSCPort = new System.Windows.Forms.NumericUpDown();
             this.lblUVNCSCPort = new System.Windows.Forms.Label();
+            this.btnRAminPathBrowse = new System.Windows.Forms.Button();
+            this.txtRAdminPath = new System.Windows.Forms.ComboBox();
+            this.lblRAdminPath = new System.Windows.Forms.Label();
+            this.txtXULrunnerPath = new System.Windows.Forms.ComboBox();
+            this.btnTVPathBrowse = new System.Windows.Forms.Button();
+            this.txtTVPath = new System.Windows.Forms.ComboBox();
+            this.lblTVPath = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numPuttyWaitTime)).BeginInit();
             this.pnlProxy.SuspendLayout();
             this.pnlProxyBasic.SuspendLayout();
@@ -305,13 +305,13 @@ namespace mRemoteNC
             this.lvPages.FullRowSelect = true;
             this.lvPages.HideSelection = false;
             this.lvPages.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6,
-            listViewItem7});
+            listViewItem8,
+            listViewItem9,
+            listViewItem10,
+            listViewItem11,
+            listViewItem12,
+            listViewItem13,
+            listViewItem14});
             this.lvPages.LabelWrap = false;
             this.lvPages.LargeImageList = this.imgListPages;
             this.lvPages.Location = new System.Drawing.Point(12, 12);
@@ -1389,11 +1389,11 @@ namespace mRemoteNC
             // 
             this.tabAdvanced.Controls.Add(this.numUVNCSCPort);
             this.tabAdvanced.Controls.Add(this.lblUVNCSCPort);
-            this.tabAdvanced.Controls.Add(this.button1);
+            this.tabAdvanced.Controls.Add(this.btnRAminPathBrowse);
             this.tabAdvanced.Controls.Add(this.txtRAdminPath);
             this.tabAdvanced.Controls.Add(this.lblRAdminPath);
             this.tabAdvanced.Controls.Add(this.txtXULrunnerPath);
-            this.tabAdvanced.Controls.Add(this.btnTVPathBrpwse);
+            this.tabAdvanced.Controls.Add(this.btnTVPathBrowse);
             this.tabAdvanced.Controls.Add(this.txtTVPath);
             this.tabAdvanced.Controls.Add(this.lblTVPath);
             this.tabAdvanced.Controls.Add(this.chkWriteLogFile);
@@ -1416,66 +1416,6 @@ namespace mRemoteNC
             this.tabAdvanced.TabIndex = 5;
             this.tabAdvanced.Text = "Advanced";
             this.tabAdvanced.UseVisualStyleBackColor = true;
-            // 
-            // btnTVPathBrpwse
-            // 
-            this.btnTVPathBrpwse.Location = new System.Drawing.Point(373, 344);
-            this.btnTVPathBrpwse.Name = "btnTVPathBrpwse";
-            this.btnTVPathBrpwse.Size = new System.Drawing.Size(75, 23);
-            this.btnTVPathBrpwse.TabIndex = 19;
-            this.btnTVPathBrpwse.Text = "Browse...";
-            this.btnTVPathBrpwse.UseVisualStyleBackColor = true;
-            // 
-            // txtTVPath
-            // 
-            this.txtTVPath.FormattingEnabled = true;
-            this.txtTVPath.Location = new System.Drawing.Point(21, 346);
-            this.txtTVPath.Name = "txtTVPath";
-            this.txtTVPath.Size = new System.Drawing.Size(346, 21);
-            this.txtTVPath.TabIndex = 18;
-            // 
-            // lblTVPath
-            // 
-            this.lblTVPath.AutoSize = true;
-            this.lblTVPath.Location = new System.Drawing.Point(3, 316);
-            this.lblTVPath.Name = "lblTVPath";
-            this.lblTVPath.Size = new System.Drawing.Size(97, 13);
-            this.lblTVPath.TabIndex = 17;
-            this.lblTVPath.Text = "Team Viewer Path:";
-            // 
-            // txtXULrunnerPath
-            // 
-            this.txtXULrunnerPath.FormattingEnabled = true;
-            this.txtXULrunnerPath.Location = new System.Drawing.Point(21, 274);
-            this.txtXULrunnerPath.Name = "txtXULrunnerPath";
-            this.txtXULrunnerPath.Size = new System.Drawing.Size(346, 21);
-            this.txtXULrunnerPath.TabIndex = 20;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(373, 420);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Browse...";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // txtRAdminPath
-            // 
-            this.txtRAdminPath.FormattingEnabled = true;
-            this.txtRAdminPath.Location = new System.Drawing.Point(21, 422);
-            this.txtRAdminPath.Name = "txtRAdminPath";
-            this.txtRAdminPath.Size = new System.Drawing.Size(346, 21);
-            this.txtRAdminPath.TabIndex = 23;
-            // 
-            // lblRAdminPath
-            // 
-            this.lblRAdminPath.AutoSize = true;
-            this.lblRAdminPath.Location = new System.Drawing.Point(3, 392);
-            this.lblRAdminPath.Name = "lblRAdminPath";
-            this.lblRAdminPath.Size = new System.Drawing.Size(72, 13);
-            this.lblRAdminPath.TabIndex = 22;
-            this.lblRAdminPath.Text = "RAdmin Path:";
             // 
             // numUVNCSCPort
             // 
@@ -1503,6 +1443,68 @@ namespace mRemoteNC
             this.lblUVNCSCPort.TabIndex = 25;
             this.lblUVNCSCPort.Text = "UltraVNC SingleClick Listening Port:";
             this.lblUVNCSCPort.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // btnRAminPathBrowse
+            // 
+            this.btnRAminPathBrowse.Location = new System.Drawing.Point(373, 420);
+            this.btnRAminPathBrowse.Name = "btnRAminPathBrowse";
+            this.btnRAminPathBrowse.Size = new System.Drawing.Size(75, 23);
+            this.btnRAminPathBrowse.TabIndex = 24;
+            this.btnRAminPathBrowse.Text = "Browse...";
+            this.btnRAminPathBrowse.UseVisualStyleBackColor = true;
+            this.btnRAminPathBrowse.Click += new System.EventHandler(this.btnRAminPathBrowse_Click);
+            // 
+            // txtRAdminPath
+            // 
+            this.txtRAdminPath.FormattingEnabled = true;
+            this.txtRAdminPath.Location = new System.Drawing.Point(21, 422);
+            this.txtRAdminPath.Name = "txtRAdminPath";
+            this.txtRAdminPath.Size = new System.Drawing.Size(346, 21);
+            this.txtRAdminPath.TabIndex = 23;
+            // 
+            // lblRAdminPath
+            // 
+            this.lblRAdminPath.AutoSize = true;
+            this.lblRAdminPath.Location = new System.Drawing.Point(3, 392);
+            this.lblRAdminPath.Name = "lblRAdminPath";
+            this.lblRAdminPath.Size = new System.Drawing.Size(72, 13);
+            this.lblRAdminPath.TabIndex = 22;
+            this.lblRAdminPath.Text = "RAdmin Path:";
+            // 
+            // txtXULrunnerPath
+            // 
+            this.txtXULrunnerPath.FormattingEnabled = true;
+            this.txtXULrunnerPath.Location = new System.Drawing.Point(21, 274);
+            this.txtXULrunnerPath.Name = "txtXULrunnerPath";
+            this.txtXULrunnerPath.Size = new System.Drawing.Size(346, 21);
+            this.txtXULrunnerPath.TabIndex = 20;
+            // 
+            // btnTVPathBrowse
+            // 
+            this.btnTVPathBrowse.Location = new System.Drawing.Point(373, 344);
+            this.btnTVPathBrowse.Name = "btnTVPathBrowse";
+            this.btnTVPathBrowse.Size = new System.Drawing.Size(75, 23);
+            this.btnTVPathBrowse.TabIndex = 19;
+            this.btnTVPathBrowse.Text = "Browse...";
+            this.btnTVPathBrowse.UseVisualStyleBackColor = true;
+            this.btnTVPathBrowse.Click += new System.EventHandler(this.btnTVPathBrowse_Click);
+            // 
+            // txtTVPath
+            // 
+            this.txtTVPath.FormattingEnabled = true;
+            this.txtTVPath.Location = new System.Drawing.Point(21, 346);
+            this.txtTVPath.Name = "txtTVPath";
+            this.txtTVPath.Size = new System.Drawing.Size(346, 21);
+            this.txtTVPath.TabIndex = 18;
+            // 
+            // lblTVPath
+            // 
+            this.lblTVPath.AutoSize = true;
+            this.lblTVPath.Location = new System.Drawing.Point(3, 316);
+            this.lblTVPath.Name = "lblTVPath";
+            this.lblTVPath.Size = new System.Drawing.Size(97, 13);
+            this.lblTVPath.TabIndex = 17;
+            this.lblTVPath.Text = "Team Viewer Path:";
             // 
             // frmOptions
             // 
@@ -2044,7 +2046,7 @@ namespace mRemoteNC
             //TODO
             chkDoubleClickOpensNewConnection.Text = Language.strOptionDoubleClickToOpenConnection;
             lblTVPath.Text = Language.strTVPath;
-            btnTVPathBrpwse.Text = Language.strButtonBrowse;
+            btnTVPathBrowse.Text = Language.strButtonBrowse;
         }
 
         public void Show(DockPanel dockPanel, int initialTab = 0)
@@ -2218,6 +2220,30 @@ namespace mRemoteNC
 
         private void lblProxyPort_Click(System.Object sender, System.EventArgs e)
         {
+        }
+
+        private void btnTVPathBrowse_Click(object sender, EventArgs e)
+        {
+            using (var oDlg = new OpenFileDialog())
+            {
+                oDlg.Filter = "TeamViewer.exe|*.exe";
+                if (oDlg.ShowDialog() == DialogResult.OK)
+                {
+                    txtTVPath.Text = oDlg.FileName;
+                }
+            }
+        }
+
+        private void btnRAminPathBrowse_Click(object sender, EventArgs e)
+        {
+            using (var oDlg = new OpenFileDialog())
+            {
+                oDlg.Filter = "Radmin.exe|*.exe";
+                if (oDlg.ShowDialog() == DialogResult.OK)
+                {
+                    txtRAdminPath.Text = oDlg.FileName;
+                }
+            }
         }
     }
 }

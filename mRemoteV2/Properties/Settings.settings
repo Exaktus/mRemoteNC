@@ -182,26 +182,8 @@
     <Setting Name="AutoSaveEveryMinutes" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="ExtAppsTBVisible" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
     <Setting Name="ExtAppsTBShowText" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="ExtAppsTBLocation" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Drawing.Point" Scope="User">
-      <Value Profile="(Default)">0, 0</Value>
-    </Setting>
-    <Setting Name="ExtAppsTBParentDock" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Bottom</Value>
-    </Setting>
-    <Setting Name="QuickyTBVisible" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="QuickyTBLocation" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Drawing.Point" Scope="User">
-      <Value Profile="(Default)">3, 24</Value>
-    </Setting>
-    <Setting Name="QuickyTBParentDock" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Top</Value>
     </Setting>
     <Setting Name="ResetToolbars" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -537,40 +519,25 @@
     <Setting Name="TeamViewerPath" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="tsMainLocation" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Drawing.Point" Scope="User">
-      <Value Profile="(Default)">17, 0</Value>
-    </Setting>
-    <Setting Name="tsQuickConnectLocation" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Drawing.Point" Scope="User">
-      <Value Profile="(Default)">185, 0</Value>
-    </Setting>
-    <Setting Name="tsQuickTextsLocation" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Drawing.Point" Scope="User">
-      <Value Profile="(Default)">627, 0</Value>
-    </Setting>
-    <Setting Name="tsExternalToolsLocation" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Drawing.Point" Scope="User">
-      <Value Profile="(Default)">516, 0</Value>
-    </Setting>
-    <Setting Name="ToolStrip1Location" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Drawing.Point" Scope="User">
-      <Value Profile="(Default)">3, 24</Value>
-    </Setting>
-    <Setting Name="QuickTextToolbarVisible" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
     <Setting Name="RAdminPath" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="ConDefaultIcon" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.String" Scope="User">
       <Value Profile="(Default)">mRemoteNC</Value>
     </Setting>
-    <Setting Name="tsQuickConnectParentName" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.String" Scope="User">
+    <Setting Name="tsQuickConnect" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="tsMainLocationParentName" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.String" Scope="User">
+    <Setting Name="msMain" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="tsQuickTextsParentName" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.String" Scope="User">
+    <Setting Name="ToolStrip1" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="ToolStrip1ParentName" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.String" Scope="User">
+    <Setting Name="tsQuickTexts" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="tsExternalTools" Provider="mRemoteNC.Config.SettingsManager.Providers.ChooseProvider" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

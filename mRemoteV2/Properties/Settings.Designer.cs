@@ -806,19 +806,6 @@ namespace My {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool ExtAppsTBVisible {
-            get {
-                return ((bool)(this["ExtAppsTBVisible"]));
-            }
-            set {
-                this["ExtAppsTBVisible"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool ExtAppsTBShowText {
             get {
@@ -826,71 +813,6 @@ namespace My {
             }
             set {
                 this["ExtAppsTBShowText"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
-        public global::System.Drawing.Point ExtAppsTBLocation {
-            get {
-                return ((global::System.Drawing.Point)(this["ExtAppsTBLocation"]));
-            }
-            set {
-                this["ExtAppsTBLocation"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Bottom")]
-        public string ExtAppsTBParentDock {
-            get {
-                return ((string)(this["ExtAppsTBParentDock"]));
-            }
-            set {
-                this["ExtAppsTBParentDock"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool QuickyTBVisible {
-            get {
-                return ((bool)(this["QuickyTBVisible"]));
-            }
-            set {
-                this["QuickyTBVisible"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3, 24")]
-        public global::System.Drawing.Point QuickyTBLocation {
-            get {
-                return ((global::System.Drawing.Point)(this["QuickyTBLocation"]));
-            }
-            set {
-                this["QuickyTBLocation"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Top")]
-        public string QuickyTBParentDock {
-            get {
-                return ((string)(this["QuickyTBParentDock"]));
-            }
-            set {
-                this["QuickyTBParentDock"] = value;
             }
         }
         
@@ -2326,84 +2248,6 @@ namespace My {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("17, 0")]
-        public global::System.Drawing.Point tsMainLocation {
-            get {
-                return ((global::System.Drawing.Point)(this["tsMainLocation"]));
-            }
-            set {
-                this["tsMainLocation"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("185, 0")]
-        public global::System.Drawing.Point tsQuickConnectLocation {
-            get {
-                return ((global::System.Drawing.Point)(this["tsQuickConnectLocation"]));
-            }
-            set {
-                this["tsQuickConnectLocation"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("627, 0")]
-        public global::System.Drawing.Point tsQuickTextsLocation {
-            get {
-                return ((global::System.Drawing.Point)(this["tsQuickTextsLocation"]));
-            }
-            set {
-                this["tsQuickTextsLocation"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("516, 0")]
-        public global::System.Drawing.Point tsExternalToolsLocation {
-            get {
-                return ((global::System.Drawing.Point)(this["tsExternalToolsLocation"]));
-            }
-            set {
-                this["tsExternalToolsLocation"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3, 24")]
-        public global::System.Drawing.Point ToolStrip1Location {
-            get {
-                return ((global::System.Drawing.Point)(this["ToolStrip1Location"]));
-            }
-            set {
-                this["ToolStrip1Location"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool QuickTextToolbarVisible {
-            get {
-                return ((bool)(this["QuickTextToolbarVisible"]));
-            }
-            set {
-                this["QuickTextToolbarVisible"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string RAdminPath {
             get {
@@ -2431,12 +2275,12 @@ namespace My {
         [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string tsQuickConnectParentName {
+        public string tsQuickConnect {
             get {
-                return ((string)(this["tsQuickConnectParentName"]));
+                return ((string)(this["tsQuickConnect"]));
             }
             set {
-                this["tsQuickConnectParentName"] = value;
+                this["tsQuickConnect"] = value;
             }
         }
         
@@ -2444,12 +2288,12 @@ namespace My {
         [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string tsMainLocationParentName {
+        public string msMain {
             get {
-                return ((string)(this["tsMainLocationParentName"]));
+                return ((string)(this["msMain"]));
             }
             set {
-                this["tsMainLocationParentName"] = value;
+                this["msMain"] = value;
             }
         }
         
@@ -2457,12 +2301,12 @@ namespace My {
         [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string tsQuickTextsParentName {
+        public string ToolStrip1 {
             get {
-                return ((string)(this["tsQuickTextsParentName"]));
+                return ((string)(this["ToolStrip1"]));
             }
             set {
-                this["tsQuickTextsParentName"] = value;
+                this["ToolStrip1"] = value;
             }
         }
         
@@ -2470,12 +2314,25 @@ namespace My {
         [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ToolStrip1ParentName {
+        public string tsQuickTexts {
             get {
-                return ((string)(this["ToolStrip1ParentName"]));
+                return ((string)(this["tsQuickTexts"]));
             }
             set {
-                this["ToolStrip1ParentName"] = value;
+                this["tsQuickTexts"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(mRemoteNC.Config.SettingsManager.Providers.ChooseProvider))]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string tsExternalTools {
+            get {
+                return ((string)(this["tsExternalTools"]));
+            }
+            set {
+                this["tsExternalTools"] = value;
             }
         }
     }

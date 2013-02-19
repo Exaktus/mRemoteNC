@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -7,6 +8,7 @@ using System.Xml;
 using Microsoft.VisualBasic;
 using mRemoteNC.App;
 using My;
+using System.Linq;
 using WeifenLuo.WinFormsUI.Docking;
 
 //using mRemoteNC.Runtime;
@@ -148,14 +150,14 @@ namespace mRemoteNC.Config
                     }
 
                     Settings.Default.ConDefaultPassword =
-                        Security.Crypt.Decrypt((string)Settings.Default.ConDefaultPassword,
-                                               (string)mRemoteNC.App.Info.General.EncryptionKey);
+                        Security.Crypt.Decrypt(Settings.Default.ConDefaultPassword,
+                                               App.Info.General.EncryptionKey);
 
-                    this.LoadPanelsFromXML();
-                    this.LoadExternalAppsFromXML();
+                    LoadPanelsFromXML();
+                    LoadExternalAppsFromXML();
                     LoadQuickTextsFromXML();
 
-                    if (Settings.Default.ResetToolbars == false)
+                    if (Settings.Default.ResetToolbars == false&&!Settings.Default.FirstStart)
                     {
                         LoadToolbarsFromSettings();
                     }
@@ -173,40 +175,61 @@ namespace mRemoteNC.Config
 
             public void SetToolbarsDefault()
             {
-                ToolStripPanelFromString("top").Join(MainForm.tsQuickConnect, new Point(300, 0));
+                ClearToolStrips();
+                //Placeholder: Add new toolbar here
+                ToolStripPanelFromString("top").Join(MainForm.tsQuickTexts, 0);
+                ToolStripPanelFromString("top").Join(MainForm.tsExternalTools, 0);
+                ToolStripPanelFromString("top").Join(MainForm.tsQuickConnect, 0);
+                ToolStripPanelFromString("top").Join(MainForm.msMain, 0);
+                MainForm.msMain.Visible = true;
                 MainForm.tsQuickConnect.Visible = true;
-                ToolStripPanelFromString("bottom").Join(MainForm.tsExternalTools, new Point(3, 0));
                 MainForm.tsExternalTools.Visible = false;
+                MainForm.tsQuickTexts.Visible = false;
             }
 
-            public void LoadToolbarsFromSettings()
+            private void LoadToolbarsFromSettings()
             {
-                if (Settings.Default.QuickyTBLocation.X > Settings.Default.ExtAppsTBLocation.X)
+                try
                 {
-                    AddDynamicPanels();
-                    AddStaticPanels();
+                    var dic = new Dictionary<ToolStrip, ToolStripConfig>
+                    {
+                        //Placeholder: Add new toolbar here
+                        {MainForm.tsExternalTools, ToolStripConfig.FromXMLString(Settings.Default.tsExternalTools)},
+                        {MainForm.tsQuickConnect, ToolStripConfig.FromXMLString(Settings.Default.tsQuickConnect)},
+                        {MainForm.msMain, ToolStripConfig.FromXMLString(Settings.Default.msMain)},
+                        {MainForm.ToolStrip1, ToolStripConfig.FromXMLString(Settings.Default.ToolStrip1)},
+                        {MainForm.tsQuickTexts, ToolStripConfig.FromXMLString(Settings.Default.tsQuickTexts)}
+                    }.OrderBy(pair => pair.Value.Parent).ThenBy(pair => pair.Value.Visible).ThenBy(pair => pair.Value.Row).ThenByDescending(pair => pair.Value.Index);
+                    MainForm.tsContainer.SuspendLayout();
+                    ClearToolStrips();
+                    foreach (var config in dic)
+                    {
+                        config.Key.Dock = config.Value.DockStyle;
+                        config.Key.Visible = config.Value.Visible;
+
+                        ToolStripPanelFromString(config.Value.Parent).Join(config.Key, config.Value.Row);
+                    }
+                    foreach (var toolStripConfig in dic)
+                    {
+                        toolStripConfig.Key.Location = toolStripConfig.Value.Location;
+                        toolStripConfig.Key.Left = toolStripConfig.Value.Left;
+                        toolStripConfig.Key.Top = toolStripConfig.Value.Top;
+                    }
+                    MainForm.tsContainer.ResumeLayout(true);
                 }
-                else
+                catch (Exception ex)
                 {
-                    AddStaticPanels();
-                    AddDynamicPanels();
+                    Runtime.Log.Error("LoadToolbarsFromSettings failed" + Constants.vbNewLine + ex);
+                    SetToolbarsDefault();
                 }
             }
 
-            private void AddStaticPanels()
+            private void ClearToolStrips()
             {
-                ToolStripPanelFromString((string)Settings.Default.QuickyTBParentDock).Join(MainForm.tsQuickConnect,
-                                                                                            Settings.Default.
-                                                                                                QuickyTBLocation);
-                MainForm.tsQuickConnect.Visible = System.Convert.ToBoolean(Settings.Default.QuickyTBVisible);
-            }
-
-            private void AddDynamicPanels()
-            {
-                ToolStripPanelFromString((string)Settings.Default.ExtAppsTBParentDock).Join(MainForm.tsExternalTools,
-                                                                                             Settings.Default.
-                                                                                                 ExtAppsTBLocation);
-                MainForm.tsExternalTools.Visible = System.Convert.ToBoolean(Settings.Default.ExtAppsTBVisible);
+                MainForm.tsContainer.RightToolStripPanel.Controls.Clear();
+                MainForm.tsContainer.LeftToolStripPanel.Controls.Clear();
+                MainForm.tsContainer.TopToolStripPanel.Controls.Clear();
+                MainForm.tsContainer.BottomToolStripPanel.Controls.Clear();
             }
 
             private ToolStripPanel ToolStripPanelFromString(string Panel)

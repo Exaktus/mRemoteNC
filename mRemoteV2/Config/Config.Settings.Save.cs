@@ -6,8 +6,6 @@ using Microsoft.VisualBasic;
 using mRemoteNC.App;
 using My;
 
-//using mRemoteNC.Runtime;
-
 namespace mRemoteNC.Config
 {
     namespace SettingsManager
@@ -21,7 +19,7 @@ namespace mRemoteNC.Config
                 try
                 {
                     var with_1 = frmMain.defaultInstance;
-                    Tools.WindowPlacement windowPlacement = new Tools.WindowPlacement(frmMain.defaultInstance);
+                    var windowPlacement = new Tools.WindowPlacement(frmMain.defaultInstance);
                     if (with_1.WindowState == FormWindowState.Minimized && windowPlacement.RestoreToMaximized)
                     {
                         with_1.Opacity = 0;
@@ -46,85 +44,76 @@ namespace mRemoteNC.Config
                     Settings.Default.ResetToolbars = false;
                     Settings.Default.NoReconnect = false;
 
-                    Settings.Default.ExtAppsTBLocation = with_1.tsExternalTools.Location;
-                    if (with_1.tsExternalTools.Parent != null)
-                    {
-                        Settings.Default.ExtAppsTBParentDock = with_1.tsExternalTools.Parent.Dock.ToString();
-                    }
-                    Settings.Default.ExtAppsTBVisible = with_1.tsExternalTools.Visible;
                     Settings.Default.ExtAppsTBShowText = with_1.cMenToolbarShowText.Checked;
 
-                    Settings.Default.QuickyTBLocation = with_1.tsQuickConnect.Location;
-                    if (with_1.tsQuickConnect.Parent != null)
-                    {
-                        Settings.Default.QuickyTBParentDock = with_1.tsQuickConnect.Parent.Dock.ToString();
-                    }
-                    Settings.Default.QuickyTBVisible = with_1.tsQuickConnect.Visible;
-
                     Settings.Default.ConDefaultPassword =
-                        Security.Crypt.Encrypt((string)Settings.Default.ConDefaultPassword,
-                                               (string)mRemoteNC.App.Info.General.EncryptionKey);
+                        Security.Crypt.Encrypt(Settings.Default.ConDefaultPassword,
+                                               App.Info.General.EncryptionKey);
+                    
+                    
+
+                    //Placeholder: Add new toolbar here
+                    Settings.Default.msMain = ToolStripConfig.FromPanel(with_1.msMain).ToXMLString();
+                    Settings.Default.tsQuickConnect = ToolStripConfig.FromPanel(with_1.tsQuickConnect).ToXMLString();
+                    Settings.Default.tsQuickTexts = ToolStripConfig.FromPanel(with_1.tsQuickTexts).ToXMLString();
+                    Settings.Default.tsExternalTools = ToolStripConfig.FromPanel(with_1.tsExternalTools).ToXMLString();
+                    Settings.Default.ToolStrip1 = ToolStripConfig.FromPanel(with_1.ToolStrip1).ToXMLString();
 
                     Settings.Default.Save();
-                    this.SavePanelsToXML();
-                    this.SaveExternalAppsToXML();
+                    SavePanelsToXML();
+                    SaveExternalAppsToXML();
                     SaveQuickTextsToXML();
                 }
                 catch (Exception ex)
                 {
                     Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
-                                                        (string)
                                                         ("Saving settings failed" + Constants.vbNewLine +
                                                          Constants.vbNewLine + ex.Message), false);
                 }
             }
 
-            public void SavePanelsToXML()
+
+
+            private void SavePanelsToXML()
             {
                 try
                 {
-                    if (Directory.Exists((string)mRemoteNC.App.Info.Settings.SettingsPath) == false)
+                    if (Directory.Exists(App.Info.Settings.SettingsPath) == false)
                     {
-                        Directory.CreateDirectory((string)mRemoteNC.App.Info.Settings.SettingsPath);
+                        Directory.CreateDirectory(App.Info.Settings.SettingsPath);
                     }
 
-                    frmMain.Default.pnlDock.SaveAsXml(
-                        (string)
-                        (mRemoteNC.App.Info.Settings.SettingsPath + "\\" + mRemoteNC.App.Info.Settings.LayoutFileName));
+                    frmMain.Default.pnlDock.SaveAsXml(Path.Combine(App.Info.Settings.SettingsPath,App.Info.Settings.LayoutFileName));
                 }
                 catch (Exception ex)
                 {
                     Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
-                                                        (string)
                                                         ("SavePanelsToXML failed" + Constants.vbNewLine +
                                                          Constants.vbNewLine + ex.Message), false);
                 }
             }
 
-            public void SaveQuickTextsToXML()
+            private void SaveQuickTextsToXML()
             {
                 try
                 {
-                    if (Directory.Exists((string)mRemoteNC.App.Info.Settings.SettingsPath) == false)
+                    if (Directory.Exists(App.Info.Settings.SettingsPath) == false)
                     {
-                        Directory.CreateDirectory((string)mRemoteNC.App.Info.Settings.SettingsPath);
+                        Directory.CreateDirectory(App.Info.Settings.SettingsPath);
                     }
 
-                    XmlTextWriter xmlTextWriter =
-                        new XmlTextWriter(
-                            mRemoteNC.App.Info.Settings.SettingsPath + "\\" +
-                            mRemoteNC.App.Info.Settings.QuickTextsFilesName, System.Text.Encoding.UTF8);
-                    xmlTextWriter.Formatting = Formatting.Indented;
-                    xmlTextWriter.Indentation = 4;
+                    var xmlTextWriter =
+                        new XmlTextWriter(Path.Combine(App.Info.Settings.SettingsPath, App.Info.Settings.QuickTextsFilesName), System.Text.Encoding.UTF8)
+                            {Formatting = Formatting.Indented, Indentation = 4};
 
                     xmlTextWriter.WriteStartDocument();
                     xmlTextWriter.WriteStartElement("QuickTexts");
 
-                    foreach (Tools.QuickText extA in Runtime.QuickTexts)
+                    foreach (var extA in Runtime.QuickTexts)
                     {
                         xmlTextWriter.WriteStartElement("QuickTexts");
-                        xmlTextWriter.WriteAttributeString("DisplayName", "", (string)extA.DisplayName);
-                        xmlTextWriter.WriteAttributeString("Text", "", (string)extA.Text);
+                        xmlTextWriter.WriteAttributeString("DisplayName", "", extA.DisplayName);
+                        xmlTextWriter.WriteAttributeString("Text", "", extA.Text);
                         xmlTextWriter.WriteEndElement();
                     }
 
@@ -136,27 +125,25 @@ namespace mRemoteNC.Config
                 catch (Exception ex)
                 {
                     Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
-                                                        (string)
                                                         ("SaveQuickTextsToXML failed" + Constants.vbNewLine +
                                                          Constants.vbNewLine + ex.Message), false);
                 }
             }
 
-            public void SaveExternalAppsToXML()
+            private void SaveExternalAppsToXML()
             {
                 try
                 {
-                    if (Directory.Exists((string)mRemoteNC.App.Info.Settings.SettingsPath) == false)
+                    if (Directory.Exists(App.Info.Settings.SettingsPath) == false)
                     {
-                        Directory.CreateDirectory((string)mRemoteNC.App.Info.Settings.SettingsPath);
+                        Directory.CreateDirectory(App.Info.Settings.SettingsPath);
                     }
 
-                    XmlTextWriter xmlTextWriter =
+                    var xmlTextWriter =
                         new XmlTextWriter(
-                            mRemoteNC.App.Info.Settings.SettingsPath + "\\" +
-                            mRemoteNC.App.Info.Settings.ExtAppsFilesName, System.Text.Encoding.UTF8);
-                    xmlTextWriter.Formatting = Formatting.Indented;
-                    xmlTextWriter.Indentation = 4;
+                            App.Info.Settings.SettingsPath + "\\" +
+                            App.Info.Settings.ExtAppsFilesName, System.Text.Encoding.UTF8)
+                            {Formatting = Formatting.Indented, Indentation = 4};
 
                     xmlTextWriter.WriteStartDocument();
                     xmlTextWriter.WriteStartElement("Apps");
@@ -164,9 +151,9 @@ namespace mRemoteNC.Config
                     foreach (Tools.ExternalTool extA in Runtime.ExternalTools)
                     {
                         xmlTextWriter.WriteStartElement("App");
-                        xmlTextWriter.WriteAttributeString("DisplayName", "", (string)extA.DisplayName);
-                        xmlTextWriter.WriteAttributeString("FileName", "", (string)extA.FileName);
-                        xmlTextWriter.WriteAttributeString("Arguments", "", (string)extA.Arguments);
+                        xmlTextWriter.WriteAttributeString("DisplayName", "", extA.DisplayName);
+                        xmlTextWriter.WriteAttributeString("FileName", "", extA.FileName);
+                        xmlTextWriter.WriteAttributeString("Arguments", "", extA.Arguments);
                         xmlTextWriter.WriteAttributeString("WaitForExit", "", extA.WaitForExit.ToString());
                         xmlTextWriter.WriteAttributeString("TryToIntegrate", "", extA.TryIntegrate.ToString());
                         xmlTextWriter.WriteEndElement();
@@ -180,8 +167,7 @@ namespace mRemoteNC.Config
                 catch (Exception ex)
                 {
                     Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
-                                                        (string)
-                                                        ("SaveExternalAppsToXML failed" + Constants.vbNewLine +
+                        ("SaveExternalAppsToXML failed" + Constants.vbNewLine +
                                                          Constants.vbNewLine + ex.Message), false);
                 }
             }

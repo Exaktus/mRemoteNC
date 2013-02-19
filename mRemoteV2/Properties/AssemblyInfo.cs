@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("mRemoteNC")]
-[assembly: AssemblyCopyright("Copyright В© 2007-2009 Felix Deimel, 2010-2012 Riley McArdle, 2012 Exaktus")]
+[assembly: AssemblyCopyright("Copyright В© 2007-2009 Felix Deimel, 2010-2012 Riley McArdle, 2012-2013 Exaktus")]
 [assembly: AssemblyTrademark("")]
 [assembly: ComVisible(false)]
 

@@ -121,6 +121,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>References\Geckofx-Winforms-16.dll</HintPath>
     </Reference>
+    <Reference Include="Interop.MSTSCLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>References\Interop.MSTSCLib.dll</HintPath>
+    </Reference>
     <Reference Include="Interop.SHDocVw">
       <HintPath>References\Interop.SHDocVw.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -189,6 +194,7 @@
     <Compile Include="Config\Config.Settings.Load.cs" />
     <Compile Include="Config\Config.Settings.Providers.cs" />
     <Compile Include="Config\Config.Settings.Save.cs" />
+    <Compile Include="Config\ToolStripHelper.cs" />
     <Compile Include="Connection\Connection.Icon.cs" />
     <Compile Include="Connection\Connection.Info.cs" />
     <Compile Include="Connection\Connection.InterfaceControl.Designer.cs">
@@ -310,6 +316,7 @@
     <Compile Include="Tools\ReconnectGroup.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Tools\SerializeHelper.cs" />
     <Compile Include="Tools\Tools.Controls.cs">
     </Compile>
     <Compile Include="Tools\Tools.ExternalApp.cs" />
@@ -1020,15 +1027,6 @@
   <ItemGroup>
     <COMReference Include="EOLWTSCOM">
       <Guid>{96C3FA7A-3211-4D93-BFEA-4589DA4ABDE2}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-    <COMReference Include="MSTSCLib">
-      <Guid>{8C11EFA1-92C3-11D1-BC1E-00C04FA31489}</Guid>
       <VersionMajor>1</VersionMajor>
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>

@@ -18,7 +18,7 @@ namespace mRemoteNC.Tools
         public static string TVVer;
         public static string ICAVer;
 
-        public static bool IsRDPOk()
+        private static bool IsRDPOkInternal()
         {
             try
             {
@@ -26,7 +26,7 @@ namespace mRemoteNC.Tools
                 {
                     RDP.CreateControl();
                     var i = 60;
-                    while (!RDP.Created &&i --> 0)
+                    while (!RDP.Created && i-- > 0)
                     {
                         Thread.Sleep(10);
                         Application.DoEvents();
@@ -35,6 +35,18 @@ namespace mRemoteNC.Tools
                 }
                 return true;
 
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public static bool IsRDPOk()
+        {
+            try
+            {
+                return IsRDPOkInternal();
             }
             catch (Exception)
             {

@@ -39,18 +39,22 @@ namespace mRemoteNC.Connection
         {
             get
             {
-                if (Inherit != null && this.Inherit.Description && this._Parent != null)
+                if (Inherit != null && this.Inherit.Description && this._Parent != null && _Parent as Container.Info!=null)
                 {
-                    Info parCon = (this._Parent as Container.Info).ConnectionInfo;
-
-                    if (this._IsContainer == true)
+                    var info = _Parent as Container.Info;
+                    if (info != null)
                     {
-                        var curCont = (Container.Info)this._Parent;
-                        var parCont = (Container.Info)curCont.Parent;
-                        parCon = parCont.ConnectionInfo;
-                    }
+                        Info parCon = info.ConnectionInfo;
 
-                    return parCon.Description;
+                        if (_IsContainer)
+                        {
+                            var curCont = (Container.Info)this._Parent;
+                            var parCont = (Container.Info)curCont.Parent;
+                            parCon = parCont.ConnectionInfo;
+                        }
+
+                        return parCon.Description;
+                    }
                 }
                 else
                 {
