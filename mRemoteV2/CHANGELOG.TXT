@@ -22,6 +22,9 @@
 	[rmcardle] Fix issue MR-190 - Can't click on tab/session
 	[rmcardle] Fix issue MR-224 - Session tabs become un-clickable after duplicating a tab or opening a new one in the same panel
 	[rmcardle] Improve LoadFromXML to handle files from older versions of mRemoteNG 
+	[rmcardle] Fix issue MR-176 - Del key while editing connection name triggers 'Delete Connection'
+	[rmcardle] Fix issue MR-101 - Collapse all folders causes a NullReferenceException
+	[rmcardle] Fix issue MR-58 - Bug when duplicating connection in connection view
 	Updated WeifenLuo.WinFormsUI.Docking to 2.7
 	The version of the RDP AX client updated to 7
 	SharpSSH replaced with Renci.SshNet

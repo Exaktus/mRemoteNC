@@ -77,7 +77,7 @@ namespace mRemoteNC
                 private void InitializeComponent()
                 {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Connections");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Connections");
             this.tvConnections = new System.Windows.Forms.TreeView();
             this.cMenTree = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cMenTreeAddConnection = new System.Windows.Forms.ToolStripMenuItem();
@@ -142,13 +142,14 @@ namespace mRemoteNC
             this.tvConnections.LabelEdit = true;
             this.tvConnections.Location = new System.Drawing.Point(0, 0);
             this.tvConnections.Name = "tvConnections";
-            treeNode2.Name = "nodeRoot";
-            treeNode2.Text = "Connections";
+            treeNode1.Name = "nodeRoot";
+            treeNode1.Text = "Connections";
             this.tvConnections.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode1});
             this.tvConnections.SelectedImageIndex = 0;
             this.tvConnections.Size = new System.Drawing.Size(210, 407);
             this.tvConnections.TabIndex = 20;
+            this.tvConnections.BeforeLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.tvConnections_BeforeLabelEdit);
             this.tvConnections.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.tvConnections_AfterLabelEdit);
             this.tvConnections.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.tvConnections_ItemDrag);
             this.tvConnections.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvConnections_AfterSelect);
@@ -674,10 +675,16 @@ namespace mRemoteNC
                     }
                 }
 
+                private void tvConnections_BeforeLabelEdit(object sender, System.Windows.Forms.NodeLabelEditEventArgs e)
+                {
+                    cMenTreeDelete.ShortcutKeys = Keys.None;
+                }
+
                 private void tvConnections_AfterLabelEdit(object sender, System.Windows.Forms.NodeLabelEditEventArgs e)
                 {
                     try
                     {
+                        cMenTreeDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
                         if (Settings.Default.SetHostnameLikeDisplayName)
                         {
                             if (e.Node.Tag is Info)

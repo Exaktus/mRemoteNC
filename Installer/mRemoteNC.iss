@@ -53,7 +53,6 @@ Uninstallable=true
 Source: {#EnvSrcDir}\*; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: {#EnvDepDir}\*; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs
 
-
 [Icons]
 Name: {commondesktop}\{#MyAppName}; Filename: {app}\{#MyAppExeName}; WorkingDir: {app}; Tasks: desktopicon
 Name: {group}\{#MyAppName}; Filename: {app}\{#MyAppExeName}; WorkingDir: {app};

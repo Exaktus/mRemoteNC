@@ -1,5 +1,3 @@
-//using System.Environment;
-
 namespace mRemoteNC
 {
     namespace App
@@ -8,11 +6,18 @@ namespace mRemoteNC
         {
             public class General
             {
-                public static readonly string URLHome = "https://github.com/Exaktus/mRemoteNC/";
-                public static readonly string URLDonate = "http://donate.mRemoteNC.org/";
-                public static readonly string URLForum = "http://forum.mRemoteNC.org/";
-                public static readonly string URLBugs = "https://github.com/Exaktus/mRemoteNC/issues/";
-                public static readonly string URLAnnouncement = "http://update.mRemoteNC.org/announcement.txt";
+                public const string URLHome = "http://exaktus.github.com/mRemoteNC/";
+                public const string URLDonate = "http://exaktus.github.com/mRemoteNC/";
+                public const string URLForum = "https://github.com/Exaktus/mRemoteNC/issues/";
+                public const string URLBugs = "https://github.com/Exaktus/mRemoteNC/issues/";
+                public const string URLAnnouncement = "http://update.mRemoteNC.org/announcement.txt";
+
+                public const bool IsPortable = 
+#if !PORTABLE 
+                    false; 
+#else 
+                    true; 
+#endif
 
                 public static readonly string HomePath =
                     (new Microsoft.VisualBasic.ApplicationServices.WindowsFormsApplicationBase()).Info.DirectoryPath;

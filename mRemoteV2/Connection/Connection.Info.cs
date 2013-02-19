@@ -2,13 +2,9 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
-using mRemoteNC;
 using mRemoteNC.App;
 using mRemoteNC.Tools;
 using My;
-
-//using mRemoteNC.Tools.LocalizedAttributes;
-//using mRemoteNC.Runtime;
 
 namespace mRemoteNC.Connection
 {
@@ -42,8 +38,7 @@ namespace mRemoteNC.Connection
                 if (Inherit != null && this.Inherit.Description && this._Parent != null && _Parent as Container.Info!=null)
                 {
                     var info = _Parent as Container.Info;
-                    if (info != null)
-                    {
+   
                         Info parCon = info.ConnectionInfo;
 
                         if (_IsContainer)
@@ -52,9 +47,7 @@ namespace mRemoteNC.Connection
                             var parCont = (Container.Info)curCont.Parent;
                             parCon = parCont.ConnectionInfo;
                         }
-
                         return parCon.Description;
-                    }
                 }
                 else
                 {
@@ -75,7 +68,7 @@ namespace mRemoteNC.Connection
             {
                 if (Inherit != null && this.Inherit.Icon && this._Parent != null)
                 {
-                    global::mRemoteNC.Connection.Info parCon = (this._Parent as Container.Info).ConnectionInfo;
+                    var parCon = (this._Parent as Container.Info).ConnectionInfo;
 
                     if (this._IsContainer == true)
                     {
@@ -1720,7 +1713,9 @@ namespace mRemoteNC.Connection
 
         public Info Copy()
         {
-            return (Info)this.MemberwiseClone();
+            Connection.Info newConnectionInfo = (Info) this.MemberwiseClone();
+            newConnectionInfo.OpenConnections = new mRemoteNC.List();
+            return newConnectionInfo;
         }
 
         public Info()
@@ -1751,6 +1746,7 @@ namespace mRemoteNC.Connection
             {
                 switch (this._Protocol)
                 {
+                    //Placeholder: Protocol
                     case Protocols.RDP:
                         this._Port = System.Convert.ToInt32(RDP.Defaults.Port);
                         break;
