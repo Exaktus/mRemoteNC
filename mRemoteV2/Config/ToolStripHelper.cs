@@ -20,7 +20,23 @@ namespace mRemoteNC.Config
         public string Parent{ get; set; }
         public int Index { get; set; }
         public int Row { get; set; }
-        private bool _brocken; 
+        public bool IsBroken { get; set; } 
+
+        public static ToolStripConfig Deafult{get
+        {
+            return new ToolStripConfig
+            {
+                IsBroken = true, 
+                                            Row = 0, 
+                                            Left = 3, 
+                                            Top = 0, 
+                                            Location = new Point(3, 0),
+                                            Parent = "Top",
+                                            DockStyle = DockStyle.None,
+                                            Index = 0,
+                                            Visible = true
+                                          };
+        }}
 
         public static ToolStripConfig FromPanel(ToolStrip ts)
         {
@@ -69,15 +85,22 @@ namespace mRemoteNC.Config
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                return new ToolStripConfig() { _brocken =true,Row = 0,Left = 3,Top = 0,Location = new Point(3,0)};
+                return Deafult;
             }
         }
 
 
         public static ToolStripConfig FromXMLString(string input)
         {
-            return SerializeHelper.Deserialize<ToolStripConfig>(input);
-            
+            try
+            {
+                return SerializeHelper.Deserialize<ToolStripConfig>(input) ?? Deafult;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return Deafult;
+            }
         }
 
         public string ToXMLString()

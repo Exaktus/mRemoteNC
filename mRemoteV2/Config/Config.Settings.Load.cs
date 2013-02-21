@@ -175,16 +175,26 @@ namespace mRemoteNC.Config
 
             public void SetToolbarsDefault()
             {
-                ClearToolStrips();
-                //Placeholder: Add new toolbar here
-                ToolStripPanelFromString("top").Join(MainForm.tsQuickTexts, 0);
-                ToolStripPanelFromString("top").Join(MainForm.tsExternalTools, 0);
-                ToolStripPanelFromString("top").Join(MainForm.tsQuickConnect, 0);
-                ToolStripPanelFromString("top").Join(MainForm.msMain, 0);
-                MainForm.msMain.Visible = true;
-                MainForm.tsQuickConnect.Visible = true;
-                MainForm.tsExternalTools.Visible = false;
-                MainForm.tsQuickTexts.Visible = false;
+                try
+                {
+                    MainForm.tsContainer.SuspendLayout();
+                    ClearToolStrips();
+                    //Placeholder: Add new toolbar here
+                    ToolStripPanelFromString("top").Join(MainForm.tsQuickTexts, 0);
+                    ToolStripPanelFromString("top").Join(MainForm.tsExternalTools, 0);
+                    ToolStripPanelFromString("top").Join(MainForm.tsQuickConnect, 0);
+                    ToolStripPanelFromString("top").Join(MainForm.msMain, 0);
+                    MainForm.msMain.Visible = true;
+                    MainForm.tsQuickConnect.Visible = true;
+                    MainForm.tsExternalTools.Visible = false;
+                    MainForm.tsQuickTexts.Visible = false;
+                    MainForm.tsContainer.ResumeLayout(true);
+                }
+                catch (Exception ex)
+                {
+                    Runtime.Log.Error("SetToolbarsDefault failed" + Constants.vbNewLine + ex);
+                    SetToolbarsDefault();
+                }
             }
 
             private void LoadToolbarsFromSettings()
@@ -193,13 +203,23 @@ namespace mRemoteNC.Config
                 {
                     var dic = new Dictionary<ToolStrip, ToolStripConfig>
                     {
-                        //Placeholder: Add new toolbar here
+                        //Placeholder: ToolBar
                         {MainForm.tsExternalTools, ToolStripConfig.FromXMLString(Settings.Default.tsExternalTools)},
                         {MainForm.tsQuickConnect, ToolStripConfig.FromXMLString(Settings.Default.tsQuickConnect)},
                         {MainForm.msMain, ToolStripConfig.FromXMLString(Settings.Default.msMain)},
-                        {MainForm.ToolStrip1, ToolStripConfig.FromXMLString(Settings.Default.ToolStrip1)},
+                        //{MainForm.ToolStrip1, ToolStripConfig.FromXMLString(Settings.Default.ToolStrip1)},
                         {MainForm.tsQuickTexts, ToolStripConfig.FromXMLString(Settings.Default.tsQuickTexts)}
-                    }.OrderBy(pair => pair.Value.Parent).ThenBy(pair => pair.Value.Visible).ThenBy(pair => pair.Value.Row).ThenByDescending(pair => pair.Value.Index);
+                    }.OrderBy(pair => pair.Value.Parent)
+                    .ThenBy(pair => pair.Value.Visible)
+                    .ThenBy(pair => pair.Value.Row)
+                    .ThenByDescending(pair => pair.Value.Index);
+
+                    if (dic.Any(pair => pair.Value.IsBroken))
+                    {
+                        SetToolbarsDefault();
+                        return;
+                    }
+
                     MainForm.tsContainer.SuspendLayout();
                     ClearToolStrips();
                     foreach (var config in dic)

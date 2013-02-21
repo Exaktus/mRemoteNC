@@ -667,6 +667,7 @@ namespace mRemoteNC
 
                         if (IC.Protocol is PuttyBase)
                         {
+                            cmenTabFullscreen.Visible = true;
                             cmenShowPuTTYMenu.Visible = false;
                             this.cmenTabPuttySettings.Visible = true;
                         }
@@ -996,9 +997,11 @@ namespace mRemoteNC
                                     RDP rdp = (RDP)IC.Protocol;
                                     rdp.ToggleFullscreen();
                                 }
+
                                 if (IC.Protocol is PuttyBase)
                                 {
                                     fullscreenManager.EnterFullscreen();
+                                    Native.SetForegroundWindow((IC.Protocol as PuttyBase).PuttyHandle);
                                 }
                             }
                         }
@@ -1252,8 +1255,11 @@ namespace mRemoteNC
                     }
                 }
 
+                private bool _selectedTabChanged=false;
+
                 private void TabController_SelectionChanged(object sender, System.EventArgs e)
                 {
+                    _selectedTabChanged = true;
                     this.FocusIC();
                     this.RefreshIC();
                 }
@@ -1397,6 +1403,42 @@ namespace mRemoteNC
                     TabController.SelectedTab = sourceTab;
                     TabController.TabPages.ResumeEvents();
                 }
+
+                /*private void TabController_MouseUp(object sender, MouseEventArgs e)
+                {
+                    try
+                    {
+                        if (!(Native.GetForegroundWindow() == frmMain.Default.Handle) & !_selectedTabChanged)
+                        {
+                            var clickedTab = TabController.TabPageFromPoint(e.Location);
+                            if (clickedTab != null & !object.ReferenceEquals(TabController.SelectedTab, clickedTab))
+                            {
+                                Native.SetForegroundWindow(Handle);
+                                TabController.SelectedTab = clickedTab;
+                            }
+                        }
+                        _selectedTabChanged = false;
+
+                        switch (e.Button)
+                        {
+                            case MouseButtons.Left:
+                                FocusIC();
+                                break;
+                            case MouseButtons.Middle:
+                                CloseConnectionTab();
+                                break;
+                            case MouseButtons.Right:
+                                ShowHideMenuButtons();
+                                Native.SetForegroundWindow(Handle);
+                                cmenTab.Show(TabController, e.Location);
+                                break;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg, "TabController_MouseUp (UI.Window.Connections) failed" + Constants.vbNewLine + ex.Message, true);
+                    }
+                }*/
 
                 private void TabController_MouseUp(object sender, MouseEventArgs e)
                 {
