@@ -1,0 +1,3 @@
+Version: 2.71.4798
+dURL: http://mremotenc.freeserver.me/update/mRemoteNC-Installer-2.70.4798.exe
+clURL: https://raw.github.com/Exaktus/mRemoteNC/master/mRemoteV2/CHANGELOG.TXT
