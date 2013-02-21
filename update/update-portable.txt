@@ -1,3 +1,3 @@
-Version: 2.70.4798
-dURL: http://mremotenc.freeserver.me/update/mRemoteNC-Portable-2.70.4798.zip
+Version: 2.70.4800.36933
+dURL: http://mremotenc.freeserver.me/download/mRemoteNC-Portable-Latest.zip
 clURL: https://raw.github.com/Exaktus/mRemoteNC/master/mRemoteV2/CHANGELOG.TXT
