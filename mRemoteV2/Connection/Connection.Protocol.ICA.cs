@@ -155,7 +155,7 @@ namespace mRemoteNC
                             ICA_Client.SetProp("ClearPassword",
                                                 Security.Crypt.Decrypt((string)Settings.Default.DefaultPassword,
                                                                        (string)
-                                                                       mRemoteNC.App.Info.General.EncryptionKey));
+                                                                       mRemoteNC.AppInfo.General.EncryptionKey));
                         }
                     }
                 }

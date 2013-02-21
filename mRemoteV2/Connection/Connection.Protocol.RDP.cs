@@ -358,7 +358,7 @@ namespace mRemoteNC
                         {
                             RDP_Client.AdvancedSettings2.ClearTextPassword =
                                 Security.Crypt.Decrypt((string)Settings.Default.DefaultPassword,
-                                                       (string)mRemoteNC.App.Info.General.EncryptionKey);
+                                                       (string)mRemoteNC.AppInfo.General.EncryptionKey);
                         }
                     }
                 }

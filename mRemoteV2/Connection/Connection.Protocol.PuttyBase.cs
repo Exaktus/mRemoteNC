@@ -134,7 +134,7 @@ namespace mRemoteNC
                             else if (Settings.Default.EmptyCredentials == "custom")
                             {
                                 userArgument = " -l \"" + Settings.Default.DefaultUsername + "\"";
-                                passwordArgument = " -pw \"" + PuttyEscapeArgument(Security.Crypt.Decrypt(Settings.Default.DefaultPassword, App.Info.General.EncryptionKey)) + "\"";
+                                passwordArgument = " -pw \"" + PuttyEscapeArgument(Security.Crypt.Decrypt(Settings.Default.DefaultPassword, AppInfo.General.EncryptionKey)) + "\"";
 		                    }
 
 		                    if (!string.IsNullOrEmpty(InterfaceControl.Info.Username)) {

@@ -1,21 +1,15 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
-using AxMSTSCLib;
-using AxWFICALib;
 using Microsoft.VisualBasic;
-
-//using mRemoteNC.Runtime;
 using Microsoft.VisualBasic.CompilerServices;
 using mRemoteNC.App;
 using My;
 using WeifenLuo.WinFormsUI.Docking;
+using My.Resources;
 
 namespace mRemoteNC
 {
@@ -23,7 +17,7 @@ namespace mRemoteNC
     {
         namespace Window
         {
-            public class Update : UI.Window.Base
+            public class Update : Base
             {
                 #region Form Init
 
@@ -236,8 +230,7 @@ namespace mRemoteNC
 
                 #region Private Properties
 
-                private mRemoteNC.Update uD;
-                private Thread uT;
+                private UpdateManager uD;
 
                 private bool IsUpdateCheckHandlerDeclared = false;
                 private bool IsUpdateDownloadHandlerDeclared = false;
@@ -276,21 +269,61 @@ namespace mRemoteNC
                     Runtime.FontOverride(this);
                 }
 
+                void SetUpdateButtonState(bool active)
+                {
+                    try
+                    {
+                        if (btnCheckForUpdate.InvokeRequired)
+                        {
+                            btnCheckForUpdate.Invoke(
+                                new MethodInvoker(() =>
+                                {
+                                    btnCheckForUpdate.Enabled = active;
+                                }));
+                        }
+                        else
+                        {
+                            btnCheckForUpdate.Enabled = active;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                         Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                                                            ex.Message, true);
+                    }
+                }
+
                 public void CheckForUpdate()
                 {
                     try
                     {
-                        uT = new Thread(new System.Threading.ThreadStart(CheckForUpdateBG));
-                        uT.SetApartmentState(ApartmentState.STA);
-                        uT.IsBackground = true;
-
-                        if (this.IsUpdateCheckHandlerDeclared == false)
+                        SetCurrentVersionText(Application.ProductVersion);
+                        SetUpdateButtonState(false);
+                        if (IsUpdateCheckHandlerDeclared == false)
                         {
-                            UpdateCheckCompleted += new Update.UpdateCheckCompletedEventHandler(UpdateCheckComplete);
-                            this.IsUpdateCheckHandlerDeclared = true;
+                            UpdateCheckCompleted += UpdateCheckComplete;
+                            IsUpdateCheckHandlerDeclared = true;
                         }
-
-                        uT.Start();
+                        ThreadPool.QueueUserWorkItem(state =>
+                                                         {
+                                                             try
+                                                             {
+                                                                 uD = new App.UpdateManager();
+                                                                 if (UpdateCheckCompletedEvent != null)
+                                                                     UpdateCheckCompletedEvent(uD.IsUpdateAvailable());
+                                                             }
+                                                             catch (Exception ex)
+                                                             {
+                                                                 Runtime.MessageCollector.AddMessage(
+                                                                     Messages.MessageClass.ErrorMsg,
+                                                                     Language.strUpdateCheckFailed + Constants.vbNewLine +
+                                                                     ex.Message, true);
+                                                             }
+                                                             finally
+                                                             {
+                                                                 SetUpdateButtonState(true);
+                                                             }
+                                                         });
                     }
                     catch (Exception ex)
                     {
@@ -304,56 +337,30 @@ namespace mRemoteNC
 
                 #region Private Methods
 
-                private void CheckForUpdateBG()
-                {
-                    try
-                    {
-                        uD = new mRemoteNC.Update();
 
-                        if (uD.IsUpdateAvailable() == true)
-                        {
-                            if (UpdateCheckCompletedEvent != null)
-                                UpdateCheckCompletedEvent(true);
-                        }
-                        else
-                        {
-                            if (UpdateCheckCompletedEvent != null)
-                                UpdateCheckCompletedEvent(false);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
-                                                            Language.strUpdateCheckFailed + Constants.vbNewLine +
-                                                            ex.Message, true);
-                    }
-                }
 
                 private void UpdateCheckComplete(bool UpdateAvailable)
                 {
                     try
                     {
                         Settings.Default.CheckForUpdatesLastCheck = DateTime.Now;
-                        SetCurrentVersionText(
-                            (new Microsoft.VisualBasic.ApplicationServices.WindowsFormsApplicationBase()).Info.Version.
-                                ToString());
 
-                        if (UpdateAvailable == true)
+                        if (UpdateAvailable)
                         {
                             Settings.Default.UpdatePending = true;
 
                             SetStatus(Color.OrangeRed, Language.strUpdateAvailable);
                             SetVisible(pnlUp, true);
 
-                            mRemoteNC.Update.Info uI = uD.GetUpdateInfo();
-                            SetAvailableVersionText((string)(uI.Version.ToString()));
-                            SetChangeLogText((string)uI.ChangeLog);
+                            var uI = uD.GetUpdateInfo();
+                            SetAvailableVersionText(uI.Version.ToString());
+                            SetChangeLogText(uI.ChangeLog);
 
-                            if (uI.ImageURL != string.Empty)
+                            if (!string.IsNullOrWhiteSpace(uI.ImageURL))
                             {
-                                SetImageURL((string)uI.ImageURL);
+                                SetImageURL(uI.ImageURL);
 
-                                if (uI.ImageURLLink != string.Empty)
+                                if (!string.IsNullOrWhiteSpace(uI.ImageURLLink))
                                 {
                                     pbUpdateImage.Tag = uI.ImageURLLink;
                                 }
@@ -374,8 +381,8 @@ namespace mRemoteNC
                             SetStatus(Color.ForestGreen, Language.strNoUpdateAvailable);
                             SetVisible(pnlUp, false);
 
-                            mRemoteNC.Update.Info uI = uD.GetUpdateInfo();
-                            SetAvailableVersionText((string)(uI.Version.ToString()));
+                            var uI = uD.GetUpdateInfo();
+                            SetAvailableVersionText(uI.Version.ToString());
                         }
                     }
                     catch (Exception ex)
@@ -503,8 +510,7 @@ namespace mRemoteNC
                 private void Update_Load(object sender, System.EventArgs e)
                 {
                     ApplyLanguage();
-
-                    this.CheckForUpdate();
+                    CheckForUpdate();
                 }
 
                 private void ApplyLanguage()
@@ -522,19 +528,19 @@ namespace mRemoteNC
 
                 private void btnCheckForUpdate_Click(System.Object sender, System.EventArgs e)
                 {
-                    this.CheckForUpdate();
+                    CheckForUpdate();
                 }
 
                 private void btnDownload_Click(System.Object sender, System.EventArgs e)
                 {
-                    this.DownloadUpdate();
+                    DownloadUpdate();
                 }
 
                 private void DownloadUpdate()
                 {
                     try
                     {
-                        if (uD.DownloadUpdate(uD.curUI.DownloadUrl) == true)
+                        if (uD.DownloadUpdate(uD.curUI.DownloadUrl))
                         {
                             this.btnDownload.Enabled = false;
 
@@ -578,9 +584,46 @@ namespace mRemoteNC
                             {
                                 try
                                 {
-                                    Runtime.Shutdown.BeforeQuit();
+                                    
+                                    if (AppInfo.General.IsPortable)
+                                    {
+                                        var tempdir = Path.Combine(Path.GetTempPath(),Path.GetRandomFileName());
+                                        if (!tempdir.EndsWith("\\"))
+                                        {
+                                            tempdir += "\\";
+                                        }
+                                        if (!Directory.Exists(tempdir))
+                                        {
+                                            Directory.CreateDirectory(tempdir);
+                                        }
+                                        Tools.Misc.UnZipFileVisual(uD.curUI.UpdateLocation, tempdir);
+                                        var batName = Path.Combine(Application.StartupPath, "update.bat");
 
-                                    Process.Start((string)uD.curUI.UpdateLocation);
+                                        if (File.Exists(batName))
+                                        {
+                                            File.Delete(batName);
+                                        }
+
+                                        File.WriteAllText(batName, string.Format(Resources.UpdateBatFile, tempdir));
+                                        
+                                        new Process
+                                                    {
+                                                        StartInfo =
+                                                            {
+                                                                Arguments = "/C \"" + batName + "\"",
+                                                                FileName = "cmd.exe",
+                                                                UseShellExecute = false,
+                                                                CreateNoWindow = true
+                                                            }
+                                                    }.Start();
+                                        Runtime.Shutdown.BeforeQuit();
+                                    }
+                                    else
+                                    {
+                                        Process.Start(uD.curUI.UpdateLocation);
+                                        Runtime.Shutdown.BeforeQuit();
+                                    }
+                                    
                                 }
                                 catch (Exception ex)
                                 {
@@ -595,7 +638,7 @@ namespace mRemoteNC
                             {
                                 try
                                 {
-                                    File.Delete((string)uD.curUI.UpdateLocation);
+                                    File.Delete(uD.curUI.UpdateLocation);
                                 }
                                 catch (Exception ex)
                                 {

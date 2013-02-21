@@ -121,6 +121,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>References\Geckofx-Winforms-16.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="Interop.MSTSCLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -184,11 +188,11 @@
   <ItemGroup>
     <Compile Include="ApplicationEvents.cs" />
     <Compile Include="App\App.Announcement.cs" />
-    <Compile Include="App\App.Info.cs" />
+    <Compile Include="App\AppInfo.cs" />
     <Compile Include="App\App.Native.cs" />
     <Compile Include="App\App.Runtime.cs" />
     <Compile Include="App\App.SupportedCultures.cs" />
-    <Compile Include="App\App.Update.cs" />
+    <Compile Include="App\UpdateManager.cs" />
     <Compile Include="Config\Config.Connections.Load.cs" />
     <Compile Include="Config\Config.Connections.Save.cs" />
     <Compile Include="Config\Config.Settings.Load.cs" />
@@ -325,6 +329,7 @@
     <Compile Include="Tools\Tools.PortScan.cs" />
     <Compile Include="Tools\Tools.SystemMenu.cs" />
     <Compile Include="Tools\Tools.WindowPlacement.cs" />
+    <Compile Include="Tools\WebClientHelper.cs" />
     <Compile Include="Tree\Tree.Node.cs" />
     <Compile Include="Forms\UI\UI.Window.About.cs">
       <SubType>Form</SubType>
@@ -722,6 +727,7 @@
     <Content Include="Help\Update.htm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\UpdateBatFile.txt" />
     <None Include="Resources\mRemoteNC.ico" />
     <None Include="Resources\SmallIco.bmp" />
     <None Include="Notes\Help.txt" />
@@ -1027,15 +1033,6 @@
   <ItemGroup>
     <COMReference Include="EOLWTSCOM">
       <Guid>{96C3FA7A-3211-4D93-BFEA-4589DA4ABDE2}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-    <COMReference Include="Shell32">
-      <Guid>{50A7E9B0-70EF-11D1-B75A-00A0C90564FE}</Guid>
       <VersionMajor>1</VersionMajor>
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>

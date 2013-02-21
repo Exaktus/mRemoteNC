@@ -234,7 +234,6 @@ namespace mRemoteNC
                 Runtime.Windows.Show(Type.ComponentsCheck);
             }
 
-#if !PORTABLE
             if (!Settings.Default.CheckForUpdatesAsked)
             {
                 var CommandButtons = new string[]
@@ -263,11 +262,7 @@ namespace mRemoteNC
 
             Runtime.Startup.UpdateCheck();
             Runtime.Startup.AnnouncementCheck();
-#else
-            mMenInfoAnnouncements.Visible = false;
-            mMenToolsUpdate.Visible = false;
-            mMenInfoSep2.Visible = false;
-#endif
+
 
             Runtime.Startup.CreateSQLUpdateHandlerAndStartTimer();
 
@@ -283,6 +278,8 @@ namespace mRemoteNC
             {
                 Runtime.OpenConnection(con, Info.Force.None);
             }
+            Focus();
+            BringToFront();
         }
 
         private void ApplyLanguage()
@@ -1260,7 +1257,7 @@ namespace mRemoteNC
 
         private void mMenView_Click(object sender, EventArgs e)
         {
-            if (Runtime.Windows.connectionStatusForm.DockPanel == null) this.mConStatus.Checked = false;
+            
         }
 
         private void tsContainer_TopToolStripPanel_Click(object sender, EventArgs e)

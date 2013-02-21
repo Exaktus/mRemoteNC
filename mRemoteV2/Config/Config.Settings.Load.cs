@@ -151,7 +151,7 @@ namespace mRemoteNC.Config
 
                     Settings.Default.ConDefaultPassword =
                         Security.Crypt.Decrypt(Settings.Default.ConDefaultPassword,
-                                               App.Info.General.EncryptionKey);
+                                               AppInfo.General.EncryptionKey);
 
                     LoadPanelsFromXML();
                     LoadExternalAppsFromXML();
@@ -288,10 +288,10 @@ namespace mRemoteNC.Config
                         (string)
                         (System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData) + "\\" +
                          (new Microsoft.VisualBasic.ApplicationServices.WindowsFormsApplicationBase()).Info.ProductName +
-                         "\\" + mRemoteNC.App.Info.Settings.LayoutFileName);
+                         "\\" + mRemoteNC.AppInfo.Settings.LayoutFileName);
                     string newPath =
                         (string)
-                        (mRemoteNC.App.Info.Settings.SettingsPath + "\\" + mRemoteNC.App.Info.Settings.LayoutFileName);
+                        (mRemoteNC.AppInfo.Settings.SettingsPath + "\\" + mRemoteNC.AppInfo.Settings.LayoutFileName);
                     if (File.Exists(newPath))
                     {
                         MainForm.pnlDock.LoadFromXml(newPath, GetContentFromPersistString);
@@ -322,10 +322,10 @@ namespace mRemoteNC.Config
                     (string)
                     (System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData) + "\\" +
                      (new Microsoft.VisualBasic.ApplicationServices.WindowsFormsApplicationBase()).Info.ProductName +
-                     "\\" + mRemoteNC.App.Info.Settings.QuickTextsFilesName);
+                     "\\" + mRemoteNC.AppInfo.Settings.QuickTextsFilesName);
                 string newPath =
                     (string)
-                    (mRemoteNC.App.Info.Settings.SettingsPath + "\\" + mRemoteNC.App.Info.Settings.QuickTextsFilesName);
+                    (mRemoteNC.AppInfo.Settings.SettingsPath + "\\" + mRemoteNC.AppInfo.Settings.QuickTextsFilesName);
                 XmlDocument xDom = new XmlDocument();
                 if (File.Exists(newPath))
                 {
@@ -361,10 +361,10 @@ namespace mRemoteNC.Config
                     (string)
                     (System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData) + "\\" +
                      (new Microsoft.VisualBasic.ApplicationServices.WindowsFormsApplicationBase()).Info.ProductName +
-                     "\\" + mRemoteNC.App.Info.Settings.ExtAppsFilesName);
+                     "\\" + mRemoteNC.AppInfo.Settings.ExtAppsFilesName);
                 string newPath =
                     (string)
-                    (mRemoteNC.App.Info.Settings.SettingsPath + "\\" + mRemoteNC.App.Info.Settings.ExtAppsFilesName);
+                    (mRemoteNC.AppInfo.Settings.SettingsPath + "\\" + mRemoteNC.AppInfo.Settings.ExtAppsFilesName);
                 XmlDocument xDom = new XmlDocument();
                 if (File.Exists(newPath))
                 {

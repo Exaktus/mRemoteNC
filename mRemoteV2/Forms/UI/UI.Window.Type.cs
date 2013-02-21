@@ -1,14 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Windows.Forms;
-using AxMSTSCLib;
-using AxWFICALib;
-using Microsoft.VisualBasic;
-
 namespace mRemoteNC
 {
     namespace UI
@@ -36,7 +25,7 @@ namespace mRemoteNC
                 ComponentsCheck = 17,
                 Announcement = 18,
                 ConnectionStatus = 19,
-                QuickText
+                QuickText=20
             }
         }
     }

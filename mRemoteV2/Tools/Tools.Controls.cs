@@ -229,8 +229,8 @@ namespace mRemoteNC.Tools
         {
             SaveFileDialog sDlg = new SaveFileDialog();
             sDlg.CheckPathExists = true;
-            sDlg.InitialDirectory = (string)mRemoteNC.App.Info.Connections.DefaultConnectionsPath;
-            sDlg.FileName = (string)mRemoteNC.App.Info.Connections.DefaultConnectionsFile;
+            sDlg.InitialDirectory = (string)mRemoteNC.AppInfo.Connections.DefaultConnectionsPath;
+            sDlg.FileName = (string)mRemoteNC.AppInfo.Connections.DefaultConnectionsFile;
             sDlg.OverwritePrompt = true;
 
             sDlg.Filter = Language.strFiltermRemoteXML + "|*.xml|" + Language.strFiltermRemoteCSV + "|*.csv|" +
@@ -243,7 +243,7 @@ namespace mRemoteNC.Tools
         {
             OpenFileDialog lDlg = new OpenFileDialog();
             lDlg.CheckFileExists = true;
-            lDlg.InitialDirectory = (string)mRemoteNC.App.Info.Connections.DefaultConnectionsPath;
+            lDlg.InitialDirectory = (string)mRemoteNC.AppInfo.Connections.DefaultConnectionsPath;
             lDlg.Filter = Language.strFiltermRemoteXML + "|*.xml|" + Language.strFilterAll + "|*.*";
 
             return lDlg;
@@ -253,7 +253,7 @@ namespace mRemoteNC.Tools
         {
             OpenFileDialog lDlg = new OpenFileDialog();
             lDlg.CheckFileExists = true;
-            //lDlg.InitialDirectory = App.App.Info.Connections.DefaultConnectionsPath
+            //lDlg.InitialDirectory = App.AppInfo.Connections.DefaultConnectionsPath
             lDlg.Filter = Language.strFilterRDP + "|*.rdp|" + Language.strFilterAll + "|*.*";
 
             return lDlg;

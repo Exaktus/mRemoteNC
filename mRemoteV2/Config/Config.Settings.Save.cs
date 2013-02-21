@@ -48,7 +48,7 @@ namespace mRemoteNC.Config
 
                     Settings.Default.ConDefaultPassword =
                         Security.Crypt.Encrypt(Settings.Default.ConDefaultPassword,
-                                               App.Info.General.EncryptionKey);
+                                               AppInfo.General.EncryptionKey);
                     
                     
 
@@ -78,12 +78,12 @@ namespace mRemoteNC.Config
             {
                 try
                 {
-                    if (Directory.Exists(App.Info.Settings.SettingsPath) == false)
+                    if (Directory.Exists(AppInfo.Settings.SettingsPath) == false)
                     {
-                        Directory.CreateDirectory(App.Info.Settings.SettingsPath);
+                        Directory.CreateDirectory(AppInfo.Settings.SettingsPath);
                     }
 
-                    frmMain.Default.pnlDock.SaveAsXml(Path.Combine(App.Info.Settings.SettingsPath,App.Info.Settings.LayoutFileName));
+                    frmMain.Default.pnlDock.SaveAsXml(Path.Combine(AppInfo.Settings.SettingsPath,AppInfo.Settings.LayoutFileName));
                 }
                 catch (Exception ex)
                 {
@@ -97,13 +97,13 @@ namespace mRemoteNC.Config
             {
                 try
                 {
-                    if (Directory.Exists(App.Info.Settings.SettingsPath) == false)
+                    if (Directory.Exists(AppInfo.Settings.SettingsPath) == false)
                     {
-                        Directory.CreateDirectory(App.Info.Settings.SettingsPath);
+                        Directory.CreateDirectory(AppInfo.Settings.SettingsPath);
                     }
 
                     var xmlTextWriter =
-                        new XmlTextWriter(Path.Combine(App.Info.Settings.SettingsPath, App.Info.Settings.QuickTextsFilesName), System.Text.Encoding.UTF8)
+                        new XmlTextWriter(Path.Combine(AppInfo.Settings.SettingsPath, AppInfo.Settings.QuickTextsFilesName), System.Text.Encoding.UTF8)
                             {Formatting = Formatting.Indented, Indentation = 4};
 
                     xmlTextWriter.WriteStartDocument();
@@ -134,15 +134,15 @@ namespace mRemoteNC.Config
             {
                 try
                 {
-                    if (Directory.Exists(App.Info.Settings.SettingsPath) == false)
+                    if (Directory.Exists(AppInfo.Settings.SettingsPath) == false)
                     {
-                        Directory.CreateDirectory(App.Info.Settings.SettingsPath);
+                        Directory.CreateDirectory(AppInfo.Settings.SettingsPath);
                     }
 
                     var xmlTextWriter =
                         new XmlTextWriter(
-                            App.Info.Settings.SettingsPath + "\\" +
-                            App.Info.Settings.ExtAppsFilesName, System.Text.Encoding.UTF8)
+                            AppInfo.Settings.SettingsPath + "\\" +
+                            AppInfo.Settings.ExtAppsFilesName, System.Text.Encoding.UTF8)
                             {Formatting = Formatting.Indented, Indentation = 4};
 
                     xmlTextWriter.WriteStartDocument();

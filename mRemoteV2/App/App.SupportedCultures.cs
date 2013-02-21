@@ -85,7 +85,3 @@ namespace mRemoteNC
         }
     }
 }
-
-namespace mRemoteNC
-{
-}

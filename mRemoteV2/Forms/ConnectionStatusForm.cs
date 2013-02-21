@@ -209,5 +209,10 @@ namespace mRemoteNC.Forms
         {
 
         }
+
+        private void ConnectionStatusForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmMain.Default.mConStatus.Checked = false;
+        }
     }
 }

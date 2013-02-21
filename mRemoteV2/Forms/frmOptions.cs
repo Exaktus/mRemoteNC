@@ -6,7 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using mRemoteNC.App;
-using mRemoteNC.App.Info;
+using mRemoteNC.AppInfo;
 using mRemoteNC.Security;
 using My;
 using WeifenLuo.WinFormsUI.Docking;
@@ -1936,28 +1936,18 @@ namespace mRemoteNC
 
         #region Form Stuff
 
-        private void Options_Load(object sender, System.EventArgs e)
+        private void Options_Load(object sender, EventArgs e)
         {
             ApplyLanguage();
 
             // Hide the tabs
-            tcTabControl.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
+            tcTabControl.Appearance = TabAppearance.FlatButtons;
             tcTabControl.Padding = new Point(0, 0);
             tcTabControl.ItemSize = new Size(0, 1);
 
             // Switch to the _initialTab
             tcTabControl.SelectedIndex = _initialTab;
             lvPages.Items[_initialTab].Selected = true;
-
-#if PORTABLE
-            foreach (Control Control in tcTabControl.TabPages[5].Controls)
-            {
-                if (Control != lblUpdatesExplanation)
-                {
-                    Control.Visible = false;
-                }
-            }
-#endif
         }
 
         private void ApplyLanguage()
@@ -1969,11 +1959,7 @@ namespace mRemoteNC
             lvPages.Items[4].Text = Language.strSQLServer;
             lvPages.Items[5].Text = Language.strTabUpdates;
             lvPages.Items[6].Text = Language.strTabAdvanced;
-#if !PORTABLE
             lblUpdatesExplanation.Text = Language.strUpdateCheck;
-#else
-            lblUpdatesExplanation.Text = Language.strUpdateCheckPortableEdition;
-#endif
             btnTestProxy.Text = Language.strButtonTestProxy;
             lblSeconds.Text = Language.strLabelSeconds;
             lblMaximumPuttyWaitTime.Text = Language.strLabelPuttyTimeout;
@@ -2189,7 +2175,7 @@ namespace mRemoteNC
         private void btnTestProxy_Click(System.Object sender, System.EventArgs e)
         {
             SaveOptions();
-            var ud = new Update();
+            var ud = new mRemoteNC.App.UpdateManager();
 
             if (ud.IsProxyOK())
             {

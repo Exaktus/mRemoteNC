@@ -4,7 +4,7 @@
 #define EnvTxtDir "..\mRemoteV2\"
 #define FileVerStr GetFileVersion(EnvAppFile)
 #define StripBuild(VerStr) Copy(VerStr, 1, RPos(".", VerStr)-1)
-#define AppVerStr StripBuild(FileVerStr)
+#define AppVerStr FileVerStr
 
 #define MyAppName "mRemoteNC"
 #define MyAppExeName "mRemoteNC.exe"

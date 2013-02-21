@@ -1111,6 +1111,20 @@ namespace My.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на set PATH =&quot;{0}*&quot;
+        ///xcopy %PATH% &quot;%~dp0&quot; /s /e /h /y
+        ///rmdir %PATH% /s /q
+        ///cd &quot;%~dp0&quot;
+        ///start mRemoteNC.exe
+        ///DEL &quot;%~f0&quot;.
+        /// </summary>
+        internal static string UpdateBatFile {
+            get {
+                return ResourceManager.GetString("UpdateBatFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap UVNC_SC {

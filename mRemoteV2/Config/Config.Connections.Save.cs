@@ -36,7 +36,7 @@ namespace mRemoteNC.Config
             #region Private Properties
 
             private XmlTextWriter _xmlTextWriter;
-            private string _password = (string)mRemoteNC.App.Info.General.EncryptionKey;
+            private string _password = (string)mRemoteNC.AppInfo.General.EncryptionKey;
 
             private SqlConnection _sqlConnection;
             private SqlCommand _sqlQuery;
@@ -247,7 +247,7 @@ namespace mRemoteNC.Config
                     new SqlCommand(
                         "INSERT INTO tblRoot (Name, Export, Protected, ConfVersion) VALUES(\'" +
                         Tools.Misc.PrepareValueForDB(tN.Text) + "\', 0, \'" + strProtected + "\'," +
-                        mRemoteNC.App.Info.Connections.ConnectionFileVersion.ToString(CultureInfo.InvariantCulture) +
+                        mRemoteNC.AppInfo.Connections.ConnectionFileVersion.ToString(CultureInfo.InvariantCulture) +
                         ")", _sqlConnection);
                 _sqlQuery.ExecuteNonQuery();
 
@@ -301,7 +301,7 @@ namespace mRemoteNC.Config
                             "InheritVNCSmartSizeMode, InheritVNCViewOnly, " +
                             "InheritRDGatewayUsageMethod, InheritRDGatewayHostname, InheritRDGatewayUseConnectionCredentials, InheritRDGatewayUsername, InheritRDGatewayPassword, InheritRDGatewayDomain, " +
                             "InheritUseCredSsp, "
-                            + "PositionID, _parentConstantId, ConstantID, LastChange)" + "VALUES (", _sqlConnection
+                            + "PositionID, ParentID, ConstantID, LastChange)" + "VALUES (", _sqlConnection
                             );
 
                     if (Tree.Node.GetNodeType(node) == Tree.Node.Type.Connection ||
@@ -676,7 +676,7 @@ namespace mRemoteNC.Config
 
                     _xmlTextWriter.WriteAttributeString("ConfVersion", "",
                                                         (string)
-                                                        (mRemoteNC.App.Info.Connections.ConnectionFileVersion.ToString(
+                                                        (mRemoteNC.AppInfo.Connections.ConnectionFileVersion.ToString(
                                                             CultureInfo.InvariantCulture)));
 
                     TreeNodeCollection treeNodeCollection;

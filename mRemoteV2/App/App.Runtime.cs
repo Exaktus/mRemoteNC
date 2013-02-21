@@ -16,7 +16,7 @@ using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.ApplicationServices;
 using Microsoft.VisualBasic.CompilerServices;
 using Microsoft.Win32;
-using mRemoteNC.App.Info;
+using mRemoteNC.AppInfo;
 using mRemoteNC.Config.Connections;
 using mRemoteNC.Connection;
 using mRemoteNC.Forms;
@@ -203,9 +203,19 @@ namespace mRemoteNC
                                 sshtransferForm.Show(frmMain.Default.pnlDock);
                                 break;
                             case Type.Update:
-                                updateForm = new UI.Window.Update(updatePanel);
-                                updatePanel = updateForm;
-                                updateForm.Show(frmMain.Default.pnlDock);
+                                if (updateForm == null || updatePanel == null || updatePanel.VisibleState == DockState.Unknown)
+                                {
+                                    updateForm = new UI.Window.Update(updatePanel);
+                                    updatePanel = updateForm;
+                                    updateForm.Show(frmMain.Default.pnlDock);
+                                }
+                                else
+                                {
+                                    updatePanel.Focus();
+                                    updatePanel.Show();
+                                    updatePanel.BringToFront();
+                                    updateForm.Focus();
+                                }
                                 break;
                             case Type.Help:
                                 helpForm = new Help(helpPanel);
@@ -213,7 +223,7 @@ namespace mRemoteNC
                                 helpForm.Show(frmMain.Default.pnlDock);
                                 break;
                             case Type.ExternalApps:
-                                if (externalappsForm == null || externalappsPanel == null | externalappsPanel.VisibleState == DockState.Unknown)
+                                if (externalappsForm == null || externalappsPanel == null || externalappsPanel.VisibleState == DockState.Unknown)
                                 {
                                     externalappsForm = new ExternalApps(externalappsPanel);
                                     externalappsPanel = externalappsForm;
@@ -238,7 +248,7 @@ namespace mRemoteNC
                                 ultravncscForm.Show(frmMain.Default.pnlDock);
                                 break;
                             case Type.ComponentsCheck:
-                                if (componentscheckForm == null || componentscheckPanel == null | componentscheckPanel.VisibleState == DockState.Unknown)
+                                if (componentscheckForm == null || componentscheckPanel == null || componentscheckPanel.VisibleState == DockState.Unknown)
                                 {
                                     componentscheckForm = new ComponentsCheck(componentscheckPanel);
                                     componentscheckPanel = componentscheckForm;
@@ -741,7 +751,7 @@ namespace mRemoteNC
                             SaveConnections();
                         }
 
-                        Config.SettingsManager.Save SettingsSave = new Config.SettingsManager.Save();
+                        var SettingsSave = new Config.SettingsManager.Save();
                         SettingsSave.SaveSettings();
                     }
                     catch (Exception ex)
@@ -1289,7 +1299,7 @@ namespace mRemoteNC
                     }
                     catch (Exception ex )
                     {
-                        var newBackup = Path.Combine(Info.Settings.SettingsPath, "Backups", Path.GetFileName(backupFileName));
+                        var newBackup = Path.Combine(AppInfo.Settings.SettingsPath, "Backups", Path.GetFileName(backupFileName));
                         MessageCollector.AddMessage(MessageClass.InformationMsg,
                                                     Language.strConnectionsFileBackupFailed +
                                                     Constants.vbNewLine +"Backup filename:" +newBackup + Constants.vbNewLine + ex.Message);

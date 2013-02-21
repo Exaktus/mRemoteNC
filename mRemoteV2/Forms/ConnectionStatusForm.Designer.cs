@@ -141,6 +141,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ConnectionStatusForm";
             this.Text = "Connections status";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ConnectionStatusForm_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

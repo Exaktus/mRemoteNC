@@ -3,6 +3,7 @@ using System.Net;
 using Microsoft.VisualBasic;
 using mRemoteNC.App;
 using My;
+using mRemoteNC.Tools;
 
 //using mRemoteNC.Runtime;
 
@@ -12,7 +13,7 @@ namespace mRemoteNC
     {
         #region Private Variables
 
-        private WebClient webClient;
+        private WebClient webClient = WebClientHelper.GetWebClient();
         private WebProxy webProxy;
 
         #endregion Private Variables
@@ -66,7 +67,6 @@ namespace mRemoteNC
             {
                 string strAnnouncement = GetAnnouncementFile();
 
-                CreateWebClient();
 
                 Info aI = new Info();
 
@@ -123,13 +123,12 @@ namespace mRemoteNC
         {
             try
             {
-                CreateWebClient();
 
                 string strTemp;
 
                 try
                 {
-                    strTemp = webClient.DownloadString((string)App.Info.General.URLAnnouncement);
+                    strTemp = webClient.DownloadString(AppInfo.General.URLAnnouncement);
                 }
                 catch (Exception)
                 {
@@ -148,28 +147,7 @@ namespace mRemoteNC
             }
         }
 
-        private void CreateWebClient()
-        {
-            webClient = new WebClient();
-
-            if (Settings.Default.UpdateUseProxy)
-            {
-                webProxy = new WebProxy(Settings.Default.UpdateProxyAddress,
-                                        System.Convert.ToBoolean(Settings.Default.UpdateProxyPort));
-
-                if (Settings.Default.UpdateProxyUseAuthentication)
-                {
-                    ICredentials cred;
-                    cred = new NetworkCredential((string)Settings.Default.UpdateProxyAuthUser,
-                                                 Security.Crypt.Decrypt((string)Settings.Default.UpdateProxyAuthPass,
-                                                                        (string)App.Info.General.EncryptionKey));
-
-                    webProxy.Credentials = cred;
-                }
-
-                webClient.Proxy = webProxy;
-            }
-        }
+       
 
         #endregion Public Methods
 

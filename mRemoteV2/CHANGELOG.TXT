@@ -25,6 +25,7 @@
 	[rmcardle] Fix issue MR-176 - Del key while editing connection name triggers 'Delete Connection'
 	[rmcardle] Fix issue MR-101 - Collapse all folders causes a NullReferenceException
 	[rmcardle] Fix issue MR-58 - Bug when duplicating connection in connection view
+	[rmcardle] Fix issue MR-183 - Error trying to save connections when using SQL - Invalid column name _parentConstantId
 	Updated WeifenLuo.WinFormsUI.Docking to 2.7
 	The version of the RDP AX client updated to 7
 	SharpSSH replaced with Renci.SshNet
@@ -42,6 +43,7 @@
 	Added Quick Text (limited support)
 	Added Components problem fixer
 	Added option to lock ToolStrips
+	Added ability to update portable version
 
 1.70 (XXXX-XX-XX):
   Fix issue MR-77 - VerifyDatabaseVersion (Config.Connections.Save) failed. Version string portion was too short or too long.

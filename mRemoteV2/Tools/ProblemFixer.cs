@@ -198,7 +198,7 @@ namespace mRemoteNC.Tools
             {
                 var temFile = Path.GetTempFileName() + ".zip";
                 Misc.DownloadFileVisual("http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/xulrunner-16.0.2.en-US.win32.zip",temFile);
-                Misc.UnZipFile(temFile, ".\\");
+                Misc.UnZipFileVisual(temFile, ".\\");
                 File.Delete(temFile);
             }
             catch (Exception ex)
@@ -341,16 +341,16 @@ namespace mRemoteNC.Tools
                         Runtime.Windows.Show(UI.Window.Type.Options);
                         break;
                     case 1:
-                        Process.Start(App.Info.General.URLHome);
+                        Process.Start(AppInfo.General.URLHome);
                         break;
                     case 2:
                         Process.Start("http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html");
                         break;
                     case 3:
-                        Misc.DownloadFileVisual("http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe", "putty.exe");
-                        
-                        Settings.Default.UseCustomPuttyPath = true;
-                        Settings.Default.CustomPuttyPath = Path.GetFullPath("putty.exe");
+                        Misc.DownloadFileVisual("https://github.com/Exaktus/mRemoteNC/blob/master/Installer/Dependencies/PuTTYNG.exe?raw=true", "PuTTYNG.exe");
+
+                        Connection.PuttyBase.PuttyPath = Path.GetFullPath("PuTTYNG.exe");
+                        Settings.Default.UseCustomPuttyPath = false;
                         Settings.Default.Save();
                         Settings.Default.Reload();
                         break;
@@ -393,7 +393,7 @@ namespace mRemoteNC.Tools
                     switch (cTaskDialog.CommandButtonResult)
                     {
                         case 0:
-                            Process.Start(App.Info.General.URLHome);
+                            Process.Start(AppInfo.General.URLHome);
                             break;
                     }
                 }

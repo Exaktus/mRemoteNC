@@ -7,8 +7,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
-
-//using mRemoteNC.Runtime;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -20,10 +18,10 @@ using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
+using ICSharpCode.SharpZipLib.Zip;
 using Microsoft.VisualBasic;
-using Shell32;
 using mRemoteNC.App;
-using mRemoteNC.App.Info;
+using mRemoteNC.AppInfo;
 using My;
 using mRemoteNC.Forms;
 using mRemoteNC.Messages;
@@ -341,16 +339,72 @@ namespace mRemoteNC.Tools
             return res.Where(File.Exists).Select(Path.GetDirectoryName);
         }
 
-        public static void UnZipFile(string zipFileName, string targetPath)
+        public static void DecompressToDirectory(Stream source, string targetPath, string pwd,
+                                                 Func<string, bool> excludeFromDecompression)
         {
-            var fullTargetPath = Path.GetFullPath(targetPath);
-            Folder srcFile = new Shell().NameSpace(Path.GetFullPath(zipFileName));
-            if (!Directory.Exists(fullTargetPath))
+            targetPath = Path.GetFullPath(targetPath);
+
+            using (ZipInputStream decompressor = new ZipInputStream(source))
             {
-                Directory.CreateDirectory(fullTargetPath);
+                if (!string.IsNullOrEmpty(pwd))
+                {
+                    decompressor.Password = pwd;
+                }
+
+                ZipEntry entry;
+
+                while ((entry = decompressor.GetNextEntry()) != null)
+                {
+                    if (excludeFromDecompression!=null&&excludeFromDecompression(entry.Name))
+                    {
+                        continue;
+                    }
+
+                    string filePath = Path.Combine(targetPath, entry.Name);
+
+                    string directoryPath = Path.GetDirectoryName(filePath);
+
+
+                    if (!string.IsNullOrEmpty(directoryPath) && !Directory.Exists(directoryPath))
+                    {
+                        Directory.CreateDirectory(directoryPath);
+                    }
+
+                    if (entry.IsDirectory)
+                    {
+                        continue;
+                    }
+
+                    byte[] data = new byte[2048];
+                    using (FileStream streamWriter = File.Create(filePath))
+                    {
+                        int bytesRead;
+                        while ((bytesRead = decompressor.Read(data, 0, data.Length)) > 0)
+                        {
+                            streamWriter.Write(data, 0, bytesRead);
+                        }
+                    }
+                }
             }
-            Folder dstFolder = new Shell().NameSpace(fullTargetPath);
-            dstFolder.CopyHere(srcFile.Items(), 20);
+        }
+
+        public static void UnZipFileVisual(string zipFileName, string targetPath)
+        {
+            var frmProg = new ProgressForm {mainProgressBar = {Style = ProgressBarStyle.Marquee}, Text = Language.Misc_UnZipFile_Unpacking___};
+            ThreadPool.QueueUserWorkItem(state =>
+                                             {
+                                                 DecompressToDirectory(new FileStream(zipFileName, FileMode.Open), targetPath, null, null);
+                                                 frmProg.AllowClose = true;
+                                                 if (frmProg.InvokeRequired)
+                                                 {
+                                                     frmProg.Invoke(new MethodInvoker(frmProg.Close));
+                                                 }
+                                                 else
+                                                 {
+                                                     frmProg.Close();   
+                                                 }
+                                             });
+            frmProg.ShowDialog(frmMain.Default);
         }
 
         public static string DBDate(DateTime Dt)
@@ -684,7 +738,7 @@ namespace mRemoteNC.Tools
 
         public static void DownloadFileVisual(string url, string path)
         {
-            using (var webClient = new WebClient())
+            using (var webClient = WebClientHelper.GetWebClient())
             {
                 var frm = new ProgressForm();
                 frm.Text = "Downloading...";

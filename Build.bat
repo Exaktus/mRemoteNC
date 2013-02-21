@@ -47,5 +47,9 @@ del /f /q "%~dp0\Release\%AioName%" > nul 2>&1
 %RAR% a -ibck -m5 -r -ep1 -afzip -inul "%~dp0\Release\%AioName%" "%~dp0\Release\%PortableZipName%"
 %RAR% a -ibck -m5 -r -ep1 -afzip -inul "%~dp0\Release\%AioName%" "%~dp0\Release\%InstallerReleaseName%"
 
+copy "%~dp0\Release\%AioName%" "%~dp0\Release\mRemoteNC-AIO-Latest.zip"
+copy "%~dp0\Release\%PortableZipName%" "%~dp0\Release\mRemoteNC-Portable-Latest.zip"
+copy "%~dp0\Release\%InstallerReleaseName%" "%~dp0\Release\mRemoteNC-Installer-Latest.zip"
+
 echo Finished!
 pause

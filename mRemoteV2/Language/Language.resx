@@ -2190,4 +2190,7 @@ http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/|Downl
     <value xml:space="preserve">Open Options|Setup path:
 </value>
   </data>
+  <data name="Misc_UnZipFile_Unpacking___" xml:space="preserve">
+    <value>Unpacking...</value>
+  </data>
 </root>

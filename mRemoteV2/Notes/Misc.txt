@@ -2,7 +2,7 @@ How to build the portable package:
 	In Config.Settings.Providers:
 	  change Inherits LocalFileSettingsProvider
 	  to Inherits PortableSettingsProvider
-	In App.App.Info.Settings:
+	In App.AppInfo.Settings:
 	  change SettingsPath
 	  from GetFolderPath(SpecialFolder.ApplicationData) & "\" & My.Application.Info.CompanyName.Replace(" ", "_") & "\" & My.Application.Info.ProductName
 	  to My.Application.Info.DirectoryPath

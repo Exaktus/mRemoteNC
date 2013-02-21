@@ -10,7 +10,7 @@ using AxWFICALib;
 using Microsoft.VisualBasic;
 using mRemoteNC;
 using mRemoteNC.App;
-using mRemoteNC.App.Info;
+using mRemoteNC.AppInfo;
 using mRemoteNC.Connection;
 using mRemoteNC.Tree;
 using My;

@@ -21,7 +21,7 @@ namespace mRemoteNC.Config
             private XmlDocument xDom;
             private double confVersion;
 
-            private string pW = mRemoteNC.App.Info.General.EncryptionKey;
+            private string pW = mRemoteNC.AppInfo.General.EncryptionKey;
 
             private SqlConnection sqlCon;
             private SqlCommand sqlQuery;
@@ -1355,6 +1355,8 @@ namespace mRemoteNC.Config
                     {
                         conI.ConnectOnStartup = Convert.ToBoolean(with_1.Attributes["ConnectOnStartup"].Value);
                     }
+
+                    //Placeholder: ConnectionOption
                 }
                 catch (Exception ex)
                 {

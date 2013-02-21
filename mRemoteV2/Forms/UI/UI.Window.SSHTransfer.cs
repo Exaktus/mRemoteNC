@@ -629,6 +629,7 @@ namespace mRemoteNC
                 {
                     ApplyLanguage();
                     txtLocalBrowserPath.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    tabControl1.SelectTab(1);
                     btnLocalBrowserGo_Click(null,null);
                 }
 

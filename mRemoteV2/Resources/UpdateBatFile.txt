@@ -1,0 +1,6 @@
+set UpdatePath={0}
+xcopy "%UpdatePath%*" "%~dp0" /s /e /h /y
+rmdir "%UpdatePath%" /s /q
+cd "%~dp0"
+start mRemoteNC.exe
+DEL "%~f0"

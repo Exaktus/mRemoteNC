@@ -7,40 +7,8 @@ using System.Text;
 
 namespace mRemoteNC
 {
-    public class Native
+    public static class Native
     {
-        private Native()
-        {
-            // Fix Warning 292 CA1053 : Microsoft.Design : Because type 'Native' contains only 'static' ('Shared' in Visual Basic) members, add a default private constructor to prevent the compiler from adding a default public constructor.
-        }
-
-        public static void ForceForegroundWindow(IntPtr hWnd)
-        {
-            uint foreThread = GetWindowThreadProcessId(GetForegroundWindow(), IntPtr.Zero);
-
-            uint appThread = GetCurrentThreadId();
-
-            const uint SW_SHOW = 5;
-
-            if (foreThread != appThread)
-            {
-                AttachThreadInput(foreThread, appThread, true);
-
-                BringWindowToTop(hWnd);
-
-                ShowWindow(hWnd, (int)SW_SHOW);
-
-                AttachThreadInput(foreThread, appThread, false);
-            }
-
-            else
-            {
-                BringWindowToTop(hWnd);
-
-                ShowWindow(hWnd, (int)SW_SHOW);
-            }
-        }
-
         #region Functions
 
         [DllImport("user32.dll", SetLastError = true)]
@@ -355,10 +323,7 @@ namespace mRemoteNC
         // SetWindowLongPtr
         public static IntPtr SetWindowLongPtr(HandleRef hWnd, int nIndex, IntPtr dwNewLong)
         {
-            if (IntPtr.Size == 8)
-                return SetWindowLongPtr64(hWnd, nIndex, dwNewLong);
-            else
-                return new IntPtr(SetWindowLong32(hWnd, nIndex, dwNewLong.ToInt32()));
+            return IntPtr.Size == 8 ? SetWindowLongPtr64(hWnd, nIndex, dwNewLong) : new IntPtr(SetWindowLong32(hWnd, nIndex, dwNewLong.ToInt32()));
         }
 
         [DllImport("user32.dll", EntryPoint = "SetWindowLong")]
@@ -366,6 +331,33 @@ namespace mRemoteNC
 
         [DllImport("user32.dll", EntryPoint = "SetWindowLongPtr")]
         private static extern IntPtr SetWindowLongPtr64(HandleRef hWnd, int nIndex, IntPtr dwNewLong);
+
+        public static void ForceForegroundWindow(IntPtr hWnd)
+        {
+            uint foreThread = GetWindowThreadProcessId(GetForegroundWindow(), IntPtr.Zero);
+
+            uint appThread = GetCurrentThreadId();
+
+            const uint SW_SHOW = 5;
+
+            if (foreThread != appThread)
+            {
+                AttachThreadInput(foreThread, appThread, true);
+
+                BringWindowToTop(hWnd);
+
+                ShowWindow(hWnd, (int)SW_SHOW);
+
+                AttachThreadInput(foreThread, appThread, false);
+            }
+
+            else
+            {
+                BringWindowToTop(hWnd);
+
+                ShowWindow(hWnd, (int)SW_SHOW);
+            }
+        }
 
         public static IntPtr GetPtrToProcWithWindowWithTextInCap(string input)
         {
