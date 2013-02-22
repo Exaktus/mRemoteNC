@@ -771,9 +771,6 @@
   <data name="strMenuOpenConnectionFile" xml:space="preserve">
     <value>Ouvrir un fichier de connexion...</value>
   </data>
-  <data name="strMenuPaste" xml:space="preserve">
-    <value>Coller</value>
-  </data>
   <data name="strMenuPortScan" xml:space="preserve">
     <value>Scan de port</value>
   </data>
@@ -1265,12 +1262,6 @@
   </data>
   <data name="strSortDesc" xml:space="preserve">
     <value>Décroissant (ZA)</value>
-  </data>
-  <data name="strSSHStartTransferBG" xml:space="preserve">
-    <value>Le transfert SSH en tâche de fond a échoué!</value>
-  </data>
-  <data name="strSSHTranferSuccessful" xml:space="preserve">
-    <value>Transfert réussi!</value>
   </data>
   <data name="strSSHTransferFailed" xml:space="preserve">
     <value>Transfert</value>

@@ -117,4 +117,229 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblPorts.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblPorts.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 42</value>
+  </data>
+  <data name="lblPorts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 13</value>
+  </data>
+  <data name="lblPorts.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="lblPorts.Text" xml:space="preserve">
+    <value>Posrts:</value>
+  </data>
+  <data name="&gt;&gt;lblPorts.Name" xml:space="preserve">
+    <value>lblPorts</value>
+  </data>
+  <data name="&gt;&gt;lblPorts.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPorts.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPorts.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="txtPorts.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 35</value>
+  </data>
+  <data name="txtPorts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 20</value>
+  </data>
+  <data name="txtPorts.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;txtPorts.Name" xml:space="preserve">
+    <value>txtPorts</value>
+  </data>
+  <data name="&gt;&gt;txtPorts.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPorts.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtPorts.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="txtIP.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 6</value>
+  </data>
+  <data name="txtIP.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 20</value>
+  </data>
+  <data name="txtIP.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;txtIP.Name" xml:space="preserve">
+    <value>txtIP</value>
+  </data>
+  <data name="&gt;&gt;txtIP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtIP.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtIP.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnScan.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnScan.Location" type="System.Drawing.Point, System.Drawing">
+    <value>275, 9</value>
+  </data>
+  <data name="btnScan.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 46</value>
+  </data>
+  <data name="btnScan.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="btnScan.Text" xml:space="preserve">
+    <value>Scan</value>
+  </data>
+  <data name="&gt;&gt;btnScan.Name" xml:space="preserve">
+    <value>btnScan</value>
+  </data>
+  <data name="&gt;&gt;btnScan.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnScan.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnScan.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lstStatus.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="lstStatus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 68</value>
+  </data>
+  <data name="lstStatus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>370, 210</value>
+  </data>
+  <data name="lstStatus.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;lstStatus.Name" xml:space="preserve">
+    <value>lstStatus</value>
+  </data>
+  <data name="&gt;&gt;lstStatus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lstStatus.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lstStatus.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chPort.Text" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="chPort.Width" type="System.Int32, mscorlib">
+    <value>114</value>
+  </data>
+  <data name="chProtocol.Text" xml:space="preserve">
+    <value>Protocol</value>
+  </data>
+  <data name="chProtocol.Width" type="System.Int32, mscorlib">
+    <value>116</value>
+  </data>
+  <data name="chStatus.Text" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="lblHost.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblHost.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 9</value>
+  </data>
+  <data name="lblHost.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 13</value>
+  </data>
+  <data name="lblHost.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="lblHost.Text" xml:space="preserve">
+    <value>Host:</value>
+  </data>
+  <data name="&gt;&gt;lblHost.Name" xml:space="preserve">
+    <value>lblHost</value>
+  </data>
+  <data name="&gt;&gt;lblHost.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblHost.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblHost.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>370, 278</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAC2oJT/YUo0/2RIN/9mSDX/Zkg3/2JKNP9hSDT/ZUk4/2BHN/8AAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAuaKT//nt6P/czcb/1sa9/9G+tf/LuK3/x7Gm/8Krn/9jSjb/AAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAALuklf/78ez/+u7n//np4v/35d3/9uHX//Xc0f/Hsab/ZEk0/wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC8qZr//PTx/xQXxv8RG8f/ExrF/xMZxv/24df/zLet/2ZI
+        Nf8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAw62h//349v/k3u3/FBjF/83E4v/56eL/9+Xd/9G+
+        tf9iSjT/AAAAAAAAAAAAAAAAAAAAAAAAAAC2oJT/YUo0/8myov/++/r//fj1/+Te7f8SGcf/zcXh//jp
+        4v/Wxr7/Zkg1/wAAAAAAAAAAAAAAAAAAAAAAAAAAuaKT//nt6P/Ruqv//v38/xIZxv/Qze3/ExjH/7u2
+        4v/67ej/283G/2JKNP8AAAAAAAAAAAAAAAAAAAAAAAAAALuklf/78ez/1L6y///////R0fL/EhrF/1Vc
+        2//79PH/+/Ht/+HVz/9lSjb/AAAAAAAAAAAAAAAAAAAAAAAAAAC8qZr//PTx/9nBtf////////////79
+        /f/++vn//fj2//z08f/68ez/ZEk0/48kJ//IMjb/AAAAAAAAAAAAAAAAw62h//349v/WwrH/2cOx/9jB
+        sf/XwbX/28Gz/9K+rP/Quar/y7Oh/8uzof+PJCf/yDI2/wAAAAAAAAAAAAAAAMmyov/++/r//fj1//z0
+        8f8AAAD/+e7n//jp4v/Wxr7/Zkg1/wAAAAAAAAAA3nl8sd55fJ4AAAAAAAAAAAAAAADRuqv//v38//36
+        +f8AAAD/AAAA//vx7P/67ej/283G/2JKNP8AAAAAAAAAAM45Pf+PJCf/3nl81gAAAAAAAAAA1L6y////
+        ///+/fz//vv5/wAAAP/79PH/+/Ht/+HVz/9lSjb/AAAAAAAAAADeeXy52GJl/48kJ//eeXy5AAAAANnB
+        tf////////////79/f/++vn//fj2//z08f/68ez/ZEk0/wAAAACPJCf/AAAAAN55fMCKIyb/0ERIlwAA
+        AADWwrH/2cOx/9jBsf/XwbX/28Gz/9K+rP/Quar/y7Oh/8uzof8AAAAA3nl8sY8kJ/+PJCf/0ERI/t55
+        fDEAAAAA//+cQcAfnEHAH5xBwB+cQcAfnEHAH5xBAB+cQQAfnEEAH5xBAAecQQAHnEEAZ5xBAGOcQQBh
+        nEEAUZxBAEGcQQ==
+</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>QuickHostScanner</value>
+  </data>
+  <data name="&gt;&gt;chPort.Name" xml:space="preserve">
+    <value>chPort</value>
+  </data>
+  <data name="&gt;&gt;chPort.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chProtocol.Name" xml:space="preserve">
+    <value>chProtocol</value>
+  </data>
+  <data name="&gt;&gt;chProtocol.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chStatus.Name" xml:space="preserve">
+    <value>chStatus</value>
+  </data>
+  <data name="&gt;&gt;chStatus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>QuickHostScanner</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

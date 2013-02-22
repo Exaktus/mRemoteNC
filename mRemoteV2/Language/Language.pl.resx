@@ -503,9 +503,6 @@ Opis błędu: {1}</value>
   <data name="strMenuOptions" xml:space="preserve">
     <value>Opcje</value>
   </data>
-  <data name="strMenuPaste" xml:space="preserve">
-    <value>Wklej</value>
-  </data>
   <data name="strMenuPortScan" xml:space="preserve">
     <value>Skaner portów</value>
   </data>

@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
+using My;
 using mRemoteNC.App;
 using mRemoteNC.Connection;
 
@@ -18,6 +15,17 @@ namespace mRemoteNC.Forms
         public QuickHostScanner()
         {
             InitializeComponent();
+        }
+
+        private void ApplyLanguage()
+        {
+            lblHost.Text = Language.QuickHostScanner_ApplyLanguage_Host_;
+            lblPorts.Text = Language.QuickHostScanner_ApplyLanguage_Ports + ":";
+            chPort.Text=Language.QuickHostScanner_ApplyLanguage_Port;
+            chProtocol.Text = Language.QuickHostScanner_ApplyLanguage_Protocol;
+            chStatus.Text = Language.QuickHostScanner_ApplyLanguage_Status;
+            btnScan.Text = Language.QuickHostScanner_ApplyLanguage_Scan;
+            Text = Language.QuickHostScanner_ApplyLanguage_QuickHostScanner;
         }
 
         public QuickHostScanner(Info info)
@@ -34,6 +42,7 @@ namespace mRemoteNC.Forms
             if (txtPorts.Text == "") txtPorts.Text = "22,80,443,4899,5800,5900,3389,5938,5500";
             s.ByColumn = 2;
             lstStatus.ListViewItemSorter = s;
+            ApplyLanguage();
         }
 
         public static Protocols PortToProt(int port)
@@ -73,7 +82,7 @@ namespace mRemoteNC.Forms
                     {
                         foreach (ListViewItem i in lstStatus.Items.Cast<ListViewItem>().Where(i => i.Text==port.ToString()))
                         {
-                            i.SubItems[2].Text = result ? "Up" : "Down";
+                            i.SubItems[2].Text = result ? Language.QuickHostScanner_TestAsync_Up : Language.QuickHostScanner_TestAsync_Down;
                             if (!result)
                             {
                                 i.ForeColor = Color.Gainsboro;
@@ -107,7 +116,7 @@ namespace mRemoteNC.Forms
                 {
                     ListViewItem lv=new ListViewItem(port.ToString());
                     lv.SubItems.Add(PortToProt(port).ToString());
-                    lv.SubItems.Add("Checking...");
+                    lv.SubItems.Add(Language.QuickHostScanner_button1_Click_Checking___);
                     lv.ForeColor = Color.Gray;
                     lstStatus.Items.Add(lv);
                     TestAsync(port);
@@ -153,17 +162,17 @@ namespace mRemoteNC.Forms
                 if (e.Button == MouseButtons.Right)
                 {
                     var cm = new ContextMenu();
-                    cm.MenuItems.Add(new MenuItem("Set service", (o, args) =>
+                    cm.MenuItems.Add(new MenuItem(Language.QuickHostScanner_lstStatus_MouseClick_Set_service, (o, args) =>
                         {
                             Runtime.Windows.treeForm.ChangeConProp(info, Convert.ToInt32(hit.Item.Text),
                                 PortToProt(Convert.ToInt32(hit.Item.Text)));
                             Close();
 
                         }));
-                    cm.MenuItems.Add(new MenuItem("Add as new", (o, args) =>
+                    cm.MenuItems.Add(new MenuItem(Language.QuickHostScanner_lstStatus_MouseClick_Add_as_new, (o, args) =>
                         {
                             if (
-                                MessageBox.Show("Add this connection?", "Adding connection",
+                                MessageBox.Show(Language.QuickHostScanner_lstStatus_MouseClick_Add_this_connection_, Language.QuickHostScanner_lstStatus_MouseClick_Adding_connection,
                                                 MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) ==
                                 DialogResult.Yes)
                             {

@@ -741,7 +741,7 @@ namespace mRemoteNC.Tools
             using (var webClient = WebClientHelper.GetWebClient())
             {
                 var frm = new ProgressForm();
-                frm.Text = "Downloading...";
+                frm.Text = Language.Misc_DownloadFileVisual_Downloading;
                 webClient.DownloadProgressChanged += (sender, e) =>
                     { frm.mainProgressBar.Value = e.ProgressPercentage; };
                 webClient.DownloadFileCompleted += (sender, args) =>

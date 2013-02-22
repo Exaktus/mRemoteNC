@@ -34,10 +34,10 @@
             this.chHost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.tslTestType = new System.Windows.Forms.ToolStripLabel();
+            this.tscbTestType = new System.Windows.Forms.ToolStripComboBox();
+            this.tsbRefresh = new System.Windows.Forms.ToolStripButton();
+            this.tsbAutoupdate = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +54,7 @@
             this.lstStatus.Location = new System.Drawing.Point(0, 25);
             this.lstStatus.MultiSelect = false;
             this.lstStatus.Name = "lstStatus";
-            this.lstStatus.Size = new System.Drawing.Size(299, 333);
+            this.lstStatus.Size = new System.Drawing.Size(319, 333);
             this.lstStatus.TabIndex = 5;
             this.lstStatus.UseCompatibleStateImageBehavior = false;
             this.lstStatus.View = System.Windows.Forms.View.Details;
@@ -77,64 +77,64 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel1,
-            this.toolStripComboBox1,
-            this.toolStripButton1,
-            this.toolStripButton2});
+            this.tslTestType,
+            this.tscbTestType,
+            this.tsbRefresh,
+            this.tsbAutoupdate});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(299, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(319, 25);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripLabel1
+            // tslTestType
             // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(58, 22);
-            this.toolStripLabel1.Text = "Test type:";
+            this.tslTestType.Name = "tslTestType";
+            this.tslTestType.Size = new System.Drawing.Size(58, 22);
+            this.tslTestType.Text = "Test type:";
             // 
-            // toolStripComboBox1
+            // tscbTestType
             // 
-            this.toolStripComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.toolStripComboBox1.Items.AddRange(new object[] {
+            this.tscbTestType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tscbTestType.Items.AddRange(new object[] {
             "Ping",
             "Connect",
             "Both"});
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
-            this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
-            this.toolStripComboBox1.Click += new System.EventHandler(this.toolStripComboBox1_Click);
-            this.toolStripComboBox1.TextChanged += new System.EventHandler(this.toolStripComboBox1_TextChanged);
+            this.tscbTestType.Name = "tscbTestType";
+            this.tscbTestType.Size = new System.Drawing.Size(121, 25);
+            this.tscbTestType.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
+            this.tscbTestType.Click += new System.EventHandler(this.toolStripComboBox1_Click);
+            this.tscbTestType.TextChanged += new System.EventHandler(this.toolStripComboBox1_TextChanged);
             // 
-            // toolStripButton1
+            // tsbRefresh
             // 
-            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::My.Resources.Resources.Refresh;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.tsbRefresh.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbRefresh.Image = global::My.Resources.Resources.Refresh;
+            this.tsbRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRefresh.Name = "tsbRefresh";
+            this.tsbRefresh.Size = new System.Drawing.Size(23, 22);
+            this.tsbRefresh.Text = "toolStripButton1";
+            this.tsbRefresh.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
-            // toolStripButton2
+            // tsbAutoupdate
             // 
-            this.toolStripButton2.Checked = true;
-            this.toolStripButton2.CheckOnClick = true;
-            this.toolStripButton2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(74, 22);
-            this.toolStripButton2.Text = "Autoupdate";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.tsbAutoupdate.Checked = true;
+            this.tsbAutoupdate.CheckOnClick = true;
+            this.tsbAutoupdate.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsbAutoupdate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbAutoupdate.Image = ((System.Drawing.Image)(resources.GetObject("tsbAutoupdate.Image")));
+            this.tsbAutoupdate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAutoupdate.Name = "tsbAutoupdate";
+            this.tsbAutoupdate.Size = new System.Drawing.Size(74, 22);
+            this.tsbAutoupdate.Text = "Autoupdate";
+            this.tsbAutoupdate.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // ConnectionStatusForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(299, 358);
+            this.ClientSize = new System.Drawing.Size(319, 358);
             this.Controls.Add(this.lstStatus);
             this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -157,10 +157,10 @@
         private System.Windows.Forms.ColumnHeader chHost;
         private System.Windows.Forms.ColumnHeader chStatus;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripLabel tslTestType;
+        private System.Windows.Forms.ToolStripComboBox tscbTestType;
+        private System.Windows.Forms.ToolStripButton tsbRefresh;
+        private System.Windows.Forms.ToolStripButton tsbAutoupdate;
 
     }
 }

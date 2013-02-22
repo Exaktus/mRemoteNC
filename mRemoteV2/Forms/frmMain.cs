@@ -298,6 +298,10 @@ namespace mRemoteNC
             ImportFromXMLFileToolStripMenuItem.Text = Language.strImportmRemoteXML;
             ExportToXMLFileToolStripMenuItem.Text = Language.strExportmRemoteXML;
             mMenFileExit.Text = Language.strMenuExit;
+            mConStatus.Text = Language.frmMain_Connections_status;
+            quickTextToolbarToolStripMenuItem.Text = Language.frmMain_ApplyLanguage_Quick_Text_Toolbar;
+            mQuickText.Text = Language.frmMain_ApplyLanguage_Quick_Text;
+            lockToolStripMenuItem.Text = Language.frmMain_ApplyLanguage_Lock_toolbar;
 
             mMenView.Text = Language.strMenuView;
             mMenViewAddConnectionPanel.Text = Language.strMenuAddConnectionPanel;
@@ -1014,46 +1018,42 @@ namespace mRemoteNC
             {
                 foreach (TreeNode tNode in tnc)
                 {
-                    ToolStripMenuItem tMenItem = new ToolStripMenuItem();
-                    tMenItem.Text = tNode.Text;
-                    tMenItem.Tag = tNode;
+                    var tMenItem = new ToolStripMenuItem {Text = tNode.Text, Tag = tNode};
 
-                    if (Tree.Node.GetNodeType(tNode) == Tree.Node.Type.Container)
+                    switch (Node.GetNodeType(tNode))
                     {
-                        tMenItem.Image = global::My.Resources.Resources.Folder;
-                        tMenItem.Tag = tNode.Tag;
-
-                        menToolStrip.DropDownItems.Add(tMenItem);
-                        AddNodeToMenu(tNode.Nodes, tMenItem);
-                    }
-                    else if (Tree.Node.GetNodeType(tNode) == Tree.Node.Type.Connection)
-                    {
-                        tMenItem.Image = Runtime.Windows.treeForm.imgListTree.Images[tNode.ImageIndex];
-                        tMenItem.Tag = tNode.Tag;
-
-                        menToolStrip.DropDownItems.Add(tMenItem);
+                        case Node.Type.Container:
+                            tMenItem.Image = global::My.Resources.Resources.Folder;
+                            tMenItem.Tag = tNode.Tag;
+                            menToolStrip.DropDownItems.Add(tMenItem);
+                            AddNodeToMenu(tNode.Nodes, tMenItem);
+                            break;
+                        case Node.Type.Connection:
+                            tMenItem.Image = Runtime.Windows.treeForm.imgListTree.Images[tNode.ImageIndex];
+                            tMenItem.Tag = tNode.Tag;
+                            menToolStrip.DropDownItems.Add(tMenItem);
+                            break;
                     }
 
-                    tMenItem.MouseDown += new System.Windows.Forms.MouseEventHandler(ConMenItem_MouseDown);
-
-                    tMenItem.Dispose();
+                    tMenItem.MouseDown += ConMenItem_MouseDown;
                 }
             }
             catch (Exception ex)
             {
                 Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
-                                                    (string)("AddNodeToMenu failed" + Constants.vbNewLine + ex.Message),
+                                                    "AddNodeToMenu failed" + Constants.vbNewLine + ex.Message,
                                                     true);
             }
         }
 
-        private void ConMenItem_MouseDown(System.Object sender, System.Windows.Forms.MouseEventArgs e)
+        private void ConMenItem_MouseDown(Object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                if (((Control)sender).Tag is Info)
+                var tag = ((Control)sender).Tag as Info;
+                if (tag != null)
                 {
-                    Runtime.OpenConnection((Info)((Control)sender).Tag);
+                    Runtime.OpenConnection(tag);
                 }
             }
         }

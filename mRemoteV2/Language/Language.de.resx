@@ -280,12 +280,6 @@ Wenn Sie noch immer Probleme mit der (RDP) Sitzungs Funktion in mRemoteNC haben,
   <data name="strCcEOLOK" xml:space="preserve">
     <value>EOLWTSCOM wurde gefunden und scheint korrekt registriert zu sein.</value>
   </data>
-  <data name="strCcGeckoFailed" xml:space="preserve">
-    <value>Um die Gecko Rendering Engine benutzen zu können benötigen Sie XULrunner 1.8.1.x und einen korrekt eingetragenen Pfad in den Optionen.
-Hier können Sie XULrunner 1.8.1.3 herunterladen: ftp://ftp.mozilla.org/pub/xulrunner/releases/1.8.1.3/contrib/win32/
-Wenn der Download abgeschlossen ist entpacken Sie das Paket (Der Speicherort ist dabei ihnen überlassen). Als nächstes öffnen Sie (in mRemoteNC) Extras - Optionen - Erweitert und geben Sie den korrekten Pfad im XULrunner Feld an.
-Wenn Sie noch immer Probleme mit der Gecko Engine in mRemote haben, konsultieren Sie bitte das mRemoteNC Forum: http://forum.mRemoteNC.org/</value>
-  </data>
   <data name="strCcGeckoOK" xml:space="preserve">
     <value>XULrunner wurde gefunden und scheint korrekt installiert zu sein.</value>
   </data>
@@ -917,9 +911,6 @@ Starte mit neuer Datei.</value>
   </data>
   <data name="strMenuOptions" xml:space="preserve">
     <value>Optionen</value>
-  </data>
-  <data name="strMenuPaste" xml:space="preserve">
-    <value>Einfügen</value>
   </data>
   <data name="strMenuQuickConnectToolbar" xml:space="preserve">
     <value>Direkt Verbinden Symbolleiste</value>
@@ -1664,12 +1655,6 @@ Wenn Sie Fehler feststellen, dann sollten Sie eine neue Verbindungs Datei erstel
   </data>
   <data name="strSsh2" xml:space="preserve">
     <value>SSH Version 2</value>
-  </data>
-  <data name="strSSHStartTransferBG" xml:space="preserve">
-    <value>SSH Übertragung im Hintergrund fehlgeschlagen!</value>
-  </data>
-  <data name="strSSHTranferSuccessful" xml:space="preserve">
-    <value>Übertragung erfolgreich!</value>
   </data>
   <data name="strSSHTransferEndFailed" xml:space="preserve">
     <value>SSH Abschluss der Übertragung fehlgeschlagen!</value>

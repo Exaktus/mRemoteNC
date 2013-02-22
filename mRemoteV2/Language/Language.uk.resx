@@ -286,12 +286,6 @@ mRemoteNC завантажиться з цим компонентом, але н
   <data name="strCcEOLOK" xml:space="preserve">
     <value>EOLWTSCOM знайдено і зареєстровано.</value>
   </data>
-  <data name="strCcGeckoFailed" xml:space="preserve">
-    <value>Для використання Gecko у Вас має бути встановлений XULRunner 1.8.1.x
-Ви можете завантажити XULRunner 1.8.1.3 тут: ftp://ftp.mozilla.org/pub/xulrunner/releases/1.8.1.3/contrib/win32/
-Після завантаження вийміть пакет у будь-яку папку. Потім у mRemoteNC перейдіть в меню Інструменти - Опції - Додатково і введіть правильний шлях у полі Шлях XULRunner.
-Якщо у вас нічого не вийшло зверніться на форум mRemoteNC http://forum.mRemoteNC.org/</value>
-  </data>
   <data name="strCcGeckoOK" xml:space="preserve">
     <value>XULRunner було знайдено і встановлено правильно.</value>
   </data>
@@ -912,9 +906,6 @@ VncSharpNG Control Version {0}</value>
   </data>
   <data name="strMenuOptions" xml:space="preserve">
     <value>Опції</value>
-  </data>
-  <data name="strMenuPaste" xml:space="preserve">
-    <value>Вставити</value>
   </data>
   <data name="strMenuPortScan" xml:space="preserve">
     <value>Сканер портів</value>
@@ -1624,12 +1615,6 @@ VncSharpNG Control Version {0}</value>
   </data>
   <data name="strSqlUpdateCheckUpdateAvailable" xml:space="preserve">
     <value>Доступно оновлення для SQL! Оновлення з'єднання.</value>
-  </data>
-  <data name="strSSHStartTransferBG" xml:space="preserve">
-    <value>Фонова передача по SSH - не вдалося!</value>
-  </data>
-  <data name="strSSHTranferSuccessful" xml:space="preserve">
-    <value>Передано успішно!</value>
   </data>
   <data name="strSSHTransferEndFailed" xml:space="preserve">
     <value>Передача по SSH завершена с ошибкой (UI.Window.SSHTransfer)!</value>

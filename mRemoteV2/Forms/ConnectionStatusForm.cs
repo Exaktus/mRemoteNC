@@ -31,18 +31,29 @@ namespace mRemoteNC.Forms
 
         private System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
 
+        private void ApplyLanguage()
+        {
+            tsbAutoupdate.Text = Language.ConnectionStatusForm_ApplyLanguage_Autoupdate;
+            tsbRefresh.Text = Language.ConnectionStatusForm_ApplyLanguage_Refresh;
+            tslTestType.Text = Language.ConnectionStatusForm_ApplyLanguage_Test_type;
+            chConName.Text = Language.ConnectionStatusForm_ApplyLanguage_Connection;
+            chHost.Text = Language.ConnectionStatusForm_ApplyLanguage_Host;
+            chStatus.Text = Language.ConnectionStatusForm_ApplyLanguage_Status;
+            Text = Language.ConnectionStatusForm_ApplyLanguage_Connections_status;
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            toolStripComboBox1.SelectedItem = Settings.Default.ConnectStatusTestType;
+            tscbTestType.SelectedItem = Settings.Default.ConnectStatusTestType;
             s.ByColumn=2;
             lstStatus.ListViewItemSorter = s;
+            ApplyLanguage();
             AutoUpdateStart();
         }
 
         void AutoUpdateStart()
         {
-            toolStripButton2.Checked = Settings.Default.ConnectStatusAutoupdate;
+            tsbAutoupdate.Checked = Settings.Default.ConnectStatusAutoupdate;
             if (!Settings.Default.ConnectStatusAutoupdate) return;
             t.Interval = 1000*30;
             t.Tick += t_Tick;
@@ -157,7 +168,7 @@ namespace mRemoteNC.Forms
                 {
                     ListViewItem lvi = new ListViewItem(con.Name);
                     lvi.SubItems.Add(con.Hostname + ":" + con.Port);
-                    lvi.SubItems.Add("Checking...");
+                    lvi.SubItems.Add(Language.ConnectionStatusForm_lstStatus_MouseDoubleClick_Checking___);
                     lvi.ForeColor = Color.Gray;
                     lvi.Tag = con;
                     lstStatus.Items.Add(lvi);
@@ -181,7 +192,7 @@ namespace mRemoteNC.Forms
 
         private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Settings.Default.ConnectStatusTestType = toolStripComboBox1.Text;
+            Settings.Default.ConnectStatusTestType = tscbTestType.Text;
             Settings.Default.Save();
         }
 
@@ -192,14 +203,14 @@ namespace mRemoteNC.Forms
             lstStatus.Invoke((MethodInvoker) (() =>
                                                   {
                                                       lstStatus.SelectedItems[0].ForeColor = Color.Gray;
-                                                      lstStatus.SelectedItems[0].SubItems[2].Text = "Checking...";
+                                                      lstStatus.SelectedItems[0].SubItems[2].Text = Language.ConnectionStatusForm_lstStatus_MouseDoubleClick_Checking___;
                                                   }));
             TestAsync(lstStatus.SelectedItems[0].Tag as Info);
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            Settings.Default.ConnectStatusAutoupdate= toolStripButton2.Checked;
+            Settings.Default.ConnectStatusAutoupdate= tsbAutoupdate.Checked;
             Settings.Default.Save();
             if(!Settings.Default.ConnectStatusAutoupdate) t.Stop();
             else AutoUpdateStart();

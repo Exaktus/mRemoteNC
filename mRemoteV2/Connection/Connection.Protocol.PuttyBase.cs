@@ -170,13 +170,13 @@ namespace mRemoteNC
                     Debug.WriteLine("PuTTY Arguments: " + PuttyProcess.StartInfo.Arguments);
 #endif
                     PuttyProcess.EnableRaisingEvents = true;
-                    PuttyProcess.Exited += new System.EventHandler(ProcessExited);
+                    PuttyProcess.Exited += ProcessExited;
 
                     PuttyProcess.Start();
-                    PuttyProcess.WaitForInputIdle();
+                    PuttyProcess.WaitForInputIdle(Settings.Default.MaxPuttyWaitTime * 1000);
 
                     int startTicks = Environment.TickCount;
-                    while (PuttyHandle.ToInt32() == 0 & Environment.TickCount < startTicks + 5000)
+                    while (PuttyHandle.ToInt32() == 0 & Environment.TickCount < startTicks + (Settings.Default.MaxPuttyWaitTime * 1000))
                     {
                         if (_isPuttyNg)
                         {
@@ -358,6 +358,12 @@ namespace mRemoteNC
                 bool isPuttyNg;
                 try
                 {
+                    // PuTTYNG enhancements are not yet compatible with Windows 8
+                    if (Environment.OSVersion.Version.CompareTo(new Version(6, 2)) >= 0)
+                    {
+                        return false;
+                    }
+
                     isPuttyNg =
                         System.Convert.ToBoolean(FileVersionInfo.GetVersionInfo(file).InternalName.Contains("PuTTYNG"));
                 }

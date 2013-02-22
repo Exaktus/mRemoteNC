@@ -56,7 +56,7 @@ namespace mRemoteNC
                 private ColumnHeader clmLFBIcon;
                 private ColumnHeader clmName;
                 private ColumnHeader clSize;
-                private Button button1;
+                private Button btnRemoteList;
                 private TextBox txtRemoteFolderPath;
                 internal EXListView lvSSHFileBrowser;
                 private ColumnHeader columnHeader1;
@@ -85,7 +85,7 @@ namespace mRemoteNC
             this.clmName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRemoteList = new System.Windows.Forms.Button();
             this.txtRemoteFolderPath = new System.Windows.Forms.TextBox();
             this.lvSSHFileBrowser = new EXControls.EXListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -162,7 +162,7 @@ namespace mRemoteNC
             this.tpSimple.Padding = new System.Windows.Forms.Padding(3);
             this.tpSimple.Size = new System.Drawing.Size(962, 435);
             this.tpSimple.TabIndex = 0;
-            this.tpSimple.Text = "Simple";
+            this.tpSimple.Text = Language.SSHTransfer_ApplyLanguage_Simple;
             this.tpSimple.UseVisualStyleBackColor = true;
             // 
             // lblLocalFile
@@ -223,7 +223,7 @@ namespace mRemoteNC
             this.tpFull.Padding = new System.Windows.Forms.Padding(3);
             this.tpFull.Size = new System.Drawing.Size(962, 435);
             this.tpFull.TabIndex = 1;
-            this.tpFull.Text = "Full";
+            this.tpFull.Text = Language.SSHTransfer_ApplyLanguage_Full;
             this.tpFull.UseVisualStyleBackColor = true;
             // 
             // splitContainer1
@@ -327,7 +327,7 @@ namespace mRemoteNC
             // 
             // splitContainer3.Panel1
             // 
-            this.splitContainer3.Panel1.Controls.Add(this.button1);
+            this.splitContainer3.Panel1.Controls.Add(this.btnRemoteList);
             this.splitContainer3.Panel1.Controls.Add(this.txtRemoteFolderPath);
             // 
             // splitContainer3.Panel2
@@ -337,16 +337,16 @@ namespace mRemoteNC
             this.splitContainer3.SplitterDistance = 32;
             this.splitContainer3.TabIndex = 1;
             // 
-            // button1
+            // btnRemoteList
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button1.Location = new System.Drawing.Point(426, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(68, 27);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "List";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnRemoteList.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnRemoteList.Location = new System.Drawing.Point(426, 2);
+            this.btnRemoteList.Name = "btnRemoteList";
+            this.btnRemoteList.Size = new System.Drawing.Size(68, 27);
+            this.btnRemoteList.TabIndex = 3;
+            this.btnRemoteList.Text = "List";
+            this.btnRemoteList.UseVisualStyleBackColor = true;
+            this.btnRemoteList.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtRemoteFolderPath
             // 
@@ -535,7 +535,7 @@ namespace mRemoteNC
             this.btnTransfer.Name = "btnTransfer";
             this.btnTransfer.Size = new System.Drawing.Size(83, 29);
             this.btnTransfer.TabIndex = 10000;
-            this.btnTransfer.Text = "Transfer";
+            this.btnTransfer.Text = Language.SSHTransfer_Upload_Transfer;
             this.btnTransfer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnTransfer.UseVisualStyleBackColor = true;
             this.btnTransfer.Click += new System.EventHandler(this.btnTransfer_Click);
@@ -646,6 +646,10 @@ namespace mRemoteNC
                     lblPort.Text = Language.strLabelPort;
                     lblHost.Text = Language.strHost + ":";
                     btnTransfer.Text = Language.strTransfer;
+                    tpFull.Text = Language.SSHTransfer_ApplyLanguage_Full;
+                    tpSimple.Text = Language.SSHTransfer_ApplyLanguage_Simple;
+                    btnLocalBrowserGo.Text = Language.SSHTransfer_ApplyLanguage_List;
+                    btnRemoteList.Text= Language.SSHTransfer_ApplyLanguage_List;
                     TabText = Language.strMenuSSHFileTransfer;
                     Text = Language.strMenuSSHFileTransfer;
                 }
@@ -714,7 +718,7 @@ namespace mRemoteNC
                                 {
                                     SetProgressStatus((long)i.UploadedBytes, s.Length);
                                 }
-                                MessageBox.Show("Upload completed.");
+                                MessageBox.Show(Language.SSHTransfer_StartTransfer_Upload_completed_);
                                 EnableButtons();
                             });
                         }
@@ -875,7 +879,7 @@ namespace mRemoteNC
                             }
                         }
                         long totalsize = filelist.Sum(pair => pair.Key.Length);
-                        var result = MessageBox.Show(string.Format("Download {0} in {1} files?\r\nDestination directory:{2}", Tools.Misc.LengthToHumanReadable(totalsize), filelist.Count, txtLocalBrowserPath.Text), "Downloading", MessageBoxButtons.YesNoCancel);
+                        var result = MessageBox.Show(string.Format(Language.SSHTransfer_DownloadFilesFromServer_Download__0__in__1__files_ + "\r\n" + Language.SSHTransfer_DownloadFilesFromServer_Destination_directory__2_, Tools.Misc.LengthToHumanReadable(totalsize), filelist.Count, txtLocalBrowserPath.Text), "Downloading", MessageBoxButtons.YesNoCancel);
                         if (result!=DialogResult.Yes)
                         {
                             EnableButtons();
@@ -903,7 +907,7 @@ namespace mRemoteNC
                                 }
                                 EnableButtons();
                                 ssh.Disconnect();
-                                MessageBox.Show("Download finished");
+                                MessageBox.Show(Language.SSHTransfer_DownloadFilesFromServer_Download_finished);
                             });
                     }
                     catch (Exception ex)
@@ -939,7 +943,7 @@ namespace mRemoteNC
                         set
                         {
                             _upload = value;
-                            btnTransfer.Text = tabControl1.SelectedIndex==1? _upload ? "Upload" : "Download":"Transfer";
+                            btnTransfer.Text = tabControl1.SelectedIndex==1? _upload ? Language.SSHTransfer_Upload_Upload : Language.SSHTransfer_Upload_Download:Language.SSHTransfer_Upload_Transfer;
                             btnTransfer.Image = tabControl1.SelectedIndex == 1 ? !_upload ? Tools.Misc.RotateFlip(RotateFlipType.RotateNoneFlipX, global::My.Resources.Resources.SSHTransfer) : global::My.Resources.Resources.SSHTransfer : global::My.Resources.Resources.SSHTransfer;
                         } 
                     }
@@ -993,7 +997,7 @@ namespace mRemoteNC
                                 ssh.EndUploadFile(i);
                                 totaluploaded += s.Length;
                             }
-                            MessageBox.Show("Upload completed.");
+                            MessageBox.Show(Language.SSHTransfer_StartTransfer_Upload_completed_);
                             EnableButtons();
                             ssh.Disconnect();
                         });

@@ -4,19 +4,24 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using mRemoteNC.App;
 using My;
 using PSTaskDialog;
-using mRemoteNC.App;
 
 namespace mRemoteNC.Tools
 {
-    static class ProblemFixer
+    internal static class ProblemFixer
     {
         public static string RDPVer;
         public static string VNCVer;
         public static string XulVer;
         public static string TVVer;
         public static string ICAVer;
+        public static string RAVer;
+
+        private const string xul16Path = "http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/";
+        private const string xul18Path = "ftp://ftp.mozilla.org/pub/xulrunner/releases/1.8.1.3/contrib/win32/";
+        private const string xul16Name = "xulrunner-16.0.2.en-US.win32.zip";
 
         private static bool IsRDPOkInternal()
         {
@@ -34,7 +39,6 @@ namespace mRemoteNC.Tools
                     RDPVer = RDP.Version;
                 }
                 return true;
-
             }
             catch (Exception)
             {
@@ -70,7 +74,6 @@ namespace mRemoteNC.Tools
                     VNCVer = VNC.ProductVersion;
                 }
                 return true;
-
             }
             catch (Exception)
             {
@@ -169,6 +172,26 @@ namespace mRemoteNC.Tools
             }
         }
 
+        internal static bool IsRAdminOk()
+        {
+            try
+            {
+                if (File.Exists(Settings.Default.RAdminPath))
+                {
+                    RAVer = FileVersionInfo.GetVersionInfo(Settings.Default.RAdminPath).FileVersion;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public static bool IsTeamViewerOk()
         {
             try
@@ -182,22 +205,19 @@ namespace mRemoteNC.Tools
                 {
                     return false;
                 }
-                
             }
             catch (Exception)
             {
                 return false;
             }
-            
         }
-
 
         private static void InstallXul()
         {
             try
             {
                 var temFile = Path.GetTempFileName() + ".zip";
-                Misc.DownloadFileVisual("http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/xulrunner-16.0.2.en-US.win32.zip",temFile);
+                Misc.DownloadFileVisual(xul16Path+xul16Name, temFile);
                 Misc.UnZipFileVisual(temFile, ".\\");
                 File.Delete(temFile);
             }
@@ -216,14 +236,16 @@ namespace mRemoteNC.Tools
                     cTaskDialog.CommandButtonResult = 99;
                     cTaskDialog.ShowTaskDialogBox(Language.strPfTVProblemFound,
                                                   Language.ProblemFixer_FixTVProblem_TeamViewer_not_found__neither_installed_nor_portable,
-                                                  Language.ProblemFixer_FixTVProblem_You_shold_install_TeamViewer, 
+                                                  Language.ProblemFixer_FixTVProblem_You_shold_install_TeamViewer,
                                                   "", "", "", "",
-                                                  Language.ProblemFixer_FixTVProblem_Options, eTaskDialogButtons.OK, eSysIcons.Information, eSysIcons.Information);
+                                                  string.Format("{0}|{1}", Language.ProblemFixer_FixTVProblem_Open_Options, Language.ProblemFixer_FixTVProblem_Open_TeamViewer_Download_page),
+                                                  eTaskDialogButtons.OK, eSysIcons.Information, eSysIcons.Information);
                     switch (cTaskDialog.CommandButtonResult)
                     {
                         case 0:
                             Runtime.Windows.Show(UI.Window.Type.Options);
                             break;
+
                         case 1:
                             Process.Start("http://www.teamviewer.com/ru/download/windows.aspx");
                             break;
@@ -236,12 +258,16 @@ namespace mRemoteNC.Tools
                                                   Language.ProblemFixer_FixTVProblem_TeamViewer_found__but_not_set_in_options,
                                                   Language.ProblemFixer_FixTVProblem_You_should_setup_TeamViewer,
                                                   "", "", "", "",
-                                                  Language.ProblemFixer_FixTVProblem_ + Misc.FindTvPaths().First(), eTaskDialogButtons.OK, eSysIcons.Information, eSysIcons.Information);
+                                                  string.Format("{0}|{1}:\r\n{2}", Language.ProblemFixer_FixTVProblem_Open_Options,
+                                                                                   Language.ProblemFixer_FixTVProblem_Setup_path,
+                                                                                   Misc.FindTvPaths().First()),
+                                                  eTaskDialogButtons.OK, eSysIcons.Information, eSysIcons.Information);
                     switch (cTaskDialog.CommandButtonResult)
                     {
                         case 0:
                             Runtime.Windows.Show(UI.Window.Type.Options);
                             break;
+
                         case 1:
                             Settings.Default.TeamViewerPath = Misc.FindTvPaths().First();
                             Settings.Default.Save();
@@ -255,8 +281,6 @@ namespace mRemoteNC.Tools
             }
         }
 
-        
-
         internal static void FixGeckoProblem()
         {
             try
@@ -268,19 +292,27 @@ namespace mRemoteNC.Tools
                                                   Language.ProblemFixer_FixGeckoProblem_Xulrunner_folder_not_found,
                                                   Language.strCcGeckoFix,
                                                   "", "", "", "",
-                                                  Language.ProblemFixer_FixGeckoProblem_, 
+                                                  string.Format("{0}|{1}\r\n{2}|{3}\r\n{4}|{5}", Language.ProblemFixer_FixTVProblem_Open_Options,
+                                                                                                 Language.ProblemFixer_FixGeckoProblem_Open_XULrunner_1_8_1_Download_page,
+                                                                                                 xul18Path,
+                                                                                                 Language.ProblemFixer_FixGeckoProblem_Open_XULrunner_16_0_2_Download_page,
+                                                                                                 xul16Path,
+                                                                                                 Language.ProblemFixer_FixGeckoProblem_Download_and_setup_XULrunner_16_0_2),
                                                   eTaskDialogButtons.OK, eSysIcons.Information, eSysIcons.Information);
                     switch (cTaskDialog.CommandButtonResult)
                     {
                         case 0:
                             Runtime.Windows.Show(UI.Window.Type.Options);
                             break;
+
                         case 1:
-                            Process.Start("ftp://ftp.mozilla.org/pub/xulrunner/releases/1.8.1.3/contrib/win32/");
+                            Process.Start(xul18Path);
                             break;
+
                         case 2:
-                            Process.Start("http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/");
+                            Process.Start(xul16Path);
                             break;
+
                         case 3:
                             InstallXul();
                             Settings.Default.XULRunnerPath = Path.GetFullPath(".\\xulrunner\\");
@@ -295,25 +327,18 @@ namespace mRemoteNC.Tools
                                                   Language.ProblemFixer_FixGeckoProblem_Xulrunner_found__but_not_set_in_options,
                                                   Language.ProblemFixer_FixGeckoProblem_You_should_setup_Xulrunner_path,
                                                   "", "", "", "",
-                                                  Language.ProblemFixer_FixGeckoProblem_OpenOptions + Misc.FindGeckoPaths().First() + Language.ProblemFixer_FixGeckoProblem_OpenXULR, eTaskDialogButtons.OK, eSysIcons.Information, eSysIcons.Information);
+                                                  string.Format("{0}|{1}:\r\n{2}", Language.ProblemFixer_FixTVProblem_Open_Options,
+                                                                                      Language.ProblemFixer_FixTVProblem_Setup_path,
+                                                                                      Misc.FindGeckoPaths().First()),
+                                                  eTaskDialogButtons.OK, eSysIcons.Information, eSysIcons.Information);
                     switch (cTaskDialog.CommandButtonResult)
                     {
                         case 0:
                             Runtime.Windows.Show(UI.Window.Type.Options);
                             break;
+
                         case 1:
                             Settings.Default.XULRunnerPath = Misc.FindGeckoPaths().First();
-                            Settings.Default.Save();
-                            break;
-                        case 2:
-                            Process.Start("ftp://ftp.mozilla.org/pub/xulrunner/releases/1.8.1.3/contrib/win32/");
-                            break;
-                        case 3:
-                            Process.Start("http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/");
-                            break;
-                        case 4:
-                            InstallXul();
-                            Settings.Default.XULRunnerPath = Path.GetFullPath(".\\xulrunner\\");
                             Settings.Default.Save();
                             break;
                     }
@@ -334,18 +359,25 @@ namespace mRemoteNC.Tools
                                               Language.ProblemFixer_FixPuTTYProblem_PuTTY_not_found__Reinstall_mRemoteNC_or_set_PuTTY_path_in_Options_,
                                               Language.strCcPuttyFailed,
                                               "", "", "", "",
-                                              Language.ProblemFixer_FixPuTTYProblem_Open_Options_Open_mRemoteNC_Download_page_Open_PuTTY_download_page_Download_and_install_PuTTY, eTaskDialogButtons.OK, eSysIcons.Information, eSysIcons.Information);
+                                              string.Format("{0}|{1}|{2}|{3}", Language.ProblemFixer_FixTVProblem_Open_Options,
+                                                                               Language.ProblemFixer_FixPuTTYProblem_Open_mRemoteNC_Download_page,
+                                                                               Language.ProblemFixer_FixPuTTYProblem_Open_PuTTY_download_page,
+                                                                               Language.ProblemFixer_FixPuTTYProblem_Download_and_install_PuTTY),
+                                              eTaskDialogButtons.OK, eSysIcons.Information, eSysIcons.Information);
                 switch (cTaskDialog.CommandButtonResult)
                 {
                     case 0:
                         Runtime.Windows.Show(UI.Window.Type.Options);
                         break;
+
                     case 1:
                         Process.Start(AppInfo.General.URLHome);
                         break;
+
                     case 2:
                         Process.Start("http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html");
                         break;
+
                     case 3:
                         Misc.DownloadFileVisual("https://github.com/Exaktus/mRemoteNC/blob/master/Installer/Dependencies/PuTTYNG.exe?raw=true", "PuTTYNG.exe");
 
@@ -366,7 +398,6 @@ namespace mRemoteNC.Tools
         {
             try
             {
-
                 if (File.Exists("eolwtscom.dll"))
                 {
                     cTaskDialog.CommandButtonResult = 99;
@@ -397,37 +428,13 @@ namespace mRemoteNC.Tools
                             break;
                     }
                 }
-                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-
-        public static string RAVer;
-
-        internal static bool IsRAdminOk()
-        {
-            try
-            {
-                if (File.Exists(Settings.Default.RAdminPath))
-                {
-                    RAVer = FileVersionInfo.GetVersionInfo(Settings.Default.RAdminPath).FileVersion;
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
+        
         internal static void FixRAdminProblem()
         {
             try
@@ -439,12 +446,14 @@ namespace mRemoteNC.Tools
                                                   Language.ProblemFixer_FixRAdminProblem_RAdmin_not_found__neither_installed_nor_portable,
                                                   Language.ProblemFixer_FixRAdminProblem_You_shold_install_RAdmin_or_setup_RAdmin_path,
                                                   "", "", "", "",
-                                                  Language.ProblemFixer_FixRAdminProblem_Open_Options_Open_RAdmin_Download_page, eTaskDialogButtons.OK, eSysIcons.Information, eSysIcons.Information);
+                                                  string.Format("{0}|{1}", Language.ProblemFixer_FixTVProblem_Open_Options, Language.ProblemFixer_FixRAdminProblem_Open_RAdmin_Download_page),
+                                                  eTaskDialogButtons.OK, eSysIcons.Information, eSysIcons.Information);
                     switch (cTaskDialog.CommandButtonResult)
                     {
                         case 0:
                             Runtime.Windows.Show(UI.Window.Type.Options);
                             break;
+
                         case 1:
                             Process.Start("http://www.radmin.ru/download/index.php");
                             break;
@@ -457,12 +466,16 @@ namespace mRemoteNC.Tools
                                                   Language.ProblemFixer_FixRAdminProblem_RAdmin_found__but_not_set_in_options,
                                                   Language.ProblemFixer_FixRAdminProblem_You_should_setup_TeamViewer_path_in_options_or_I_can_do_it_for_you_,
                                                   "", "", "", "",
-                                                  Language.ProblemFixer_FixRAdminProblem_OpenOptions_Setuppath+ Misc.FindRAdminPaths().First(), eTaskDialogButtons.OK, eSysIcons.Information, eSysIcons.Information);
+                                                  string.Format("{0}|{1}:\r\n{2}", Language.ProblemFixer_FixTVProblem_Open_Options,
+                                                                                   Language.ProblemFixer_FixTVProblem_Setup_path,
+                                                                                   Misc.FindRAdminPaths().First()),
+                                                  eTaskDialogButtons.OK, eSysIcons.Information, eSysIcons.Information);
                     switch (cTaskDialog.CommandButtonResult)
                     {
                         case 0:
                             Runtime.Windows.Show(UI.Window.Type.Options);
                             break;
+
                         case 1:
                             Settings.Default.RAdminPath = Misc.FindRAdminPaths().First();
                             Settings.Default.Save();

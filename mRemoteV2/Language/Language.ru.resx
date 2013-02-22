@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="strAbout" xml:space="preserve">
     <value>О программе</value>
@@ -167,6 +167,9 @@
   </data>
   <data name="strAskUpdatesMainInstruction" xml:space="preserve">
     <value>Параметры автоматического обновления</value>
+  </data>
+  <data name="strAspect" xml:space="preserve">
+    <value>Вид</value>
   </data>
   <data name="strAutomaticallyGetSessionInfo" xml:space="preserve">
     <value>Автоматически получать информацию о сессии</value>
@@ -244,11 +247,17 @@
   <data name="strCategoryConnection" xml:space="preserve">
     <value>Подключение</value>
   </data>
+  <data name="strCategoryCredentials" xml:space="preserve">
+    <value>Учетные данные</value>
+  </data>
   <data name="strCategoryDisplay" xml:space="preserve">
     <value>Вид</value>
   </data>
   <data name="strCategoryGateway" xml:space="preserve">
     <value>Шлюз</value>
+  </data>
+  <data name="strCategoryGeneral" xml:space="preserve">
+    <value>Общее</value>
   </data>
   <data name="strCategoryMiscellaneous" xml:space="preserve">
     <value>Разное</value>
@@ -279,12 +288,6 @@
   </data>
   <data name="strCcEOLOK" xml:space="preserve">
     <value>EOLWTSCOM был найден и зарегистрирован.</value>
-  </data>
-  <data name="strCcGeckoFailed" xml:space="preserve">
-    <value>Для использования движка Gecko у Вас должен быть установлен XULRunner 1.8.1.x
- Вы можете скачать XULRunner 1.8.1.3 здесь: ftp://ftp.mozilla.org/pub/xulrunner/releases/1.8.1.3/contrib/win32/
- После загрузки извлеките пакет в любую папку. Потом в mRemoteNC перейдите в меню Инструменты - Опции - Дополнительно и введите правильный путь в поле Путь XULRunner.
- Если у вас ничего не получилось обратитесь на форум mRemoteNC http://forum.mRemoteNC.org/</value>
   </data>
   <data name="strCcGeckoOK" xml:space="preserve">
     <value>XULRunner был найден и установлен правильно.</value>
@@ -407,6 +410,27 @@
   </data>
   <data name="strComponentsCheck" xml:space="preserve">
     <value>Проверка компонентов</value>
+  </data>
+  <data name="strConfigPropertyGridButtonIconClickFailed" xml:space="preserve">
+    <value>Ошибка btnIcon_Click!</value>
+  </data>
+  <data name="strConfigPropertyGridHideItemsFailed" xml:space="preserve">
+    <value>Ошибка ShowHideGridItems!</value>
+  </data>
+  <data name="strConfigPropertyGridMenuClickFailed" xml:space="preserve">
+    <value>Ошибка IconMenu_Click!</value>
+  </data>
+  <data name="strConfigPropertyGridObjectFailed" xml:space="preserve">
+    <value>Ошибка свойства Grid opject!</value>
+  </data>
+  <data name="strConfigPropertyGridSetHostStatusFailed" xml:space="preserve">
+    <value>Ошибка SetHostStatus!</value>
+  </data>
+  <data name="strConfigPropertyGridValueFailed" xml:space="preserve">
+    <value>Ошибка pGrid_PopertyValueChanged!</value>
+  </data>
+  <data name="strConfigUiLoadFailed" xml:space="preserve">
+    <value>Ошибка загрузки Config UI!</value>
   </data>
   <data name="strConfirmCloseConnection" xml:space="preserve">
     <value>Запрашивать подтверждение при закрытии вкладки подключения</value>
@@ -532,7 +556,7 @@
     <value>Двойной щелчок для закрытия  вкладки</value>
   </data>
   <data name="strDownloadAndInstall" xml:space="preserve">
-    <value>Загрузка и установка</value>
+    <value>Загрузить и установить</value>
   </data>
   <data name="strDuplicate" xml:space="preserve">
     <value>Дублировать</value>
@@ -567,8 +591,17 @@
   <data name="strEndPort" xml:space="preserve">
     <value>Конечн. порт</value>
   </data>
+  <data name="strErrorAddExternalToolsToToolBarFailed" xml:space="preserve">
+    <value>Ошибка добавления внешнего приложения на Панель (frmMain). {0}</value>
+  </data>
+  <data name="strErrorAddFolderFailed" xml:space="preserve">
+    <value>Ошибка AddFolder (UI.Window.Tree). {0}</value>
+  </data>
   <data name="strErrorBadDatabaseVersion" xml:space="preserve">
     <value>Версия базы данных {0} не совместима с этой версией {1}.</value>
+  </data>
+  <data name="strErrorCloneNodeFailed" xml:space="preserve">
+    <value>Ошибка CloneNode (Tree.Node). {0}</value>
   </data>
   <data name="strErrorCode" xml:space="preserve">
     <value>Код ошибки {0}.</value>
@@ -592,6 +625,12 @@
   <data name="strErrors" xml:space="preserve">
     <value>Ошибки</value>
   </data>
+  <data name="strErrorStartupConnectionFileLoad" xml:space="preserve">
+    <value>Ошибка загрузки файла соединения.{0}{0}{2}{0}{3}{0}{0}Для предотвращения потери данных, {1} будет выполнен выход.</value>
+  </data>
+  <data name="strErrorVerifyDatabaseVersionFailed" xml:space="preserve">
+    <value>Ошибка VerifyDatabaseVersion (Config.Connections.Save). {0}</value>
+  </data>
   <data name="strExpandAllFolders" xml:space="preserve">
     <value>Раскрыть все папки</value>
   </data>
@@ -604,8 +643,14 @@
   <data name="strExportmRemoteXML" xml:space="preserve">
     <value>Экспорт mRemote / mRemoteNC XML</value>
   </data>
+  <data name="strExtApp" xml:space="preserve">
+    <value>Внешнее Приложение</value>
+  </data>
   <data name="strFAMFAMFAMAttribution" xml:space="preserve">
     <value>Использованы значки [FAMFAMFAM]</value>
+  </data>
+  <data name="strFAMFAMFAMAttributionURL" xml:space="preserve">
+    <value>http://www.famfamfam.com/</value>
   </data>
   <data name="strFilterAll" xml:space="preserve">
     <value>Все файлы (*.*)</value>
@@ -630,6 +675,9 @@
   </data>
   <data name="strFormatInheritDescription" xml:space="preserve">
     <value>Описание наследованного свойства: {0}</value>
+  </data>
+  <data name="strFree" xml:space="preserve">
+    <value>Free</value>
   </data>
   <data name="strFullscreen" xml:space="preserve">
     <value>Во весь экран</value>
@@ -658,6 +706,9 @@
   <data name="strHost" xml:space="preserve">
     <value>Хост</value>
   </data>
+  <data name="strHttp" xml:space="preserve">
+    <value>HTTP</value>
+  </data>
   <data name="strHttpConnectFailed" xml:space="preserve">
     <value>Ошибка HTTP подключения!</value>
   </data>
@@ -667,11 +718,35 @@
   <data name="strHttpDocumentTileChangeFailed" xml:space="preserve">
     <value>Изменение HTTP документа не удалось!</value>
   </data>
+  <data name="strHttpInternetExplorer" xml:space="preserve">
+    <value>Internet Explorer</value>
+  </data>
+  <data name="strHttps" xml:space="preserve">
+    <value>HTTPS</value>
+  </data>
+  <data name="strHttpSetPropsFailed" xml:space="preserve">
+    <value>Не удалось задать параметры HTTP!</value>
+  </data>
+  <data name="strICA" xml:space="preserve">
+    <value>ICA</value>
+  </data>
   <data name="strIcaConnectionFailed" xml:space="preserve">
     <value>Не удается создать новое подключение ICA!</value>
   </data>
   <data name="strIcaControlFailed" xml:space="preserve">
     <value>Не удалось загрузить ICA-плагин!</value>
+  </data>
+  <data name="strIcaSetCredentialsFailed" xml:space="preserve">
+    <value>Ошибка установки учетных данных ICA!</value>
+  </data>
+  <data name="strIcaSetEventHandlersFailed" xml:space="preserve">
+    <value>Не удалось установить обработчик событий ICA!</value>
+  </data>
+  <data name="strIcaSetPropsFailed" xml:space="preserve">
+    <value>Не удалось задать параметры ICA!</value>
+  </data>
+  <data name="strIcaSetResolutionFailed" xml:space="preserve">
+    <value>Ошибка установки разрешений ICA!</value>
   </data>
   <data name="strImportAD" xml:space="preserve">
     <value>Импорт из Active Directory</value>
@@ -700,8 +775,35 @@
   <data name="strIntAppConnectionFailed" xml:space="preserve">
     <value>Подключение не удалось!</value>
   </data>
+  <data name="strIntAppDisposeFailed" xml:space="preserve">
+    <value>Не удалось завершить процесс внутреннего приложения!</value>
+  </data>
+  <data name="strIntAppFocusFailed" xml:space="preserve">
+    <value>Внутренний инструмент: Ошибка получения фокуса!</value>
+  </data>
+  <data name="strIntAppHandle" xml:space="preserve">
+    <value>Обработчик Внутр. инструментов: {0}</value>
+  </data>
+  <data name="strIntAppKillFailed" xml:space="preserve">
+    <value>Не удалось завершить процесс внутреннего приложения!</value>
+  </data>
+  <data name="strIntAppParentHandle" xml:space="preserve">
+    <value>Панель обработчика событий: {0}</value>
+  </data>
+  <data name="strIntAppResizeFailed" xml:space="preserve">
+    <value>Внутренний инструмент: Ошибка изменения размера!</value>
+  </data>
+  <data name="strIntAppStuff" xml:space="preserve">
+    <value>--- Внутреннее приложение ---</value>
+  </data>
+  <data name="strIntAppTitle" xml:space="preserve">
+    <value>Заголовок внешнего инструмента: {0}</value>
+  </data>
   <data name="strKeysCtrlAltDel" xml:space="preserve">
     <value>CTRL+ALT+DEL</value>
+  </data>
+  <data name="strKeysCtrlEsc" xml:space="preserve">
+    <value>CTRL-ESC</value>
   </data>
   <data name="strLabelAddress" xml:space="preserve">
     <value>Адрес:</value>
@@ -735,6 +837,9 @@
   </data>
   <data name="strLabelPort" xml:space="preserve">
     <value>Порт:</value>
+  </data>
+  <data name="strLabelPortableEdition" xml:space="preserve">
+    <value>Портативная версия</value>
   </data>
   <data name="strLabelProtocol" xml:space="preserve">
     <value>Протокол:</value>
@@ -799,6 +904,12 @@
   <data name="strLogWriteToFileFinalLocationFailed" xml:space="preserve">
     <value>Невозможно сохранить отчет в папке назначения.</value>
   </data>
+  <data name="strMagicLibraryAttribution" xml:space="preserve">
+    <value>Использовано Magic library от [Crownwood Software]</value>
+  </data>
+  <data name="strMagicLibraryAttributionURL" xml:space="preserve">
+    <value>http://www.dotnetmagic.com/</value>
+  </data>
   <data name="strMenuAbout" xml:space="preserve">
     <value>О программе</value>
   </data>
@@ -809,7 +920,7 @@
     <value>Сообщения</value>
   </data>
   <data name="strMenuCheckForUpdates" xml:space="preserve">
-    <value>Проверка наличия обновлений</value>
+    <value>Проверить обновления</value>
   </data>
   <data name="strMenuConfig" xml:space="preserve">
     <value>Конфигурация</value>
@@ -828,6 +939,12 @@
   </data>
   <data name="strMenuCopy" xml:space="preserve">
     <value>Копировать</value>
+  </data>
+  <data name="strMenuCtrlAltDel" xml:space="preserve">
+    <value>Ctrl-Alt-Del</value>
+  </data>
+  <data name="strMenuCtrlEsc" xml:space="preserve">
+    <value>Ctrl-Esc</value>
   </data>
   <data name="strMenuDelete" xml:space="preserve">
     <value>Удалить...</value>
@@ -851,7 +968,7 @@
     <value>Дублировать</value>
   </data>
   <data name="strMenuDuplicateConnection" xml:space="preserve">
-    <value>Дубликат подключения</value>
+    <value>Дублировать подключение</value>
   </data>
   <data name="strMenuDuplicateFolder" xml:space="preserve">
     <value>Дублировать папку</value>
@@ -903,9 +1020,6 @@
   </data>
   <data name="strMenuOptions" xml:space="preserve">
     <value>Опции</value>
-  </data>
-  <data name="strMenuPaste" xml:space="preserve">
-    <value>Вставить</value>
   </data>
   <data name="strMenuPortScan" xml:space="preserve">
     <value>Сканер портов</value>
@@ -1012,6 +1126,9 @@
   <data name="strNewPanel" xml:space="preserve">
     <value>Новая панель</value>
   </data>
+  <data name="strNewRoot" xml:space="preserve">
+    <value>Новый корень</value>
+  </data>
   <data name="strNewTitle" xml:space="preserve">
     <value>Новое название</value>
   </data>
@@ -1021,6 +1138,9 @@
   <data name="strNoCompression" xml:space="preserve">
     <value>Без сжатия</value>
   </data>
+  <data name="strNoExtAppDefined" xml:space="preserve">
+    <value>Не указано внешнее приложение.</value>
+  </data>
   <data name="strNoInformation" xml:space="preserve">
     <value>Нет</value>
   </data>
@@ -1029,6 +1149,9 @@
   </data>
   <data name="strNormal" xml:space="preserve">
     <value>Нормальный</value>
+  </data>
+  <data name="strNoSmartSize" xml:space="preserve">
+    <value>SmartSize недоступен</value>
   </data>
   <data name="strNoUpdateAvailable" xml:space="preserve">
     <value>Нет доступных обновлений</value>
@@ -1181,6 +1304,9 @@
   <data name="strPropertyDescriptionUseConsoleSession" xml:space="preserve">
     <value>Подключение к текущему сеансу удаленного пользователя.</value>
   </data>
+  <data name="strPropertyDescriptionUseCredSsp" xml:space="preserve">
+    <value>Используйте для проверки подлинности учетных данных поставщика поддержки безопасности (CredSSP), если он доступен.</value>
+  </data>
   <data name="strPropertyDescriptionUser1" xml:space="preserve">
     <value>Введите любую информацию.</value>
   </data>
@@ -1252,6 +1378,12 @@
   </data>
   <data name="strPropertyNameExternalTool" xml:space="preserve">
     <value>Внешний инструмент</value>
+  </data>
+  <data name="strPropertyNameExternalToolAfter" xml:space="preserve">
+    <value>Внеш. Инстр. После </value>
+  </data>
+  <data name="strPropertyNameExternalToolBefore" xml:space="preserve">
+    <value>Внеш. Инстр. До</value>
   </data>
   <data name="strPropertyNameIcon" xml:space="preserve">
     <value>Значок</value>
@@ -1325,6 +1457,9 @@
   <data name="strPropertyNameUseConsoleSession" xml:space="preserve">
     <value>Сеанс консоли</value>
   </data>
+  <data name="strPropertyNameUseCredSsp" xml:space="preserve">
+    <value>Использовать проверку подлинности CredSSP</value>
+  </data>
   <data name="strPropertyNameUser1" xml:space="preserve">
     <value>Дополнительно</value>
   </data>
@@ -1379,8 +1514,17 @@
   <data name="strPuttyGetSessionsFailed" xml:space="preserve">
     <value>Получить сессию Putty не удалось!</value>
   </data>
+  <data name="strPuttyHandle" xml:space="preserve">
+    <value>Обработчик Putty: {0}</value>
+  </data>
   <data name="strPuttyKillFailed" xml:space="preserve">
     <value>Убить процесс Putty не удалось!</value>
+  </data>
+  <data name="strPuttyParentHandle" xml:space="preserve">
+    <value>Панель обработчиков: {0}</value>
+  </data>
+  <data name="strPuttyResizeFailed" xml:space="preserve">
+    <value>Ошибка изменения размера окна Putty!</value>
   </data>
   <data name="strPuttySettings" xml:space="preserve">
     <value>Настройки PuTTY</value>
@@ -1390,6 +1534,12 @@
   </data>
   <data name="strPuttyStartFailed" xml:space="preserve">
     <value>Не удалось запустить Putty!</value>
+  </data>
+  <data name="strPuttyStuff" xml:space="preserve">
+    <value>--- PuTTY ---</value>
+  </data>
+  <data name="strPuttyTitle" xml:space="preserve">
+    <value>Заголовок PuTTY: {0}</value>
   </data>
   <data name="strQuick" xml:space="preserve">
     <value>Быстрое: {0}</value>
@@ -1405,6 +1555,12 @@
   </data>
   <data name="strQuickConnectHistoryExistsFailed" xml:space="preserve">
     <value>Ошибка истории Быстрых подключений!</value>
+  </data>
+  <data name="strRAW" xml:space="preserve">
+    <value>RAW</value>
+  </data>
+  <data name="strRDP" xml:space="preserve">
+    <value>RDP</value>
   </data>
   <data name="strRDP16777216Colors" xml:space="preserve">
     <value>16777216 цв. (24-бит)</value>
@@ -1478,6 +1634,9 @@
   <data name="strRdpErrorConnection" xml:space="preserve">
     <value>Произошла неисправимая ошибка во время подключения клиента.</value>
   </data>
+  <data name="strRdpErrorGetFailure" xml:space="preserve">
+    <value>Невозможно получить GetError (Критическая ошибка)</value>
+  </data>
   <data name="strRdpErrorGetUnknown" xml:space="preserve">
     <value>Произошла неизвестная критическая ошибка RDP. Код ошибки {0}.</value>
   </data>
@@ -1499,11 +1658,17 @@
   <data name="strRDPFitToPanel" xml:space="preserve">
     <value>В окне</value>
   </data>
+  <data name="strRdpFocusFailed" xml:space="preserve">
+    <value>RDP: Ошибка получения фокуса!</value>
+  </data>
   <data name="strRdpGatewayIsSupported" xml:space="preserve">
     <value>Шлюз Служб терминалов поддерживается.</value>
   </data>
   <data name="strRdpGatewayNotSupported" xml:space="preserve">
     <value>Шлюз Служб терминалов не поддерживается!</value>
+  </data>
+  <data name="strRdpGetSessionsFailed" xml:space="preserve">
+    <value>Ошибка сессии!</value>
   </data>
   <data name="strRdpOpenConnectionFailed" xml:space="preserve">
     <value>Открыть подключение RDP  не удалось!</value>
@@ -1511,8 +1676,44 @@
   <data name="strRdpReconnectCount" xml:space="preserve">
     <value>К-ство переподключений RDP:</value>
   </data>
+  <data name="strRdpSetAuthenticationLevelFailed" xml:space="preserve">
+    <value>RDP: Установить уровень проверки подлинности не удалась!</value>
+  </data>
+  <data name="strRdpSetConsoleSessionFailed" xml:space="preserve">
+    <value>RDP: Не удалось использование консольную сессию!</value>
+  </data>
   <data name="strRdpSetConsoleSwitch" xml:space="preserve">
     <value>Настройка переключения консолей для RDC {0}.</value>
+  </data>
+  <data name="strRdpSetCredentialsFailed" xml:space="preserve">
+    <value>Ошибка установки учетных данных RDP!</value>
+  </data>
+  <data name="strRdpSetEventHandlersFailed" xml:space="preserve">
+    <value>Ошибка RDP SetEventHandlers!</value>
+  </data>
+  <data name="strRdpSetGatewayFailed" xml:space="preserve">
+    <value>Ошибка установки шлюза RDP!</value>
+  </data>
+  <data name="strRdpSetPerformanceFlagsFailed" xml:space="preserve">
+    <value>Ошибка RDP SetPerformanceFlags!</value>
+  </data>
+  <data name="strRdpSetPortFailed" xml:space="preserve">
+    <value>Не удалось задать порт RDP!</value>
+  </data>
+  <data name="strRdpSetPropsFailed" xml:space="preserve">
+    <value>Не удалось задать параметры RDP!</value>
+  </data>
+  <data name="strRdpSetRedirectionFailed" xml:space="preserve">
+    <value>Установить перенаправление в RDP не удалось!</value>
+  </data>
+  <data name="strRdpSetRedirectKeysFailed" xml:space="preserve">
+    <value>Установить перенаправление клавиш в RDP не удалось!</value>
+  </data>
+  <data name="strRdpSetResolutionFailed" xml:space="preserve">
+    <value>Ошибка установки разрешения RDP!</value>
+  </data>
+  <data name="strRDPSmartSize" xml:space="preserve">
+    <value>Smart Size</value>
   </data>
   <data name="strRDPSoundBringToThisComputer" xml:space="preserve">
     <value>Передать на этот компьютер</value>
@@ -1522,6 +1723,12 @@
   </data>
   <data name="strRDPSoundLeaveAtRemoteComputer" xml:space="preserve">
     <value>Оставить на удаленном компьютере</value>
+  </data>
+  <data name="strRdpToggleFullscreenFailed" xml:space="preserve">
+    <value>Не удалось переключить RDP в режим Fullscreen!</value>
+  </data>
+  <data name="strRdpToggleSmartSizeFailed" xml:space="preserve">
+    <value>Не удалось переключить RDP в режим SmartSize!</value>
   </data>
   <data name="strReconnectAtStartup" xml:space="preserve">
     <value>При запуске подключаться к предыдущим сессиям</value>
@@ -1537,6 +1744,9 @@
   </data>
   <data name="strRename" xml:space="preserve">
     <value>Переименовать</value>
+  </data>
+  <data name="strRlogin" xml:space="preserve">
+    <value>Rlogin</value>
   </data>
   <data name="strSave" xml:space="preserve">
     <value>Сохранить</value>
@@ -1598,6 +1808,18 @@
   <data name="strSingleClickOnOpenConnectionSwitchesToIt" xml:space="preserve">
     <value>Один клик по открытому подключению переключается на него</value>
   </data>
+  <data name="strSmartSizeModeAspect" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="strSmartSizeModeFree" xml:space="preserve">
+    <value>Free</value>
+  </data>
+  <data name="strSmartSizeModeNone" xml:space="preserve">
+    <value>SmartSize недоступен</value>
+  </data>
+  <data name="strSocks5" xml:space="preserve">
+    <value>SOCKS 5</value>
+  </data>
   <data name="strSort" xml:space="preserve">
     <value>Сортировать</value>
   </data>
@@ -1606,6 +1828,9 @@
   </data>
   <data name="strSortDesc" xml:space="preserve">
     <value>По убыванию (Z-A)</value>
+  </data>
+  <data name="strSpecialKeys" xml:space="preserve">
+    <value>Специальные клавиши</value>
   </data>
   <data name="strSQLInfo" xml:space="preserve">
     <value>Для дополнительной информации см. справку - Начало работы - конфигурация SQL!</value>
@@ -1616,14 +1841,11 @@
   <data name="strSqlUpdateCheckUpdateAvailable" xml:space="preserve">
     <value>Доступно обновление для SQL! Обновите подключения.</value>
   </data>
-  <data name="strSSHStartTransferBG" xml:space="preserve">
-    <value>Фоновая передача по SSH - не удалась!</value>
+  <data name="strSsh1" xml:space="preserve">
+    <value>SSH версии 1</value>
   </data>
-  <data name="strSSHTranferSuccessful" xml:space="preserve">
-    <value>Передано успешо!</value>
-  </data>
-  <data name="strSSHTransferEndFailed" xml:space="preserve">
-    <value>Передача по SSH завершена с ошибкой (UI.Window.SSHTransfer)!</value>
+  <data name="strSsh2" xml:space="preserve">
+    <value>SSH версии 2</value>
   </data>
   <data name="strSSHTransferFailed" xml:space="preserve">
     <value>Передача</value>
@@ -1655,6 +1877,9 @@
   <data name="strTabUpdates" xml:space="preserve">
     <value>Обновления</value>
   </data>
+  <data name="strTelnet" xml:space="preserve">
+    <value>Telnet</value>
+  </data>
   <data name="strTheFollowing" xml:space="preserve">
     <value>Установить вручную:</value>
   </data>
@@ -1676,14 +1901,14 @@
   <data name="strTransfer" xml:space="preserve">
     <value>Передача</value>
   </data>
-  <data name="strTransferFailed" xml:space="preserve">
-    <value>Передача не удалась!</value>
-  </data>
   <data name="strTryIntegrate" xml:space="preserve">
     <value>Интеграция</value>
   </data>
   <data name="strType" xml:space="preserve">
     <value>Тип</value>
+  </data>
+  <data name="strUltraVncRepeater" xml:space="preserve">
+    <value>Ultra VNC Repeater</value>
   </data>
   <data name="strUltraVNCSCListeningPort" xml:space="preserve">
     <value>Порт UltraVNC SingleClick:</value>
@@ -1743,11 +1968,17 @@ mRemoteNC сейчас прекратит работу и начнет проц�
   <data name="strUseSameUsernameAndPassword" xml:space="preserve">
     <value>Использовать те же имя пользователя и пароль</value>
   </data>
+  <data name="strUseSmartCard" xml:space="preserve">
+    <value>Использовать смарт-карты</value>
+  </data>
   <data name="strUseSQLServer" xml:space="preserve">
     <value>Использовать SQL Server для загрузки и сохранения подключений</value>
   </data>
   <data name="strVersion" xml:space="preserve">
     <value>Версия</value>
+  </data>
+  <data name="strVnc" xml:space="preserve">
+    <value>VNC</value>
   </data>
   <data name="strVncConnectionDisconnectFailed" xml:space="preserve">
     <value>Не удалось отключить VNC!</value>
@@ -1764,6 +1995,9 @@ mRemoteNC сейчас прекратит работу и начнет проц�
   <data name="strVncSetEventHandlersFailed" xml:space="preserve">
     <value>Не удалось установить обработчик событий VNC!</value>
   </data>
+  <data name="strVncSetPropsFailed" xml:space="preserve">
+    <value>Не удалось задать параметры VNC!</value>
+  </data>
   <data name="strVncStartChatFailed" xml:space="preserve">
     <value>Не удалось начать VNC-чат!</value>
   </data>
@@ -1779,6 +2013,12 @@ mRemoteNC сейчас прекратит работу и начнет проц�
   <data name="strWarnings" xml:space="preserve">
     <value>Предупреждения</value>
   </data>
+  <data name="strWeifenLuoAttribution" xml:space="preserve">
+    <value>Использовано DockPanel Suite от [Weifen Luo]</value>
+  </data>
+  <data name="strWeifenLuoAttributionURL" xml:space="preserve">
+    <value>http://sourceforge.net/projects/dockpanelsuite/</value>
+  </data>
   <data name="strWriteLogFile" xml:space="preserve">
     <value>Запись в лог-файл (mRemoteNC.log)</value>
   </data>
@@ -1787,5 +2027,255 @@ mRemoteNC сейчас прекратит работу и начнет проц�
   </data>
   <data name="strYes" xml:space="preserve">
     <value>Да</value>
+  </data>
+  <data name="strOptionDoubleClickToOpenConnection" xml:space="preserve">
+    <value>Двойной клик на соединении открывает новое соединение</value>
+  </data>
+  <data name="strPropertyDescriptionConnectOnStartup" xml:space="preserve">
+    <value>Подключать при запуске</value>
+  </data>
+  <data name="strPropertyNameConnectOnStartup" xml:space="preserve">
+    <value>Подключать при запуске</value>
+  </data>
+  <data name="strSerial" xml:space="preserve">
+    <value>Serial</value>
+  </data>
+  <data name="strTeamViewer" xml:space="preserve">
+    <value>TeamViewer</value>
+  </data>
+  <data name="strHttpGeckoFX" xml:space="preserve">
+    <value>GheckoFX v16</value>
+  </data>
+  <data name="strTVPath" xml:space="preserve">
+    <value>Путь к TeamViewer:</value>
+  </data>
+  <data name="strCcClickOnSign" xml:space="preserve">
+    <value>&lt;-- Нажмите на красный знак, чтобы получить более подробную информацию.</value>
+  </data>
+  <data name="strCcGeckoFix" xml:space="preserve">
+    <value>Чтобы использовать движок рендеринга Gecko необходимо указать путь к XULrunner 1.8.1 или 16.0.2 в настройках. Вы можете скачать XULrunner 1.8.1.3 здесь: ftp://ftp.mozilla.org/pub/xulrunner/releases/1.8.1.3/contrib/win32/ и 16.0.2 здесь:  http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/ (для GheckoFx v16) когда вы закончите загрузку распакуйте скачанный файл в любое место по вашему выбору. После этого укажите путь к распакованным файлам в настройках mRemoteNC.
+
+Или я могу сделать это за вас.</value>
+  </data>
+  <data name="strPfTVProblemFound" xml:space="preserve">
+    <value>TeamViewer: обнаруженна проблема</value>
+  </data>
+  <data name="ProblemFixer_FixTVProblem_TeamViewer_not_found__neither_installed_nor_portable" xml:space="preserve">
+    <value>TeamViewer не найден ни установленный, ни портативный</value>
+  </data>
+  <data name="ProblemFixer_FixTVProblem_You_shold_install_TeamViewer" xml:space="preserve">
+    <value>Вам следует установить TeamViewer или установить путь к TeamViewer вручную в настройках. После установки (или распаковки Портативная версия), укажите путь в настройках mRemoteNC.</value>
+  </data>
+  <data name="ProblemFixer_FixTVProblem_TeamViewer_found__but_not_set_in_options" xml:space="preserve">
+    <value>TeamViewer найден, но путь не задан в настройках</value>
+  </data>
+  <data name="ProblemFixer_FixTVProblem_You_should_setup_TeamViewer" xml:space="preserve">
+    <value>Вы должны задать путь к TeamViewer в опциях или я могу сделать это для вас.</value>
+  </data>
+  <data name="ProblemFixer_FixGeckoProblem_Gecko__problem_found" xml:space="preserve">
+    <value>Gecko: обнаружена проблема</value>
+  </data>
+  <data name="ProblemFixer_FixGeckoProblem_Xulrunner_folder_not_found" xml:space="preserve">
+    <value>Каталог с XULRunner не найден</value>
+  </data>
+  <data name="ProblemFixer_FixGeckoProblem_Xulrunner_found__but_not_set_in_options" xml:space="preserve">
+    <value>XULRunner найден, но не задан в настройках</value>
+  </data>
+  <data name="ProblemFixer_FixGeckoProblem_You_should_setup_Xulrunner_path" xml:space="preserve">
+    <value>Вы должны установить путь к Xulrunner опциях или я могу сделать это для вас.</value>
+  </data>
+  <data name="ProblemFixer_FixPuTTYProblem_PuTTY__problem_found" xml:space="preserve">
+    <value>PuTTY: обнаруженна проблема</value>
+  </data>
+  <data name="ProblemFixer_FixPuTTYProblem_PuTTY_not_found__Reinstall_mRemoteNC_or_set_PuTTY_path_in_Options_" xml:space="preserve">
+    <value>PuTTY не найден. Переустановите mRemoteNC или укажите путь к PuTTY в настройках.</value>
+  </data>
+  <data name="ProblemFixer_FixEolProblem_EOLWTSCOM__problem_found" xml:space="preserve">
+    <value>EOLWTSCOM: обнаружена проблема</value>
+  </data>
+  <data name="ProblemFixer_FixEolProblem_EOLWTSCOM__found__but_not_registered" xml:space="preserve">
+    <value>EOLWTSCOM найден, но не зарегистрирован</value>
+  </data>
+  <data name="ProblemFixer_FixEolProblem_EOLWTSCOM__not_found" xml:space="preserve">
+    <value>EOLWTSCOM не найден</value>
+  </data>
+  <data name="ProblemFixer_FixEolProblem_Reinstall_application_" xml:space="preserve">
+    <value>Переустановите приложение.</value>
+  </data>
+  <data name="strRAdmin" xml:space="preserve">
+    <value>RAdmin</value>
+  </data>
+  <data name="ProblemFixer_FixRAdminProblem_RAdmin__Problem_found" xml:space="preserve">
+    <value>RAdmin: Обнаружена проблема</value>
+  </data>
+  <data name="ProblemFixer_FixRAdminProblem_RAdmin_not_found__neither_installed_nor_portable" xml:space="preserve">
+    <value>RAdmin не найден ни установленный, ни портативный</value>
+  </data>
+  <data name="ProblemFixer_FixRAdminProblem_You_shold_install_RAdmin_or_setup_RAdmin_path" xml:space="preserve">
+    <value>Вы должны установить путь к RAdmin вручную в настройках. После установки (или распаковки портативной версии), укажите путь в настройках mRemoteNC.</value>
+  </data>
+  <data name="ProblemFixer_FixRAdminProblem_RAdmin_found__but_not_set_in_options" xml:space="preserve">
+    <value>RAdmin найден, но не указан в настройках</value>
+  </data>
+  <data name="ProblemFixer_FixRAdminProblem_You_should_setup_TeamViewer_path_in_options_or_I_can_do_it_for_you_" xml:space="preserve">
+    <value>Вы должны указать путь RAdmin в настройках или я могу сделать это за вас.</value>
+  </data>
+  <data name="strCouldNotFindToolStripInFilteredPropertyGrid" xml:space="preserve">
+    <value>Не удалось найти элемент управления ToolStrip в FilteredPropertyGrid.</value>
+  </data>
+  <data name="Misc_UnZipFile_Unpacking___" xml:space="preserve">
+    <value>Распаковка...</value>
+  </data>
+  <data name="ProblemFixer_FixTVProblem_Open_Options" xml:space="preserve">
+    <value>Открыть Настройки</value>
+  </data>
+  <data name="ProblemFixer_FixTVProblem_Open_TeamViewer_Download_page" xml:space="preserve">
+    <value>Открыть страницу загрузки TeamViewer</value>
+  </data>
+  <data name="ProblemFixer_FixTVProblem_Setup_path" xml:space="preserve">
+    <value>Установить путь</value>
+  </data>
+  <data name="ProblemFixer_FixGeckoProblem_Open_XULrunner_16_0_2_Download_page" xml:space="preserve">
+    <value>Открыть страницу загрузки XULrunner 1.8.1</value>
+  </data>
+  <data name="ProblemFixer_FixGeckoProblem_Download_and_setup_XULrunner_16_0_2" xml:space="preserve">
+    <value>Скачать и установить XULrunner 16.0.2</value>
+  </data>
+  <data name="ProblemFixer_FixGeckoProblem_Open_XULrunner_1_8_1_Download_page" xml:space="preserve">
+    <value>Откройте страницу загрузки XULrunner 1.8.1</value>
+  </data>
+  <data name="ProblemFixer_FixPuTTYProblem_Open_mRemoteNC_Download_page" xml:space="preserve">
+    <value>Открыть страницу загрузки mRemoteNC</value>
+  </data>
+  <data name="ProblemFixer_FixPuTTYProblem_Open_PuTTY_download_page" xml:space="preserve">
+    <value>Открыть страницу загрузки PuTTY</value>
+  </data>
+  <data name="ProblemFixer_FixPuTTYProblem_Download_and_install_PuTTY" xml:space="preserve">
+    <value>Скачать и установить PuTTY</value>
+  </data>
+  <data name="ProblemFixer_FixEolProblem_Register_EOLWTSCOM" xml:space="preserve">
+    <value>Зарегистрировать EOLWTSCOM</value>
+  </data>
+  <data name="ProblemFixer_FixEolProblem_Open_mRemoteNC_website" xml:space="preserve">
+    <value>Открытые веб-сайт mRemoteNC</value>
+  </data>
+  <data name="ProblemFixer_FixRAdminProblem_Open_RAdmin_Download_page" xml:space="preserve">
+    <value>Открыть страницу загрузки RAdmin</value>
+  </data>
+  <data name="QuickHostScanner_TestAsync_Up" xml:space="preserve">
+    <value>Доступен</value>
+    <comment>IsHostUp</comment>
+  </data>
+  <data name="QuickHostScanner_TestAsync_Down" xml:space="preserve">
+    <value>Недоступен</value>
+    <comment>IsHostDown</comment>
+  </data>
+  <data name="QuickHostScanner_button1_Click_Checking___" xml:space="preserve">
+    <value>Проверка...</value>
+  </data>
+  <data name="QuickHostScanner_lstStatus_MouseClick_Set_service" xml:space="preserve">
+    <value>Использовать этот сервис</value>
+  </data>
+  <data name="QuickHostScanner_lstStatus_MouseClick_Add_as_new" xml:space="preserve">
+    <value>Добавить как новый</value>
+  </data>
+  <data name="QuickHostScanner_lstStatus_MouseClick_Add_this_connection_" xml:space="preserve">
+    <value>Добавить это соединение?</value>
+  </data>
+  <data name="QuickHostScanner_lstStatus_MouseClick_Adding_connection" xml:space="preserve">
+    <value>Добавление соединения</value>
+  </data>
+  <data name="frmMain_Connections_status" xml:space="preserve">
+    <value>Статус соединений</value>
+  </data>
+  <data name="Misc_DownloadFileVisual_Downloading" xml:space="preserve">
+    <value>Загрузка...</value>
+  </data>
+  <data name="SSHTransfer_ApplyLanguage_Full" xml:space="preserve">
+    <value>Расширенный</value>
+  </data>
+  <data name="SSHTransfer_ApplyLanguage_Simple" xml:space="preserve">
+    <value>Простой</value>
+  </data>
+  <data name="SSHTransfer_ApplyLanguage_List" xml:space="preserve">
+    <value>Отобразить</value>
+  </data>
+  <data name="SSHTransfer_StartTransfer_Upload_completed_" xml:space="preserve">
+    <value>Загрузка завершена.</value>
+  </data>
+  <data name="SSHTransfer_DownloadFilesFromServer_Download__0__in__1__files_" xml:space="preserve">
+    <value>Скачать {0} в {1} файле?</value>
+  </data>
+  <data name="SSHTransfer_DownloadFilesFromServer_Destination_directory__2_" xml:space="preserve">
+    <value>Каталог назначения: {2}</value>
+  </data>
+  <data name="SSHTransfer_DownloadFilesFromServer_Download_finished" xml:space="preserve">
+    <value>Скачивание завершено</value>
+  </data>
+  <data name="SSHTransfer_Upload_Upload" xml:space="preserve">
+    <value>Загрузить</value>
+  </data>
+  <data name="SSHTransfer_Upload_Download" xml:space="preserve">
+    <value>Скачать</value>
+  </data>
+  <data name="SSHTransfer_Upload_Transfer" xml:space="preserve">
+    <value>Передача</value>
+  </data>
+  <data name="QuickHostScanner_ApplyLanguage_Host_" xml:space="preserve">
+    <value>Хост:</value>
+  </data>
+  <data name="QuickHostScanner_ApplyLanguage_Ports" xml:space="preserve">
+    <value>Порты</value>
+  </data>
+  <data name="QuickHostScanner_ApplyLanguage_Port" xml:space="preserve">
+    <value>Порт</value>
+  </data>
+  <data name="QuickHostScanner_ApplyLanguage_Protocol" xml:space="preserve">
+    <value>Протокол</value>
+  </data>
+  <data name="QuickHostScanner_ApplyLanguage_Status" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="QuickHostScanner_ApplyLanguage_Scan" xml:space="preserve">
+    <value>Сканировать</value>
+  </data>
+  <data name="QuickHostScanner_ApplyLanguage_QuickHostScanner" xml:space="preserve">
+    <value>QuickHostScanner</value>
+  </data>
+  <data name="Test" xml:space="preserve">
+    <value>Тест</value>
+  </data>
+  <data name="ConnectionStatusForm_lstStatus_MouseDoubleClick_Checking___" xml:space="preserve">
+    <value>Проверка...</value>
+  </data>
+  <data name="ConnectionStatusForm_ApplyLanguage_Autoupdate" xml:space="preserve">
+    <value>Обновлять автоматически</value>
+  </data>
+  <data name="ConnectionStatusForm_ApplyLanguage_Refresh" xml:space="preserve">
+    <value>Обновление</value>
+  </data>
+  <data name="ConnectionStatusForm_ApplyLanguage_Test_type" xml:space="preserve">
+    <value>Тип проверки</value>
+  </data>
+  <data name="ConnectionStatusForm_ApplyLanguage_Connection" xml:space="preserve">
+    <value>Подключение</value>
+  </data>
+  <data name="ConnectionStatusForm_ApplyLanguage_Host" xml:space="preserve">
+    <value>Хост</value>
+  </data>
+  <data name="ConnectionStatusForm_ApplyLanguage_Status" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="ConnectionStatusForm_ApplyLanguage_Connections_status" xml:space="preserve">
+    <value>Статус соединений</value>
+  </data>
+  <data name="frmMain_ApplyLanguage_Quick_Text_Toolbar" xml:space="preserve">
+    <value>Панель быстрого текста</value>
+  </data>
+  <data name="frmMain_ApplyLanguage_Quick_Text" xml:space="preserve">
+    <value>Быстрый текст</value>
+  </data>
+  <data name="frmMain_ApplyLanguage_Lock_toolbar" xml:space="preserve">
+    <value>Закрепить панель инструментов</value>
   </data>
 </root>

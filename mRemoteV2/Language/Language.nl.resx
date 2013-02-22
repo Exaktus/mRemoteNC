@@ -262,12 +262,6 @@ Als u nog steeds niet in staat bent om de langs check te komen gebruik dan ICA i
   <data name="strCcEOLOK" xml:space="preserve">
     <value>EOLWTSCOM werd gevonden en lijkt correct te zijn geïnstalleerd.</value>
   </data>
-  <data name="strCcGeckoFailed" xml:space="preserve">
-    <value>Voor het gebruik van de Gecko Rendering Engine heb je XULrunner 1.8.1.x nodig en correcte pad naar de installatiemap welke onder Opties kunnen worden ingesteld.
-U kunt XULrunner 1.8.1.3 vanaf deze locatie downloaden: ftp://ftp.mozilla.org/pub/xulrunner/releases/1.8.1.3/contrib/win32/
-Wanneer de download van het pakket is voltooid kunt u deze uitpakken naar een willekeurige locatie. Ga daarna vervolgens in mRemoteNC naar Extra - Opties - Geavanceerd en voer het juiste pad in naar de uitgepakte XULrunner bestanden.
-Als u nog steeds niet in staat bent om de langs check te komen gebruik dan de Gecko Engine in mRemoteNC of raadpleeg mRemoteNC Forum op http://forum.mRemoteNC.org/</value>
-  </data>
   <data name="strCcGeckoOK" xml:space="preserve">
     <value>XULrunner werd gevonden en lijkt correct te zijn geïnstalleerd.</value>
   </data>
@@ -920,9 +914,6 @@ Beginnen met nieuwe Connectie bestand.</value>
   </data>
   <data name="strMenuOptions" xml:space="preserve">
     <value>Opties</value>
-  </data>
-  <data name="strMenuPaste" xml:space="preserve">
-    <value>Plakken</value>
   </data>
   <data name="strMenuPortScan" xml:space="preserve">
     <value>Poort Scan</value>
@@ -1680,12 +1671,6 @@ Bericht:
   </data>
   <data name="strSsh2" xml:space="preserve">
     <value>SSH versie 2</value>
-  </data>
-  <data name="strSSHStartTransferBG" xml:space="preserve">
-    <value>SSH achtergrond overdracht mislukt!</value>
-  </data>
-  <data name="strSSHTranferSuccessful" xml:space="preserve">
-    <value>Overdracht succesvol!</value>
   </data>
   <data name="strSSHTransferEndFailed" xml:space="preserve">
     <value>SSH Overdracht (UI.Window.SSHTransfer) mislukt!</value>

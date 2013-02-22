@@ -26,6 +26,9 @@
 	[rmcardle] Fix issue MR-101 - Collapse all folders causes a NullReferenceException
 	[rmcardle] Fix issue MR-58 - Bug when duplicating connection in connection view
 	[rmcardle] Fix issue MR-183 - Error trying to save connections when using SQL - Invalid column name _parentConstantId
+	[rmcardle] Fix issue MR-229 - Integrated PuTTY doesn't work in Windows 8 RP
+    [rmcardle] Fix issue MR-264 - Windows 8 support
+	[rmcardle] Fix issue MR-322 - Connection Button not listing servers
 	Updated WeifenLuo.WinFormsUI.Docking to 2.7
 	The version of the RDP AX client updated to 7
 	SharpSSH replaced with Renci.SshNet

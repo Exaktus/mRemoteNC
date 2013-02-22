@@ -415,8 +415,7 @@ namespace mRemoteNC
                                                                      (new Microsoft.VisualBasic.ApplicationServices.
                                                                          WindowsFormsApplicationBase()).Info.ProductName,
                                                                      string.Format(
-                                                                         Language.
-                                                                             strConfirmCloseConnectionPanelMainInstruction,
+                                                                         Language.strConfirmCloseConnectionPanelMainInstruction,
                                                                          this.Text), "", "", "",
                                                                      Language.strCheckboxDoNotShowThisMessageAgain,
                                                                      eTaskDialogButtons.YesNo, eSysIcons.Question,
@@ -528,8 +527,7 @@ namespace mRemoteNC
                                                                      (new Microsoft.VisualBasic.ApplicationServices.
                                                                          WindowsFormsApplicationBase()).Info.ProductName,
                                                                      string.Format(
-                                                                         Language.
-                                                                             strConfirmCloseConnectionMainInstruction,
+                                                                         Language.strConfirmCloseConnectionMainInstruction,
                                                                          SelectedTab.Title), "", "", "",
                                                                      Language.strCheckboxDoNotShowThisMessageAgain,
                                                                      eTaskDialogButtons.YesNo, eSysIcons.Question,
@@ -1210,48 +1208,53 @@ namespace mRemoteNC
 
                 private void CloseTab(Crownwood.Magic.Controls.TabPage TabToBeClosed)
                 {
-                    if (this.TabController.InvokeRequired)
+                    try
                     {
-                        CloseTabCB s = new CloseTabCB(CloseTab);
+                        if (this.TabController.InvokeRequired)
+                        {
+                            CloseTabCB s = CloseTab;
 
-                        try
-                        {
-                            this.TabController.Invoke(s, TabToBeClosed);
+                            try
+                            {
+                                this.TabController.Invoke(s, TabToBeClosed);
+                            }
+                            catch (System.Runtime.InteropServices.COMException)
+                            {
+                                this.TabController.Invoke(s, TabToBeClosed);
+                            }
+                            catch (Exception ex)
+                            {
+                                Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                                                                    "Couldn\'t close tab" + Constants.vbNewLine +
+                                                                    ex.Message, true);
+                            }
                         }
-                        catch (System.Runtime.InteropServices.COMException)
+                        else
                         {
-                            this.TabController.Invoke(s, TabToBeClosed);
-                        }
-                        catch (Exception ex)
-                        {
-                            Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
-                                                                (string)
-                                                                ("Couldn\'t close tab" + Constants.vbNewLine +
-                                                                 ex.Message), true);
+                            try
+                            {
+                                if (TabController.TabPages.Contains(TabToBeClosed))
+                                    TabController.TabPages.Remove(TabToBeClosed);
+                            }
+                            catch (Exception ex)
+                            {
+                                Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                                                                    "Couldn\'t close tab" + Constants.vbNewLine +
+                                                                    ex.Message, true);
+                            }
+
+                            if (this.TabController.TabPages.Count == 0)
+                            {
+                                this.Close();
+                            }
                         }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        try
-                        {
-                            this.TabController.TabPages.Remove(TabToBeClosed);
-                        }
-                        catch (System.Runtime.InteropServices.COMException)
-                        {
-                            CloseTab(TabToBeClosed);
-                        }
-                        catch (Exception ex)
-                        {
-                            Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
-                                                                (string)
-                                                                ("Couldn\'t close tab" + Constants.vbNewLine +
-                                                                 ex.Message), true);
-                        }
-
-                        if (this.TabController.TabPages.Count == 0)
-                        {
-                            this.Close();
-                        }
+                        Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                                                            (string)
+                                                            ("CloseTab failed" +
+                                                             Constants.vbNewLine + ex.Message), true);
                     }
                 }
 
