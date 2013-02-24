@@ -231,9 +231,19 @@ hr {
   opacity: 0.6;
   background: url("../images/bug.png") 0 0 no-repeat;
 }
+
+.btn-donate .icon {
+  opacity: 0.6;
+  background: url("../images/donate.png") 0 0 no-repeat;
+}
 /* Links
    a, a:hover, a:visited
 */
+
+h1 a {
+  color: #b5e853;
+  text-decoration: none;
+}
 
 a {
   color: #63c0f5;
@@ -254,3 +264,8 @@ a {
 .cf {
   zoom:1;
 }
+
+#share42 {display: inline-block; padding: 6px 0 0 6px;}
+#share42 a {opacity: 0.5}
+#share42:hover a {opacity: 0.7}
+#share42 a:hover {opacity: 1}
