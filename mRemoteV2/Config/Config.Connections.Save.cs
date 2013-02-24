@@ -689,7 +689,10 @@ namespace mRemoteNC.Config
 
                     string backupFileName = ConnectionFileName + ".backup";
                     File.Delete(backupFileName);
-                    File.Move(ConnectionFileName, backupFileName);
+                    if (File.Exists(ConnectionFileName))
+                    {
+                        File.Move(ConnectionFileName, backupFileName);
+                    }
                     File.Move(tempFileName, ConnectionFileName);
                 }
                 catch (Exception ex)
