@@ -39,14 +39,12 @@ namespace mRemoteNC
 			[STAThread]
 			static void Main()
 			{
+			    Application.EnableVisualStyles();
 				(new MyApplication()).Run(new string[] {});
 			}
 			
 			[global::System.Diagnostics.DebuggerStepThrough()]public MyApplication() : base(global::Microsoft.VisualBasic.ApplicationServices.AuthenticationMode.Windows)
 			{
-				
-				
-				
 				this.IsSingleInstance = false;
 				this.EnableVisualStyles = true;
 				this.SaveMySettingsOnExit = true;

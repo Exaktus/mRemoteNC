@@ -237,6 +237,17 @@ namespace mRemoteNC.Tools
 
             return pText;
         }
+
+        internal static string EscapeArguments(string Arguments)
+        {
+            string escapedArguments = Arguments;
+            escapedArguments = escapedArguments.Replace("^", "^^");
+            escapedArguments = escapedArguments.Replace("&", "^&");
+            escapedArguments = escapedArguments.Replace("<", "^<");
+            escapedArguments = escapedArguments.Replace(">", "^>");
+            escapedArguments = escapedArguments.Replace("|", "^|");
+            return escapedArguments;
+        }
     }
 
     public class ExternalAppsTypeConverter : StringConverter

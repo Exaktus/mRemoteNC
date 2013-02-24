@@ -29,6 +29,12 @@
 	[rmcardle] Fix issue MR-229 - Integrated PuTTY doesn't work in Windows 8 RP
     [rmcardle] Fix issue MR-264 - Windows 8 support
 	[rmcardle] Fix issue MR-322 - Connection Button not listing servers
+	[rmcardle] Fixed issue MR-229 - Integrated PuTTY doesn't work in Windows 8 RP
+	[rmcardle] Fixed KiTTY opening in a separate window when using a saved session.
+	[rmcardle] Fix issue MR-333 - Unnecessary prompt for 'close all open connections?'
+	[rmcardle] Fixed issue MR-158 - Password field not accepting Pipe
+	[rmcardle] Fixed issue MR-130 - Issues duplicating folders
+	[rmcardle] Fixed issue MR-121 - Config pane not sorting properties correctly when switching between alphabetical and categorized view
 	Updated WeifenLuo.WinFormsUI.Docking to 2.7
 	The version of the RDP AX client updated to 7
 	SharpSSH replaced with Renci.SshNet

@@ -359,23 +359,23 @@ namespace mRemoteNC
 
         public void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (Settings.Default.ConfirmExit && Runtime.WindowList.Count > 0)
+            if (Settings.Default.ConfirmExit & !(Runtime.WindowList == null || Runtime.WindowList.Count == 0))
             {
-                DialogResult Result = cTaskDialog.MessageBox(this,
-                                                             (new Microsoft.VisualBasic.ApplicationServices.
-                                                                 WindowsFormsApplicationBase()).Info.ProductName,
-                                                             Language.strConfirmExitMainInstruction, "", "", "",
-                                                             Language.strCheckboxDoNotShowThisMessageAgain,
-                                                             eTaskDialogButtons.YesNo, eSysIcons.Question,
-                                                             eSysIcons.Information);
-                if (cTaskDialog.VerificationChecked)
+                var openConnections = Runtime.WindowList.OfType<UI.Window.Connection>()
+                    .Aggregate(0, (current, connectionWindow) => current + connectionWindow.TabController.TabPages.Count);
+
+                if (openConnections > 0)
                 {
-                    Settings.Default.ConfirmExit = false;
-                }
-                if (Result == DialogResult.No)
-                {
-                    e.Cancel = true;
-                    return;
+                    DialogResult result = cTaskDialog.MessageBox(this, Application.ProductName, Language.strConfirmExitMainInstruction, "", "", "", Language.strCheckboxDoNotShowThisMessageAgain, eTaskDialogButtons.YesNo, eSysIcons.Question, eSysIcons.Question);
+                    if (cTaskDialog.VerificationChecked)
+                    {
+                        Settings.Default.ConfirmExit = false;
+                    }
+                    if (result == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                        return;
+                    }
                 }
             }
             
@@ -384,11 +384,14 @@ namespace mRemoteNC
 
             IsClosing = true;
 
-            foreach (UI.Window.Base Window in Runtime.WindowList)
+            if (Runtime.WindowList != null)
             {
-                Window.Close();
+                foreach (UI.Window.Base Window in Runtime.WindowList)
+                {
+                    Window.Close();
+                }
             }
-            
+
             Debug.Print("[END] - " + DateTime.Now);
         }
 

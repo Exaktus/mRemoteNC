@@ -49,7 +49,7 @@ del /f /q "%~dp0\Release\%AioName%" > nul 2>&1
 
 copy "%~dp0\Release\%AioName%" "%~dp0\Release\mRemoteNC-AIO-Latest.zip"
 copy "%~dp0\Release\%PortableZipName%" "%~dp0\Release\mRemoteNC-Portable-Latest.zip"
-copy "%~dp0\Release\%InstallerReleaseName%" "%~dp0\Release\mRemoteNC-Installer-Latest.zip"
+copy "%~dp0\Release\%InstallerReleaseName%" "%~dp0\Release\mRemoteNC-Installer-Latest.exe"
 
 echo Finished!
 pause

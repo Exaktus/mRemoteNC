@@ -184,6 +184,7 @@ namespace mRemoteNC
                         }
                         else
                         {
+                            PuttyProcess.Refresh();
                             PuttyHandle = PuttyProcess.MainWindowHandle;
                         }
                         if (PuttyHandle.ToInt32() == 0)

@@ -1,19 +1,11 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-
-//using mRemoteNC.App.Native;
 using System.Threading;
 using System.Windows.Forms;
-using AxMSTSCLib;
-using AxWFICALib;
 using Microsoft.VisualBasic;
-using mRemoteNC;
 using mRemoteNC.App;
 using My;
+using mRemoteNC.Tools;
 
 namespace mRemoteNC
 {
@@ -111,7 +103,7 @@ namespace mRemoteNC
                 }
 
                 IntAppProcessStartInfo.FileName = _IntAppPath;
-                IntAppProcessStartInfo.Arguments = Arguments;
+                IntAppProcessStartInfo.Arguments = ExternalTool.EscapeArguments(Arguments);
 
                 IntAppProcess = Process.Start(IntAppProcessStartInfo);
                 IntAppProcess.EnableRaisingEvents = true;
@@ -253,10 +245,4 @@ namespace mRemoteNC
 
         #endregion Enums
     }
-}
-
-//using mRemoteNC.Runtime;
-
-namespace mRemoteNC.Connection
-{
 }

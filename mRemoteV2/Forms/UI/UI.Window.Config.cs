@@ -68,6 +68,7 @@ namespace mRemoteNC
             this.pGrid.TabIndex = 0;
             this.pGrid.UseCompatibleTextRendering = true;
             this.pGrid.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.pGrid_PropertyValueChanged);
+            this.pGrid.PropertySortChanged += new System.EventHandler(this.pGrid_PropertySortChanged);
             // 
             // btnShowInheritance
             // 
@@ -794,6 +795,14 @@ namespace mRemoteNC
                         Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
                                                             Language.strConfigPropertyGridValueFailed +
                                                             Constants.vbNewLine + ex.Message, true);
+                    }
+                }
+
+                private void pGrid_PropertySortChanged(object sender, EventArgs e)
+                {
+                    if (pGrid.PropertySort == PropertySort.CategorizedAlphabetical)
+                    {
+                        pGrid.PropertySort = PropertySort.Categorized;
                     }
                 }
 

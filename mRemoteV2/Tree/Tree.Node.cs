@@ -1,15 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
-
-//using mRemoteNC.Runtime;
 using System.DirectoryServices;
-using System.Drawing;
 using System.Windows.Forms;
-using AxMSTSCLib;
-using AxWFICALib;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
 using mRemoteNC.App;
@@ -436,6 +427,11 @@ namespace mRemoteNC
                         }
                         else
                         {
+                            var parentContainerInfo = parentNode.Tag as Container.Info;
+                            if (parentContainerInfo != null)
+                            {
+                                newConnectionInfo.Parent = parentContainerInfo;
+                            }
                             parentNode.Nodes.Add(newTreeNode);
                         }
                     }
