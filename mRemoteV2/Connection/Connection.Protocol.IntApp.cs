@@ -16,6 +16,7 @@ namespace mRemoteNC
         private ProcessStartInfo IntAppProcessStartInfo = new ProcessStartInfo();
         private string Arguments;
         private Tools.ExternalTool ExtApp;
+        private IntPtr ParenrHandle;
 
         #endregion Private Properties
 
@@ -77,6 +78,20 @@ namespace mRemoteNC
         {
         }
 
+        public void Refresh()
+        {
+            try
+            {
+                Resize();
+            }
+            catch (Exception ex)
+            {
+                Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                                    Language.strIntAppConnectionFailed + Constants.vbNewLine +
+                                    ex.Message);
+            }
+        }
+
         public override bool SetProps()
         {
             ExtApp = Runtime.GetExtAppByName(InterfaceControl.Info.ExtApp);
@@ -103,18 +118,36 @@ namespace mRemoteNC
                 }
 
                 IntAppProcessStartInfo.FileName = _IntAppPath;
-                IntAppProcessStartInfo.Arguments = ExternalTool.EscapeArguments(Arguments);
-
-                IntAppProcess = Process.Start(IntAppProcessStartInfo);
+                IntAppProcessStartInfo.Arguments = Arguments!=null?ExternalTool.EscapeArguments(Arguments):"";
+                IntAppProcess=new Process();
+                IntAppProcess.StartInfo = IntAppProcessStartInfo;
                 IntAppProcess.EnableRaisingEvents = true;
+                IntAppProcess.Exited += ProcessExited;
+                IntAppProcess.Start();
+                ParenrHandle = InterfaceControl.Parent.Handle;
+                ThreadPool.QueueUserWorkItem(state => CatchIntApp());
+                
+                base.Connect();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                                                    Language.strIntAppConnectionFailed + Constants.vbNewLine +
+                                                    ex.Message);
+                return false;
+            }
+        }
+
+        private void CatchIntApp()
+        {
+            try
+            {
                 IntAppProcess.WaitForInputIdle();
-
-                IntAppProcess.Exited += new System.EventHandler(ProcessExited);
-
                 int TryCount = 0;
                 while (
-                    !(IntAppProcess.MainWindowHandle != IntPtr.Zero && this.InterfaceControl.Handle != IntPtr.Zero &&
-                      this.IntAppProcess.MainWindowTitle != "Default IME"))
+                    !(IntAppProcess.MainWindowHandle != IntPtr.Zero &&
+                      IntAppProcess.MainWindowTitle != "Default IME"))
                 {
                     if (TryCount >= Settings.Default.MaxPuttyWaitTime * 2)
                     {
@@ -141,24 +174,20 @@ namespace mRemoteNC
                                                                   IntAppProcess.MainWindowTitle), true);
                 Runtime.MessageCollector.AddMessage(Messages.MessageClass.InformationMsg,
                                                     string.Format(Language.strIntAppParentHandle,
-                                                                  this.InterfaceControl.Parent.Handle.ToString()),
+                                                                  ParenrHandle.ToString()),
                                                     true);
 
-                Native.SetParent(this.IntAppHandle, this.InterfaceControl.Parent.Handle);
-                Native.SetWindowLong(this.IntAppHandle, 0, Native.WS_VISIBLE);
-                Native.ShowWindow(this.IntAppHandle, System.Convert.ToInt32(Native.SW_SHOWMAXIMIZED));
+                Native.SetParent(IntAppHandle, ParenrHandle);
+                Native.SetWindowLong(IntAppHandle, 0, Native.WS_VISIBLE);
+                Native.ShowWindow(IntAppHandle, Convert.ToInt32(Native.SW_SHOWMAXIMIZED));
 
                 Resize();
-
-                base.Connect();
-                return true;
             }
             catch (Exception ex)
             {
                 Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
-                                                    Language.strIntAppConnectionFailed + Constants.vbNewLine +
-                                                    ex.Message);
-                return false;
+                                    Language.strIntAppConnectionFailed + Constants.vbNewLine +
+                                    ex.Message);
             }
         }
 

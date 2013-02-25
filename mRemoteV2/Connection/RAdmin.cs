@@ -39,22 +39,6 @@ namespace mRemoteNC.Connection
             }
         }
 
-        private void ResizeDummy()
-        {
-            try
-            {
-                Native.MoveWindow(Handle, 0,
-                                  0,
-                                  0,
-                                  0, true);
-            }
-            catch (Exception ex)
-            {
-                Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
-                                                    Language.strPuttyResizeFailed + Constants.vbNewLine + ex.Message,
-                                                    true);
-            }
-        }
 
         public override void Resize()
         {
@@ -99,12 +83,7 @@ namespace mRemoteNC.Connection
                     Thread.Sleep(10);
                 }
             }
-            
 
-            //Windows API call to change the parent of the target window.
-            //It returns the hWnd of the window's parent prior to this call.
-            //Thread.Sleep(500);
-            var l = new List<Native.WINDOWPLACEMENT>();
             Handle = p;
             Native.SetParent(Handle, IcHandle);
             Thread.Sleep(50);

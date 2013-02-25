@@ -170,17 +170,20 @@ namespace mRemoteNC.Tools
                 nCI.ExtApp = this.DisplayName;
                 nCI.Name = this.DisplayName;
                 nCI.Panel = "Int. Apps";
-                nCI.Hostname = _ConnectionInfo.Hostname;
-                nCI.Port = _ConnectionInfo.Port;
-                nCI.Username = _ConnectionInfo.Username;
-                nCI.Password = _ConnectionInfo.Password;
-                nCI.Domain = _ConnectionInfo.Domain;
-                nCI.Description = _ConnectionInfo.Description;
-                nCI.MacAddress = _ConnectionInfo.MacAddress;
-                nCI.UserField = _ConnectionInfo.UserField;
-                nCI.Description = _ConnectionInfo.Description;
-                nCI.PreExtApp = _ConnectionInfo.PreExtApp;
-                nCI.PostExtApp = _ConnectionInfo.PostExtApp;
+                if (_ConnectionInfo!=null)
+                {
+                    nCI.Hostname = _ConnectionInfo.Hostname;
+                    nCI.Port = _ConnectionInfo.Port;
+                    nCI.Username = _ConnectionInfo.Username;
+                    nCI.Password = _ConnectionInfo.Password;
+                    nCI.Domain = _ConnectionInfo.Domain;
+                    nCI.Description = _ConnectionInfo.Description;
+                    nCI.MacAddress = _ConnectionInfo.MacAddress;
+                    nCI.UserField = _ConnectionInfo.UserField;
+                    nCI.Description = _ConnectionInfo.Description;
+                    nCI.PreExtApp = _ConnectionInfo.PreExtApp;
+                    nCI.PostExtApp = _ConnectionInfo.PostExtApp;
+                }
 
                 Runtime.OpenConnection(nCI);
             }

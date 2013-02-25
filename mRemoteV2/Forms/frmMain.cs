@@ -188,7 +188,7 @@ namespace mRemoteNC
         public void frmMain_Load(object sender, System.EventArgs e)
         {
             My.MyApplication.MyApplication_Startup();
-            ToolStrip1.Visible = false;
+            
             Runtime.Startup.CheckCompatibility();
 
             Runtime.Startup.CreateLogger();
@@ -199,7 +199,7 @@ namespace mRemoteNC
             // Load GUI Configuration
             SettingsLoad.Load_Settings();
 
-            Debug.Print((string)("---------------------------" + Constants.vbNewLine + "[START] - " + DateTime.Now));
+            Debug.Print("---------------------------" + Constants.vbNewLine + "[START] - " + DateTime.Now);
 
             Runtime.Startup.ParseCommandLineArgs();
 
@@ -271,7 +271,7 @@ namespace mRemoteNC
             AddQuickTextsToToolBar();
             AddExternalToolsToToolBar();
             this.Opacity = 1;
-
+            ToolStrip1.Visible = false;
             quickTextToolbarToolStripMenuItem.Checked = tsQuickTexts.Visible;
             ChangeToolStripLockState();
             foreach (Info con in Runtime.ConnectionList.Cast<Info>().Where(con => con.ConnectOnStartup))
@@ -442,10 +442,6 @@ namespace mRemoteNC
         {
             try
             {
-                foreach (ToolStripItem item in tsExternalTools.Items)
-                {
-                    item.Dispose();
-                }
                 tsExternalTools.Items.Clear();
 
                 foreach (Tools.ExternalTool tool in Runtime.ExternalTools)
@@ -653,14 +649,7 @@ namespace mRemoteNC
                 this.mMenViewConnectionPanels.DropDownItems.Add(tItem);
             }
 
-            if (this.mMenViewConnectionPanels.DropDownItems.Count > 0)
-            {
-                this.mMenViewConnectionPanels.Enabled = true;
-            }
-            else
-            {
-                this.mMenViewConnectionPanels.Enabled = false;
-            }
+            this.mMenViewConnectionPanels.Enabled = this.mMenViewConnectionPanels.DropDownItems.Count > 0;
         }
 
         private void ConnectionPanelMenuItem_Click(object sender, System.EventArgs e)

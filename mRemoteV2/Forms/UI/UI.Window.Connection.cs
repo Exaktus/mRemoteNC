@@ -493,6 +493,12 @@ namespace mRemoteNC
                                     {
                                         (IC.Protocol as RAdmin).Resize();
                                     }
+
+                                    //TODO
+                                    if (IC.Protocol as IntApp != null )
+                                    {
+                                        (IC.Protocol as IntApp).Resize();
+                                    }
                                 }
                             }
                         }
@@ -938,10 +944,10 @@ namespace mRemoteNC
                             {
                                 InterfaceControl IC = (InterfaceControl)this.TabController.SelectedTab.Tag;
 
-                                if (IC.Protocol is VNC)
+                                var protocol = IC.Protocol as VNC;
+                                if (protocol != null)
                                 {
-                                    VNC vnc = (VNC)IC.Protocol;
-                                    vnc.RefreshScreen();
+                                    protocol.RefreshScreen();
                                 }
                             }
                         }
@@ -1331,6 +1337,12 @@ namespace mRemoteNC
                                 if (IC.Protocol as RAdmin != null && frmMain.Default.Width > 200)
                                 {
                                     (IC.Protocol as RAdmin).Resize();
+                                }
+
+                                //TODO
+                                if (IC.Protocol as IntApp != null)
+                                {
+                                    (IC.Protocol as IntApp).Refresh();
                                 }
                             }
                         }
