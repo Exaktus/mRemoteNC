@@ -363,7 +363,7 @@ namespace mRemoteNC
                         }
 
                         nTab.Selected = true;
-                        
+                        _ignoreChangeSelectedTabClick = false;
                         return nTab;
                     }
                     catch (Exception ex)
@@ -376,6 +376,8 @@ namespace mRemoteNC
 
                     return null;
                 }
+
+                private bool _ignoreChangeSelectedTabClick = false;
 
                 #endregion Public Methods
 
@@ -1130,6 +1132,7 @@ namespace mRemoteNC
                                 InterfaceControl IC = (InterfaceControl)this.TabController.SelectedTab.Tag;
 
                                 Runtime.OpenConnection(IC.Info, Info.Force.DoNotJump);
+                                _ignoreChangeSelectedTabClick = false;
                             }
                         }
                     }
@@ -1235,6 +1238,7 @@ namespace mRemoteNC
                             {
                                 if (TabController.TabPages.Contains(TabToBeClosed))
                                     TabController.TabPages.Remove(TabToBeClosed);
+                                _ignoreChangeSelectedTabClick = false;
                             }
                             catch (Exception ex)
                             {
@@ -1262,6 +1266,7 @@ namespace mRemoteNC
 
                 private void TabController_SelectionChanged(object sender, System.EventArgs e)
                 {
+                    _ignoreChangeSelectedTabClick = true;
                     _selectedTabChanged = true;
                     this.FocusIC();
                     this.RefreshIC();
@@ -1407,11 +1412,13 @@ namespace mRemoteNC
                     TabController.TabPages.ResumeEvents();
                 }
 
-                /*private void TabController_MouseUp(object sender, MouseEventArgs e)
+                private void TabController_MouseUp(object sender, MouseEventArgs e)
                 {
                     try
                     {
-                        if (!(Native.GetForegroundWindow() == frmMain.Default.Handle) & !_selectedTabChanged)
+                    Debug.Print("UI.Window.Connection.TabController_MouseUp()");
+                    Debug.Print("_ignoreChangeSelectedTabClick = {0}", _ignoreChangeSelectedTabClick);
+                        if (!(Native.GetForegroundWindow() == frmMain.Default.Handle) && !_ignoreChangeSelectedTabClick)
                         {
                             var clickedTab = TabController.TabPageFromPoint(e.Location);
                             if (clickedTab != null & !object.ReferenceEquals(TabController.SelectedTab, clickedTab))
@@ -1421,7 +1428,7 @@ namespace mRemoteNC
                             }
                         }
                         _selectedTabChanged = false;
-
+                        _ignoreChangeSelectedTabClick = false;
                         switch (e.Button)
                         {
                             case MouseButtons.Left:
@@ -1441,11 +1448,12 @@ namespace mRemoteNC
                     {
                         Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg, "TabController_MouseUp (UI.Window.Connections) failed" + Constants.vbNewLine + ex.Message, true);
                     }
-                }*/
+                }
 
-                private void TabController_MouseUp(object sender, MouseEventArgs e)
+                /*private void TabController_MouseUp(object sender, MouseEventArgs e)
                 {
                     Debug.Print("UI.Window.Connection.TabController_MouseUp()");
+                    Debug.Print("_ignoreChangeSelectedTabClick = {0}", _ignoreChangeSelectedTabClick);
                     try
                     {
                         var clickedTab = TabController.TabPageFromPoint(e.Location);
@@ -1479,7 +1487,7 @@ namespace mRemoteNC
                                                             ("TabController_MouseUp (UI.Window.Connections) failed" +
                                                              Constants.vbNewLine + ex.Message), true);
                     }
-                }
+                }*/
 
                 #endregion Tab drag and drop
 

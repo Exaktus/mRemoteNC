@@ -1347,13 +1347,17 @@ namespace mRemoteNC.Config
 
                     if (confVersion >= 2.4)
                     {
+                        
                         conI.UseCredSsp = Convert.ToBoolean(with_1.Attributes["UseCredSsp"].Value);
                         conI.Inherit.UseCredSsp = Convert.ToBoolean(with_1.Attributes["InheritUseCredSsp"].Value);
                     }
 
                     if (confVersion >= 2.5)
                     {
-                        conI.ConnectOnStartup = Convert.ToBoolean(with_1.Attributes["ConnectOnStartup"].Value);
+                        if (with_1.Attributes["ConnectOnStartup"]!=null)
+                        {
+                            conI.ConnectOnStartup = Convert.ToBoolean(with_1.Attributes["ConnectOnStartup"].Value);
+                        }
                     }
 
                     //Placeholder: ConnectionOption

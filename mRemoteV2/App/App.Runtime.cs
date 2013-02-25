@@ -11,6 +11,7 @@ using System.Timers;
 using System.Windows.Forms;
 using System.Xml;
 using log4net;
+using log4net.Appender;
 using log4net.Config;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.ApplicationServices;
@@ -454,54 +455,60 @@ namespace mRemoteNC
 
                 public static void CreateLogger()
                 {
-                    XmlConfigurator.Configure(new FileInfo("mRemoteNC.exe.config"));
-                    Log = LogManager.GetLogger("mRemoteNC.Log");
-                    Log.InfoFormat("{0} started.",
-                                   (new WindowsFormsApplicationBase()).Info.
-                                       ProductName);
-                    Log.InfoFormat("Command Line: {0}", Environment.GetCommandLineArgs());
-                    try
+	                log4net.Config.XmlConfigurator.Configure();
+
+                    string logFilePath = General.IsPortable ? Application.StartupPath : Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Application.ProductName);
+	                string logFileName = Path.ChangeExtension(Application.ProductName, ".log");
+	                string logFile = Path.Combine(logFilePath, logFileName);
+
+	                var repository = LogManager.GetRepository();
+	                var appenders = repository.GetAppenders();
+                    foreach (var fileAppender in appenders.Select(appender => appender as FileAppender).Where(fileAppender => !(fileAppender == null || fileAppender.Name != "LogFileAppender")))
                     {
-                        int servicePack;
-                        foreach (
-                            ManagementObject managementObject in
-                                new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem").Get())
+                        fileAppender.File = logFile;
+                        fileAppender.ActivateOptions();
+                    }
+
+                    Log = LogManager.GetLogger("Logger");
+                    
+	                
+	                if (Settings.Default.WriteLogFile) 
+                    {
+
+                        if (AppInfo.General.IsPortable)
                         {
-                            servicePack =
-                                Convert.ToInt32(managementObject.GetPropertyValue("ServicePackMajorVersion"));
-                            if (servicePack == 0)
-                            {
-                                Log.InfoFormat("{0} {1}", managementObject.GetPropertyValue("Caption").ToString().Trim(),
-                                               managementObject.GetPropertyValue("OSArchitecture"));
-                            }
-                            else
-                            {
-                                Log.InfoFormat("{0} Service Pack {1} {2}",
-                                               managementObject.GetPropertyValue("Caption").ToString().Trim(),
-                                               servicePack.ToString(),
-                                               managementObject.GetPropertyValue("OSArchitecture"));
-                            }
+                            Log.InfoFormat("{0} {1} {2} starting.", Application.ProductName, Application.ProductVersion, Language.strLabelPortableEdition);
                         }
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.WarnFormat("Error retrieving operating system information from WMI. {0}", ex.Message);
-                    }
-                    Log.InfoFormat("Microsoft .NET Framework {0}", Environment.Version.ToString());
-#if !PORTABLE
-                    Log.InfoFormat("{0} {1}", (new WindowsFormsApplicationBase()).Info.ProductName.ToString(),
-                                   (new WindowsFormsApplicationBase()).Info.Version.ToString());
-#else
-                    Log.InfoFormat("{0} {1} {2}",
-                                   (new Microsoft.VisualBasic.ApplicationServices.WindowsFormsApplicationBase()).Info.
-                                       ProductName.ToString(),
-                                   (new Microsoft.VisualBasic.ApplicationServices.WindowsFormsApplicationBase()).Info.
-                                       Version.ToString(), Language.strLabelPortableEdition);
-#endif
-                    Log.InfoFormat("System Culture: {0}/{1}",
-                                   Thread.CurrentThread.CurrentUICulture.Name,
-                                   Thread.CurrentThread.CurrentUICulture.NativeName);
+                        else
+                        {
+                            Log.InfoFormat("{0} {1} starting.", Application.ProductName, Application.ProductVersion);
+                        }
+
+		                Log.InfoFormat("Command Line: {0}", Environment.GetCommandLineArgs());
+
+		                try 
+                        {
+		                    foreach (ManagementObject managementObject in new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem").Get())
+			                {
+			                    var servicePack = Convert.ToInt32(managementObject.GetPropertyValue("ServicePackMajorVersion"));
+			                    if (servicePack == 0) {
+					                Log.InfoFormat("{0} {1}", managementObject.GetPropertyValue("Caption").ToString().Trim(), managementObject.GetPropertyValue("OSArchitecture"));
+				                } else {
+					                Log.InfoFormat("{0} Service Pack {1} {2}", managementObject.GetPropertyValue("Caption").ToString().Trim(), servicePack.ToString(), managementObject.GetPropertyValue("OSArchitecture"));
+				                }
+			                }
+		                } 
+                        catch (Exception ex) 
+                        {
+			                Log.WarnFormat("Error retrieving operating system information from WMI. {0}", ex.Message);
+		                }
+
+		                Log.InfoFormat("Microsoft .NET CLR {0}", Environment.Version);
+		                Log.InfoFormat("System Culture: {0}/{1}", Thread.CurrentThread.CurrentUICulture.Name, Thread.CurrentThread.CurrentUICulture.NativeName);
+	                }
                 }
+
+
 
                 public static void UpdateCheck()
                 {

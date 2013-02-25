@@ -12,9 +12,10 @@ namespace mRemoteNC
         {
             get
             {
-                if (Index is Base)
+                var vl = Index as Base;
+                if (vl != null)
                 {
-                    return (Base)Index;
+                    return vl;
                 }
                 else
                 {

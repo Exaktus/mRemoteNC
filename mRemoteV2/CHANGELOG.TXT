@@ -35,6 +35,10 @@
 	[rmcardle] Fixed issue MR-158 - Password field not accepting Pipe
 	[rmcardle] Fixed issue MR-130 - Issues duplicating folders
 	[rmcardle] Fixed issue MR-121 - Config pane not sorting properties correctly when switching between alphabetical and categorized view
+	[rmcardle] Fix issue MR-332 - Can't select different tab with one click after disconnecting existing tab
+	[rmcardle] Fix issue MR-317 - Difficulty right-clicking on Tab
+ 	[rmcardle] Fix issue MR-318 - Wrong tab gets selected when tab names overflow on the tab bar
+	[rmcardle] Fix issue MR-330 - Portable version saves log to user's profile folder
 	Updated WeifenLuo.WinFormsUI.Docking to 2.7
 	The version of the RDP AX client updated to 7
 	SharpSSH replaced with Renci.SshNet
