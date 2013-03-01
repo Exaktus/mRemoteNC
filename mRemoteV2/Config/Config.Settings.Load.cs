@@ -295,18 +295,18 @@ namespace mRemoteNC.Config
                     if (File.Exists(newPath))
                     {
                         MainForm.pnlDock.LoadFromXml(newPath, GetContentFromPersistString);
-#if !PORTABLE
+
                     }
-                    else if (File.Exists(oldPath))
+                    else 
                     {
-                        MainForm.pnlDock.LoadFromXml(oldPath,
-                                                     new WeifenLuo.WinFormsUI.Docking.DeserializeDockContent(
-                                                         GetContentFromPersistString));
-#endif
-                    }
-                    else
-                    {
-                        Runtime.Startup.SetDefaultLayout();
+                        if ((!AppInfo.General.IsPortable)&&File.Exists(oldPath))
+                        {
+                            MainForm.pnlDock.LoadFromXml(oldPath, GetContentFromPersistString);
+                        }
+                        else
+                        {
+                            Runtime.Startup.SetDefaultLayout();
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -330,16 +330,17 @@ namespace mRemoteNC.Config
                 if (File.Exists(newPath))
                 {
                     xDom.Load(newPath);
-#if !PORTABLE
                 }
-                else if (File.Exists(oldPath))
+                else 
                 {
-                    xDom.Load(oldPath);
-#endif
-                }
-                else
-                {
-                    return;
+                    if ((!AppInfo.General.IsPortable) && File.Exists(oldPath))
+                    {
+                        xDom.Load(oldPath);
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
 
                 foreach (XmlElement xEl in xDom.DocumentElement.ChildNodes)
@@ -369,16 +370,17 @@ namespace mRemoteNC.Config
                 if (File.Exists(newPath))
                 {
                     xDom.Load(newPath);
-#if !PORTABLE
                 }
-                else if (File.Exists(oldPath))
+                else 
                 {
-                    xDom.Load(oldPath);
-#endif
-                }
-                else
-                {
-                    return;
+                    if ((!AppInfo.General.IsPortable)&&File.Exists(oldPath))
+                    {
+                        xDom.Load(oldPath);
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
 
                 foreach (XmlElement xEl in xDom.DocumentElement.ChildNodes)

@@ -292,10 +292,11 @@ namespace mRemoteNC
 
                 private void ApplyEditions()
                 {
-#if PORTABLE
-                    lblEdition.Text = Language.strLabelPortableEdition;
-                    lblEdition.Visible = true;
-#endif
+                    if (AppInfo.General.IsPortable)
+                    {
+                        lblEdition.Text = Language.strLabelPortableEdition;
+                        lblEdition.Visible = true;
+                    }
                 }
 
                 private void FillLinkLabel(LinkLabel llbl, string Text, string URL)

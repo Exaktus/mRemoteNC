@@ -1368,11 +1368,8 @@ namespace mRemoteNC
                         (string)
                         (Connections.DefaultConnectionsPath + "\\" +
                          Connections.DefaultConnectionsFile);
-#if !PORTABLE
-                    fileName = File.Exists(oldPath) ? oldPath : newPath;
-#else
-                    fileName = newPath;
-#endif
+
+                    fileName = AppInfo.General.IsPortable ? newPath : File.Exists(oldPath) ? oldPath : newPath;
                 }
                 else
                 {
