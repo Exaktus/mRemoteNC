@@ -24,6 +24,17 @@ http://www.codeproject.com/KB/recipes/command_line.aspx
 
 Included Components
 ===================
+
+
+RDPFileReader 1.0
+http://www.codeproject.com/Articles/33979/Multi-RDP-Client-NET
+RDP File Settings - http://dev.remotenetworktechnology.com/ts/rdpfile.htm
+erminal Services Team Blog - http://blogs.msdn.com/ts/archive/2008/09/02/specifying-the-ts-client-start-location-on-the-virtual-desktop.aspx
+
+
+#ziplib (SharpZipLib, formerly NZipLib)
+http://www.icsharpcode.net/opensource/sharpziplib/
+
 Inno Setup prepareToInstall scripts 
 http://tonaday.blogspot.com/2011/01/inno-setup-preparetoinstall-scripts.html
 

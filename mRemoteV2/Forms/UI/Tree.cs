@@ -1301,6 +1301,62 @@ namespace mRemoteNC
 
                 #region Context Menu Actions
 
+                public void AddConnection(Info nConI)
+                {
+                    try
+                    {
+                        TreeNode nNode = Node.AddNode(Node.Type.Connection, nConI.Name);
+
+                        if (nNode != null)
+                        {
+
+                            if (tvConnections.Nodes.Count < 1)
+                            {
+                                System.Windows.Forms.TreeNode treeNode1 =
+                                    new System.Windows.Forms.TreeNode("Connections");
+                                treeNode1.Name = "nodeRoot";
+                                treeNode1.Text = "Connections";
+                                this.tvConnections.Nodes.AddRange(new[] { treeNode1 });
+                            }
+
+                            if (this.tvConnections.SelectedNode == null)
+                            {
+                                this.tvConnections.SelectedNode = this.tvConnections.Nodes[0];
+                            }
+                            if (this.tvConnections.SelectedNode.Tag is Container.Info)
+                            {
+                                nConI.Parent = this.tvConnections.SelectedNode.Tag;
+                            }
+                            else
+                            {
+                                nConI.Inherit.TurnOffInheritanceCompletely();
+                            }
+
+                            nNode.Tag = nConI;
+                            Runtime.ConnectionList.Add(nConI);
+
+                            if (Node.GetNodeType(this.tvConnections.SelectedNode) == Node.Type.Connection)
+                            {
+                                this.tvConnections.SelectedNode.Parent.Nodes.Add(nNode);
+                            }
+                            else
+                            {
+                                this.tvConnections.SelectedNode.Nodes.Add(nNode);
+                            }
+
+                            this.tvConnections.SelectedNode = nNode;
+                            //this.tvConnections.SelectedNode.BeginEdit();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                                                            (string)
+                                                            ("AddConnectionEx (UI.Window.Tree) failed" +
+                                                             Constants.vbNewLine + ex.Message), true);
+                    }
+                }
+
                 public void AddConnection(string host,int port, Protocols prot)
                 {
                     try

@@ -572,9 +572,11 @@ namespace mRemoteNC
                     }
                 }
 
+                private int _lastMouseUp = 0;
                 private void TabController_DoubleClickTab(Crownwood.Magic.Controls.TabControl sender,
                                                           Crownwood.Magic.Controls.TabPage page)
                 {
+                    _lastMouseUp = 0;
                     if (Settings.Default.DoubleClickOnTabClosesIt)
                     {
                         this.CloseConnectionTab();
@@ -1445,6 +1447,17 @@ namespace mRemoteNC
                         {
                             case MouseButtons.Left:
                                 FocusIC();
+                                int currentTicks = Environment.TickCount;
+                                int elapsedTicks = currentTicks - _lastMouseUp;
+                                if (elapsedTicks > SystemInformation.DoubleClickTime) 
+                                {
+	                                _lastMouseUp = currentTicks;
+	                                FocusIC();
+                                } 
+                                else 
+                                {
+	                                TabController.OnDoubleClickTab(TabController.SelectedTab);
+                                }
                                 break;
                             case MouseButtons.Middle:
                                 CloseConnectionTab();

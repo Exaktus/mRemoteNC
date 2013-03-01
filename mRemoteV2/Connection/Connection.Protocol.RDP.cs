@@ -457,11 +457,16 @@ namespace mRemoteNC
         {
             try
             {
-                if (this.Info.RedirectKeys)
+                if (Info.RedirectKeys)
                 {
                     RDP_Client.AdvancedSettings2.ContainerHandledFullScreen = 1;
                     RDP_Client.AdvancedSettings2.DisplayConnectionBar = false;
                     RDP_Client.AdvancedSettings2.PinConnectionBar = false;
+                    if (RDPVersion >= Versions.RDC70)
+                    {
+                        var msRdpClientNonScriptable = (MSTSCLib.IMsRdpClientNonScriptable5)RDP_Client.GetOcx();
+                        msRdpClientNonScriptable.DisableConnectionBar = true;
+                    }
                     RDP_Client.FullScreen = true;
                 }
             }
@@ -872,6 +877,7 @@ namespace mRemoteNC
         {
             public static Version RDC60 = new Version(6, 0, 6000);
             public static Version RDC61 = new Version(6, 0, 6001);
+            public static Version RDC70 = new Version(6, 1, 7600);
         }
 
         #region Terminal Sessions

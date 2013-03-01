@@ -10,6 +10,7 @@ using WeifenLuo.WinFormsUI.Docking;
 using mRemoteNC.App;
 using mRemoteNC.Connection;
 using mRemoteNC.Forms;
+using mRemoteNC.Forms.Importer;
 using mRemoteNC.Protocol;
 using mRemoteNC.Tree;
 using My;
@@ -273,6 +274,14 @@ namespace mRemoteNC
             this.Opacity = 1;
             ToolStrip1.Visible = false;
             quickTextToolbarToolStripMenuItem.Checked = tsQuickTexts.Visible;
+
+            importToolStripMenuItem.Visible =
+#if DEBUG
+                true;
+#else
+            false;
+#endif
+
             ChangeToolStripLockState();
             foreach (Info con in Runtime.ConnectionList.Cast<Info>().Where(con => con.ConnectOnStartup))
             {
@@ -1083,7 +1092,7 @@ namespace mRemoteNC
                         if (control != null)
                         {
                             // Let ComboBoxes get focus but don't simulate a mouse event
-                            if (control is ComboBox)
+                            if (control is ComboBox||control is TreeView)
                             {
                                 break;
                             }
@@ -1347,6 +1356,31 @@ namespace mRemoteNC
             {
                  Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,ex.Message, false);
             }
+        }
+
+        private void ImportFromRDPFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ImportFromXMLFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ImportFromActiveDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ExportToXMLFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void importToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            new ImportForm().ShowDialog();
         }
     }
 }

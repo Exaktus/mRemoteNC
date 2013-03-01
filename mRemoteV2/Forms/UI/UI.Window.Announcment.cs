@@ -163,6 +163,11 @@ namespace mRemoteNC
                 {
                     try
                     {
+                        if (aN.CurrentAnnouncementInfo == null)
+                        {
+                            return;
+                        }
+                        
                         wBrowser.Navigate(aN.CurrentAnnouncementInfo.Url);
                         Settings.Default.LastAnnouncement = aN.CurrentAnnouncementInfo.Name;
                     }

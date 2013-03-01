@@ -27,7 +27,7 @@
 	[rmcardle] Fix issue MR-58 - Bug when duplicating connection in connection view
 	[rmcardle] Fix issue MR-183 - Error trying to save connections when using SQL - Invalid column name _parentConstantId
 	[rmcardle] Fix issue MR-229 - Integrated PuTTY doesn't work in Windows 8 RP
-    [rmcardle] Fix issue MR-264 - Windows 8 support
+	[rmcardle] Fix issue MR-264 - Windows 8 support
 	[rmcardle] Fix issue MR-322 - Connection Button not listing servers
 	[rmcardle] Fixed issue MR-229 - Integrated PuTTY doesn't work in Windows 8 RP
 	[rmcardle] Fixed KiTTY opening in a separate window when using a saved session.
@@ -39,6 +39,9 @@
 	[rmcardle] Fix issue MR-317 - Difficulty right-clicking on Tab
  	[rmcardle] Fix issue MR-318 - Wrong tab gets selected when tab names overflow on the tab bar
 	[rmcardle] Fix issue MR-330 - Portable version saves log to user's profile folder
+	[rmcardle] Fix issue MR-339 - Connection group collapses with just one click
+	[rmcardle] Fixed tabs not closing on double-click when the active tab is a PuTTY connection.
+	[rmcardle] If RDC 7.0 or higher is installed, the connection bar is no longer briefly shown when connecting to an RDP connection with redirect key combinations enabled
 	Updated WeifenLuo.WinFormsUI.Docking to 2.7
 	The version of the RDP AX client updated to 7
 	SharpSSH replaced with Renci.SshNet

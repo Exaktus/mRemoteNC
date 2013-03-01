@@ -439,10 +439,8 @@ namespace mRemoteNC
                         return;
                     }
 
-                    foreach (string f in Directory.GetFiles(iPath, "*.ico", SearchOption.AllDirectories))
+                    foreach (FileInfo fInfo in Directory.GetFiles(iPath, "*.ico", SearchOption.AllDirectories).Select(f => new FileInfo(f)))
                     {
-                        FileInfo fInfo = new FileInfo(f);
-
                         Array.Resize(ref Icon.Icons, Convert.ToInt32(Icon.Icons.Length + 1));
                         Icon.Icons.SetValue(fInfo.Name.Replace(".ico", ""), Icon.Icons.Length - 1);
                     }
