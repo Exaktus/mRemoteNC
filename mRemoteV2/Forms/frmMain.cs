@@ -290,6 +290,37 @@ namespace mRemoteNC
             Focus();
             BringToFront();
         }
+        
+
+        private void frmMain_ResizeBegin(object sender, EventArgs e)
+        {
+            _inSizeMove = true;
+        }
+
+        private void frmMain_Resize(object sender, EventArgs e)
+        {
+            if ((WindowState == FormWindowState.Minimized))
+            {
+                if (Settings.Default.MinimizeToTray)
+                {
+                    if ((Runtime.NotificationAreaIcon == null))
+                    {
+                        Runtime.NotificationAreaIcon = new Tools.Controls.NotificationAreaIcon();
+                    }
+                    Hide();
+                }
+            }
+            else
+            {
+                PreviousWindowState = WindowState;
+            }
+        }
+
+        private void frmMain_ResizeEnd(object sender, EventArgs e)
+        {
+            _inSizeMove = false;
+            ActivateConnection();
+        }
 
         private void ApplyLanguage()
         {
@@ -1112,15 +1143,6 @@ namespace mRemoteNC
                         }
 
                         // This handles activations from clicks that did not start a size/move operation
-                        ActivateConnection();
-                        break;
-                    case Native.WM_ENTERSIZEMOVE:
-                        _inSizeMove = true;
-                        break;
-                    case Native.WM_EXITSIZEMOVE:
-                        _inSizeMove = false;
-
-                        // This handles activations from clicks that started a size/move operation
                         ActivateConnection();
                         break;
                     case Native.WM_WINDOWPOSCHANGED:

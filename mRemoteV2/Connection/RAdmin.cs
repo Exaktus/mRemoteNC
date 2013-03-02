@@ -40,7 +40,7 @@ namespace mRemoteNC.Connection
         }
 
 
-        public override void Resize()
+        public override void Resize(object sender, EventArgs eventArgs)
         {
             try
             {

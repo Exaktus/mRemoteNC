@@ -280,7 +280,7 @@ namespace mRemoteNC
             this.Text = "UI.Window.Connection";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Connection_FormClosing);
             this.Load += new System.EventHandler(this.Connection_Load);
-            this.Resize += new System.EventHandler(this.Connection_Resize);
+            this.DockStateChanged += new System.EventHandler(this.Connection_DockStateChanged);
             this.cmenTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -388,6 +388,54 @@ namespace mRemoteNC
                     ApplyLanguage();
                 }
 
+                private bool _documentHandlersAdded = false;
+                private bool _floatHandlersAdded = false;
+                private void Connection_DockStateChanged(System.Object sender, EventArgs e)
+                {
+                    if (DockState == DockState.Float)
+                    {
+                        if (_documentHandlersAdded)
+                        {
+                            frmMain.Default.ResizeBegin -= Connection_ResizeBegin;
+                            frmMain.Default.ResizeEnd -= Connection_ResizeEnd;
+                            _documentHandlersAdded = false;
+                        }
+                        DockHandler.FloatPane.FloatWindow.ResizeBegin += Connection_ResizeBegin;
+                        DockHandler.FloatPane.FloatWindow.ResizeEnd += Connection_ResizeEnd;
+                        _floatHandlersAdded = true;
+                    }
+                    else if (DockState == DockState.Document)
+                    {
+                        if (_floatHandlersAdded)
+                        {
+                            DockHandler.FloatPane.FloatWindow.ResizeBegin -= Connection_ResizeBegin;
+                            DockHandler.FloatPane.FloatWindow.ResizeEnd -= Connection_ResizeEnd;
+                            _floatHandlersAdded = false;
+                        }
+                        frmMain.Default.ResizeBegin += Connection_ResizeBegin;
+                        frmMain.Default.ResizeEnd += Connection_ResizeEnd;
+                        _documentHandlersAdded = true;
+                    }
+                }
+
+                public new event EventHandler ResizeBegin;
+                private void Connection_ResizeBegin(System.Object sender, EventArgs e)
+                {
+                    if (ResizeBegin != null)
+                    {
+                        ResizeBegin(this, e);
+                    }
+                }
+
+                public new event EventHandler ResizeEnd;
+                public void Connection_ResizeEnd(System.Object sender, EventArgs e)
+                {
+                    if (ResizeEnd != null)
+                    {
+                        ResizeEnd(sender, e);
+                    }
+                }
+
                 private void ApplyLanguage()
                 {
                     cmenTabFullscreen.Text = Language.strMenuFullScreenRDP;
@@ -453,7 +501,7 @@ namespace mRemoteNC
                     }
                 }
 
-                private void Connection_Resize(System.Object sender, System.EventArgs e)
+                /*private void Connection_Resize(System.Object sender, System.EventArgs e)
                 {
                     try
                     {
@@ -510,7 +558,7 @@ namespace mRemoteNC
                                                             ("Connection_Resize (UI.Window.Connections) failed" +
                                                              Constants.vbNewLine + ex.Message), true);
                     }
-                }
+                }*/
 
                 #endregion Form
 
@@ -1315,30 +1363,6 @@ namespace mRemoteNC
                                 if (IC.Info.Protocol == Protocols.VNC)
                                 {
                                     (IC.Protocol as VNC).RefreshScreen();
-                                }
-
-                                //TODO
-                                if (IC.Protocol as PuttyBase != null && frmMain.Default.Width > 200)
-                                {
-                                    (IC.Protocol as PuttyBase).Resize();
-                                }
-
-                                //TODO
-                                if (IC.Protocol as RDP != null && frmMain.Default.Width > 200)
-                                {
-                                    (IC.Protocol as RDP).Resize();
-                                }
-
-                                //TODO
-                                if (IC.Protocol as TeamViewer != null && frmMain.Default.Width > 200)
-                                {
-                                    (IC.Protocol as TeamViewer).Resize();
-                                }
-
-                                //TODO
-                                if (IC.Protocol as RAdmin != null && frmMain.Default.Width > 200)
-                                {
-                                    (IC.Protocol as RAdmin).Resize();
                                 }
 
                                 //TODO

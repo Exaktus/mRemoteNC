@@ -210,7 +210,7 @@ namespace mRemoteNC
                                                                       this.InterfaceControl.Parent.Handle.ToString()),
                                                         true);
 
-                    Resize();
+                    Resize(this, new EventArgs());
 
                     base.Connect();
                     return true;
@@ -238,10 +238,14 @@ namespace mRemoteNC
                 }
             }
 
-            public override void Resize()
+            public override void Resize(object sender, EventArgs e)
             {
                 try
                 {
+                    if ((InterfaceControl.Size == Size.Empty))
+                    {
+                        return;
+                    }
                     Native.MoveWindow(PuttyHandle, Convert.ToInt32(-SystemInformation.FrameBorderSize.Width),
                                       Convert.ToInt32(
                                           -(SystemInformation.CaptionHeight + SystemInformation.FrameBorderSize.Height)),

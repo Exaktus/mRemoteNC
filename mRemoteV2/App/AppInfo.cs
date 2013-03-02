@@ -13,9 +13,9 @@ namespace mRemoteNC
             public const string URLBugs = "https://github.com/Exaktus/mRemoteNC/issues/";
             public const string URLAnnouncement = "http://exaktus.github.com/mRemoteNC/update/announcement.txt";
 
-            public const bool IsPortable = 
-#if PORTABLE 
-                true; 
+            public const bool IsPortable =
+#if PORTABLE
+ true;
 #else 
                 false; 
 #endif
@@ -29,8 +29,8 @@ namespace mRemoteNC
         public static class Settings
         {
             public static readonly string SettingsPath =
-                General.IsPortable? 
-                General.HomePath:
+                General.IsPortable ?
+                General.HomePath :
                 Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), Application.ProductName);
 
             public const string LayoutFileName = "pnlLayout.xml";
@@ -41,12 +41,19 @@ namespace mRemoteNC
         public static class Update
         {
             public const string URL = "http://exaktus.github.com/mRemoteNC/update/";
-            public static string File =
+            public static string File
+            {
+                get
+                {
+                    return
 #if DEBUG
-            General.IsPortable ? "update-portable-debug.txt" : "update-debug.txt";
+                            General.IsPortable ? "update-portable-debug.txt" : "update-debug.txt";
 #else 
-            General.IsPortable ? "update-portable.txt" : "update.txt";
-#endif 
+                            General.IsPortable ? "update-portable.txt" : "update.txt";
+#endif
+                }
+            }
+
 
         }
 

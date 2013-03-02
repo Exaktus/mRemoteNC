@@ -42,7 +42,7 @@ namespace mRemoteNC.Connection
             //Windows API call to change the parent of the target window.
             //It returns the hWnd of the window's parent prior to this call.
             Native.SetParent(Handle, IcHandel);
-            Resize();
+            Resize(null,null);
         }
 
         public override bool Connect()
@@ -67,7 +67,7 @@ namespace mRemoteNC.Connection
             }
         }
 
-        public override void Resize()
+        public override void Resize(object sender, EventArgs eventArgs)
         {
             try
             {

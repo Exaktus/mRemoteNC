@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using AxMSTSCLib;
 using EOLWTSCOM;
+using MSTSCLib;
 using Microsoft.VisualBasic;
 using mRemoteNC.App;
 using mRemoteNC.Connection;
@@ -26,7 +28,10 @@ namespace mRemoteNC
         public bool Fullscreen
         {
             get { return this.RDP_Client.FullScreen; }
-            set { this.RDP_Client.FullScreen = value; }
+            set { 
+                RDP_Client.FullScreen = value;
+                ReconnectForResize();
+            }
         }
 
         #endregion Properties
@@ -201,16 +206,63 @@ namespace mRemoteNC
             }
         }
 
-        public override void Resize()
+        Size _controlBeginningSize = new Size();
+
+
+        public override void ResizeBegin(object sender, EventArgs e)
         {
-            Control.Location = InterfaceControl.Location;
-            Control.Size = InterfaceControl.Size;
-            base.Resize();
+            _controlBeginningSize = Control.Size;
         }
 
-        #endregion Public Methods
+        public override void Resize(object sender, EventArgs e)
+        {
+            if ((DoResize() && _controlBeginningSize.IsEmpty))
+            {
+                ReconnectForResize();
+            }
+            base.Resize(sender, e);
+        }
 
-        #region Private Methods
+        public override void ResizeEnd(object sender, EventArgs e)
+        {
+            DoResize();
+            if (!(Control.Size == _controlBeginningSize))
+            {
+                ReconnectForResize();
+            }
+            _controlBeginningSize = Size.Empty;
+        }
+
+        private bool DoResize()
+        {
+            Control.Location = InterfaceControl.Location;
+            if ((!(Control.Size == InterfaceControl.Size)
+                        && !(InterfaceControl.Size == Size.Empty)))
+            {
+                Control.Size = InterfaceControl.Size;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void ReconnectForResize()
+        {
+            if ((RDPVersion < Versions.RDC80))
+            {
+                return;
+            }
+            if (!((InterfaceControl.Info.Resolution == RDPResolutions.FitToWindow)
+                        || (InterfaceControl.Info.Resolution == RDPResolutions.Fullscreen)))
+            {
+                return;
+            }
+            var size = Fullscreen ? Control.Size : Screen.FromControl(Control).Bounds.Size;
+            var msRdpClient8 = (IMsRdpClient8)RDP_Client.GetOcx(); //ToDO
+            msRdpClient8.Reconnect((uint)size.Width, (uint)size.Height);
+        }
 
         private void SetRDGateway()
         {
@@ -575,9 +627,9 @@ namespace mRemoteNC
 
         #region Private Events & Handlers
 
-        private void RDPEvent_OnFatalError(object sender, AxMSTSCLib.IMsTscAxEvents_OnFatalErrorEvent e)
+        private void RDPEvent_OnFatalError(object sender, IMsTscAxEvents_OnFatalErrorEvent msTscAxEventsOnFatalErrorEvent)
         {
-            base.Event_ErrorOccured(this, e.errorCode.ToString());
+            base.Event_ErrorOccured(this, msTscAxEventsOnFatalErrorEvent.errorCode.ToString());
         }
         
         private void RDPEvent_OnDisconnected(object sender, IMsTscAxEvents_OnDisconnectedEvent e)
@@ -878,6 +930,7 @@ namespace mRemoteNC
             public static Version RDC60 = new Version(6, 0, 6000);
             public static Version RDC61 = new Version(6, 0, 6001);
             public static Version RDC70 = new Version(6, 1, 7600);
+            public static Version RDC80 = new Version(6, 2, 9200);
         }
 
         #region Terminal Sessions

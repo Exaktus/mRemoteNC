@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
@@ -82,7 +83,7 @@ namespace mRemoteNC
         {
             try
             {
-                Resize();
+                Resize(null,null);
             }
             catch (Exception ex)
             {
@@ -181,7 +182,7 @@ namespace mRemoteNC
                 Native.SetWindowLong(IntAppHandle, 0, Native.WS_VISIBLE);
                 Native.ShowWindow(IntAppHandle, Convert.ToInt32(Native.SW_SHOWMAXIMIZED));
 
-                Resize();
+                Resize(this, new EventArgs());
             }
             catch (Exception ex)
             {
@@ -205,10 +206,14 @@ namespace mRemoteNC
             }
         }
 
-        public override void Resize()
+        public override void Resize(object sender, EventArgs e)
         {
             try
             {
+                if ((InterfaceControl.Size == Size.Empty))
+                {
+                    return;
+                }
                 Native.MoveWindow(IntAppHandle, System.Convert.ToInt32(-SystemInformation.FrameBorderSize.Width),
                                   System.Convert.ToInt32(
                                       -(SystemInformation.CaptionHeight + SystemInformation.FrameBorderSize.Height)),

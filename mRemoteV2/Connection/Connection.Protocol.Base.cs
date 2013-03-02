@@ -22,25 +22,29 @@ namespace mRemoteNC
             set { this._Name = value; }
         }
 
-        private InterfaceControl _InterfaceControl;
+        InterfaceControl _InterfaceControl;
+
 
         public InterfaceControl InterfaceControl
         {
-            get { return this._InterfaceControl; }
-            set { this._InterfaceControl = value; }
+            get
+            {
+                return _InterfaceControl;
+            }
+            set
+            {
+                _InterfaceControl = value;
+                ConnectionWindow = _InterfaceControl.GetContainerControl() as UI.Window.Connection;
+            }
         }
 
         public Control Control { get; set; }
 
         #endregion Control
 
-        private Info.Force _Force;
+        public UI.Window.Connection ConnectionWindow { get; set; }
 
-        public Info.Force Force
-        {
-            get { return this._Force; }
-            set { this._Force = value; }
-        }
+        public Info.Force Force { get; set; }
 
         public System.Timers.Timer tmrReconnect = new System.Timers.Timer(2000);
         public ReconnectGroup ReconnectGroup;
@@ -48,6 +52,20 @@ namespace mRemoteNC
         #endregion Properties
 
         #region Methods
+
+        public virtual void ResizeBegin(System.Object sender, EventArgs e)
+        {
+        }
+
+
+        public virtual void Resize(System.Object sender, EventArgs e)
+        {
+        }
+
+
+        public virtual void ResizeEnd(System.Object sender, EventArgs e)
+        {
+        }
 
         public virtual void Focus()
         {
@@ -104,10 +122,6 @@ namespace mRemoteNC
         public virtual void Disconnect()
         {
             this.Close();
-        }
-
-        public virtual void Resize()
-        {
         }
 
         public virtual void Close()

@@ -5,7 +5,6 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
-using AxMSTSCLib;
 using AxWFICALib;
 using Microsoft.VisualBasic;
 using mRemoteNC;
@@ -27,11 +26,6 @@ namespace mRemoteNC
             public Info Info { get; set; }
 
             #endregion Properties
-
-            public void ResizeProtocol()
-            {
-                Protocol.Resize();
-            }
 
             #region Methods
 

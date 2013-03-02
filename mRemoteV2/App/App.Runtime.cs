@@ -2086,9 +2086,6 @@ namespace mRemoteNC
                             default:
                                 return;
                         }
-                    
-                    Control cContainer;
-                    Form cForm;
 
                     string cPnl;
                     if (((newConnectionInfo.Panel == "") | ((Force & Connection.Info.Force.OverridePanel) == Connection.Info.Force.OverridePanel)) | Settings.Default.AlwaysShowPanelSelectionDlg)
@@ -2108,7 +2105,7 @@ namespace mRemoteNC
                         cPnl = newConnectionInfo.Panel;
                     }
 
-                    cForm = ConForm ?? WindowList.FromString(cPnl);
+                    Form cForm = ConForm ?? WindowList.FromString(cPnl);
 
                     if (cForm == null)
                     {
@@ -2121,7 +2118,7 @@ namespace mRemoteNC
                         (cForm as UI.Window.Connection).Focus();
                     }
 
-                    cContainer = (cForm as UI.Window.Connection).AddConnectionTab(newConnectionInfo);
+                    Control cContainer = (cForm as UI.Window.Connection).AddConnectionTab(newConnectionInfo);
 
                     if (newConnectionInfo.Protocol == Protocols.IntApp)
                     {
@@ -2138,6 +2135,9 @@ namespace mRemoteNC
                     newProtocol.Connected += Prot_Event_Connected;
                     newProtocol.Closed += Prot_Event_Closed;
                     newProtocol.ErrorOccured += Prot_Event_ErrorOccured;
+                    (cForm as UI.Window.Connection).ResizeBegin += newProtocol.ResizeBegin;
+                    (cForm as UI.Window.Connection).ResizeEnd += newProtocol.ResizeEnd;
+                    (cForm as UI.Window.Connection).Resize += newProtocol.Resize;
 
                     newProtocol.InterfaceControl = new InterfaceControl(cContainer, newProtocol, newConnectionInfo);
 

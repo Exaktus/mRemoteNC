@@ -8,7 +8,6 @@ using System.Drawing;
 //using mRemoteNC.Runtime;
 using System.Threading;
 using System.Windows.Forms;
-using AxMSTSCLib;
 using AxWFICALib;
 using Microsoft.VisualBasic;
 using mRemoteNC.App;

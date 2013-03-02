@@ -6,7 +6,6 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using AxMSTSCLib;
 using AxWFICALib;
 using Microsoft.VisualBasic;
 using mRemoteNC.App;
