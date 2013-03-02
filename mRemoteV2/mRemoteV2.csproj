@@ -303,6 +303,7 @@
     <Compile Include="Security\Security.Impersonator.cs" />
     <Compile Include="Security\Security.Save.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="Tools\CommandLineArguments.cs" />
     <Compile Include="Tools\EXComboBox.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -5,8 +5,10 @@ using System.Threading;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using Microsoft.Win32;
+using Tools;
 using mRemoteNC.App;
 using My;
+using mRemoteNC.Messages;
 
 namespace mRemoteNC
 {
@@ -107,6 +109,7 @@ namespace mRemoteNC
                 return argument;
             }
 
+
             public override bool Connect()
             {
                 try
@@ -114,61 +117,72 @@ namespace mRemoteNC
                     _isPuttyNg = IsFilePuttyNg(PuttyPath);
 
                     PuttyProcess = new Process();
-                    PuttyProcess.StartInfo.FileName = _PuttyPath;
+                    var _with1 = PuttyProcess.StartInfo;
+                    _with1.UseShellExecute = false;
+                    _with1.FileName = _PuttyPath;
 
+                    CommandLineArguments arguments = new CommandLineArguments();
+                    arguments.EscapeForShell = false;
 
-                    switch (_PuttyProtocol) {
-	                    case Putty_Protocol.raw:
-                                                PuttyProcess.StartInfo.Arguments = "-load " + "\"" + PuttyEscapeArgument(InterfaceControl.Info.PuttySession) + "\"" + " -" + _PuttyProtocol.ToString() + " -P " + InterfaceControl.Info.Port + " \"" + InterfaceControl.Info.Hostname + "\"";
-		                    break;
-	                    case Putty_Protocol.rlogin:
-		                    PuttyProcess.StartInfo.Arguments = "-load " + "\"" + PuttyEscapeArgument(InterfaceControl.Info.PuttySession) + "\"" + " -" + _PuttyProtocol.ToString() + " -P " + InterfaceControl.Info.Port + " \"" + InterfaceControl.Info.Hostname + "\"";
-		                    break;
-	                    case Putty_Protocol.ssh:
-		                    string userArgument = "";
-		                    string passwordArgument = "";
+                    arguments.Add("-load", InterfaceControl.Info.PuttySession);
+                    arguments.Add("-" + _PuttyProtocol.ToString());
 
-		                    if (Settings.Default.EmptyCredentials == "windows") {
-			                    userArgument = " -l \"" + Environment.UserName + "\"";
+                    if (_PuttyProtocol == Putty_Protocol.ssh)
+                    {
+                        string username = "";
+                        string password = "";
+
+                        if (!string.IsNullOrEmpty(InterfaceControl.Info.Username))
+                        {
+                            username = InterfaceControl.Info.Username;
+                        }
+                        else
+                        {
+                            if (Settings.Default.EmptyCredentials == "windows")
+                            {
+                                username = Environment.UserName;
                             }
                             else if (Settings.Default.EmptyCredentials == "custom")
                             {
-                                userArgument = " -l \"" + Settings.Default.DefaultUsername + "\"";
-                                passwordArgument = " -pw \"" + PuttyEscapeArgument(Security.Crypt.Decrypt(Settings.Default.DefaultPassword, AppInfo.General.EncryptionKey)) + "\"";
-		                    }
+                                username = Settings.Default.DefaultUsername;
+                            }
+                        }
 
-		                    if (!string.IsNullOrEmpty(InterfaceControl.Info.Username)) {
-			                    userArgument = " -l \"" + InterfaceControl.Info.Username + "\"";
-		                    }
+                        if (!string.IsNullOrEmpty(InterfaceControl.Info.Password))
+                        {
+                            password = InterfaceControl.Info.Password;
+                        }
+                        else
+                        {
+                            if (Settings.Default.EmptyCredentials == "custom")
+                            {
+                                password = Security.Crypt.Decrypt(Settings.Default.DefaultPassword, AppInfo.General.EncryptionKey);
+                            }
+                        }
 
-		                    if (!string.IsNullOrEmpty(InterfaceControl.Info.Password)) {
-			                    passwordArgument = " -pw \"" + PuttyEscapeArgument(InterfaceControl.Info.Password) + "\"";
-		                    }
-
-		                    PuttyProcess.StartInfo.Arguments = "-load " + "\"" + PuttyEscapeArgument(InterfaceControl.Info.PuttySession)
-                                + "\"" + " -" + _PuttyProtocol.ToString() + " -" + (int)_PuttySSHVersion + userArgument + passwordArgument 
-                                + " -P " + InterfaceControl.Info.Port + " \"" + InterfaceControl.Info.Hostname + "\"";
-		                    break;
-	                    case Putty_Protocol.telnet:
-                            PuttyProcess.StartInfo.Arguments = "-load " + "\"" + PuttyEscapeArgument(InterfaceControl.Info.PuttySession) + "\"" + " -" + _PuttyProtocol.ToString() + " -P " + InterfaceControl.Info.Port + " \"" + InterfaceControl.Info.Hostname + "\"";
-		                    break;
-	                    case Putty_Protocol.serial:
-                            PuttyProcess.StartInfo.Arguments = "-load " + "\"" + PuttyEscapeArgument(InterfaceControl.Info.PuttySession) + "\"" + " -" + _PuttyProtocol.ToString() + " -P " + InterfaceControl.Info.Port + " \"" + InterfaceControl.Info.Hostname + "\"";
-		                    break;
+                        arguments.Add("-" + (int)_PuttySSHVersion);
+                        arguments.Add("-l", username);
+                        arguments.Add("-pw", password);
                     }
-                    
+
+                    arguments.Add("-P", InterfaceControl.Info.Port.ToString());
+                    arguments.Add(InterfaceControl.Info.Hostname);
+
                     if (_isPuttyNg)
                     {
-                        PuttyProcess.StartInfo.Arguments = PuttyProcess.StartInfo.Arguments + " -hwndparent " +
-                                                           this.InterfaceControl.Handle.ToString();
+                        arguments.Add("-hwndparent", InterfaceControl.Handle.ToString());
                     }
 
+                    _with1.Arguments = arguments.ToString();
+
+                   
                     //REMOVE IN RELEASE!
 #if DEBUG
                     Runtime.MessageCollector.AddMessage(Messages.MessageClass.InformationMsg,
                                                         "PuTTY Arguments: " + PuttyProcess.StartInfo.Arguments, true);
                     Debug.WriteLine("PuTTY Arguments: " + PuttyProcess.StartInfo.Arguments);
 #endif
+
                     PuttyProcess.EnableRaisingEvents = true;
                     PuttyProcess.Exited += ProcessExited;
 
@@ -188,7 +202,7 @@ namespace mRemoteNC
                             PuttyHandle = PuttyProcess.MainWindowHandle;
                         }
                         if (PuttyHandle.ToInt32() == 0)
-                            Thread.Sleep(0);
+                            Thread.Sleep(50);
                     }
 
                     if (!_isPuttyNg)
@@ -196,19 +210,11 @@ namespace mRemoteNC
                         Native.SetParent(PuttyHandle, InterfaceControl.Handle);
                     }
 
-                    Runtime.MessageCollector.AddMessage(Messages.MessageClass.InformationMsg, Language.strPuttyStuff,
-                                                        true);
+                    Runtime.MessageCollector.AddMessage(MessageClass.InformationMsg, Language.strPuttyStuff, true);
 
-                    Runtime.MessageCollector.AddMessage(Messages.MessageClass.InformationMsg,
-                                                        string.Format(Language.strPuttyHandle, PuttyHandle.ToString()),
-                                                        true);
-                    Runtime.MessageCollector.AddMessage(Messages.MessageClass.InformationMsg,
-                                                        string.Format(Language.strPuttyTitle,
-                                                                      PuttyProcess.MainWindowTitle), true);
-                    Runtime.MessageCollector.AddMessage(Messages.MessageClass.InformationMsg,
-                                                        string.Format(Language.strPuttyParentHandle,
-                                                                      this.InterfaceControl.Parent.Handle.ToString()),
-                                                        true);
+                    Runtime.MessageCollector.AddMessage(MessageClass.InformationMsg, string.Format(Language.strPuttyHandle, PuttyHandle.ToString()), true);
+                    Runtime.MessageCollector.AddMessage(MessageClass.InformationMsg, string.Format(Language.strPuttyTitle, PuttyProcess.MainWindowTitle), true);
+                    Runtime.MessageCollector.AddMessage(MessageClass.InformationMsg, string.Format(Language.strPuttyParentHandle, InterfaceControl.Parent.Handle.ToString()), true);
 
                     Resize(this, new EventArgs());
 
@@ -217,9 +223,7 @@ namespace mRemoteNC
                 }
                 catch (Exception ex)
                 {
-                    Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
-                                                        Language.strPuttyConnectionFailed + Constants.vbNewLine +
-                                                        ex.Message);
+                    Runtime.MessageCollector.AddMessage(MessageClass.ErrorMsg, Language.strPuttyConnectionFailed + Constants.vbNewLine + ex.Message);
                     return false;
                 }
             }

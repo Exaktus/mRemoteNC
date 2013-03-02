@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using Microsoft.VisualBasic;
+using Tools;
 using mRemoteNC.App;
 
 //using mRemoteNC.Runtime;
@@ -122,7 +123,7 @@ namespace mRemoteNC.Tools
                     throw (new Exception("No Filename specified!"));
                 }
 
-                if (_TryIntegrate == true)
+                if (_TryIntegrate)
                 {
                     StartIntApp(ConnectionInfo);
                     return null;
@@ -133,8 +134,9 @@ namespace mRemoteNC.Tools
                 Process p = new Process();
                 ProcessStartInfo pI = new ProcessStartInfo();
 
+                pI.UseShellExecute = false;
                 pI.FileName = ParseText(_FileName);
-                pI.Arguments = ParseText(_Arguments);
+                pI.Arguments = CommandLineArguments.EscapeBackslashes(_Arguments);
 
                 p.StartInfo = pI;
 
@@ -239,17 +241,6 @@ namespace mRemoteNC.Tools
             }
 
             return pText;
-        }
-
-        internal static string EscapeArguments(string Arguments)
-        {
-            string escapedArguments = Arguments;
-            escapedArguments = escapedArguments.Replace("^", "^^");
-            escapedArguments = escapedArguments.Replace("&", "^&");
-            escapedArguments = escapedArguments.Replace("<", "^<");
-            escapedArguments = escapedArguments.Replace(">", "^>");
-            escapedArguments = escapedArguments.Replace("|", "^|");
-            return escapedArguments;
         }
     }
 

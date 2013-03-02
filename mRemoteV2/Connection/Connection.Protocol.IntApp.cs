@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
+using Tools;
 using mRemoteNC.App;
 using My;
 using mRemoteNC.Tools;
@@ -119,7 +120,8 @@ namespace mRemoteNC
                 }
 
                 IntAppProcessStartInfo.FileName = _IntAppPath;
-                IntAppProcessStartInfo.Arguments = Arguments!=null?ExternalTool.EscapeArguments(Arguments):"";
+                IntAppProcessStartInfo.UseShellExecute = false;
+                IntAppProcessStartInfo.Arguments = Arguments != null ? CommandLineArguments.EscapeBackslashes(Arguments) : "";
                 IntAppProcess=new Process();
                 IntAppProcess.StartInfo = IntAppProcessStartInfo;
                 IntAppProcess.EnableRaisingEvents = true;

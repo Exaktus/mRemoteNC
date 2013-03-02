@@ -1,4 +1,7 @@
-﻿2.70 pre-alfa (Forked as mRemoteNC)
+﻿2.70 Nightly (2013-03-XX)
+	[rmcardle] Fixed issue MR-352 - Passwords with " (quotation mark) and # (hash key) characters make mRemoteNG to open PuttyNG dialog
+
+2.70 pre-alfa (Forked as mRemoteNC)
 ​	Ported to C#, .Net 4.0
 	Fixed PuTTY tab focus issue (MR-305)
 	Fixed crash on startup after update from version 1.69 and older (MR-306)
