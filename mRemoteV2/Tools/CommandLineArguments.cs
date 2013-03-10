@@ -47,6 +47,9 @@ namespace Tools
 
         public static string PrefixFileName(string argument)
         {
+            if (string.IsNullOrEmpty(argument))
+                return argument;
+
             if (argument.StartsWith("-"))
                 argument = ".\\" + argument;
 
@@ -55,6 +58,9 @@ namespace Tools
 
         public static string EscapeBackslashes(string argument)
         {
+            if (string.IsNullOrEmpty(argument))
+                return argument;
+
             // Sequence of backslashes followed by a double quote:
             //     double up all the backslashes and escape the double quote
             return Regex.Replace(argument, "(\\\\*)\"", "$1$1\\\"");
@@ -68,13 +74,19 @@ namespace Tools
             // Sequence of backslashes followed by the end of the string
             // (which will become a double quote):
             //     double up all the backslashes
-            argument = Regex.Replace(argument, "(\\\\*)$", "$1$1");
+            if (!string.IsNullOrEmpty(argument))
+            {
+                argument = Regex.Replace(argument, "(\\\\*)$", "$1$1");
+            }
 
             return "\"" + argument + "\"";
         }
 
         public static string EscapeShellMetacharacters(string argument)
         {
+            if (string.IsNullOrEmpty(argument))
+                return argument;
+
             return Regex.Replace(argument, "([()%!^\"<>&|])", "^$1");
         }
         #endregion

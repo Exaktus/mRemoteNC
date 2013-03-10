@@ -136,7 +136,7 @@ namespace mRemoteNC.Tools
 
                 pI.UseShellExecute = false;
                 pI.FileName = ParseText(_FileName);
-                pI.Arguments = CommandLineArguments.EscapeBackslashes(_Arguments);
+                pI.Arguments = CommandLineArguments.EscapeBackslashes(ParseText(_Arguments));
 
                 p.StartInfo = pI;
 

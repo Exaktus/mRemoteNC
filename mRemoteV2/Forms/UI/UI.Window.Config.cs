@@ -975,7 +975,8 @@ namespace mRemoteNC
                                     strHide.Add("UseCredSsp");
                                     if (conI.VNCAuthMode == VNC.AuthMode.AuthVNC)
                                     {
-                                        strHide.Add("Username;Domain");
+                                        strHide.Add("Username"); 
+                                        strHide.Add("Domain");
                                     }
                                     if (conI.VNCProxyType == VNC.ProxyType.ProxyNone)
                                     {
