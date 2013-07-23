@@ -2044,21 +2044,13 @@ mRemoteNC will now quit and begin with the installation.</value>
     <value>TeamViewer</value>
   </data>
   <data name="strHttpGeckoFX" xml:space="preserve">
-    <value>GheckoFX v16</value>
+    <value>GheckoFX</value>
   </data>
   <data name="strTVPath" xml:space="preserve">
     <value>TeamViewer path:</value>
   </data>
   <data name="strCcClickOnSign" xml:space="preserve">
     <value>&lt;-- Click on red sign, to get more details.</value>
-  </data>
-  <data name="strCcGeckoFix" xml:space="preserve">
-    <value>To use the Gecko Rendering Engine you need to have XULrunner 1.8.1 or 16.0.2 and the path to the installation set in your Options.
-You can download XULrunner 1.8.1.3 here: ftp://ftp.mozilla.org/pub/xulrunner/releases/1.8.1.3/contrib/win32/
-and 16.0.2 drom here: http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/ (for GheckoFx v16)
-When you are finished downloading extract the package to a path of your choice. Then in mRemoteNC go to Tools - Options - Advanced and enter the correct path in the XULrunner path field.
-
-Or I can do it for you.</value>
   </data>
   <data name="strPfTVProblemFound" xml:space="preserve">
     <value>TeamViewer: problem found</value>
@@ -2137,12 +2129,6 @@ Or I can do it for you.</value>
   </data>
   <data name="ProblemFixer_FixTVProblem_Setup_path" xml:space="preserve">
     <value>Setup path</value>
-  </data>
-  <data name="ProblemFixer_FixGeckoProblem_Open_XULrunner_16_0_2_Download_page" xml:space="preserve">
-    <value>Open XULrunner 16.0.2 Download page</value>
-  </data>
-  <data name="ProblemFixer_FixGeckoProblem_Download_and_setup_XULrunner_16_0_2" xml:space="preserve">
-    <value>Download and setup XULrunner 16.0.2</value>
   </data>
   <data name="ProblemFixer_FixGeckoProblem_Open_XULrunner_1_8_1_Download_page" xml:space="preserve">
     <value>Open XULrunner 1.8.1 Download page</value>
@@ -2280,5 +2266,19 @@ Or I can do it for you.</value>
   </data>
   <data name="frmMain_ApplyLanguage_Lock_toolbar" xml:space="preserve">
     <value>Lock toolbar</value>
+  </data>
+  <data name="ProblemFixer_FixGeckoProblem_" xml:space="preserve">
+    <value>To use the Gecko Rendering Engine you need to have XULrunner 1.8.1 or {0} and the path to the installation set in your Options.
+You can download XULrunner 1.8.1.3 here: ftp://ftp.mozilla.org/pub/xulrunner/releases/1.8.1.3/contrib/win32/
+and {0} from here: {1} (for GheckoFx {0})
+When you are finished downloading extract the package to a path of your choice. Then in mRemoteNC go to Tools - Options - Advanced and enter the correct path in the XULrunner path field.
+
+Or I can do it for you.</value>
+  </data>
+  <data name="ProblemFixer_FixGeckoProblem_Open_XULrunner_Latest_Download_page" xml:space="preserve">
+    <value>Open XULrunner {0} Download page</value>
+  </data>
+  <data name="ProblemFixer_FixGeckoProblem_Download_and_setup_XULrunner_Latest" xml:space="preserve">
+    <value>Download and setup XULrunner {0}</value>
   </data>
 </root>

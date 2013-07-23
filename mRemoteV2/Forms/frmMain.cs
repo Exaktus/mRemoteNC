@@ -1100,10 +1100,7 @@ namespace mRemoteNC
         {
             try
             {
-#if Config
-    //Debug.Print(m.Msg)
-#endif
-
+                Debug.Print(m.Msg.ToString());
                 switch (m.Msg)
                 {
                     case Native.WM_MOUSEACTIVATE:

@@ -109,13 +109,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>References\FilteredPropertyGrid.dll</HintPath>
     </Reference>
-    <Reference Include="geckofx-core-16, Version=16.0.1.0, Culture=neutral, PublicKeyToken=3209ac31600d1857, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>References\geckofx-core-16.dll</HintPath>
+    <Reference Include="geckofx-core-21">
+      <HintPath>References\geckofx-core-21.dll</HintPath>
     </Reference>
-    <Reference Include="Geckofx-Winforms-16, Version=16.0.1.0, Culture=neutral, PublicKeyToken=3209ac31600d1857, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>References\Geckofx-Winforms-16.dll</HintPath>
+    <Reference Include="Geckofx-Winforms-21">
+      <HintPath>References\Geckofx-Winforms-21.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>

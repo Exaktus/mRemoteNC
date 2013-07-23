@@ -19,9 +19,10 @@ namespace mRemoteNC.Tools
         public static string ICAVer;
         public static string RAVer;
 
-        private const string xul16Path = "http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/";
+        private const string xulLatestPath = "http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/21.0/runtimes/";
         private const string xul18Path = "ftp://ftp.mozilla.org/pub/xulrunner/releases/1.8.1.3/contrib/win32/";
-        private const string xul16Name = "xulrunner-16.0.2.en-US.win32.zip";
+        private const string xulLatestName = "xulrunner-21.0.en-US.win32.zip";
+        private const string xulLatestVer = "21.0";
 
         private static bool IsRDPOkInternal()
         {
@@ -217,7 +218,7 @@ namespace mRemoteNC.Tools
             try
             {
                 var temFile = Path.GetTempFileName() + ".zip";
-                Misc.DownloadFileVisual(xul16Path+xul16Name, temFile);
+                Misc.DownloadFileVisual(xulLatestPath+xulLatestName, temFile);
                 Misc.UnZipFileVisual(temFile, ".\\");
                 File.Delete(temFile);
             }
@@ -290,14 +291,14 @@ namespace mRemoteNC.Tools
                     cTaskDialog.CommandButtonResult = 99;
                     cTaskDialog.ShowTaskDialogBox(Language.ProblemFixer_FixGeckoProblem_Gecko__problem_found,
                                                   Language.ProblemFixer_FixGeckoProblem_Xulrunner_folder_not_found,
-                                                  Language.strCcGeckoFix,
+                                                  string.Format(Language.ProblemFixer_FixGeckoProblem_, xulLatestVer, xulLatestPath),
                                                   "", "", "", "",
                                                   string.Format("{0}|{1}\r\n{2}|{3}\r\n{4}|{5}", Language.ProblemFixer_FixTVProblem_Open_Options,
                                                                                                  Language.ProblemFixer_FixGeckoProblem_Open_XULrunner_1_8_1_Download_page,
                                                                                                  xul18Path,
-                                                                                                 Language.ProblemFixer_FixGeckoProblem_Open_XULrunner_16_0_2_Download_page,
-                                                                                                 xul16Path,
-                                                                                                 Language.ProblemFixer_FixGeckoProblem_Download_and_setup_XULrunner_16_0_2),
+                                                                                                 string.Format(Language.ProblemFixer_FixGeckoProblem_Open_XULrunner_Latest_Download_page, xulLatestVer),
+                                                                                                 xulLatestPath,
+                                                                                                 string.Format(Language.ProblemFixer_FixGeckoProblem_Download_and_setup_XULrunner_Latest, xulLatestVer)),
                                                   eTaskDialogButtons.OK, eSysIcons.Information, eSysIcons.Information);
                     switch (cTaskDialog.CommandButtonResult)
                     {
@@ -310,7 +311,7 @@ namespace mRemoteNC.Tools
                             break;
 
                         case 2:
-                            Process.Start(xul16Path);
+                            Process.Start(xulLatestPath);
                             break;
 
                         case 3:

@@ -2044,18 +2044,13 @@ mRemoteNC сейчас прекратит работу и начнет проц�
     <value>TeamViewer</value>
   </data>
   <data name="strHttpGeckoFX" xml:space="preserve">
-    <value>GheckoFX v16</value>
+    <value>GheckoFX</value>
   </data>
   <data name="strTVPath" xml:space="preserve">
     <value>Путь к TeamViewer:</value>
   </data>
   <data name="strCcClickOnSign" xml:space="preserve">
     <value>&lt;-- Нажмите на красный знак, чтобы получить более подробную информацию.</value>
-  </data>
-  <data name="strCcGeckoFix" xml:space="preserve">
-    <value>Чтобы использовать движок рендеринга Gecko необходимо указать путь к XULrunner 1.8.1 или 16.0.2 в настройках. Вы можете скачать XULrunner 1.8.1.3 здесь: ftp://ftp.mozilla.org/pub/xulrunner/releases/1.8.1.3/contrib/win32/ и 16.0.2 здесь:  http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/16.0.2/runtimes/ (для GheckoFx v16) когда вы закончите загрузку распакуйте скачанный файл в любое место по вашему выбору. После этого укажите путь к распакованным файлам в настройках mRemoteNC.
-
-Или я могу сделать это за вас.</value>
   </data>
   <data name="strPfTVProblemFound" xml:space="preserve">
     <value>TeamViewer: обнаруженна проблема</value>
@@ -2134,12 +2129,6 @@ mRemoteNC сейчас прекратит работу и начнет проц�
   </data>
   <data name="ProblemFixer_FixTVProblem_Setup_path" xml:space="preserve">
     <value>Установить путь</value>
-  </data>
-  <data name="ProblemFixer_FixGeckoProblem_Open_XULrunner_16_0_2_Download_page" xml:space="preserve">
-    <value>Открыть страницу загрузки XULrunner 1.8.1</value>
-  </data>
-  <data name="ProblemFixer_FixGeckoProblem_Download_and_setup_XULrunner_16_0_2" xml:space="preserve">
-    <value>Скачать и установить XULrunner 16.0.2</value>
   </data>
   <data name="ProblemFixer_FixGeckoProblem_Open_XULrunner_1_8_1_Download_page" xml:space="preserve">
     <value>Откройте страницу загрузки XULrunner 1.8.1</value>

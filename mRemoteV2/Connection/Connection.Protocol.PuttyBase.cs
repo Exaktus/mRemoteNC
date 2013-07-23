@@ -161,8 +161,14 @@ namespace mRemoteNC
                         }
 
                         arguments.Add("-" + (int)_PuttySSHVersion);
-                        arguments.Add("-l", username);
-                        arguments.Add("-pw", password);
+                        if (!string.IsNullOrEmpty(username))
+                        {
+                            arguments.Add("-l", username);
+                        }
+                        if (!string.IsNullOrEmpty(password))
+                        {
+                            arguments.Add("-pw", password);
+                        }
                     }
 
                     arguments.Add("-P", InterfaceControl.Info.Port.ToString());
@@ -232,7 +238,9 @@ namespace mRemoteNC
             {
                 try
                 {
-                    Native.ForceForegroundWindow(PuttyHandle);
+                    //Native.ForceForegroundWindow(PuttyHandle);
+                    Native.SetForegroundWindow(PuttyHandle);
+                    Debug.WriteLine("Native.ForceForegroundWindow");
                 }
                 catch (Exception ex)
                 {
