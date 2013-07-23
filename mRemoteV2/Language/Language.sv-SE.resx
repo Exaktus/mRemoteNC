@@ -1,0 +1,1255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="strAbout" xml:space="preserve">
+    <value>Om</value>
+  </data>
+  <data name="strActive" xml:space="preserve">
+    <value>Aktiv</value>
+  </data>
+  <data name="strActivity" xml:space="preserve">
+    <value>Aktivitet</value>
+  </data>
+  <data name="strAddConnection" xml:space="preserve">
+    <value>Ny anslutning</value>
+  </data>
+  <data name="strAddFolder" xml:space="preserve">
+    <value>Ny mapp</value>
+  </data>
+  
+  
+  
+  <data name="strAlways" xml:space="preserve">
+    <value>Alltid</value>
+  </data>
+  
+  
+  
+  <data name="strAskUpdatesCommandAskLater" xml:space="preserve">
+    <value>Fråga mig igen senare</value>
+  </data>
+  <data name="strAskUpdatesCommandCustom" xml:space="preserve">
+    <value>Anpassa inställningarna nu</value>
+  </data>
+  <data name="strAskUpdatesCommandRecommended" xml:space="preserve">
+    <value>Använd rekommenderade inställningar</value>
+  </data>
+  
+  <data name="strAskUpdatesMainInstruction" xml:space="preserve">
+    <value>Inställningar för automatisk uppdatering</value>
+  </data>
+  
+  
+  <data name="strAutoSaveEvery" xml:space="preserve">
+    <value>Spara automatiskt var:</value>
+  </data>
+  <data name="strAutoSaveMins" xml:space="preserve">
+    <value>Minuter (0 betyder inaktiverad)</value>
+  </data>
+  
+  
+  <data name="strButtonCancel" xml:space="preserve">
+    <value>&amp;Avbryt</value>
+  </data>
+  <data name="strButtonChange" xml:space="preserve">
+    <value>Ändra</value>
+  </data>
+  <data name="strButtonClose" xml:space="preserve">
+    <value>&amp;Stäng</value>
+  </data>
+  
+  <data name="strButtonDefaultProperties" xml:space="preserve">
+    <value>Standardegenskaper</value>
+  </data>
+  <data name="strButtonDisconnect" xml:space="preserve">
+    <value>Koppla från</value>
+  </data>
+  <data name="strButtonIcon" xml:space="preserve">
+    <value>Ikon</value>
+  </data>
+  <data name="strButtonImport" xml:space="preserve">
+    <value>&amp;Importera</value>
+  </data>
+  
+  <data name="strButtonLaunchPutty" xml:space="preserve">
+    <value>Starta PuTTY</value>
+  </data>
+  <data name="strButtonNew" xml:space="preserve">
+    <value>&amp;Ny</value>
+  </data>
+  <data name="strButtonOK" xml:space="preserve">
+    <value>&amp;OK</value>
+  </data>
+  <data name="strButtonProperties" xml:space="preserve">
+    <value>Egenskaper</value>
+  </data>
+  
+  <data name="strButtonStop" xml:space="preserve">
+    <value>&amp;Stopp</value>
+  </data>
+  
+  <data name="strCannotImportNormalSessionFile" xml:space="preserve">
+    <value>Du kan inte importera en normal anslutningsfil. Använd Fil - Ladda anslutningar för normala anslutningsfiler!</value>
+  </data>
+  
+  <data name="strCategoryAppearance" xml:space="preserve">
+    <value>Utseende</value>
+  </data>
+  <data name="strCategoryConnection" xml:space="preserve">
+    <value>Anslutning</value>
+  </data>
+  
+  
+  <data name="strCategoryGateway" xml:space="preserve">
+    <value>Gateway</value>
+  </data>
+  
+  
+  <data name="strCategoryProtocol" xml:space="preserve">
+    <value>Protokoll</value>
+  </data>
+  
+  <data name="strCcAlwaysShowScreen" xml:space="preserve">
+    <value>Visa alltid denna skärm vid uppstart</value>
+  </data>
+  <data name="strCcCheckAgain" xml:space="preserve">
+    <value>Uppdatera</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  <data name="strCcNotInstalledProperly" xml:space="preserve">
+    <value>inte installerats korrekt</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  <data name="strCheckboxDomain" xml:space="preserve">
+    <value>Domän</value>
+  </data>
+  
+  
+  <data name="strCheckboxPassword" xml:space="preserve">
+    <value>Lösenord</value>
+  </data>
+  
+  
+  
+  
+  <data name="strCheckboxUsername" xml:space="preserve">
+    <value>Användarnamn</value>
+  </data>
+  
+  <data name="strCheckForUpdate" xml:space="preserve">
+    <value>Kontrollera igen</value>
+  </data>
+  
+  <data name="strCheckNow" xml:space="preserve">
+    <value>Kontrollera nu</value>
+  </data>
+  
+  
+  <data name="strClosedPorts" xml:space="preserve">
+    <value>Stängda portar</value>
+  </data>
+  <data name="strCollapseAllFolders" xml:space="preserve">
+    <value>Komprimera alla mappar</value>
+  </data>
+  
+  <data name="strColumnDisplayName" xml:space="preserve">
+    <value>Visningsnamn</value>
+  </data>
+  <data name="strColumnFilename" xml:space="preserve">
+    <value>Filnamn</value>
+  </data>
+  <data name="strColumnHostnameIP" xml:space="preserve">
+    <value>Värdnamn/IP</value>
+  </data>
+  <data name="strColumnMessage" xml:space="preserve">
+    <value>Meddelande</value>
+  </data>
+  <data name="strColumnUsername" xml:space="preserve">
+    <value>Användarnamn</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="strConnect" xml:space="preserve">
+    <value>Anslut</value>
+  </data>
+  
+  
+  
+  
+  <data name="strConnectionEventConnectionFailed" xml:space="preserve">
+    <value>Anslutning misslyckades!</value>
+  </data>
+  
+  
+  
+  
+  <data name="strConnections" xml:space="preserve">
+    <value>Anslutningar</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="strDuplicate" xml:space="preserve">
+    <value>Duplicera</value>
+  </data>
+  <data name="strEmptyPasswordContinue" xml:space="preserve">
+    <value>Vill du fortsätta utan lösenord?</value>
+  </data>
+  <data name="strEmptyUsernamePasswordDomainFields" xml:space="preserve">
+    <value>För tomt användarnamn, lösenord eller domännamn använd:</value>
+  </data>
+  <data name="strEnc128Bit" xml:space="preserve">
+    <value>128-bitars</value>
+  </data>
+  <data name="strEnc128BitLogonOnly" xml:space="preserve">
+    <value>128-bitars (endast inloggning)</value>
+  </data>
+  <data name="strEnc40Bit" xml:space="preserve">
+    <value>40-bitars</value>
+  </data>
+  <data name="strEnc56Bit" xml:space="preserve">
+    <value>56-bitars</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="strErrorCode" xml:space="preserve">
+    <value>Felkod {0}.</value>
+  </data>
+  
+  
+  
+  
+  <data name="strErrors" xml:space="preserve">
+    <value>Fel</value>
+  </data>
+  
+  
+  <data name="strExpandAllFolders" xml:space="preserve">
+    <value>Expandera alla mappar</value>
+  </data>
+  <data name="strExperimental" xml:space="preserve">
+    <value>Experimentell</value>
+  </data>
+  <data name="strExport" xml:space="preserve">
+    <value>Exportera</value>
+  </data>
+  
+  
+  <data name="strFAMFAMFAMAttribution" xml:space="preserve">
+    <value>Innehåller ikoner av [FAMFAMFAM]</value>
+  </data>
+  <data name="strFAMFAMFAMAttributionURL" xml:space="preserve">
+    <value>http://www.famfamfam.com/</value>
+  </data>
+  <data name="strFilterAll" xml:space="preserve">
+    <value>Alla filer (*. *)</value>
+  </data>
+  <data name="strFilterApplication" xml:space="preserve">
+    <value>Programfiler (*.exe)</value>
+  </data>
+  <data name="strFiltermRemoteCSV" xml:space="preserve">
+    <value>mRemote CSV-filer (*.csv)</value>
+  </data>
+  <data name="strFiltermRemoteXML" xml:space="preserve">
+    <value>mRemote XML-filer (*.xml)</value>
+  </data>
+  <data name="strFilterRDP" xml:space="preserve">
+    <value>RDP-filer (*.rdp)</value>
+  </data>
+  
+  
+  
+  
+  <data name="strFullscreen" xml:space="preserve">
+    <value>Helskärm</value>
+  </data>
+  
+  
+  
+  
+  <data name="strGroupboxConnection" xml:space="preserve">
+    <value>Anslutning</value>
+  </data>
+  
+  <data name="strGroupboxFiles" xml:space="preserve">
+    <value>Filer</value>
+  </data>
+  <data name="strHost" xml:space="preserve">
+    <value>Värd</value>
+  </data>
+  <data name="strHttp" xml:space="preserve">
+    <value>HTTP</value>
+  </data>
+  
+  
+  
+  <data name="strHttpInternetExplorer" xml:space="preserve">
+    <value>Internet Explorer</value>
+  </data>
+  <data name="strHttps" xml:space="preserve">
+    <value>HTTPS</value>
+  </data>
+  
+  <data name="strICA" xml:space="preserve">
+    <value>ICA</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="strInactive" xml:space="preserve">
+    <value>Inaktiv</value>
+  </data>
+  
+  
+  <data name="strIntAppConnectionFailed" xml:space="preserve">
+    <value>Anslutning misslyckades!</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="strKeysCtrlAltDel" xml:space="preserve">
+    <value>CTRL-ALT-DEL</value>
+  </data>
+  <data name="strKeysCtrlEsc" xml:space="preserve">
+    <value>CTRL-ESC</value>
+  </data>
+  <data name="strLabelAddress" xml:space="preserve">
+    <value>Adress:</value>
+  </data>
+  
+  
+  
+  <data name="strLabelDisplayName" xml:space="preserve">
+    <value>Visningsnamn</value>
+  </data>
+  <data name="strLabelDomain" xml:space="preserve">
+    <value>Domän:</value>
+  </data>
+  <data name="strLabelFilename" xml:space="preserve">
+    <value>Filnamn:</value>
+  </data>
+  <data name="strLabelHostname" xml:space="preserve">
+    <value>Värdnamn:</value>
+  </data>
+  
+  <data name="strLabelPassword" xml:space="preserve">
+    <value>Lösenord:</value>
+  </data>
+  <data name="strLabelPort" xml:space="preserve">
+    <value>Port:</value>
+  </data>
+  
+  <data name="strLabelProtocol" xml:space="preserve">
+    <value>Protokoll:</value>
+  </data>
+  
+  
+  
+  <data name="strLabelSeconds" xml:space="preserve">
+    <value>sekunder</value>
+  </data>
+  
+  <data name="strLabelServerStatus" xml:space="preserve">
+    <value>Serverstatus:</value>
+  </data>
+  <data name="strLabelSQLDatabaseName" xml:space="preserve">
+    <value>Databas:</value>
+  </data>
+  <data name="strLabelSQLServerDatabaseName" xml:space="preserve">
+    <value>Databas:</value>
+  </data>
+  <data name="strLabelUsername" xml:space="preserve">
+    <value>Användarnamn:</value>
+  </data>
+  
+  <data name="strLanguage" xml:space="preserve">
+    <value>Språk</value>
+  </data>
+  
+  
+  
+  
+  <data name="strLocalFile" xml:space="preserve">
+    <value>Lokal fil</value>
+  </data>
+  
+  <data name="strLogOff" xml:space="preserve">
+    <value>Logga ut</value>
+  </data>
+  
+  
+  
+  <data name="strMagicLibraryAttributionURL" xml:space="preserve">
+    <value>http://www.dotnetmagic.com/</value>
+  </data>
+  <data name="strMenuAbout" xml:space="preserve">
+    <value>Om</value>
+  </data>
+  
+  <data name="strMenuAnnouncements" xml:space="preserve">
+    <value>Meddelanden</value>
+  </data>
+  
+  
+  <data name="strMenuConnect" xml:space="preserve">
+    <value>Anslut</value>
+  </data>
+  
+  <data name="strMenuConnections" xml:space="preserve">
+    <value>Anslutningar</value>
+  </data>
+  
+  <data name="strMenuCopy" xml:space="preserve">
+    <value>Kopiera</value>
+  </data>
+  <data name="strMenuCtrlAltDel" xml:space="preserve">
+    <value>Ctrl-Alt-Del</value>
+  </data>
+  <data name="strMenuCtrlEsc" xml:space="preserve">
+    <value>Ctrl-Esc</value>
+  </data>
+  <data name="strMenuDelete" xml:space="preserve">
+    <value>Ta bort...</value>
+  </data>
+  <data name="strMenuDeleteConnection" xml:space="preserve">
+    <value>Ta bort anslutning...</value>
+  </data>
+  <data name="strMenuDeleteExternalTool" xml:space="preserve">
+    <value>Ta bort externt verktyg...</value>
+  </data>
+  <data name="strMenuDeleteFolder" xml:space="preserve">
+    <value>Ta bort mapp...</value>
+  </data>
+  <data name="strMenuDisconnect" xml:space="preserve">
+    <value>Koppla från</value>
+  </data>
+  <data name="strMenuDonate" xml:space="preserve">
+    <value>Donera</value>
+  </data>
+  <data name="strMenuDuplicate" xml:space="preserve">
+    <value>Duplicera</value>
+  </data>
+  <data name="strMenuDuplicateConnection" xml:space="preserve">
+    <value>Duplicera anslutning</value>
+  </data>
+  <data name="strMenuDuplicateFolder" xml:space="preserve">
+    <value>Duplicera mapp</value>
+  </data>
+  <data name="strMenuDuplicateTab" xml:space="preserve">
+    <value>Duplicera flik</value>
+  </data>
+  <data name="strMenuExit" xml:space="preserve">
+    <value>Avsluta</value>
+  </data>
+  <data name="strMenuExternalTools" xml:space="preserve">
+    <value>Externa verktyg</value>
+  </data>
+  
+  <data name="strMenuFile" xml:space="preserve">
+    <value>&amp;Fil</value>
+  </data>
+  <data name="strMenuFullScreen" xml:space="preserve">
+    <value>Helskärm</value>
+  </data>
+  <data name="strMenuFullScreenRDP" xml:space="preserve">
+    <value>Helskärm (RDP)</value>
+  </data>
+  <data name="strMenuHelp" xml:space="preserve">
+    <value>&amp;Hjälp</value>
+  </data>
+  
+  <data name="strMenuJumpTo" xml:space="preserve">
+    <value>Hoppa till</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="strMenuShowText" xml:space="preserve">
+    <value>Visa text</value>
+  </data>
+  
+  <data name="strMenuSSHFileTransfer" xml:space="preserve">
+    <value>SSH-filöverföring</value>
+  </data>
+  <data name="strMenuStartChat" xml:space="preserve">
+    <value>Starta chatt (VNC)</value>
+  </data>
+  <data name="strMenuSupportForum" xml:space="preserve">
+    <value>Supportforum</value>
+  </data>
+  <data name="strMenuTools" xml:space="preserve">
+    <value>&amp;Verktyg</value>
+  </data>
+  <data name="strMenuTransferFile" xml:space="preserve">
+    <value>Överför fil (SSH)</value>
+  </data>
+  
+  
+  
+  
+  <data name="strMoveDown" xml:space="preserve">
+    <value>Flytta ned</value>
+  </data>
+  <data name="strMoveUp" xml:space="preserve">
+    <value>Flytta upp</value>
+  </data>
+  
+  <data name="strNever" xml:space="preserve">
+    <value>Aldrig</value>
+  </data>
+  <data name="strNewConnection" xml:space="preserve">
+    <value>Ny anslutning</value>
+  </data>
+  <data name="strNewFolder" xml:space="preserve">
+    <value>Ny mapp</value>
+  </data>
+  <data name="strNewPanel" xml:space="preserve">
+    <value>Ny panel</value>
+  </data>
+  <data name="strNewRoot" xml:space="preserve">
+    <value>Ny rot</value>
+  </data>
+  <data name="strNewTitle" xml:space="preserve">
+    <value>Ny titel</value>
+  </data>
+  <data name="strNo" xml:space="preserve">
+    <value>Nej</value>
+  </data>
+  <data name="strNoCompression" xml:space="preserve">
+    <value>Ingen komprimering</value>
+  </data>
+  
+  <data name="strNoInformation" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="strNone" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="strNormal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  
+  
+  
+  
+  <data name="strOpenPorts" xml:space="preserve">
+    <value>Öppna portar</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="strPropertyNameAddress" xml:space="preserve">
+    <value>Värdnamn/IP</value>
+  </data>
+  
+  
+  
+  
+  <data name="strPropertyNameColors" xml:space="preserve">
+    <value>Färger</value>
+  </data>
+  <data name="strPropertyNameCompression" xml:space="preserve">
+    <value>Komprimering</value>
+  </data>
+  <data name="strPropertyNameDescription" xml:space="preserve">
+    <value>Beskrivning</value>
+  </data>
+  
+  
+  <data name="strPropertyNameDomain" xml:space="preserve">
+    <value>Domän</value>
+  </data>
+  <data name="strPropertyNameEnableDesktopComposition" xml:space="preserve">
+    <value>Skrivbordssammansättning</value>
+  </data>
+  <data name="strPropertyNameEnableFontSmoothing" xml:space="preserve">
+    <value>Teckensnittsutjämning</value>
+  </data>
+  <data name="strPropertyNameEncoding" xml:space="preserve">
+    <value>Kodning</value>
+  </data>
+  <data name="strPropertyNameEncryptionStrength" xml:space="preserve">
+    <value>Krypteringsstyrka</value>
+  </data>
+  <data name="strPropertyNameExternalTool" xml:space="preserve">
+    <value>Externa verktyg</value>
+  </data>
+  
+  
+  <data name="strPropertyNameIcon" xml:space="preserve">
+    <value>Ikon</value>
+  </data>
+  <data name="strPropertyNameMACAddress" xml:space="preserve">
+    <value>MAC-adress</value>
+  </data>
+  <data name="strPropertyNameName" xml:space="preserve">
+    <value>Namn</value>
+  </data>
+  <data name="strPropertyNamePanel" xml:space="preserve">
+    <value>Panel</value>
+  </data>
+  <data name="strPropertyNamePassword" xml:space="preserve">
+    <value>Lösenord</value>
+  </data>
+  <data name="strPropertyNamePort" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="strPropertyNameProtocol" xml:space="preserve">
+    <value>Protokoll</value>
+  </data>
+  <data name="strPropertyNamePuttySession" xml:space="preserve">
+    <value>PuTTY-session</value>
+  </data>
+  <data name="strPropertyNameRDGatewayDomain" xml:space="preserve">
+    <value>Gateway-domän</value>
+  </data>
+  <data name="strPropertyNameRDGatewayHostname" xml:space="preserve">
+    <value>Gateway-värdnamn</value>
+  </data>
+  <data name="strPropertyNameRDGatewayPassword" xml:space="preserve">
+    <value>Remote Desktop Gateway lösenord</value>
+  </data>
+  <data name="strPropertyNameRDGatewayUsageMethod" xml:space="preserve">
+    <value>Använd gateway</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="strPropertyNameUsername" xml:space="preserve">
+    <value>Användarnamn</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="strPuttyConnectionFailed" xml:space="preserve">
+    <value>Anslutning misslyckades!</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="strRDP16777216Colors" xml:space="preserve">
+    <value>16777216 färger (24 bitar)</value>
+  </data>
+  <data name="strRDP256Colors" xml:space="preserve">
+    <value>256 färger (8-bitar)</value>
+  </data>
+  
+  <data name="strRDP4294967296Colors" xml:space="preserve">
+    <value>16777216 färger (32 bitar)</value>
+  </data>
+  <data name="strRDP65536Colors" xml:space="preserve">
+    <value>65536 färger (16-bita)</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="strRdpErrorCode1" xml:space="preserve">
+    <value>Intern felkod 1.</value>
+  </data>
+  <data name="strRdpErrorCode2" xml:space="preserve">
+    <value>Intern felkod 2.</value>
+  </data>
+  <data name="strRdpErrorCode3" xml:space="preserve">
+    <value>Internt felkod 3. Detta är inte ett giltigt tillstånd.</value>
+  </data>
+  <data name="strRdpErrorCode4" xml:space="preserve">
+    <value>Intern felkod 4.</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="strRDPFitToPanel" xml:space="preserve">
+    <value>Anpassa till panel</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="strRefresh" xml:space="preserve">
+    <value>Uppdatera</value>
+  </data>
+  
+  <data name="strRemoveAll" xml:space="preserve">
+    <value>Ta bort alla</value>
+  </data>
+  <data name="strRename" xml:space="preserve">
+    <value>Byt namn</value>
+  </data>
+  
+  <data name="strSave" xml:space="preserve">
+    <value>Spara</value>
+  </data>
+  <data name="strSaveAll" xml:space="preserve">
+    <value>Spara alla</value>
+  </data>
+  
+  
+  
+  <data name="strScreen" xml:space="preserve">
+    <value>Skärm</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="strSsh1" xml:space="preserve">
+    <value>SSH version 1</value>
+  </data>
+  <data name="strSsh2" xml:space="preserve">
+    <value>SSH version 2</value>
+  </data>
+  <data name="strSSHTransferFailed" xml:space="preserve">
+    <value>Överföring</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  <data name="strTabAppearance" xml:space="preserve">
+    <value>Utseende</value>
+  </data>
+  
+  
+  
+  
+  <data name="strTitleError" xml:space="preserve">
+    <value>Fel ({0})</value>
+  </data>
+  <data name="strTitleInformation" xml:space="preserve">
+    <value>Information ({0})</value>
+  </data>
+  <data name="strTitlePassword" xml:space="preserve">
+    <value>Lösenord</value>
+  </data>
+  
+  <data name="strTitleWarning" xml:space="preserve">
+    <value>Varning ({0})</value>
+  </data>
+  <data name="strTransfer" xml:space="preserve">
+    <value>Överföring</value>
+  </data>
+  
+  <data name="strType" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="strUltraVncRepeater" xml:space="preserve">
+    <value>Ultra VNC Repeater</value>
+  </data>
+  <data name="strUltraVNCSCListeningPort" xml:space="preserve">
+    <value>UltraVNC SingleClick port:</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="strUpdateFrequencyCustom" xml:space="preserve">
+    <value>Var {0} dag</value>
+  </data>
+  <data name="strUpdateFrequencyDaily" xml:space="preserve">
+    <value>Dagligen</value>
+  </data>
+  <data name="strUpdateFrequencyMonthly" xml:space="preserve">
+    <value>Månadsvis</value>
+  </data>
+  <data name="strUpdateFrequencyWeekly" xml:space="preserve">
+    <value>Veckovis</value>
+  </data>
+  
+  
+  
+  <data name="strUser" xml:space="preserve">
+    <value>Användare</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="strYes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  
+  <data name="strPropertyDescriptionConnectOnStartup" xml:space="preserve">
+    <value>Anslut vid uppstart</value>
+  </data>
+  <data name="strPropertyNameConnectOnStartup" xml:space="preserve">
+    <value>Anslut vid uppstart</value>
+  </data>
+  <data name="strSerial" xml:space="preserve">
+    <value>Seriell</value>
+  </data>
+  <data name="strTeamViewer" xml:space="preserve">
+    <value>TeamViewer</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="QuickHostScanner_TestAsync_Up" xml:space="preserve">
+    <value>Upp</value>
+    <comment>IsHostUp</comment>
+  </data>
+  <data name="QuickHostScanner_TestAsync_Down" xml:space="preserve">
+    <value>Ner</value>
+    <comment>IsHostDown</comment>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="SSHTransfer_Upload_Transfer" xml:space="preserve">
+    <value>Överföring</value>
+  </data>
+  
+  
+  <data name="QuickHostScanner_ApplyLanguage_Port" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="QuickHostScanner_ApplyLanguage_Protocol" xml:space="preserve">
+    <value>Protokoll</value>
+  </data>
+  <data name="QuickHostScanner_ApplyLanguage_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  
+  
+  <data name="Test" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  
+  
+  <data name="ConnectionStatusForm_ApplyLanguage_Refresh" xml:space="preserve">
+    <value>Uppdatera</value>
+  </data>
+  
+  <data name="ConnectionStatusForm_ApplyLanguage_Connection" xml:space="preserve">
+    <value>Anslutning</value>
+  </data>
+  <data name="ConnectionStatusForm_ApplyLanguage_Host" xml:space="preserve">
+    <value>Värd</value>
+  </data>
+  <data name="ConnectionStatusForm_ApplyLanguage_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+</root>

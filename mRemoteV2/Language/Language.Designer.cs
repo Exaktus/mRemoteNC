@@ -2474,6 +2474,15 @@ namespace My {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Gecko.
+        /// </summary>
+        internal static string strHttpGecko {
+            get {
+                return ResourceManager.GetString("strHttpGecko", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на GheckoFX.
         /// </summary>
         internal static string strHttpGeckoFX {

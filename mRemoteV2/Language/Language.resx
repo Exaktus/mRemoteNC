@@ -2281,4 +2281,7 @@ Or I can do it for you.</value>
   <data name="ProblemFixer_FixGeckoProblem_Download_and_setup_XULrunner_Latest" xml:space="preserve">
     <value>Download and setup XULrunner {0}</value>
   </data>
+  <data name="strHttpGecko" xml:space="preserve">
+    <value>Gecko</value>
+  </data>
 </root>

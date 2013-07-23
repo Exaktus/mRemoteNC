@@ -248,7 +248,7 @@ namespace mRemoteNC.Tools
                             break;
 
                         case 1:
-                            Process.Start("http://www.teamviewer.com/ru/download/windows.aspx");
+                            Process.Start("http://www.teamviewer.com/download/windows.aspx");
                             break;
                     }
                 }

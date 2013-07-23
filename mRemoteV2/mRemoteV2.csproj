@@ -428,9 +428,11 @@
     <EmbeddedResource Include="Language\Language.en-US.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Language\Language.es-ES.resx" />
     <EmbeddedResource Include="Language\Language.es.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Language\Language.it.resx" />
     <EmbeddedResource Include="Language\Language.nl.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -449,6 +451,7 @@
     <EmbeddedResource Include="Language\Language.ru.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Language\Language.sv-SE.resx" />
     <EmbeddedResource Include="Language\Language.uk.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -2267,4 +2267,18 @@ mRemoteNC сейчас прекратит работу и начнет проц�
   <data name="frmMain_ApplyLanguage_Lock_toolbar" xml:space="preserve">
     <value>Закрепить панель инструментов</value>
   </data>
+  <data name="ProblemFixer_FixGeckoProblem_" xml:space="preserve">
+    <value>Чтобы использовать движок рендеринга Gecko необходимо указать путь к XULrunner 1.8.1 или {0} в настройках. Вы можете скачать XULrunner 1.8.1.3 здесь: ftp://ftp.mozilla.org/pub/xulrunner/releases/1.8.1.3/contrib/win32/ или {0} здесь: {1} (для GheckoFx v{0}). Когда вы закончите загрузку распакуйте скачанный файл в любое место по вашему выбору. После этого укажите путь к распакованным файлам в настройках mRemoteNC.
+
+Или я могу сделать это за вас.</value>
+  </data>
+  <data name="ProblemFixer_FixGeckoProblem_Open_XULrunner_Latest_Download_page" xml:space="preserve">
+    <value>Открыть страницу загрузки XULrunner {0}</value>
+  </data>
+  <data name="ProblemFixer_FixGeckoProblem_Download_and_setup_XULrunner_Latest" xml:space="preserve">
+    <value>Скачать и установить XULrunner {0}</value>
+  </data>
+  <data name="strHttpGecko" xml:space="preserve">
+    <value>Gecko</value>
+  </data>
 </root>

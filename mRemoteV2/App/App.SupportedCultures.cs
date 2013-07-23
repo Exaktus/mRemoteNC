@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
+using System.Linq;
 using My;
 
 namespace mRemoteNC
@@ -9,78 +11,69 @@ namespace mRemoteNC
     {
         private SupportedCultures()
         {
-            System.Globalization.CultureInfo CultureInfo;
-            foreach (string CultureName in Settings.Default.SupportedUICultures.Split(','))
+            foreach (var cultureName in Settings.Default.SupportedUICultures.Split(','))
             {
                 try
                 {
-                    CultureInfo = new System.Globalization.CultureInfo(CultureName.Trim());
-                    Add(CultureInfo.Name, CultureInfo.TextInfo.ToTitleCase(CultureInfo.NativeName));
+                    var cultureInfo = new CultureInfo(cultureName.Trim());
+                    Add(cultureInfo.Name, cultureInfo.TextInfo.ToTitleCase(cultureInfo.NativeName));
                 }
                 catch (Exception ex)
                 {
-                    Debug.Print(
-                        string.Format(
-                            "An exception occurred while adding the culture \'{0}\' to the list of supported cultures. {1}",
-                            CultureName, ex.ToString()));
+                    Debug.Print("An exception occurred while adding the culture \'{0}\' to the list of supported cultures. {1}", cultureName, ex);
                 }
             }
         }
 
-        private static SupportedCultures _Instance = new SupportedCultures();
+        private static SupportedCultures _instance = new SupportedCultures();
 
         public static void InstantiateSingleton()
         {
-            if (_Instance == null)
+            if (_instance == null)
             {
-                _Instance = new SupportedCultures();
+                _instance = new SupportedCultures();
             }
         }
 
-        public static bool IsNameSupported(string CultureName)
+        public static bool IsNameSupported(string cultureName)
         {
-            return _Instance.ContainsKey(CultureName);
+            return _instance.ContainsKey(cultureName);
         }
 
-        public static bool IsNativeNameSupported(string CultureNativeName)
+        public static bool IsNativeNameSupported(string cultureNativeName)
         {
-            return _Instance.ContainsValue(CultureNativeName);
+            return _instance.ContainsValue(cultureNativeName);
         }
 
-        public static string CultureName(string CultureNativeName)
+        public static string CultureName(string cultureNativeName)
         {
-            string[] Names = new string[_Instance.Count + 1];
-            string[] NativeNames = new string[_Instance.Count + 1];
+            var names = new string[_instance.Count + 1];
+            var nativeNames = new string[_instance.Count + 1];
 
-            _Instance.Keys.CopyTo(Names, 0);
-            _Instance.Values.CopyTo(NativeNames, 0);
+            _instance.Keys.CopyTo(names, 0);
+            _instance.Values.CopyTo(nativeNames, 0);
 
-            for (int Index = 0; Index <= _Instance.Count; Index++)
+            for (var index = 0; index <= _instance.Count; index++)
             {
-                if (NativeNames[Index] == CultureNativeName)
+                if (nativeNames[index] == cultureNativeName)
                 {
-                    return Names[Index];
+                    return names[index];
                 }
             }
 
-            throw (new System.Collections.Generic.KeyNotFoundException());
+            throw (new KeyNotFoundException());
         }
 
-        public static string CultureNativeName(string CultureName)
+        public static string CultureNativeName(string cultureName)
         {
-            return _Instance[CultureName];
+            return _instance[cultureName];
         }
 
-        public static List<string> CultureNativeNames
+        public static IEnumerable<string> CultureNativeNames
         {
             get
             {
-                List<string> ValueList = new List<string>();
-                foreach (string Value in _Instance.Values)
-                {
-                    ValueList.Add(Value);
-                }
-                return ValueList;
+                return _instance.Values.ToList();
             }
         }
     }
