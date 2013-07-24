@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Drawing;
@@ -1809,6 +1810,11 @@ namespace mRemoteNC
                     {
                         if (char.IsLetterOrDigit(e.KeyChar))
                         {
+                            if (string.IsNullOrEmpty(txtSearch.SelectedText))
+                            {
+                                
+                            }
+
                             this.txtSearch.Text = "" + e.KeyChar;
 
                             this.txtSearch.Focus();
@@ -1847,7 +1853,7 @@ namespace mRemoteNC
                                 }
                             }
                         }
-                        else if (e.KeyCode == Keys.Escape ^ e.KeyCode == Keys.Control || e.KeyCode == Keys.F)
+                        else if (e.Control && e.KeyCode == Keys.F)
                         {
                             this.txtSearch.Focus();
                             this.txtSearch.SelectionStart = this.txtSearch.TextLength;
@@ -1855,10 +1861,9 @@ namespace mRemoteNC
                     }
                     catch (Exception ex)
                     {
-                        Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
-                                                            (string)
-                                                            ("tvConnections_KeyDown (UI.Window.Tree) failed" +
-                                                             Constants.vbNewLine + ex.Message), true);
+                        Runtime.MessageCollector.AddMessage(MessageClass.ErrorMsg,
+                                                            "tvConnections_KeyDown (UI.Window.Tree) failed" +
+                                                            Constants.vbNewLine + ex.Message, true);
                     }
                 }
 
