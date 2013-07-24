@@ -7,6 +7,7 @@ using System.Threading;
 using System.Windows.Forms;
 using AxMSTSCLib;
 using EOLWTSCOM;
+using mRemoteNC.Messages;
 using MSTSCLib;
 using Microsoft.VisualBasic;
 using mRemoteNC.App;
@@ -268,49 +269,49 @@ namespace mRemoteNC
         {
             try
             {
-                if (RDP_Client.TransportSettings.GatewayIsSupported == 1)
+                if (RDP_Client.TransportSettings.GatewayIsSupported==1)
+                    return;
+                Runtime.MessageCollector.AddMessage(MessageClass.InformationMsg, Language.strRdpGatewayIsSupported, true);
+                if (Info.RDGatewayUsageMethod != RDGatewayUsageMethod.Never)
                 {
-                    Runtime.MessageCollector.AddMessage(Messages.MessageClass.InformationMsg,
-                                                        Language.strRdpGatewayIsSupported, true);
-                    if (Info.RDGatewayUsageMethod != RDGatewayUsageMethod.Never)
+                    RDP_Client.TransportSettings.GatewayUsageMethod = Convert.ToUInt16(Info.RDGatewayUsageMethod);
+                    RDP_Client.TransportSettings.GatewayHostname = Info.RDGatewayHostname;
+                    RDP_Client.TransportSettings.GatewayProfileUsageMethod = 1;
+                    // TSC_PROXY_PROFILE_MODE_EXPLICIT
+                    if (Info.RDGatewayUseConnectionCredentials == RDGatewayUseConnectionCredentials.SmartCard)
                     {
-                        RDP_Client.TransportSettings2.GatewayProfileUsageMethod = 1;
-                        RDP_Client.TransportSettings.GatewayUsageMethod =
-                            Convert.ToUInt16(Info.RDGatewayUsageMethod);
-                        RDP_Client.TransportSettings.GatewayHostname = Info.RDGatewayHostname;
-                        if (Info.RDGatewayUseConnectionCredentials == RDGatewayUseConnectionCredentials.Yes)
+                        RDP_Client.TransportSettings.GatewayCredsSource = 1;
+                        // TSC_PROXY_CREDS_MODE_SMARTCARD
+                    }
+                    if (RDPVersion >= Versions.RDC61)
+                    {
+                        switch (Info.RDGatewayUseConnectionCredentials)
                         {
-                            RDP_Client.TransportSettings2.GatewayUsername = Info.Username;
-                            RDP_Client.TransportSettings2.GatewayPassword = Info.Password;
-                            RDP_Client.TransportSettings2.GatewayDomain = Info.Domain;
-                        }
-                        else if (Info.RDGatewayUseConnectionCredentials ==
-                                 RDGatewayUseConnectionCredentials.SmartCard)
-                        {
-                            RDP_Client.TransportSettings2.GatewayCredsSource = 1;
-                            // TSC_PROXY_CREDS_MODE_SMARTCARD
-                            RDP_Client.TransportSettings2.GatewayCredSharing = 0;
-                        }
-                        else
-                        {
-                            RDP_Client.TransportSettings2.GatewayUsername = Info.RDGatewayUsername;
-                            RDP_Client.TransportSettings2.GatewayPassword = Info.RDGatewayPassword;
-                            RDP_Client.TransportSettings2.GatewayDomain = Info.RDGatewayDomain;
-                            RDP_Client.TransportSettings2.GatewayCredSharing = 0;
+                            case RDGatewayUseConnectionCredentials.Yes:
+                                RDP_Client.TransportSettings2.GatewayUsername = Info.Username;
+                                RDP_Client.TransportSettings2.GatewayPassword = Info.Password;
+                                RDP_Client.TransportSettings2.GatewayDomain = Info.Domain;
+                                break;
+                            case RDGatewayUseConnectionCredentials.SmartCard:
+                                RDP_Client.TransportSettings2.GatewayCredSharing = 0;
+                                break;
+                            default:
+                                RDP_Client.TransportSettings2.GatewayUsername = Info.RDGatewayUsername;
+                                RDP_Client.TransportSettings2.GatewayPassword = Info.RDGatewayPassword;
+                                RDP_Client.TransportSettings2.GatewayDomain = Info.RDGatewayDomain;
+                                RDP_Client.TransportSettings2.GatewayCredSharing = 0;
+                                break;
                         }
                     }
                 }
                 else
                 {
-                    Runtime.MessageCollector.AddMessage(Messages.MessageClass.InformationMsg,
-                                                        Language.strRdpGatewayNotSupported, true);
+                    Runtime.MessageCollector.AddMessage(MessageClass.InformationMsg, Language.strRdpGatewayNotSupported, true);
                 }
             }
             catch (Exception ex)
             {
-                Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
-                                                    Language.strRdpSetGatewayFailed + Constants.vbNewLine +
-                                                    ex.Message, true);
+                Runtime.MessageCollector.AddMessage(MessageClass.ErrorMsg, Language.strRdpSetGatewayFailed + Constants.vbNewLine + ex.Message, true);
             }
         }
 
