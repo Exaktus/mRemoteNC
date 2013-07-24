@@ -3,7 +3,7 @@
 set RAR="C:\Program Files\WinRAR\WinRAR.exe"
 set VCVARSALL="%ProgramFiles(x86)%\Microsoft Visual Studio 10.0\VC\vcvarsall.bat"
 set DEVENV="devenv.exe"
-set ISS="%ProgramFiles(x86)%\Innoj Setup 5\iscc.exe"
+set ISS="%ProgramFiles(x86)%\Inno Setup 5\iscc.exe"
 
 call %VCVARSALL% x86
 
