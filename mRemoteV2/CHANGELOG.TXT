@@ -8,7 +8,8 @@
 	[rmcardle] Improved loading time of large connection files.
 	Updated GeckoFX to v21
 	Translation updated
-
+	Fix Issue #9 - Issue with search
+	
 2.70 pre-alfa (Forked as mRemoteNC)
 ​	Ported to C#, .Net 4.0
 	Fixed PuTTY tab focus issue (MR-305)
