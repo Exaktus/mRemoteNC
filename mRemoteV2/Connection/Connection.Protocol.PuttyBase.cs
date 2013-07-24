@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
@@ -46,33 +47,16 @@ namespace mRemoteNC
                 set { this._PuttySSHVersion = value; }
             }
 
-            public IntPtr PuttyHandle { get; set; }
+            public IntPtr PuttyHandle { get; private set; }
 
-            private Process _PuttyProcess;
+            public Process PuttyProcess { get; set; }
 
-            public Process PuttyProcess
-            {
-                get { return this._PuttyProcess; }
-                set { this._PuttyProcess = value; }
-            }
-
-            private static string _PuttyPath;
-
-            public static string PuttyPath
-            {
-                get { return _PuttyPath; }
-                set { _PuttyPath = value; }
-            }
+            public static string PuttyPath { get; set; }
 
             //Private borderWidth As Integer = frmMain.Size.Width - frmMain.ClientSize.Width
             //Private borderHeight As Integer = frmMain.Size.Height - frmMain.ClientSize.Height
-            private static Size _BorderSize;
 
-            public static Size BorderSize
-            {
-                get { return _BorderSize; }
-                set { _BorderSize = value; }
-            }
+            public static Size BorderSize { get; set; }
 
             public bool Focused
             {
@@ -114,18 +98,18 @@ namespace mRemoteNC
             {
                 try
                 {
+                    if(!File.Exists(PuttyPath)) throw new Exception("PuTTY not found.");
                     _isPuttyNg = IsFilePuttyNg(PuttyPath);
 
                     PuttyProcess = new Process();
                     var _with1 = PuttyProcess.StartInfo;
                     _with1.UseShellExecute = false;
-                    _with1.FileName = _PuttyPath;
+                    _with1.FileName = PuttyPath;
 
-                    CommandLineArguments arguments = new CommandLineArguments();
-                    arguments.EscapeForShell = false;
+                    var arguments = new CommandLineArguments {EscapeForShell = false};
 
                     arguments.Add("-load", InterfaceControl.Info.PuttySession);
-                    arguments.Add("-" + _PuttyProtocol.ToString());
+                    arguments.Add("-" + _PuttyProtocol);
 
                     if (_PuttyProtocol == Putty_Protocol.ssh)
                     {
@@ -184,7 +168,7 @@ namespace mRemoteNC
                    
                     //REMOVE IN RELEASE!
 #if DEBUG
-                    Runtime.MessageCollector.AddMessage(Messages.MessageClass.InformationMsg,
+                    Runtime.MessageCollector.AddMessage(MessageClass.InformationMsg,
                                                         "PuTTY Arguments: " + PuttyProcess.StartInfo.Arguments, true);
                     Debug.WriteLine("PuTTY Arguments: " + PuttyProcess.StartInfo.Arguments);
 #endif
@@ -218,9 +202,9 @@ namespace mRemoteNC
 
                     Runtime.MessageCollector.AddMessage(MessageClass.InformationMsg, Language.strPuttyStuff, true);
 
-                    Runtime.MessageCollector.AddMessage(MessageClass.InformationMsg, string.Format(Language.strPuttyHandle, PuttyHandle.ToString()), true);
+                    Runtime.MessageCollector.AddMessage(MessageClass.InformationMsg, string.Format(Language.strPuttyHandle, PuttyHandle), true);
                     Runtime.MessageCollector.AddMessage(MessageClass.InformationMsg, string.Format(Language.strPuttyTitle, PuttyProcess.MainWindowTitle), true);
-                    Runtime.MessageCollector.AddMessage(MessageClass.InformationMsg, string.Format(Language.strPuttyParentHandle, InterfaceControl.Parent.Handle.ToString()), true);
+                    Runtime.MessageCollector.AddMessage(MessageClass.InformationMsg, string.Format(Language.strPuttyParentHandle, InterfaceControl.Parent.Handle), true);
 
                     Resize(this, new EventArgs());
 
@@ -268,7 +252,7 @@ namespace mRemoteNC
                 }
                 catch (Exception ex)
                 {
-                    Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                    Runtime.MessageCollector.AddMessage(MessageClass.ErrorMsg,
                                                         Language.strPuttyResizeFailed + Constants.vbNewLine + ex.Message,
                                                         true);
                 }
@@ -285,7 +269,7 @@ namespace mRemoteNC
                 }
                 catch (Exception ex)
                 {
-                    Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                    Runtime.MessageCollector.AddMessage(MessageClass.ErrorMsg,
                                                         Language.strPuttyKillFailed + Constants.vbNewLine + ex.Message,
                                                         true);
                 }
@@ -296,7 +280,7 @@ namespace mRemoteNC
                 }
                 catch (Exception ex)
                 {
-                    Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                    Runtime.MessageCollector.AddMessage(MessageClass.ErrorMsg,
                                                         Language.strPuttyDisposeFailed + Constants.vbNewLine +
                                                         ex.Message, true);
                 }
@@ -317,7 +301,7 @@ namespace mRemoteNC
                 }
                 catch (Exception ex)
                 {
-                    Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                    Runtime.MessageCollector.AddMessage(MessageClass.ErrorMsg,
                                     Language.strPuttyShowSettingsDialogFailed + Constants.vbNewLine +
                                     ex.Message, true);
                 }
@@ -327,12 +311,12 @@ namespace mRemoteNC
             {
                 try
                 {
-                    Native.PostMessage(this.PuttyHandle, Native.WM_SYSCOMMAND, System.Convert.ToInt32(IDM_RECONF), 0);
+                    Native.PostMessage(this.PuttyHandle, Native.WM_SYSCOMMAND, Convert.ToInt32(IDM_RECONF), 0);
                     Native.SetForegroundWindow(this.PuttyHandle);
                 }
                 catch (Exception ex)
                 {
-                    Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                    Runtime.MessageCollector.AddMessage(MessageClass.ErrorMsg,
                                                         Language.strPuttyShowSettingsDialogFailed + Constants.vbNewLine +
                                                         ex.Message, true);
                 }
@@ -435,4 +419,8 @@ namespace mRemoteNC
             #endregion Enums
         }
     }
+}
+
+namespace mRemoteNC.Connection
+{
 }

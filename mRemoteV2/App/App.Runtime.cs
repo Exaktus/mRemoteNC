@@ -2152,6 +2152,18 @@ namespace mRemoteNC
                     if (newProtocol.Connect() == false)
                     {
                         newProtocol.Close();
+                        if (newProtocol is PuttyBase&&!ProblemFixer.IsPuTTYOk())
+                        {
+                            ProblemFixer.FixPuTTYProblem();
+                        }
+                        if (newProtocol is TeamViewer && !ProblemFixer.IsTeamViewerOk())
+                        {
+                            ProblemFixer.FixTVProblem();
+                        }
+                        if (newProtocol is RAdmin && !ProblemFixer.IsRAdminOk())
+                        {
+                            ProblemFixer.FixRAdminProblem();
+                        }
                         return;
                     }
 
@@ -2196,7 +2208,7 @@ namespace mRemoteNC
                 {
                     IC.FindForm().Focus();
                     (IC.FindForm() as UI.Window.Connection).Show(frmMain.Default.pnlDock);
-                    TabPage t = (TabPage)IC.Parent;
+                    var t = (TabPage)IC.Parent;
                     t.Selected = true;
                     return true;
                 }
