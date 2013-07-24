@@ -274,31 +274,7 @@ namespace mRemoteNC.Tools
 
         public static string CreateConstantID()
         {
-            string cID;
-            Random rnd = new Random(DateTime.Now.Second);
-            int iRnd = 0;
-            bool NewFound = false;
-
-            while (!NewFound)
-            {
-                iRnd = rnd.Next(10000, 99999);
-
-                if (rndNums.Contains(iRnd) == false)
-                {
-                    rndNums.Add(iRnd);
-                    NewFound = true;
-                }
-            }
-
-            cID =
-                Convert.ToString(DateTime.Now.Year + LeadingZero(DateTime.Now.Month.ToString()) +
-                                        LeadingZero(DateTime.Now.Day.ToString()) +
-                                        LeadingZero(DateTime.Now.Hour.ToString()) +
-                                        LeadingZero(DateTime.Now.Minute.ToString()) +
-                                        LeadingZero(DateTime.Now.Second.ToString()) +
-                                        LeadingZero(Convert.ToString(DateTime.Now.Millisecond + iRnd.ToString())));
-
-            return cID;
+            return Guid.NewGuid().ToString();
         }
 
         public static string LeadingZero(string Number)
@@ -436,19 +412,7 @@ namespace mRemoteNC.Tools
 
         public static object StringToEnum(Type t, string value)
         {
-            foreach (FieldInfo fI in t.GetFields())
-            {
-                if (fI.Name == value)
-                {
-                    return fI.GetValue(Constants.vbNull);
-                }
-            }
-
-            Exception ex = new Exception(String.Format("Can\'t convert {0} to {1}", value, t.ToString()));
-            Runtime.MessageCollector.AddMessage(MessageClass.ErrorMsg,
-                                                (string)("StringToEnum failed" + Constants.vbNewLine + ex.Message),
-                                                true);
-            throw (ex);
+            return Enum.Parse(t, value);
         }
 
         public static Image TakeScreenshot(UI.Window.Connection sender)

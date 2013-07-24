@@ -5,6 +5,7 @@
 	[rmcardle] Signed PuTTYNG
 	[rmcardle] Update VncSharpNG to 1.3.4896.25007
 	[rmcardle] Fixed issue MR-470 - Quick Connect to Linux server uses invalid credentials
+	[rmcardle] Improved loading time of large connection files.
 	Updated GeckoFX to v21
 	Translation updated
 
