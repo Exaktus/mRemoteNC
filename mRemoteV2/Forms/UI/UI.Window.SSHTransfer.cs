@@ -1038,10 +1038,12 @@ namespace mRemoteNC
                         {
                             foreach (string str in Directory.GetLogicalDrives())
                             {
-                                EXImageListViewItem imglstvitem = new EXImageListViewItem();
-                                imglstvitem.MyImage = global::My.Resources.Resources.Folder;
-                                imglstvitem.MyValue = str;
-                                imglstvitem.Tag = "Folder";
+                                var imglstvitem = new EXImageListViewItem
+                                {
+                                    MyImage = global::My.Resources.Resources.Folder,
+                                    MyValue = str,
+                                    Tag = "Folder"
+                                };
                                 imglstvitem.SubItems.Add(str);
                                 imglstvitem.SubItems.Add("");
                                 lvLocalBrowser.Items.Add(imglstvitem);
@@ -1057,10 +1059,12 @@ namespace mRemoteNC
                         var d = Directory.GetDirectories(txtLocalBrowserPath.Text);
                         foreach (var s1 in d)
                         {
-                            EXImageListViewItem imglstvitem = new EXImageListViewItem();
-                            imglstvitem.MyImage = global::My.Resources.Resources.Folder;
-                            imglstvitem.MyValue = s1;
-                            imglstvitem.Tag = "Folder";
+                            var imglstvitem = new EXImageListViewItem
+                            {
+                                MyImage = global::My.Resources.Resources.Folder,
+                                MyValue = s1,
+                                Tag = "Folder"
+                            };
                             imglstvitem.SubItems.Add(Path.GetFileName(s1));
                             imglstvitem.SubItems.Add("");
                             l.Add(imglstvitem);
@@ -1069,10 +1073,12 @@ namespace mRemoteNC
                         
                         foreach (var s1 in s)
                         {
-                            EXImageListViewItem imglstvitem = new EXImageListViewItem();
-                            imglstvitem.MyImage = global::My.Resources.Resources.File;
-                            imglstvitem.MyValue = s1;
-                            imglstvitem.Tag = "File";
+                            var imglstvitem = new EXImageListViewItem
+                            {
+                                MyImage = global::My.Resources.Resources.File,
+                                MyValue = s1,
+                                Tag = "File"
+                            };
                             imglstvitem.SubItems.Add(Path.GetFileName(s1));
                             imglstvitem.SubItems.Add(Tools.Misc.LengthToHumanReadable(new FileInfo(s1).Length));
                             /*li.SubItems.Add()*/
@@ -1136,10 +1142,15 @@ namespace mRemoteNC
                             {
                                 continue;
                             }
-                            EXImageListViewItem imglstvitem = new EXImageListViewItem();
-                            imglstvitem.MyImage = item.IsDirectory ? global::My.Resources.Resources.Folder : global::My.Resources.Resources.File;
-                            imglstvitem.MyValue = item.FullName;
-                            imglstvitem.Tag = item;
+                            var imglstvitem = new EXImageListViewItem
+                            {
+                                MyImage =
+                                    item.IsDirectory
+                                        ? global::My.Resources.Resources.Folder
+                                        : global::My.Resources.Resources.File,
+                                MyValue = item.FullName,
+                                Tag = item
+                            };
                             imglstvitem.SubItems.Add(item.Name);
                             imglstvitem.SubItems.Add(item.IsDirectory ? "" : Tools.Misc.LengthToHumanReadable(item.Length));
                             l.Add(imglstvitem);
@@ -1159,11 +1170,15 @@ namespace mRemoteNC
                     ListViewHitTestInfo hit = lvSSHFileBrowser.HitTest(e.Location);
                     if (hit.Item != null)
                     {
-                        var i = ((hit.Item as EXImageListViewItem).Tag as SftpFile);
-                        if (i.IsDirectory )
+                        var exImageListViewItem = hit.Item as EXImageListViewItem;
+                        if (exImageListViewItem != null)
                         {
-                            txtRemoteFolderPath.Text = Tools.Misc.GetUnixPathParent(i.FullName);
-                            button1_Click(null, null);
+                            var i = (exImageListViewItem.Tag as SftpFile);
+                            if (i != null && i.IsDirectory )
+                            {
+                                txtRemoteFolderPath.Text = Tools.Misc.GetUnixPathParent(i.FullName);
+                                button1_Click(null, null);
+                            }
                         }
                     }
                 }
