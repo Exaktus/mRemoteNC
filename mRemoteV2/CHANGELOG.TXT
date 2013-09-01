@@ -1,4 +1,4 @@
-﻿2.70 Nightly (2013-03-XX)
+﻿2.70 Nightly (2013-07-24)
 	[rmcardle] Fix issue MR-379 - Connection variables not working with external tools
 	[rmcardle] Hide the username and domain settings for VNC connections.
 	[rmcardle] Fixed issue MR-352 - Passwords with " (quotation mark) and # (hash key) characters make mRemoteNG to open PuttyNG dialog
@@ -8,7 +8,8 @@
 	[rmcardle] Improved loading time of large connection files.
 	Updated GeckoFX to v21
 	Translation updated
-
+	Fix Issue #9 - Issue with search
+	
 2.70 pre-alfa (Forked as mRemoteNC)
 ​	Ported to C#, .Net 4.0
 	Fixed PuTTY tab focus issue (MR-305)
