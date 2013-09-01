@@ -938,16 +938,16 @@ namespace mRemoteNC
         {
             try
             {
-                Connection.Info conI = Runtime.CreateQuicky(QuickyText(),
+                Info conI = Runtime.CreateQuicky(QuickyText(),
                                                             (Protocols)
                                                             Tools.Misc.StringToEnum(typeof(Protocols),
-                                                                                    ((Control)sender).Text));
+                                                                                    ((ToolStripMenuItem)sender).Text));
 
                 if (conI.Port == 0)
                 {
                     conI.SetDefaultPort();
 
-                    if (mRemoteNC.QuickConnect.History.Exists(conI.Hostname) == false)
+                    if (QuickConnect.History.Exists(conI.Hostname) == false)
                     {
                         QuickConnect.History.Add(conI.Hostname);
                     }
@@ -1080,13 +1080,22 @@ namespace mRemoteNC
 
         private void ConMenItem_MouseDown(Object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            try
             {
-                var tag = ((Control)sender).Tag as Info;
-                if (tag != null)
+                if (e.Button == MouseButtons.Left)
                 {
-                    Runtime.OpenConnection(tag);
+                    var tag = ((ToolStripMenuItem)sender).Tag as Info;
+                    if (tag != null)
+                    {
+                        Runtime.OpenConnection(tag);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                                    "ConMenItem_MouseDown failed" + Constants.vbNewLine + ex.Message,
+                                    true);
             }
         }
 

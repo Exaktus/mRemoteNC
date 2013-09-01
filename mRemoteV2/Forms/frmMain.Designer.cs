@@ -165,7 +165,7 @@ namespace mRemoteNC
             this.pnlDock.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingWindow;
             this.pnlDock.Location = new System.Drawing.Point(0, 0);
             this.pnlDock.Name = "pnlDock";
-            this.pnlDock.Size = new System.Drawing.Size(1258, 617);
+            this.pnlDock.Size = new System.Drawing.Size(1258, 666);
             dockPanelGradient1.EndColor = System.Drawing.SystemColors.ControlLight;
             dockPanelGradient1.StartColor = System.Drawing.SystemColors.ControlLight;
             autoHideStripSkin1.DockStripGradient = dockPanelGradient1;
@@ -233,7 +233,7 @@ namespace mRemoteNC
             this.tsContainer.ContentPanel.Controls.Add(this.pnlDock);
             this.tsContainer.ContentPanel.Controls.Add(this.ToolStrip1);
             this.tsContainer.ContentPanel.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.tsContainer.ContentPanel.Size = new System.Drawing.Size(1258, 617);
+            this.tsContainer.ContentPanel.Size = new System.Drawing.Size(1258, 666);
             this.tsContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
             // tsContainer.LeftToolStripPanel
@@ -343,7 +343,7 @@ namespace mRemoteNC
             this.tsQuickTexts.BackColor = System.Drawing.SystemColors.Control;
             this.tsQuickTexts.ContextMenuStrip = this.cMenExtAppsToolbar;
             this.tsQuickTexts.Dock = System.Windows.Forms.DockStyle.None;
-            this.tsQuickTexts.Location = new System.Drawing.Point(39, 0);
+            this.tsQuickTexts.Location = new System.Drawing.Point(516, 0);
             this.tsQuickTexts.Name = "tsQuickTexts";
             this.tsQuickTexts.Size = new System.Drawing.Size(111, 25);
             this.tsQuickTexts.TabIndex = 20;
@@ -376,7 +376,7 @@ namespace mRemoteNC
             this.mMenView,
             this.mMenTools,
             this.mMenInfo});
-            this.msMain.Location = new System.Drawing.Point(3, 25);
+            this.msMain.Location = new System.Drawing.Point(3, 0);
             this.msMain.Name = "msMain";
             this.msMain.Padding = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.msMain.Size = new System.Drawing.Size(182, 24);
@@ -960,9 +960,9 @@ namespace mRemoteNC
             // 
             this.tsExternalTools.BackColor = System.Drawing.SystemColors.Control;
             this.tsExternalTools.Dock = System.Windows.Forms.DockStyle.None;
-            this.tsExternalTools.Location = new System.Drawing.Point(3, 49);
+            this.tsExternalTools.Location = new System.Drawing.Point(632, 0);
             this.tsExternalTools.Name = "tsExternalTools";
-            this.tsExternalTools.Size = new System.Drawing.Size(111, 25);
+            this.tsExternalTools.Size = new System.Drawing.Size(43, 25);
             this.tsExternalTools.TabIndex = 17;
             this.tsExternalTools.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsExternalTools_ItemClicked);
             // 
@@ -975,7 +975,7 @@ namespace mRemoteNC
             this.cmbQuickConnect,
             this.btnQuickyPlay,
             this.mMenQuickyCon});
-            this.tsQuickConnect.Location = new System.Drawing.Point(114, 49);
+            this.tsQuickConnect.Location = new System.Drawing.Point(185, 0);
             this.tsQuickConnect.Name = "tsQuickConnect";
             this.tsQuickConnect.Size = new System.Drawing.Size(331, 25);
             this.tsQuickConnect.TabIndex = 18;

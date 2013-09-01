@@ -1810,11 +1810,6 @@ namespace mRemoteNC
                     {
                         if (char.IsLetterOrDigit(e.KeyChar))
                         {
-                            if (string.IsNullOrEmpty(txtSearch.SelectedText))
-                            {
-                                
-                            }
-
                             this.txtSearch.Text = "" + e.KeyChar;
 
                             this.txtSearch.Focus();
