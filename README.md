@@ -1,6 +1,6 @@
-mRemoteNC  ([Download](http://exaktus.github.com/mRemoteNC))
+mRemoteNC  ([Download](http://exaktus.github.io/mRemoteNC))
 =========
-[Help Wanted](http://exaktus.github.com/mRemoteNC/donate.html)
+[Help Wanted](http://exaktus.github.io/mRemoteNC/donate.html)
 
 mRemoteNC is the next stage of mRemoteNG development.
 mRemote is a full-featured, multi-tab remote connections manager.
