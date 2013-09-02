@@ -13,7 +13,7 @@ namespace mRemoteNC
             public const string URLBugs = "https://github.com/Exaktus/mRemoteNC/issues/";
             public const string URLAnnouncement = "http://exaktus.github.com/mRemoteNC/update/announcement.txt";
 
-            public const bool IsPortable =
+            public static readonly bool IsPortable =
 #if PORTABLE
  true;
 #else 

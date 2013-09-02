@@ -140,21 +140,32 @@ namespace mRemoteNC.Forms
             {
                 ThreadPool.QueueUserWorkItem(state =>
                  {
-                     bool result = TestStatus(con1);
-                     lstStatus.Invoke((MethodInvoker)(() =>
+                     try
                      {
-                         foreach (ListViewItem i in lstStatus.Items.Cast<ListViewItem>().Where(i => i.Tag == con1))
+                         bool result = TestStatus(con1);
+                         lstStatus.Invoke((MethodInvoker)(() =>
                          {
-                             i.SubItems[2].Text = result ? "Up" : "Down";
-                             i.ForeColor = result ? Color.Green : Color.Red;
-                         }
-                         lstStatus.Sort();
-                     }));
+                             foreach (ListViewItem i in lstStatus.Items.Cast<ListViewItem>().Where(i => i.Tag == con1))
+                             {
+                                 i.SubItems[2].Text = result ? "Up" : "Down";
+                                 i.ForeColor = result ? Color.Green : Color.Red;
+                             }
+                             lstStatus.Sort();
+                         }));
+                     }
+                     catch (Exception ex)
+                     {
+                         Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                                                             "lstStatus.Invoke at TestAsync failed" + Constants.vbNewLine + ex.Message,
+                                                             true);
+                     }
                  });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
+                Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                                                    "TestAsync failed" + Constants.vbNewLine + ex.Message,
+                                                    true);
             }
         }
 

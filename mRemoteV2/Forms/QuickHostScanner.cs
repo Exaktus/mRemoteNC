@@ -75,35 +75,50 @@ namespace mRemoteNC.Forms
         {
             try
             {
-                ThreadPool.QueueUserWorkItem(state =>
-                {
-                    bool result = Tools.Misc.TestConnect(txtIP.Text, port);
-                    lstStatus.Invoke((MethodInvoker)(() =>
-                    {
-                        foreach (ListViewItem i in lstStatus.Items.Cast<ListViewItem>().Where(i => i.Text==port.ToString()))
-                        {
-                            i.SubItems[2].Text = result ? Language.QuickHostScanner_TestAsync_Up : Language.QuickHostScanner_TestAsync_Down;
-                            if (!result)
+                
+                    ThreadPool.QueueUserWorkItem(state =>
                             {
-                                i.ForeColor = Color.Gainsboro;
-                            }
-                            else
-                            {
-                                i.Font = new Font(i.Font.FontFamily, i.Font.Size,FontStyle.Bold);
-                                i.ForeColor = Color.Black;
-                            }
+                                try
+                                {
+                                bool result = Tools.Misc.TestConnect(txtIP.Text, port);
+                                lstStatus.Invoke((MethodInvoker)(() =>
+                                {
+                                    foreach (ListViewItem i in lstStatus.Items.Cast<ListViewItem>().Where(i => i.Text == port.ToString()))
+                                    {
+                                        i.SubItems[2].Text = result ? Language.QuickHostScanner_TestAsync_Up : Language.QuickHostScanner_TestAsync_Down;
+                                        if (!result)
+                                        {
+                                            i.ForeColor = Color.Gainsboro;
+                                        }
+                                        else
+                                        {
+                                            i.Font = new Font(i.Font.FontFamily, i.Font.Size, FontStyle.Bold);
+                                            i.ForeColor = Color.Black;
+                                        }
 
-                        } foreach (ColumnHeader column in lstStatus.Columns)
-                        {
-                            column.Width = -2;
-                        }
-                        lstStatus.Sort();
-                    }));
-                });
+                                    } foreach (ColumnHeader column in lstStatus.Columns)
+                                    {
+                                        column.Width = -2;
+                                    }
+                                    lstStatus.Sort();
+                                }));
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                                                                        ("QHS.lstStatus.Invoke at TestAsync failed" + Constants.vbNewLine + ex.Message),
+                                                                        true);
+                                }
+                            });
+                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Runtime.MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg,
+                                                    (string)
+                                                    ("QHS.TestAsync failed" + Constants.vbNewLine + ex.Message),
+                                                    true);
             }
         }
 
