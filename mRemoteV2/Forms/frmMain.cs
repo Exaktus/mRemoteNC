@@ -289,6 +289,7 @@ namespace mRemoteNC
             }
             Focus();
             BringToFront();
+            Runtime.AddPanel("General").Close();
         }
         
 

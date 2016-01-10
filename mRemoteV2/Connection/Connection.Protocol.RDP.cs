@@ -68,7 +68,7 @@ namespace mRemoteNC
                     while (!this.RDP_Client.Created)
                     {
                         Thread.Sleep(10);
-                        System.Windows.Forms.Application.DoEvents();
+                        Application.DoEvents();
                     }
                 }
                 catch (System.Runtime.InteropServices.COMException comEx)
@@ -217,7 +217,7 @@ namespace mRemoteNC
 
         public override void Resize(object sender, EventArgs e)
         {
-            if ((DoResize() && _controlBeginningSize.IsEmpty))
+            if (DoResize() && _controlBeginningSize.IsEmpty)
             {
                 ReconnectForResize();
             }

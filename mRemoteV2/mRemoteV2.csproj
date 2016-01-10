@@ -122,8 +122,9 @@
       <HintPath>References\Interop.SHDocVw.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="MagicLibrary, Version=1.7.4.0, Culture=neutral, PublicKeyToken=3a6eb82f876a49bc">
       <SpecificVersion>False</SpecificVersion>
@@ -1080,7 +1081,21 @@
   -->
   <Import Project="$(MSBuildBinPath)/Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>call "$(DevEnvDir)..\..\VC\bin\vcvars32.bat"
-call "$(DevEnvDir)..\..\VC\bin\editbin.exe" /NXCOMPAT:NO "$(TargetPath)"</PostBuildEvent>
+    <PostBuildEvent>IF NOT "%25VS140COMNTOOLS%25" == "" (  
+    IF NOT EXIST "%25VS140COMNTOOLS%25" (  
+        mklink /J "%25VS140COMNTOOLS%25" "C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools"  
+    )  
+    call "%25VS140COMNTOOLS%25vsvars32.bat"  
+    echo Visual Studio 2015...
+) ELSE (  
+    IF NOT "%25VS120COMNTOOLS%25" == "" (  
+        call "%25VS120COMNTOOLS%25vsvars32.bat"  
+       echo Visual Studio 2013...
+    ) ELSE (  
+        call "%25VS110COMNTOOLS%25vsvars32.bat"  
+        echo Visual Studio 2012...
+    )  
+)  
+editbin.exe /NXCOMPAT:NO "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
 </Project>

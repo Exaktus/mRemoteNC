@@ -1,7 +1,7 @@
 @echo off
 
 set RAR="C:\Program Files\WinRAR\WinRAR.exe"
-set VCVARSALL="%ProgramFiles(x86)%\Microsoft Visual Studio 10.0\VC\vcvarsall.bat"
+set VCVARSALL="%ProgramFiles(x86)%\Microsoft Visual Studio 14.0\VC\vcvarsall.bat"
 set DEVENV="devenv.exe"
 set ISS="%ProgramFiles(x86)%\Inno Setup 5\iscc.exe"
 
@@ -10,8 +10,8 @@ call %VCVARSALL% x86
 rmdir /s /q "%~dp0\mRemoteV2\bin" > nul 2>&1
 rmdir /s /q "%~dp0\mRemoteV2\obj" > nul 2>&1
 
-if exist "%~dp0\mRemoteV1\bin" goto ERROR_RMDIR
-if exist "%~dp0\mRemoteV1\obj" goto ERROR_RMDIR
+if exist "%~dp0\mRemoteV2\bin" goto ERROR_RMDIR
+if exist "%~dp0\mRemoteV2\obj" goto ERROR_RMDIR
 goto NOERROR_RMDIR
 
 :ERROR_RMDIR

@@ -74,7 +74,7 @@ namespace mRemoteNC.Connection
                 //ToDo: Rewrite code
                 var ax = Convert.ToInt32(-SystemInformation.FrameBorderSize.Width);
                 var ay = Convert.ToInt32(-(SystemInformation.CaptionHeight + SystemInformation.FrameBorderSize.Height));
-                int b = Convert.ToInt32(InterfaceControl.Width + (SystemInformation.FrameBorderSize.Width * 2));
+                int b = Convert.ToInt32(InterfaceControl.Width + SystemInformation.FrameBorderSize.Width * 2);
                 int a = Convert.ToInt32(InterfaceControl.Height + SystemInformation.CaptionHeight +
                                         (SystemInformation.FrameBorderSize.Height * 2));
 

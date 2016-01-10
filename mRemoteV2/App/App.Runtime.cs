@@ -947,8 +947,9 @@ namespace mRemoteNC
                         frmMain.Default.pnlDock.DocumentStyle = frmMain.Default.pnlDock.DocumentsCount > 1 ? DocumentStyle.DockingMdi : DocumentStyle.DockingSdi;
                         pnlcForm.Show(frmMain.Default.pnlDock, DockState.Document);
                     }
-                    catch (Exception)
+                    catch (Exception exp)
                     {
+                        //MessageBox.Show(exp.ToString());
                         frmMain.Default.pnlDock.DocumentStyle = DocumentStyle.DockingSdi;
                         pnlcForm.Show(frmMain.Default.pnlDock, DockState.Document);
                     }
@@ -2029,11 +2030,11 @@ namespace mRemoteNC
                     }
 
                     //TODO
-                    if (!(((Force & Connection.Info.Force.DoNotJump) == Connection.Info.Force.DoNotJump) || !SwitchToOpenConnection(newConnectionInfo)))
+                    if (!(((Force & Info.Force.DoNotJump) == Info.Force.DoNotJump) || !SwitchToOpenConnection(newConnectionInfo)))
                     {
                         return;
                     }
-                    Base newProtocol = new Base();
+                    Base newProtocol;
                         // Create connection based on protocol type
                         switch (newConnectionInfo.Protocol)
                         {
@@ -2106,7 +2107,7 @@ namespace mRemoteNC
                     }
 
                     Form cForm = ConForm ?? WindowList.FromString(cPnl);
-
+                    
                     if (cForm == null)
                     {
                         cForm = AddPanel(cPnl);
