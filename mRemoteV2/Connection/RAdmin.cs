@@ -45,12 +45,9 @@ namespace mRemoteNC.Connection
             try
             {
                 Native.MoveWindow(Handle, Convert.ToInt32(-SystemInformation.FrameBorderSize.Width),
-                                  Convert.ToInt32(
-                                      -(SystemInformation.CaptionHeight + SystemInformation.FrameBorderSize.Height)),
-                                  Convert.ToInt32(InterfaceControl.Width +
-                                                         (SystemInformation.FrameBorderSize.Width * 2)),
-                                  Convert.ToInt32(InterfaceControl.Height + SystemInformation.CaptionHeight +
-                                                         (SystemInformation.FrameBorderSize.Height * 2)), true);
+                                  Convert.ToInt32(-(SystemInformation.CaptionHeight + SystemInformation.FrameBorderSize.Height)),
+                                  Convert.ToInt32(InterfaceControl.Width + (SystemInformation.FrameBorderSize.Width * 2)),
+                                  Convert.ToInt32(InterfaceControl.Height + SystemInformation.CaptionHeight + (SystemInformation.FrameBorderSize.Height * 2)), true);
             }
             catch (Exception ex)
             {
@@ -90,6 +87,7 @@ namespace mRemoteNC.Connection
             Native.ForceForegroundWindow(Handle);
             SendKeys.SendWait("{F12}{F12}");
             Event_Connected(this);
+            this.Resize(null, null); // bad fix for small size of new connection before any resizing of main window
         }
 
         public override void Disconnect()

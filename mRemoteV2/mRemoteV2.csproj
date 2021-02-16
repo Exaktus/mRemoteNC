@@ -101,9 +101,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>References\ADTree.dll</HintPath>
     </Reference>
+    <Reference Include="AxInterop.MSTSCLib">
+      <HintPath>References\AxInterop.MSTSCLib.dll</HintPath>
+    </Reference>
     <Reference Include="AxWfIcaLib, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>References\AxWfIcaLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DiffieHellman">
+      <HintPath>References\DiffieHellman.dll</HintPath>
     </Reference>
     <Reference Include="FilteredPropertyGrid, Version=1.0.2258.31541, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -117,6 +123,10 @@
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.EOLWTSCOM">
+      <HintPath>References\Interop.EOLWTSCOM.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Interop.SHDocVw">
       <HintPath>References\Interop.SHDocVw.dll</HintPath>
