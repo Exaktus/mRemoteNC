@@ -20,3 +20,7 @@ Currently these protocols are supported:
  * Serial
  * TeamViewer
  * RAdmin
+
+**To build:**
+ * Visual Studio 2019 with .NET desktop development
+ * with admin privileges: regsvr32 mremotenc\mRemoteV2\References\eolwtscom.dll
